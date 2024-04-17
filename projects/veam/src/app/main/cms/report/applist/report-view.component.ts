@@ -542,7 +542,7 @@ export class ReportViewComponent extends BaseComponent implements OnInit, AfterV
       this.disableOrgTree = false;
       this.displayStartDate = true;
       this.displayEndDate = true;
-      this.displayNote = true;
+      this.displayNote = false;
     }
     if (filter[0].code == "RESIGNED_EMPLOYEES_LIST_REPORT") {
       this.resetDisplay();

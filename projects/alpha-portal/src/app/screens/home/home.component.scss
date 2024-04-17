@@ -1,0 +1,75 @@
+.app-home-container {
+
+    --header-height: 33vh; // to be recalculated
+    --icon-circle-size: 20px;
+
+    &>.home-profile {
+        box-sizing: border-box;
+        display: block;
+        position: fixed;
+        background-color: #F6F7FB;
+        left: var(--cell-width);
+        top: calc(var(--cell-height) * 2);
+        width: calc(var(--cell-width) * 6);
+        height: calc(var(--cell-height) * 8);
+        border-radius: 20px;
+
+        .home-profile-inner-wrapper {
+
+            height: calc(var(--cell-height) * 8);
+            flex-direction: column;
+            padding: 20px;
+
+            & img {
+                width: calc(var(--cell-height) * 2);
+                height: calc(var(--cell-height) * 2);
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            svg {
+                width: 100%;
+            }
+        }
+
+    }
+    .inner-layout-header {
+        padding: 0px var(--cell-width);
+        background-color: white;
+        height: var(--cell-height);
+    }
+    &>.home-profile.mobile {
+        left: var(--cell-width);
+        width: calc(14 * var(--cell-width)) !important;
+        top: calc(var(--cell-height) * 1.5);
+        height: calc(var(--cell-height) * 2);
+        border-radius: 10px;
+        overflow: hidden;
+
+        .home-profile-inner-wrapper {
+
+            height: calc(var(--cell-height) * 2);
+            flex-direction: row;
+            padding: calc(var(--cell-height) / 2);;
+
+            & img {
+                width: var(--cell-height);
+                height: var(--cell-height);
+                border-radius: 50%;
+                object-fit: cover;
+                margin-right: calc(var(--cell-width) / 2);
+            }
+
+            svg {
+                width: 100%;
+            }
+        }
+    }
+
+    .home-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+    }
+
+}

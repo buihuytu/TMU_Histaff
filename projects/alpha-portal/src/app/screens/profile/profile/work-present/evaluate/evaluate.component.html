@@ -1,0 +1,194 @@
+<!--
+    dùng ngIf để kiểm tra
+    nếu true thì không có dữ liệu
+    về kết quả đánh giá hàng năm
+
+    nếu false thì có dữ liệu
+    về kết quả đánh giá hàng năm
+
+    mặc định là "true"
+-->
+<div class="null" *ngIf="checkData; then thong_bao; else evaluate">
+</div>
+
+
+<ng-template #thong_bao>
+    <p
+        style="
+            color: black;
+            font-size: 18px;
+            text-align: center;
+            padding-top: 50px;
+        "
+    >
+        Không có dữ liệu về kết quả đánh giá hàng năm!
+    </p>
+</ng-template>
+
+
+<ng-template #evaluate>
+    <div
+        class="app-education-container"
+        style="
+            width: 100%;
+            border: solid 1px #D1D1D1;
+            border-radius: 10px;
+            padding-top: 40px;
+            padding-left: 60px;
+            padding-bottom: 40px;
+        "
+    >
+        <div
+            *ngFor="let item of list_records; let i = index"
+            id="item"
+            style="
+                width: 100%;
+                border-left: solid 2px #DDDDDD;
+                padding-top: 20px;
+                padding-left: 30px;
+                padding-bottom: 30px;
+
+                display: flex;
+                flex-direction: row;
+
+                position: relative;
+            "
+        >
+            <!-- đây là khu vực của cái chấm tròn -->
+            <div
+                style="
+                    width: 12px;
+                    height: 12px;
+                    box-sizing: border-box;
+                    border-radius: 50%;
+                    background: #A2A2A2;
+
+                    position: absolute;
+                    z-index: 99;
+                    top: -7px;
+                    left: -7px;
+                "
+            >
+            </div>
+
+
+            <!-- đây là khu vực cái nhãn, như kiểu label ấy -->
+            <div
+                id="label"
+                style="
+                    color: #848484;
+                    margin-right: 300px;
+                "
+            >
+                <p>Loại đánh giá</p>
+                <p>Mã nhân viên</p>
+                <p>Họ tên nhân viên</p>
+                <p>Phòng ban</p>
+                <p>Chức danh</p>
+                <p>Xếp loại đánh giá</p>
+                <p>điểm đánh giá</p>
+            </div>
+
+
+            <!--
+                đây là khu vực điền dữ liệu
+                sau khi gọi API
+            -->
+            <div
+                id="content"
+                style="
+                    color: black;
+                    font-weight: 600;
+                "
+            >
+            <p> {{item.evaluateName}} </p>
+            <p> {{ item.employeeCode }} </p>
+            <p> {{ item.employeeName }} </p>
+            <p> {{ item.orgName }} </p>
+            <p> {{ item.positionName }} </p>
+            <p> {{ item.classificationName }} </p>
+            <p> {{ item.pointEvaluate }} </p>
+            </div>
+
+
+            <!-- đây là cái tiêu đề -->
+            <div
+                id="title"
+                style="
+                    font-size: 18px;
+                    font-weight: 600;
+
+                    position: absolute;
+                    top: -13.5px;
+                    left: 30px;
+                "
+            >
+                <p> {{ item.year }} </p>
+            </div>
+
+
+            <!-- đây là cái button sửa -->
+            <!-- cài đặt thêm hàm onHandleItemClick() -->
+            <!-- để lắng nghe sự kiện click -->
+            <div style="position: absolute; top: -6.5px; left: 960px;">
+                <a
+                    routerLink="../evaluate/evaluate-edit"
+                    routerLinkActive="active"
+                    style="
+                        display: block;
+                        width: 35px;
+                        height: 35px;
+                        padding-top: 7.5px;
+                        padding-left: 9.5px;
+                        background: white;
+                        border-radius: 50%;
+                        border: solid 1px #D1D1D1;
+                        box-sizing: border-box;
+                        text-decoration: none;
+                        color: black;
+                    "
+                    (click)="onHandleItemClick(item)"
+                >
+                    <i
+                        class="d-flex feather-edit-2"
+                        style="
+                            background: white;
+                            width: 16px;
+                            height: 16px;
+                        "
+                    >
+                    </i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- gọi thẻ "router-outlet" -->
+    <!--
+    <router-outlet>
+    </router-outlet>
+    -->
+</ng-template>
+
+<!-- modal -->
+<div id="popup1" class="overlay" *ngIf="showPopup">
+    <div class="popup">
+        <core-page-edit
+            *ngIf="!!sections.length"
+            [width]="600"
+            [sections]="sections"
+            [captionCode]="captionCode"
+            [normalMode]="true"
+            [entityTable]="entityTable"
+            (onFormCreated)="onFormCreated($event)"
+            [autoSubmitLogicOff]="true"
+            (submitLogic)="onClickSubmit($event)"
+            [autoCancelLogicOff]="true"
+            (cancelLogic)="onClickCancel($event)"
+            (onInitialValueStringReady)="onFormReinit($event)"
+            [customFormButtonItems] = "buttonItems"
+        >
+        </core-page-edit>
+    </div>
+</div>

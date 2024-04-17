@@ -1,0 +1,32 @@
+<div class="phaseadvance-container">
+  <core-page-list
+    [apiDefinition]="apiDefinition"
+    [columns]="columns"
+    [editRoute]="editRoute"
+    [crud]="crud"
+    [title]="title"
+    [outerParam$]="outerParam$"
+    [normalMode]="true"
+    [autoResizeWithWindow]="true"
+  ></core-page-list>
+  <!-- [showParamKit]="true"
+    [hideStatusInclusion]="false" -->
+
+  <ng-template #isNotiApprove let-isNotiApprove="context.isNotiApprove">
+    <core-checkbox class="d-flex justify-content-center" [disabled]="true" [inputValue]="isNotiApprove"></core-checkbox>
+  </ng-template>
+  <ng-template #isNotiNotApprove let-isNotiNotApprove="context.isNotiNotApprove">
+    <core-checkbox
+      class="d-flex justify-content-center"
+      [disabled]="true"
+      [inputValue]="isNotiNotApprove"
+    ></core-checkbox>
+  </ng-template>
+  <ng-template #isNotiApproveSuccess let-isNotiApproveSuccess="context.isNotiApproveSuccess">
+    <core-checkbox
+      class="d-flex justify-content-center"
+      [disabled]="true"
+      [inputValue]="isNotiApproveSuccess"
+    ></core-checkbox>
+  </ng-template>
+</div>

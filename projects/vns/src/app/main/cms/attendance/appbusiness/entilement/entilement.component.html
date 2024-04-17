@@ -1,0 +1,46 @@
+<div class="staff-profile-container">
+    <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+      [title]="title" [left]="orgTree"
+      [outerParam$]="outerParam$"
+      [top]="topParam"
+      [outerInOperators]="outerInOperators"
+      [autoResizeWithWindow]="true"
+      [hideStatusInclusion]="true"
+      (onInstanceCreated)="onInstanceCreated($event)"
+      [outerFilterOperators]="filterOperators"
+      (corePageHeaderButtonClick)="corePageHeaderButtonClick($event)"
+      [frozen]="2"
+      [outerSort]="outerSort"
+      [headerWrap]="true"
+      [headerFirstRowHeight]="headerFirstRowHeight"
+      [outerSort]="outerSort"
+      ></core-page-list>
+  
+    <ng-template #orgTree>
+      <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+      </core-org-tree>
+    </ng-template>
+
+    <ng-template #topParam>
+      <div class="row">
+        <div class="col-md-10">
+          <core-header-params [rows]="paramRows"></core-header-params>
+        </div>
+        <div style="position: absolute; left:40%;top : 10px" class="col-md-2">
+          <core-button-group-vns 
+            [showCaption]="true" 
+            (buttonClick)="onButtonClick($event)" 
+            [shownItems]="buttonItems" 
+            class="buttonGroupCustom"
+          ></core-button-group-vns>
+        </div>
+      </div>
+      <div class="row">
+        
+        <!-- <div class="col-md-2">
+          <button class="btn-calculate" (click)="calculate()">{{calltotal | translate: lang }}</button>
+          </div> -->
+      </div>
+    </ng-template>
+    <app-fullscreen-modal-loader *ngIf="loading"></app-fullscreen-modal-loader>
+  </div>

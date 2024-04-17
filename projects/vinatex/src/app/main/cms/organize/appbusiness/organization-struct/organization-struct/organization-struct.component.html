@@ -1,0 +1,19 @@
+<div class="app-organization-struct-container">
+
+    <core-page-header [instanceNumber]="instanceNumber" [title]="title" (buttonClick)="onCorePageHeaderButtonClick($event)" ></core-page-header>
+
+    <core-composition [left]="orgTree" [main]="routerOutlet" [height]="compositionHeight">
+    </core-composition>
+
+</div>
+
+<ng-template #orgTree>
+    <!-- Do not use ngOnChange in this scenario -->
+    <core-org-tree [accessorMode]="coreOrgTreeAccessorMode" [height]="compositionHeight" [(ngModel)]="orgIds" (itemClick)="onOrgIdChange($event)"></core-org-tree>
+</ng-template>
+
+<ng-template #routerOutlet>
+    <router-outlet></router-outlet>
+</ng-template>
+
+<app-fullscreen-modal-loader *ngIf="loading"></app-fullscreen-modal-loader>

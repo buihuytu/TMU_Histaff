@@ -1,0 +1,11 @@
+<div class="row w-100 full-width dash-card" [ngStyle]="{ height: height + 'px' }">
+    <div class="h35 title w-100 d-flex d-flex-center chart-block-header"> THỐNG KÊ TỶ LỆ ĐÓNG
+        BẢO HIỂM </div>
+    <div class="dash-card-content dash-card-content-summary full-width">
+        <div class="row full-width">
+            <highcharts-chart [Highcharts]="Highcharts" [options]="options"
+                style="width: 100%; display: block; margin: auto; float: left;">
+            </highcharts-chart>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+.alpha-header-btn{
+    &>.headerButtonDropdownPrint {
+
+        color: #464646;
+        background-color:#FFFFFF;
+        cursor: pointer;
+        height: 28px;
+        width: 28px;
+        font-size :15px;
+        border-radius: 50px;
+        transition: 0s!important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:hover{
+            background-color: #E7E7E7;
+        }
+        
+        &>i {
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSJ1bmRlZmluZWQiIGhlaWdodD0idW5kZWZpbmVkIiB2aWV3Qm94PSIwIDAgMjQgMjQiPgogICAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIj4KICAgICAgICA8cGF0aCBkPSJNNiA5VjJoMTJ2N002IDE4SDRhMiAyIDAgMCAxLTItMnYtNWEyIDIgMCAwIDEgMi0yaDE2YTIgMiAwIDAgMSAyIDJ2NWEyIDIgMCAwIDEtMiAyaC0yIi8+CiAgICAgICAgPHBhdGggZD0iTTYgMTRoMTJ2OEg2eiIvPgogICAgPC9nPgo8L3N2Zz4=');
+            background-size: cover;
+        }
+
+        &>.header-button-dropdown-wrapper {
+            background: white;
+            top: calc(100% + 5px);
+            right: 0px;
+            box-shadow: var(--decoration-box-shadow);
+            padding: var(--size-layout-block-cell-spacing);
+            width: 280px;
+
+            &>.header-button-dropdown-line {
+                height: 35px;
+                display: flex;
+            }
+
+        }
+    }
+}

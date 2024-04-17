@@ -1,0 +1,54 @@
+<div class="border-container">
+  <div class="null" *ngIf="!checkData">{{ titleNull | translate : lang }}</div>
+
+  <div class="app-outside-company-container">
+    <div class="content">
+      <div class="card-info" *ngFor="let allowance of data">
+        <div class="row btn-click d-flex align-items-center">
+          <p class="type">{{ allowance.allowanceName }}</p>
+          <button (click)="onHandleItemClick(allowance)" class="edit icon-wrapper">
+            <i class="d-flex feather-edit-2"></i>
+          </button>
+        </div>
+        <div class="row no-padding no-margin col-12">
+          <p class="label col-md-3">{{ coefficient | translate : lang }}:</p>
+          <p class="text col-md-4">{{ allowance.coefficient }}</p>
+        </div>
+        <div class="row no-padding no-margin col-12">
+          <p class="label col-md-3">{{ monney | translate : lang }}:</p>
+          <p class="text col-md-4">{{ allowance.monney }}</p>
+        </div>
+        <div class="row no-padding no-margin col-12">
+          <p class="label col-md-3">{{ dateStart | translate : lang }}:</p>
+          <p class="text col-md-4">{{ allowance.dateStart | date : 'dd/MM/yyyy' }}</p>
+        </div>
+        <div class="row no-padding no-margin col-12">
+          <p class="label col-md-3">{{ dateEnd | translate : lang }}:</p>
+          <p class="text col-md-4">{{ allowance.dateEnd | date : 'dd/MM/yyyy' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal -->
+<div id="popup1" class="overlay" *ngIf="showPopup">
+  <div class="popup">
+    <core-page-edit
+      *ngIf="!!sections.length"
+      [width]="600"
+      [sections]="sections"
+      [captionCode]="captionCode"
+      [normalMode]="true"
+      [entityTable]="entityTable"
+      (onFormCreated)="onFormCreated($event)"
+      [autoSubmitLogicOff]="true"
+      (submitLogic)="onClickSubmit($event)"
+      [autoCancelLogicOff]="true"
+      (cancelLogic)="onClickCancel($event)"
+      (onInitialValueStringReady)="onFormReinit($event)"
+      [customFormButtonItems] = "buttonItems"
+    >
+    </core-page-edit>
+  </div>
+</div>

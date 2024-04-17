@@ -1,0 +1,12 @@
+<div #container class="article-fragments-container" [class.shown]="shown">
+
+    <h3>In this document<span (click)="hideMe()"><i class="feather-x"></i></span></h3>
+
+    <ul>
+        <li *ngIf="!!!fragments.length">This post has no bookmark</li>
+        <li *ngFor="let f of fragments">
+            <a [routerLink]="'.'" [fragment]="f.name" (click)="hideMe()">{{ f.text }}</a>
+        </li>
+    </ul>
+
+</div>

@@ -1,0 +1,202 @@
+<div class="cms-profile-insinformation-edit">
+  <!-- UI_COMPONENT_TITLE_INS_INFORMATION -->
+
+  <core-page-header [title]="title" [hideButtonGroup]="true"></core-page-header>
+
+  <form #formRef (ngSubmit)="onFormSubmit()" [formGroup]="form" autocomplete="off">
+    <core-accordion [sectors]="sectors" [refs]="[basic, cv, charract, education]" [editDisabled]="true"
+      (onItemClick)="onAccordionItemClick($event)" [manualHeightList]="manualHeightList"
+      [enableSwap]="false"
+      [heightList]="heightListVisible"></core-accordion>
+    <ng-template #basic>
+      <div class="row">
+        <div class="col-3">
+          <core-control [control]="employeeId" [form]="form" [checkError$]="checkError$"></core-control>
+          <!-- <core-control
+            *ngIf="!!this.id"
+            [control]="employeeCode"
+            [form]="form"
+            [checkError$]="checkError$"
+          ></core-control> -->
+        </div>
+        <div class="col-3">
+          <core-control [control]="employeeName" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="positionName" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="orgName" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+      </div>
+      <div *ngIf="!!this.id" class="h20"></div>
+      <div class="row">
+        <div class="col-3">
+          <core-control [control]="idNo" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="idDate" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="addressIdentity" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="birthDate" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+      </div>
+      <div class="h20"></div>
+
+      <div class="row">
+        <div class="col-3">
+          <core-control [control]="birthPlace" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="contact" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="seniorityInsurance" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="seniorityInsuranceInCompany" [form]="form"
+            [checkError$]="checkError$"></core-control>
+        </div>
+      </div>
+      <div class="h20"></div>
+
+      <div class="row">
+        <div class="col-3">
+          <core-control [control]="company" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="salaryBhxhYt" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="lstCheckInsItems" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+      </div>
+      <div class="h20"></div>
+    </ng-template>
+    <div class="h10"></div>
+    <ng-template #cv>
+      <div class="row">
+        <div class="col-3">
+          <core-control [control]="bhxhFromDateString" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="bhxhToDateString" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="bhxhNo" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="bhxhStatusId" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+      </div>
+      <div class="h20"></div>
+      <div class="row">
+        <div class="col-3">
+          <core-control [control]="bhxhSuppliedDate" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="bhxhGrantDate" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="bhxhDeliverer" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="bhxhStorageNumber" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+      </div>
+      <div class="h20"></div>
+      <div class="row">
+        <div class="col-3">
+          <core-control [control]="bhxhReimbursementDate" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="bhxhReceiver" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="bhxhNote" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+      </div>
+      <div class="h20"></div>
+    </ng-template>
+    <div class="h10"></div>
+
+    <ng-template #charract>
+      <div class="row">
+        <div class="col-3">
+          <core-control [control]="bhytFromDateString" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="bhytToDateString" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="bhytNo" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="bhytStatusId" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+      </div>
+      <div class="h20"></div>
+      <div class="row">
+        <div class="col-3">
+          <core-control [control]="bhytEffectDate" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="bhytExpireDate" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="bhytWherehealthId" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="bhytReceivedDate" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+      </div>
+      <div class="h20"></div>
+      <div class="row">
+        <div class="col-3">
+          <core-control [control]="bhytReceiver" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="bhytReimbursementDate" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+      </div>
+      <div class="h20"></div>
+    </ng-template>
+    <div class="h10"></div>
+
+    <ng-template #education>
+      <div class="h20"></div>
+      <div class="row">
+        <div class="col-6">
+          <h4 class="header-text">BẢO HIỂM THẤT NGHIỆP</h4>
+        </div>
+        <div class="col-6">
+          <h4 class="header-text">BẢO HIỂM TNLD - BNN</h4>
+        </div>
+      </div>
+      <div class="h20"></div>
+      <div class="row">
+        <div class="col-3">
+          <core-control [control]="bhtnFromDateString" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="bhtnToDateString" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="bhtnldBnnFromDateString" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+        <div class="col-3">
+          <core-control [control]="bhtnldBnnToDateString" [form]="form" [checkError$]="checkError$"></core-control>
+        </div>
+      </div>
+      <div class="h20"></div>
+    </ng-template>
+    <div class="h10"></div>
+    <div class="form-row">
+      <core-button-group-vns [shownItems]="buttonItems" [showCaption]="true" (buttonClick)="onButtonClick($event)"
+        class="buttonGroupCustom btn-group-custom"></core-button-group-vns>
+    </div>
+  </form>
+</div>

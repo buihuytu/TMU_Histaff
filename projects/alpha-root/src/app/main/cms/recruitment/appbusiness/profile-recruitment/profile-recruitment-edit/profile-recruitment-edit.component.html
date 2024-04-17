@@ -1,0 +1,413 @@
+<div class="profile-recruitment-edit">
+    <div>
+        <div>
+            <caption class="custom-title" style="display:block">
+                Hồ sơ ứng viên
+            </caption>
+        </div>
+    </div>
+    <div>
+        <form #formRef (ngSubmit)="onFormSubmit()" [formGroup]="form" autocomplete="off">
+            <core-accordion [sectors]="sectors" [refs]="[basic,cv, levelInf, wish, infoOther]" [editDisabled]="true"
+                (onItemClick)="onAccordionItemClick($event)" [manualHeightList]="manualHeightList" [enableSwap]="false"
+                [heightList]="heightListVisible" (onItemClickEdit)="onAccordionItemClickEdit($event)"></core-accordion>
+            <ng-template #basic>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="avatar-wrapper">
+                            <core-file-uploader [uploadFileType]="uploadFileType" [defaultAvatar]="defaultAvatar"
+                                [fileDataControlName]="fileDataControlName" [fileNameControlName]="fileNameControlName"
+                                [fileTypeControlName]="fileTypeControlName" [hidePreview]="true"
+                                formControlName="avatar"></core-file-uploader>
+                            <span class="custom-text"><i class="feather-upload"></i>Upload ảnh</span>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="row">
+                            <div class="col-6">
+                                <core-control [control]="candidateCode" [form]="form"[checkError$]="checkError$"></core-control>
+                            </div>
+                            <div class="basic name col-6">
+                                <core-control [control]="fullnameVn" [form]="form"[checkError$]="checkError$"></core-control>
+                                <div *ngIf="!!textValidate" style="color:brown">
+                                    {{'UI_COMPONENT_TITLE_CHECK_FULL_NAME_ALREADY_EXIST' | translate: lang}}<br>{{this.textValidate}}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <core-control [control]="rcSourceRecId" [form]="form" [checkError$]="checkError$"></core-control>
+                            </div>
+                            <div class="col-6">
+                                <core-control [control]="orgId" [form]="form" [checkError$]="checkError$"></core-control>
+                                <div *ngIf="!!textValidate" style="color:brown">
+                                    {{'UI_COMPONENT_TITLE_CHECK_FULL_NAME_ALREADY_EXIST' | translate: lang}}<br>{{this.textValidate}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-6">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-6">
+                                    <core-control [control]="candidateCode" [form]="form" [checkError$]="checkError$"></core-control>
+                                </div>
+                            </div>
+                            <div class="basic name col-6">
+                                <core-control [control]="fullnameVn" [form]="form" [checkError$]="checkError$"></core-control>
+                                <div *ngIf="!!textValidate" style="color:brown">{{'UI_COMPONENT_TITLE_CHECK_FULL_NAME_ALREADY_EXIST' | translate: lang}}<br>{{this.textValidate}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-12">
+                                <core-control [control]="allowedNameDuplicate" [form]="form"
+                                    [checkError$]="checkError$"></core-control>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <core-control [control]="isNotContract" [form]="form"
+                                    [checkError$]="checkError$"></core-control>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                <!-- <div class="row">
+                    <div class="basic employeeObjectId col-3">
+                        <core-control [control]="employeeObjectId" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    
+                    <div class="col-3">
+                        <core-control [control]="directManagementPosition" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="directManagement" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="itimeId" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                </div> -->
+            </ng-template>
+            <ng-template #cv>
+                <div class="row">
+                    <div class="row">Thông tin cá nhân</div>
+                    <div class="row">
+                        <div class="cv genderId col-3">
+                            <core-control [control]="genderId" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-3">
+                            <core-control [control]="maritalStatus" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-3">
+                            <core-control [control]="nationId" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-3">
+                            <core-control [control]="religionId" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            <core-control [control]="nationalityId" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="cv birthDate col-3">
+                            <core-control [control]="birthDate" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-6">
+                            <core-control [control]="birthAddress" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cv idNo col-3">
+                            <core-control [control]="idNo" [form]="form" [checkError$]="checkError$"></core-control>
+                                <div *ngIf="this.form.get('idNo')?.hasError('invalidLength')">
+                                    Độ dài phải là 8 hoặc 12.
+                                  </div> 
+                                  <div *ngIf="!!validateidNoNumber" style="color:brown;">{{'UI_COMPONENT_TITLE_CHECK_ID_NO_ALREADY_EXIST' | translate: lang}}<br>{{this.validateidNoNumber}}</div>
+                        </div>
+                        <div class="col-3">
+                            <core-control [control]="idDate" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-3">
+                            <core-control [control]="idDateExpire" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-3">
+                            <core-control [control]="idPlace" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+    
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="row">Thông tin liên hệ</div>
+                    <div class="row">
+                        <div class="col-12">
+                            <core-control [control]="perAddress" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <core-control [control]="perProvince" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-4">
+                            <core-control [control]="perDistrict" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-4">
+                            <core-control [control]="perWard" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <core-control [control]="contactAddressTemp" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <core-control [control]="contactProvinceTemp" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-4">
+                            <core-control [control]="contactDistrictTemp" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-4">
+                            <core-control [control]="contactWardTemp" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <core-control [control]="perEmail" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-4">
+                            <core-control [control]="mobilePhone" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-4">
+                            <core-control [control]="finderSdt" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <core-control [control]="isWorkPermit" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </ng-template>
+            <ng-template #levelInf>
+                <div class="row">
+                    <div class="row">Thông tin cá nhân</div>
+                    <div class="row">
+                        <div class="col-4">
+                            <core-control [control]="educationLevelId" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-4">
+                            <core-control [control]="learningLevelId" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <core-control [control]="graduateSchoolId" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-4">
+                            <core-control [control]="majorId" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <core-control [control]="yearGraduation" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-4">
+                            <core-control [control]="rating" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row">Trình độ tin học</div>
+                    <div class="row">
+                        <div class="col-4">
+                            <core-control [control]="rcComputerLevelId" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-4">
+                            <core-control [control]="typeClassificationId" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row">Trình độ ngoại ngữ</div>
+                    <div class="row">
+                        <div class="col-4">
+                            <core-control [control]="languageId" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-4">
+                            <core-control [control]="languageLevelId" [form]="form"
+                                [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-4">
+                            <core-control [control]="mark" [form]="form"
+                                [checkError$]="checkError$"></core-control>
+                        </div>
+
+                    </div> 
+                </div>
+            </ng-template>
+
+            <ng-template #wish>
+                <div class="row">
+                    <div class="col-4">
+                        <core-control [control]="posWish1Id" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-4">
+                        <core-control [control]="posWish2Id" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <core-control [control]="probationSalary" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-4">
+                        <core-control [control]="wishSalary" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <core-control [control]="desiredWorkplace" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <core-control [control]="startDateWork" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-4">
+                        <core-control [control]="levelDesired" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <core-control [control]="numExperience" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="isHsvHv" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <core-control [control]="otherSuggestions" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+            </ng-template>
+
+            <ng-template #infoOther>
+                <div class="row">
+                    <div class="row">Thông tin người thân</div>
+                    <div class="row">
+                        <div class="col-4">
+                            <core-control [control]="reName" [form]="form"
+                                [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-4">
+                            <core-control [control]="reRelationship" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-4">
+                            <core-control [control]="rePhone" [form]="form"
+                                [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <core-control [control]="reAddress" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row">Thông tin người giới thiệu</div>
+                    <div class="row">
+                        <div class="col-4">
+                            <core-control [control]="inName" [form]="form"
+                                [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-4">
+                            <core-control [control]="inPhone" [form]="form"
+                                [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <core-control [control]="inNote" [form]="form"
+                                [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row">Thông tin sức khỏe</div>
+                    <div class="row">
+                        <div class="col-4">
+                            <core-control [control]="height" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-4">
+                            <core-control [control]="earNoseThroat" [form]="form" [checkError$]="checkError$"></core-control> 
+                        </div>
+                        <div class="col-4">
+                            <core-control [control]="weight" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                    <div class="row">
+                        
+                        <div class="col-4">
+                            <core-control [control]="dentomaxillofacial" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-4">
+                            <core-control [control]="bloodGroup" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-4">
+                            <core-control [control]="heart" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <core-control [control]="bloodPressure" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-4">
+                            <core-control [control]="lungsAndChest" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-4">
+                            <core-control [control]="leftEyeVision" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <core-control [control]="rightEyeVision" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-4">
+                            <core-control [control]="hepatitisB" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-4">
+                            <core-control [control]="leatherVenereal" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <core-control [control]="healthType" [form]="form" [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div  class="col-12">
+                            <core-control [control]="noteSk" [form]="form" [checkError$]="checkError$"></core-control> 
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+            
+            <div class="form-row">
+                <core-button-group-vns (buttonClick)="onButtonClick($event)" [shownItems]="buttonItems"
+                    [showCaption]="true" class="buttonGroupCustom"></core-button-group-vns>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<!-- <app-fullscreen-modal-loader *ngIf="loading"></app-fullscreen-modal-loader> -->

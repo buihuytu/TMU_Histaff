@@ -1,0 +1,89 @@
+<div class="app-salary-import_backdate">
+  <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [title]="title"
+    [left]="orgTree" [top]="topParam" [outerParam$]="outerParam$" [outerInOperators]="outerInOperators"
+    [outerFilterOperators]="filterOperators" [autoResizeWithWindow]="true" [extraManualOffset]="200" [headerWrap]="true"
+    [headerFirstRowHeight]="55" (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+    (onInputFileBase64DataReady)="onInputFileBase64DataReady($event)" (onInstanceCreated)="onInstanceCreated($event)"
+    [frozen]="2" [outerSort]="outerSort"></core-page-list>
+  <ng-template #orgTree>
+    <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+    </core-org-tree>
+  </ng-template>
+  <ng-template #topParam>
+    <div>
+      <div class="row mb15">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>{{ labelList.year | translate : lang }}</label>
+            <div [ngStyle]="{ marginLeft: '5px' }">
+              <input type="number" class="form-control" [(ngModel)]="year" (ngModelChange)="onYearChange($event)" />
+            </div>
+          </div>
+          <div *ngIf="showRequiredYear" style="height: 25px;">
+            <div style="margin: 0;" class="form-control-error" >{{ errorRequired | translate: lang}}</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>Kì lương</label>
+            <core-dropdown [(ngModel)]="salPeriod" (ngModelChange)="onSalPeriodChange($event)"
+              [options$]="salaryPeriodOptions$" [getByIdObject$]="atSalaryPeriodGetByIdObject$"
+              [shownFrom]="shownFrom"></core-dropdown>
+          </div>
+          <div *ngIf="showRequiredPeriod" style="height: 25px;">
+            <div style="margin: 0;" class="form-control-error" >{{ errorRequired | translate: lang}}</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>Kì lương được cộng vào</label>
+            <core-dropdown [(ngModel)]="salPeriodAdd"
+              [options$]="salaryPeriodAddOptions$" [getByIdObject$]="atSalaryPeriodAddGetByIdObject$"
+              [shownFrom]="shownFrom"></core-dropdown>
+          </div>
+          <div *ngIf="showRequiredPeriodAdd" style="height: 25px;">
+            <div style="margin: 0;" class="form-control-error" >{{ errorRequired | translate: lang}}</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>Đối tượng lương</label>
+            <core-dropdown [(ngModel)]="objSalId" (ngModelChange)="onObjectSalChange($event)"
+              [options$]="objectSalOptions$" [getByIdObject$]="objectSalGetByIdObject$"
+              [shownFrom]="shownFrom"></core-dropdown>
+          </div>
+          <div *ngIf="showRequiredObj" style="height: 25px;">
+            <div style="margin: 0;" class="form-control-error" >{{ errorRequired | translate: lang}}</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="row mb15">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>Mã khoản lương</label>
+            <core-checklist [(ngModel)]="statuses" (ngModelChange)="onListSalChange($event)" [paramMode]="true"
+              [options$]="checklistOptions$"></core-checklist>
+          </div>
+          <div *ngIf="showRequiredCode" style="height: 25px;">
+            <div style="margin: 0;" class="form-control-error" >{{ errorRequired | translate: lang}}</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>{{ labelList.eployeeCode | translate : lang }}</label>
+            <core-form-control-seeker [boundFrom]="'id'" [shownFrom]="'code'" [multiMode]="false" [paramMode]="true"
+              [(ngModel)]="employeeId" [seekerSourceType]="employeeSeekerType"></core-form-control-seeker>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div style="margin-top:20px" class="form-group">
+            <core-button-group-vns [showCaption]="true" (buttonClick)="onButtonClick($event)" [shownItems]="buttonItems"
+              class="buttonGroupCustom"></core-button-group-vns>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+<app-fullscreen-modal-loader *ngIf="loadingExport"></app-fullscreen-modal-loader>

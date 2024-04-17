@@ -1,0 +1,5 @@
+<core-alert></core-alert>
+<app-login *ngIf="!!!authenticated && !!!initializing"></app-login>
+<app-layout *ngIf="!!authenticated"></app-layout>
+
+<app-fullscreen-modal-loader *ngIf="initializing"></app-fullscreen-modal-loader>

@@ -1,0 +1,322 @@
+<!-- <div class="app-main-content">
+  <div class="app-container">
+    
+    <div class="app-toolbar">
+      <div class="card-center">
+        
+        <div class="app-breadcrum">
+          <div class="brackcrum">
+            <i class="fa fa-sitemap" aria-hidden="true"></i>Công <i class="fa fa-angle-double-right"
+              aria-hidden="true"></i>Danh mục
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <span class="brackcrum-active" href='/cms/profile/applist/shift'>Ca
+              làm việc</span>
+          </div>
+        </div>
+        
+        <app-common-tools name="shiftedit" [items$]="toolItems$" (toolItemClicked)="clickToolbar($event)"></app-common-tools>
+      </div>
+    </div>
+    
+    <div class="app-content">
+      <form name="editForm" [formGroup]="editForm" novalidate>
+        <div class="row">
+          <div class="col-sm-9">
+            <div class="group-box">
+              
+              <div class="card-head">
+                <div class="icon-info histaff-icon"></div>
+                <label class="title">Thông tin</label>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="form-group vertical">
+                    <label class="e-float-text required">Mã</label>
+                    <input class="form-control" type="text" formControlName="code" [(ngModel)]="model.code"
+                      maxlength="31">
+                    <span class="input-error"
+                      *ngIf="editForm.get('code')!.hasError('required') && !editForm.get('code')!.untouched">
+                      Bắt buộc nhập
+                    </span>
+                    <span class="input-error "
+                      *ngIf="editForm.get('code')!.hasError('incorrect') && !editForm.get('code')!.untouched">
+                      Sai định dạng
+                    </span>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group vertical">
+                    <label class="e-float-text required">Tên</label>
+                    <input class="form-control" type="text" formControlName="name" [(ngModel)]="model.name"
+                      maxlength="51">
+                    <span class="input-error"
+                      *ngIf="editForm.get('name')!.hasError('required') && !editForm.get('name')!.untouched">
+                      Bắt buộc nhập
+                    </span>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group vertical">
+                    <label class="e-float-text required">Kiểu công</label>
+                    <ejs-dropdownlist [dataSource]='lstTimeTypeId' [fields]='fields' [showClearButton]="true"
+                      [(ngModel)]="model.timeTypeId" formControlName="timeTypeId" [placeholder]="''"
+                      [allowFiltering]='true' (filtering)='onFiltering($event,lstTimeTypeId)'>
+                    </ejs-dropdownlist>
+                    <span class="input-error"
+                      *ngIf="editForm.get('timeTypeId')!.hasError('required') && !editForm.get('timeTypeId')!.untouched">
+                      Bắt buộc chọn
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                
+                <div class="col-sm-3">
+                  <div class="form-group vertical">
+                    <label class="e-float-text required">Giờ bắt đầu</label>
+                    <ejs-timepicker [placeholder]='watermark' formControlName="hoursStart"
+                      [(ngModel)]="model.hoursStart" [format]='formatString' [step]='interval'>
+                    </ejs-timepicker>
+                    <span class="input-error"
+                      *ngIf="editForm.get('hoursStart')!.hasError('required') && !editForm.get('hoursStart')!.untouched">
+                      Bắt buộc chọn
+                    </span>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group vertical">
+                    <label class="e-float-text required">Giờ kết thúc</label>
+                    <ejs-timepicker [placeholder]='watermark' formControlName="hoursStop" [(ngModel)]="model.hoursStop"
+                      [format]='formatString' [step]='interval'>
+                    </ejs-timepicker>
+                    <span class="input-error"
+                      *ngIf="editForm.get('hoursStop')!.hasError('required') && !editForm.get('hoursStop')!.untouched">
+                      Bắt buộc chọn
+                    </span>
+                  </div>
+                </div>
+                <div class="col-sm-3" style="padding: 0px;">
+                  <div class="form-group vertical">
+                    <ejs-checkbox formControlName="isNoon" label="Ca đêm" [(ngModel)]="model.isNoon">
+                    </ejs-checkbox>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="form-group vertical">
+                    <label class="e-float-text ">Giờ chấm sớm nhất</label>
+                    <ejs-timepicker [placeholder]='watermark' formControlName="shiftIn" [(ngModel)]="model.shiftIn"
+                      [format]='formatString' [step]='interval'>
+                    </ejs-timepicker>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group vertical">
+                    <label class="e-float-text ">Giờ chấm muộn nhất</label>
+                    <ejs-timepicker [placeholder]='watermark' formControlName="shiftOut" [(ngModel)]="model.shiftOut"
+                      [format]='formatString' [step]='interval'>
+                    </ejs-timepicker>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="form-group vertical">
+                    <label class="e-float-text">Số giờ làm việc</label>
+                    <ejs-numerictextbox format="N1" locale="en" name="levelCommend" formControlName="timeStandard"
+                      [(ngModel)]="model.timeStandard" min="0" max="99">
+                    </ejs-numerictextbox>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group vertical">
+                    <label class="e-float-text">Hệ số</label>
+                    <ejs-numerictextbox format="N1" locale="en" name="levelCommend" formControlName="coefficient"
+                      [(ngModel)]="model.coefficient" min="0" max="99">
+                    </ejs-numerictextbox>
+                  </div>
+                </div>
+
+              </div>
+              <div class="row">
+                
+                <div class="col-sm-12">
+                  <div class="form-group vertical">
+                    <ejs-checkbox formControlName="isBreak" label="Có nghỉ giữa ca" [(ngModel)]="model.isBreak ">
+                    </ejs-checkbox>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-3" *ngIf="model.isBreak">
+                  <div class="form-group vertical">
+                    <label class="e-float-text ">Nghỉ giữa ca từ</label>
+                    <ejs-timepicker [placeholder]='watermark' formControlName="breaksFrom"
+                      [(ngModel)]="model.breaksFrom" [format]='formatString' [step]='interval'>
+                    </ejs-timepicker>
+
+                  </div>
+                </div>
+                <div class="col-sm-3" *ngIf="model.isBreak">
+                  <div class="form-group vertical">
+                    <label class="e-float-text ">Nghỉ
+                      giữa ca đến</label>
+                    <ejs-timepicker [placeholder]='watermark' formControlName="breaksTo" [(ngModel)]="model.breaksTo"
+                      [format]='formatString' [step]='interval'>
+                    </ejs-timepicker>
+
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group  vertical">
+                    <label class="e-float-text ">Số phút đi muộn</label>
+                    <ejs-numerictextbox format="N0" locale="en" name="timeLate" formControlName="timeLate"
+                      [(ngModel)]="model.timeLate" min="0" max="1440">
+                    </ejs-numerictextbox>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group  vertical">
+                    <label class="e-float-text ">Số phút về sớm</label>
+                    <ejs-numerictextbox format="N0" locale="en" name="timeEarly" formControlName="timeEarly"
+                      [(ngModel)]="model.timeEarly" min="0" max="1440">
+                    </ejs-numerictextbox>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="form-group vertical">
+                    <label class="e-float-text ">Thứ tự sắp xếp</label>
+                    <ejs-numerictextbox format="N0" locale="en" name="orders" formControlName="orders"
+                      [(ngModel)]="model.orders" min="0" max="1440">
+                    </ejs-numerictextbox>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group vertical">
+                    <label class="e-float-text ">Ghi
+                      chú</label>
+                    <textarea class="form-control" formControlName="note" [(ngModel)]="model.note" id="note"
+                      rows="2"></textarea>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="group-box">
+              
+              <div class="card-head">
+                <div class="icon-info histaff-icon"></div>
+                <label class="title">Lịch trình Ca</label>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group vertical">
+                    <label class="e-float-text">Thứ 2</label>
+                    <ejs-dropdownlist formControlName="monId" id='monId' [dataSource]='lstShift'
+                      [showClearButton]="true" [(ngModel)]="model.monId" [fields]='fields' [allowFiltering]='true'
+                      (filtering)='onFiltering($event,lstShift)'>
+                    </ejs-dropdownlist>
+                  </div>
+                </div>
+
+                <div class="col-sm-12">
+                  <div class="form-group vertical">
+                    <label class="e-float-text">Thứ
+                      3</label>
+                    <ejs-dropdownlist formControlName="tueId" id='tueId' [dataSource]='lstShift'
+                      [showClearButton]="true" [(ngModel)]="model.tueId" [fields]='fields' [allowFiltering]='true'
+                      (filtering)='onFiltering($event,lstShift)'>
+                    </ejs-dropdownlist>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group vertical">
+                    <label class="e-float-text">Thứ
+                      4</label>
+                    <ejs-dropdownlist formControlName="wedId" id='wedId' [dataSource]='lstShift'
+                      [showClearButton]="true" [(ngModel)]="model.wedId" [fields]='fields' [allowFiltering]='true'
+                      (filtering)='onFiltering($event,lstShift)'>
+                    </ejs-dropdownlist>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group vertical">
+                    <label class="e-float-text">Thứ
+                      5</label>
+                    <ejs-dropdownlist formControlName="thuId" id='thuId' [dataSource]='lstShift'
+                      [showClearButton]="true" [(ngModel)]="model.thuId" [fields]='fields' [allowFiltering]='true'
+                      (filtering)='onFiltering($event,lstShift)'>
+                    </ejs-dropdownlist>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group vertical">
+                    <label class="e-float-text">Thứ
+                      6</label>
+                    <ejs-dropdownlist formControlName="friId" id='friId' [dataSource]='lstShift'
+                      [showClearButton]="true" [(ngModel)]="model.friId" [fields]='fields' [allowFiltering]='true'
+                      (filtering)='onFiltering($event,lstShift)'>
+                    </ejs-dropdownlist>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group vertical">
+                    <label class="e-float-text">Thứ
+                      7</label>
+                    <ejs-dropdownlist formControlName="satId" id='satId' [dataSource]='lstShift'
+                      [showClearButton]="true" [(ngModel)]="model.satId" [fields]='fields' [allowFiltering]='true'
+                      (filtering)='onFiltering($event,lstShift)'>
+                    </ejs-dropdownlist>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group vertical">
+                    <label class="e-float-text">Chủ
+                      nhật</label>
+                    <ejs-dropdownlist formControlName="sunId" id='sunId' [dataSource]='lstShift'
+                      [showClearButton]="true" [(ngModel)]="model.sunId" [fields]='fields' [allowFiltering]='true'
+                      (filtering)='onFiltering($event,lstShift)'>
+                    </ejs-dropdownlist>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<gohr-confirm-modal id="confirm-back-modal">
+  <div class="row full-width gohr-modal-header">
+    Những thay đổi hiện tại sẽ bị mất. Bạn có thực sự muốn tiếp tục?
+  </div>
+  <div class="row full-width gohr-modal-footer text-center">
+    <button class="btn btn-primary" (click)="confirmBack('ok')">Đồng ý</button>
+    <button class="btn btn-default" (click)="confirmBack('cancel')">Hủy</button>
+  </div>
+</gohr-confirm-modal>
+
+
+<gohr-confirm-modal id="confirm-direct-modal">
+  <div class="row full-width gohr-modal-header">
+    Những thay đổi hiện tại sẽ bị mất. Bạn có thực sự muốn tiếp tục?
+  </div>
+  <div class="row full-width gohr-modal-footer text-center">
+    <button class="btn btn-primary">Đồng
+      ý</button>
+    <button class="btn btn-default">Hủy</button>
+  </div>
+</gohr-confirm-modal> -->
+
+<core-page-edit *ngIf="!!sections.length" [width]="1000" [captionCode]="captionCode" [sections]="sections" [crud]="crud"
+    [entityTable]="entityTable" (onFormCreated)="onFormCreated($event)"
+    (onInitialValueStringReady)="onFormReinit($event)"></core-page-edit>

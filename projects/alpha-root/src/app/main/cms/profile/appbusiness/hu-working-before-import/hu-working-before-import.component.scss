@@ -1,0 +1,24 @@
+.app-hu-working-before-import-container {
+
+    width: calc(100vw * .8);
+
+    &>.custom-header-popup {
+        display: flex;
+    }
+
+    &>i {
+        display: block;
+        float: right;
+        font-size: 24px;
+        cursor: pointer;
+        margin: 10px;
+    }
+
+    &>caption {
+        display: block;
+        width: 100%;
+        color: #464646;
+        font-size: 16px;
+    }
+
+}

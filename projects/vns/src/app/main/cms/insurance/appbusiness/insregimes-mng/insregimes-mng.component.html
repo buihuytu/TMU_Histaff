@@ -1,0 +1,32 @@
+<div class="insregimesmng-container">
+  <core-page-list
+    [apiDefinition]="apiDefinition"
+    [columns]="columns"
+    [editRoute]="editRoute"
+    [outerParam$]="outerParam$"
+    [outerInOperators]="outerInOperators"
+    [crud]="crud"
+    [title]="title"
+    [left]="orgTree"
+    [normalMode]="true"
+    [autoResizeWithWindow]="true"
+    (rowDoubleClick)="onRowDoubleClick($event)"
+    [showParamKit]="true"
+    [outerSort]="outerSort"
+    [datePeriodComparisonFor]="datePeriodComparisonFor"
+    [datePeriodComparisonForLabelKey]="datePeriodComparisonForLabelKey"
+    [hideStatusInclusion]="false"
+    [statusInclusionFor]="regimesInclusionFor"
+    [statusInclusionForLabelKey]="regimesInclusionForLabelKey"
+    [statusOptionsApi]="regimesOptionsApi" [frozen]="2"
+    [headerWrap]="true" [headerFirstRowHeight]="headerFirstRowHeight"
+  ></core-page-list>
+
+  <ng-template #orgTree>
+    <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)"> </core-org-tree>
+  </ng-template>
+
+  <ng-template #sticker let-code="context.status">
+    <core-status-sticker [code]="code"></core-status-sticker>
+  </ng-template>
+</div>

@@ -1,0 +1,60 @@
+<!-- <div class="row custom-width dash-card" [ngStyle]="{ height: height + 'px' }">
+    <div class="h35 title w-100 d-flex d-flex-center chart-block-header"> THỐNG KÊ HỢP ĐỒNG LAO
+        ĐỘNG </div>
+    <div class="dash-card-content dash-card-content-summary full-width ">
+        <div class="row full-width">
+            <highcharts-chart [Highcharts]="Highcharts" [options]="options"
+                style="width: 100%; display: block; margin: auto; float: left;">
+            </highcharts-chart>
+        </div>
+    </div>
+</div> -->
+
+<!-- style="background-color:#dee2e6; border-radius: 10px 10px 0 0; color: #4B4B4D;" -->
+
+<div class="row custom-width dash-card" [ngStyle]="{ height: height+22 + 'px' }">
+    <div class="h35 title w-100 d-flex justify-content-around align-items-end chart-block-header">
+        <p class="header-title">
+            <i class="custom-icon-parent-down" (click)="onAvatarBlockClick()"></i>
+            {{titleChart | translate:lang}}
+        </p>
+        <i (click)="onMenuPrintBlockClick()" class="custom-icon-parent-list"></i>
+    </div>
+    <div class="dash-card-content dash-card-content-summary">
+        <div class="row">
+            <highcharts-chart [Highcharts]="Highcharts" [options]="options" class="content-chart">
+            </highcharts-chart>
+        </div>
+        <div class="legend-chart">
+            <div (click)="onHandleClickLegend(i)" *ngFor="let i of colorCode" class="item-legend">
+                <div [ngStyle]="{'background': i.code}" class="legend-color"></div>
+                <div class="legend-text">{{i.name}}</div>
+            </div>
+        </div>
+    </div>
+    <!-- MENU CHON BIEU DO -->
+    <div class="dropdown-list" [class.open-list]="expandStateList">
+        <ul>
+            <li *ngFor="let item of menu" (click)="onMenuItemClick(item)">
+                <!-- <i [class]="item.iconClass"></i> | translate: lang  -->
+                <span>{{ item.translateCode | translate:lang}}</span>
+            </li>
+        </ul>
+    </div>
+    <!-- MENU CHON KIEU XUAT DU LIEU -->
+    <div class="dropdown-list-print" [class.open-list]="expandStateListPrint">
+        <ul>
+            <!-- <li style="border-bottom: 1px solid #cbcbcb;" (click)="onMenuItemClickPrint('print')">
+                <span>Print chart</span>
+            </li> -->
+            <li *ngFor="let item of menuPrint" [class.border-bottom]="item.border"  (click)="onMenuItemClickPrint(item)">
+                <!-- <i [class]="item.iconClass"></i> | translate: lang  -->
+                <span>{{ item.translateCode | translate:lang}}</span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div *ngIf="!isHidden" style="opacity:0; position:absolute">
+    <app-custom-print-chart [optionCharts]="dataNew" [titleCharts]="titleChart"></app-custom-print-chart>
+</div>
+<!-- style="background-color:#dee2e6; border-radius: 10px 10px 0 0; color: #4B4B4D;" -->

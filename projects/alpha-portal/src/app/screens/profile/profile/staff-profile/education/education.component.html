@@ -1,0 +1,148 @@
+<!--
+    dùng ngIf để kiểm tra
+    nếu true thì không có dữ liệu
+    về trình độ học vấn
+
+    nếu false thì có dữ liệu
+    về trình độ học vấn
+
+    mặc định là "true"
+-->
+<div class="null" *ngIf="checkData; then thong_bao; else education">
+</div>
+
+
+<ng-template #thong_bao>
+    <p id="alertContext">
+        Không có dữ liệu về trình độ học vấn!
+    </p>
+</ng-template>
+
+
+<ng-template #education>
+    <div class="app-education-container" *ngFor="let item of listData">
+        <!-- đây là cái icon bút chì để sửa -->
+        <div id="btn_div">
+            <div *ngIf="!disableEdit || item.isSaveEducation == true || item.isUnapprove then btn_pencil"></div>
+
+            <ng-template #btn_pencil>
+                <a class="btn_pencil" routerLink="../education/education-edit" routerLinkActive="active" (click)="handle_edit(item)">
+                    <i id="element_i_context" class="d-flex feather-edit-2"></i>
+                </a>
+
+                
+                <div *ngIf="item.isSaveEducation == true || item.isUnapprove == true then btn_delete"></div>
+                <ng-template #btn_delete>
+                    <button class="delete icon-wrapper" (click)="clickBtnDelete(item.id)" routerLink="../education" routerLinkActive="active">
+                        <i class="d-flex feather-trash-2"></i>
+                    </button>
+                </ng-template>
+                
+            </ng-template>
+        </div>
+
+
+        <!--
+            cái lưới dữ liệu sẽ có 4 cột
+            dòng đầu tiên: Trình độ văn hóa, Trình độ tin học, Bằng lái xe
+        -->
+        <div class="container grid-data-education">
+            <div class="row">
+                <div class="col-md-12 col">
+                    <!-- thông báo trạng thái đã lưu, chờ phê duyệt -->
+                    <div>
+                        <div *ngIf="item.isSaveEducation == true; then notification_saved"></div>
+                        
+                        <ng-template #notification_saved>
+                            <div class="label-saved">
+                                (Đã lưu)
+                            </div>
+                        </ng-template>
+
+
+
+                        <div *ngIf="item.isSendPortal == true; then notification_send"></div>
+                        
+                        <ng-template #notification_send>
+                            <div class="label-notification_send">
+                                (Chờ phê duyệt)
+                            </div>
+                        </ng-template>
+
+
+
+                        <div *ngIf="item.isUnapprove == true; then notification_unapprove"></div>
+                        
+                        <ng-template #notification_unapprove>
+                            <div class="label-notification_unapprove">
+                                (Từ chối phê duyệt)
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row grid-data-row">
+                <div class="col-md-3 col">
+                    <p class="p-title">Trình độ văn hóa:</p>
+                    <p class="p-content"> {{ item.educationLevel }} </p>
+                </div>
+
+                <div class="col-md-3 col">
+                    <p class="p-title">Trình độ tin học:</p>
+                    <p class="p-content"> {{ item.computerSkill }} </p>
+                </div>
+
+                <div class="col-md-3 col">
+                    <p class="p-title">Bằng lái xe:</p>
+                    <p class="p-content"> {{ item.license }} </p>
+                </div>
+            </div>
+
+            <div class="row grid-data-row" *ngFor="let record_certificate of item.listCertificate; let i = index">
+                <div class="col-md-3 col">
+                    <p class="p-title">Trình độ học vấn {{ i + 1 }}:</p>
+                    <p class="p-content"> {{ record_certificate.levelName }} </p>
+                </div>
+
+                <div class="col-md-3 col">
+                    <p class="p-title">Trình độ chuyên môn {{ i + 1 }}:</p>
+                    <p class="p-content"> {{ record_certificate.levelTrainName }} </p>
+                </div>
+
+                <div class="col-md-3 col">
+                    <p class="p-title">Hình thức đào tạo {{ i + 1 }}:</p>
+                    <p class="p-content"> {{ record_certificate.typeTrainName }} </p>
+                </div>
+
+                <div class="col-md-3 col">
+                    <p class="p-title">Đơn vị đào tạo {{ i + 1 }}:</p>
+                    <p class="p-content"> {{ record_certificate.schoolName }} </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="app-education-container"
+    style="
+        width: 100%;
+        border: solid 1px #D1D1D1;
+        border-radius: 10px;
+        padding-top: 40px;
+        padding-left: 60px;
+        padding-bottom: 40px;
+        margin-bottom: 40px;
+        margin-left: 0px;
+        position: relative;
+    " *ngIf="!!title" class="row list-data">
+        <div class="row" style="color: red">Lý do không phê duyệt</div>
+        <div class="row">{{ title }}</div>
+    </div>
+
+
+    <!-- gọi thẻ "router-outlet" -->
+    <router-outlet>
+    </router-outlet>
+</ng-template>

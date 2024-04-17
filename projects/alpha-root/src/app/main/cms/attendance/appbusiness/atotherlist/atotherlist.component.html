@@ -1,0 +1,12 @@
+<div class="app-atotherlist-container">
+    <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+       [normalMode]="true" [title]="title" [autoResizeWithWindow]="true"></core-page-list>
+
+       <ng-template #isEntireYear let-isEntireYear="context.isEntireYear">
+        <core-checkbox [disabled]="true" [inputValue]="isEntireYear"></core-checkbox>
+      </ng-template>
+
+      <ng-template #sticker let-code="context.statusName">
+        <core-status-sticker [code]="code"></core-status-sticker>
+      </ng-template>
+</div>

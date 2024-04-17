@@ -1,0 +1,92 @@
+<div class="training-container">
+  <core-page-header [title]="title" [hideButtonGroup]="true"></core-page-header>
+
+  <core-tabs [headers]="headers" [contents]="[program,prepare,infoClass,detailResult, courseResult,commitCourse]"
+    (onHeaderClick)="onCoreTabsHedaerClick($event)" [height]="coreTabsHeight"></core-tabs>
+  <!-- LAYOUT MAIN -->
+
+
+  <ng-template #program>
+    <core-page-header [hidden]="false" [shownItems]="headerButtons"
+      (buttonClick)="onCorePageHeaderButtonClick($event)"></core-page-header>
+    <core-composition [left]="orgTree" [top]="top" [main]="main" [height]="compositionHeight"></core-composition>
+
+    <ng-template #top>
+      <!-- FILLTER FORM -->
+      <div class="row mb15" style="margin-right: 5px;">
+
+        <div class="col-md-3">
+          <div class="form-group vertical vertical-custom">
+            <label>{{ labelList.dateStart | translate: lang}}</label>
+            <core-date-picker [disabled]="disabled" [(ngModel)]="dateStart"
+              (ngModelChange)="onDateStartChange($event)"></core-date-picker>
+          </div>
+          <div style="height: 25px;">
+            <div style="margin: 0;" class="form-control-error" *ngIf="showRequiredDateStart">{{ errorRequired |
+              translate: lang}}</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group vertical vertical-custom">
+            <label>{{ labelList.dateEnd | translate: lang}}</label>
+            <core-date-picker [disabled]="disabled" [(ngModel)]="dateEnd"
+              (ngModelChange)="onDateEndChange($event)"></core-date-picker>
+          </div>
+          <div style="height: 25px;">
+            <div style="margin: 0;" class="form-control-error" *ngIf="showRequiredDateEnd">{{ errorRequired | translate: lang}}</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div style="margin-top:20px" class="form-group vertical vertical-custom">
+            <core-button-group-vns class="buttonGroupCustom" [showCaption]="true" (buttonClick)="onButtonClick($event)"
+              [shownItems]="buttonItems"></core-button-group-vns>
+          </div>
+        </div>
+      </div>
+
+    </ng-template>
+
+    <ng-template #main>
+      <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+        [normalMode]="true" [title]="title" [autoResizeWithWindow]="true" [frozen]="2" [hideHeader]="true"
+        (selectedIdsChange)="onSelectedIdsChange($event)"></core-page-list>
+      <div>
+        <button *ngFor="let button of listButton" type="button" class="btn btn-outline-secondary" style="margin-right: 10px; display: 
+      inline-block;" (click)="onButtonOpenPageClick(button)">{{ button.text | translate: lang}}</button>
+      </div>
+
+    </ng-template>
+
+    <ng-template #orgTree>
+      <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+      </core-org-tree>
+    </ng-template>
+
+    <ng-template #certificate let-certificate="context.certificate">
+      <core-checkbox [disabled]="true" [inputValue]="certificate"></core-checkbox>
+    </ng-template>
+    <ng-template #trCommit let-trCommit="context.trCommit">
+      <core-checkbox [disabled]="true" [inputValue]="trCommit"></core-checkbox>
+    </ng-template>
+    <ng-template #trAfterTrain let-trAfterTrain="context.trAfterTrain">
+      <core-checkbox [disabled]="true" [inputValue]="trAfterTrain"></core-checkbox>
+    </ng-template>
+  </ng-template>
+
+  <ng-template #prepare>
+    <app-tr-prepare></app-tr-prepare>
+  </ng-template>
+  <ng-template #infoClass>
+    <app-tr-class></app-tr-class>
+  </ng-template>
+  <ng-template #detailResult>
+    <app-tr-class-result></app-tr-class-result>
+  </ng-template>
+  <ng-template #courseResult>
+    <app-tr-program-result></app-tr-program-result>
+  </ng-template>
+  <ng-template #commitCourse>
+    <app-tr-program-commit></app-tr-program-commit>
+  </ng-template>
+
+</div>

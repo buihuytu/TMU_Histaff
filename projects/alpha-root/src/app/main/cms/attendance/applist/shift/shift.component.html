@@ -1,0 +1,25 @@
+<div class="shift-container">
+  <core-page-list
+    [apiDefinition]="apiDefinition"
+    [columns]="columns"
+    [editRoute]="editRoute"
+    [crud]="crud"
+    [title]="title"
+    [autoResizeWithWindow]="true"
+  ></core-page-list>
+</div>
+<!-- [selfResolveCorePageHeaderButtonClick]="true"
+    (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+    (rowDoubleClick)="onRowDoubleClick($event)" -->
+<ng-template #isBoquacc let-isBoquacc="context.isBoquacc">
+  <core-checkbox [disabled]="true" [inputValue]="isBoquacc"></core-checkbox>
+</ng-template>
+<ng-template #isSunday let-isSunday="context.isSunday">
+  <core-checkbox [disabled]="true" [inputValue]="isSunday"></core-checkbox>
+</ng-template>
+<ng-template #isNight let-isNight="context.isNight">
+  <core-checkbox [disabled]="true" [inputValue]="isNight"></core-checkbox>
+</ng-template>
+<ng-template #sticker let-code="context.isActiveStr">
+  <core-status-sticker [code]="code"></core-status-sticker>
+</ng-template>

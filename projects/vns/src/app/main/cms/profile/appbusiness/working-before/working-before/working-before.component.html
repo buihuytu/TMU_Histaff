@@ -1,0 +1,25 @@
+<div class="working-before-container">
+      <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+        [title]="title" 
+        [normalMode]="true" 
+        [autoResizeWithWindow]="true"
+        [outerParam$]="outerParam$" [left]="orgTree"
+        [outerInOperators]="outerInOperators"
+        [showParamKit]="true"
+        [datePeriodComparisonFor]="datePeriodComparisonFor"
+        [datePeriodComparisonForLabelKey]="datePeriodComparisonForLabelKey"
+        [hideStatusInclusion]="false"
+        [outerSort]="outerSort"
+        [statusInclusionFor]="statusInclusionFor"
+        [statusOptionsApi]="statusOptionsApi"
+        [statusInclusionForLabelKey]="statusInclusionForLabelKey"
+        [frozen]="2"
+        [generateTemplateRequest]="generateTemplateRequest"
+        [importPreviewPath]="'hu-working-before-import'"
+        ></core-page-list>
+
+        <ng-template #orgTree>
+          <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+          </core-org-tree>
+        </ng-template>
+</div>

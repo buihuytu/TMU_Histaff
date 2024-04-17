@@ -1,0 +1,16 @@
+<div class="tr-plan-container">
+    <core-page-list [apiDefinition]="apiDefinition" [left] ="orgTree" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+        [title]="title"
+        [outerParam$]="outerParam$"
+    [outerInOperators]="outerInOperators"
+    (rowClick)="onRowClick($event)"
+    (selectedIdsChange)="onSelectedIdsChange($event)" 
+    (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+     [autoResizeWithWindow]="true" [normalMode]="true"></core-page-list>
+</div>
+<ng-template #orgTree>
+    <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+    </core-org-tree>
+
+  </ng-template>
+  <app-fullscreen-modal-loader *ngIf="loading"></app-fullscreen-modal-loader>

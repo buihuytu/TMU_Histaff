@@ -1,0 +1,239 @@
+<div class="app-bank-info-container">
+    <div class="row list-data">
+        <div class="row">
+            <div class="col-md-2 label-text">
+                Chủ tài khoản:
+            </div>
+            <div class="col-md-9 mt-1 label-content fullName">{{listBankInfo?.fullName}}</div>
+            <div class="col-md-1">
+                <button
+                    *ngIf="listBankInfoApproving.length == 0 && listBankInfoSave.length == 0 && listBankInfoUnapprove.length==0" 
+                    (click)="clickBtnEdit($event)" class="btn-edit"> 
+                    <i class="feather-edit-2"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 mt-1 label-text">
+                Mã số thuế:
+            </div>
+            <div class="col-md-10 mt-1 label-content taxCode">{{listBankInfo?.taxCode}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 mt-1 label-text">
+                Số tài khoản 1:
+            </div>
+            <div class="col-md-10 mt-1 label-content bankNo">{{listBankInfo?.bankNo}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 mt-1 label-text">
+                Ngân hàng 1:
+            </div>
+            <div class="col-md-10 mt-1 label-content bankName">{{listBankInfo?.bankName}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 mt-1 label-text">
+                Chi nhánh 1:
+            </div>
+            <div class="col-md-10 mt-1 label-content bankBranchName">{{listBankInfo?.bankBranchName}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 mt-1 label-text">
+                Số tài khoản 2:
+            </div>
+            <div class="col-md-10 mt-1 label-content bankNo2">{{listBankInfo?.bankNo2}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 mt-1 label-text">
+                Ngân hàng 2:
+            </div>
+            <div class="col-md-10 mt-1 label-content bankName2">{{listBankInfo?.bankName2}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 mt-1 label-text">
+                Chi nhánh 2:
+            </div>
+            <div class="col-md-10 mt-1 label-content bankBranchName2">{{listBankInfo?.bankBranchName2}}</div>
+        </div>
+    </div>
+    <div *ngIf="!!!id">
+        <div class="row list-data mt-3" *ngFor="let item of listBankInfoSave">
+            <div class="row">
+                <span class="color-info">(Đã lưu)</span>
+            </div>
+            <div class="row">
+                <div class="col-md-2 label-text">
+                    Chủ tài khoản:
+                </div>
+                <div class="col-md-9 mt-1 label-content">{{item?.fullName}}</div>
+                <div class="col-md-1">
+                    <button (click)="clickBtnSaveEdit(item)" class="btn-edit">
+                        <i class="feather-edit-2"></i>
+                    </button>
+                    <button (click)="clickBtnDelete(item)" class="btn-edit">
+                        <i class="feather-trash-2"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 mt-1 label-text">
+                    Mã số thuế:
+                </div>
+                <div class="col-md-10 mt-1 label-content">{{item?.taxCode}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 mt-1 label-text">
+                    Số tài khoản 1:
+                </div>
+                <div class="col-md-10 mt-1 label-content">{{item?.bankNo}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 mt-1 label-text">
+                    Ngân hàng 1:
+                </div>
+                <div class="col-md-10 mt-1 label-content">{{item?.bankName}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 mt-1 label-text">
+                    Chi nhánh 1:
+                </div>
+                <div class="col-md-10 mt-1 label-content">{{item?.bankBranchName}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 mt-1 label-text">
+                    Số tài khoản 2:
+                </div>
+                <div class="col-md-10 mt-1 label-content">{{item?.bankNo2}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 mt-1 label-text">
+                    Ngân hàng 2:
+                </div>
+                <div class="col-md-10 mt-1 label-content">{{item?.bankName2}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 mt-1 label-text">
+                    Chi nhánh 2:
+                </div>
+                <div class="col-md-10 mt-1 label-content">{{item?.bankBranchName2}}</div>
+            </div>
+        </div>
+        <div style="margin-top: 20px;" *ngIf="!!title" class="row list-data">
+            <div class="row" style="color:red">Lý do không phê duyệt</div>
+            <div class="row">{{title}}</div>
+        </div>
+        <div class="row list-data mt-3" *ngFor="let item of listBankInfoUnapprove">
+            <div class="row">
+                <span class="color-danger">Từ chối ({{item.reason}})</span>
+            </div>
+            <div class="row">
+                <div class="col-md-2 label-text">
+                    Chủ tài khoản:
+                </div>
+                <div class="col-md-9 mt-1 label-content">{{item?.fullName}}</div>
+                <div class="col-md-1">
+                    <button (click)="clickBtnSaveEdit(item)" class="btn-edit">
+                        <i class="feather-edit-2"></i>
+                    </button>
+                    <button (click)="clickBtnDelete(item)" class="btn-edit">
+                        <i class="feather-trash-2"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 mt-1 label-text">
+                    Mã số thuế:
+                </div>
+                <div class="col-md-10 mt-1 label-content">{{item?.taxCode}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 mt-1 label-text">
+                    Số tài khoản 1:
+                </div>
+                <div class="col-md-10 mt-1 label-content">{{item?.bankNo}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 mt-1 label-text">
+                    Ngân hàng 1:
+                </div>
+                <div class="col-md-10 mt-1 label-content">{{item?.bankName}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 mt-1 label-text">
+                    Chi nhánh 1:
+                </div>
+                <div class="col-md-10 mt-1 label-content">{{item?.bankBranchName}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 mt-1 label-text">
+                    Số tài khoản 2:
+                </div>
+                <div class="col-md-10 mt-1 label-content">{{item?.bankNo2}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 mt-1 label-text">
+                    Ngân hàng 2:
+                </div>
+                <div class="col-md-10 mt-1 label-content">{{item?.bankName2}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 mt-1 label-text">
+                    Chi nhánh 2:
+                </div>
+                <div class="col-md-10 mt-1 label-content">{{item?.bankBranchName2}}</div>
+            </div>
+        </div>
+        <div class="row list-data mt-3" *ngFor="let item of listBankInfoApproving">
+            <div class="row">
+                <span class="color-warning">(Chờ phê duyệt)</span>
+            </div>
+            <div class="row">
+                <div class="col-md-2 label-text">
+                    Chủ tài khoản:
+                </div>
+                <div class="col-md-10 mt-1 label-content">{{item?.fullName}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 mt-1 label-text">
+                    Mã số thuế:
+                </div>
+                <div class="col-md-10 mt-1 label-content">{{item?.taxCode}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 mt-1 label-text">
+                    Số tài khoản 1:
+                </div>
+                <div class="col-md-10 mt-1 label-content">{{item?.bankNo}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 mt-1 label-text">
+                    Ngân hàng 1:
+                </div>
+                <div class="col-md-10 mt-1 label-content">{{item?.bankName}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 mt-1 label-text">
+                    Chi nhánh 1:
+                </div>
+                <div class="col-md-10 mt-1 label-content">{{item?.bankBranchName}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 mt-1 label-text">
+                    Số tài khoản 2:
+                </div>
+                <div class="col-md-10 mt-1 label-content">{{item?.bankNo2}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 mt-1 label-text">
+                    Ngân hàng 2:
+                </div>
+                <div class="col-md-10 mt-1 label-content">{{item?.bankName2}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 mt-1 label-text">
+                    Chi nhánh 2:
+                </div>
+                <div class="col-md-10 mt-1 label-content">{{item?.bankBranchName2}}</div>
+            </div>
+        </div>
+    </div>

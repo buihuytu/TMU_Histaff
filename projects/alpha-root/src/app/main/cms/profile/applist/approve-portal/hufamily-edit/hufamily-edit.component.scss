@@ -1,0 +1,53 @@
+.app-hufamily-edit-container {
+    width: 100%;
+    overflow-x: scroll;
+    height: 100%;
+
+    .container {
+
+        width: 100%;
+        height: auto;
+        overflow: auto;
+
+        .list-header {
+            display: flex !important;
+            align-items: center;
+            flex-wrap: nowrap;
+            font-weight: 600;
+            font-size: 15px;
+            color: black;
+            background-color: #f1f1f1;
+            padding: 4px;
+        }
+    
+    
+        .list-data-api {
+            display: flex !important;
+            align-items: center;
+            flex-wrap: nowrap;
+            color: #464646;
+            font-size: 15px;
+            text-align: left;
+            padding: 4px;
+        }
+    
+        .list-data-api:hover {
+            background-color: #EAF1FB;
+        }
+    
+        .color-text {
+            color: #2C71FF;
+        }
+    
+        .check-wrap {
+            display: inline-block;
+            position: relative;
+            width: 20px;
+            height: 20px;
+        }
+        
+    }
+    .fill-color-column{
+        color: #2C71FF;
+    }
+}

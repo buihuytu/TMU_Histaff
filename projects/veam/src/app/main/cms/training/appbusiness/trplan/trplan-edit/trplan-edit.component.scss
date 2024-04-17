@@ -1,0 +1,8 @@
+.tr-plan-edit-container{
+    & .core-file-uploader-container{
+        & .custom-file-input {
+            display: block !important;
+            color: red;
+        }
+    }
+}

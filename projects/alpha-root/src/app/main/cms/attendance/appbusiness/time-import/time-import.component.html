@@ -1,0 +1,142 @@
+<div class="app-time-import-container">
+  <core-page-header [title]="title" (buttonClick)="onCorePageHeaderButtonClick($event)"
+    [instanceNumber]="instanceNumber">
+  </core-page-header>
+
+  <input #fileImport type="file" name="name" id="fileInput"
+    accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+    style="display: none;" (change)='inputFile($event)' />
+
+  <core-composition [left]="orgTree" [top]="topParam" [main]="main" [height]="compositionHeight"></core-composition>
+
+  <app-fullscreen-modal-loader *ngIf="loading || loadingExport"></app-fullscreen-modal-loader>
+
+  <ng-template #orgTree>
+    <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)" [height]="compositionHeight">
+    </core-org-tree>
+
+  </ng-template>
+
+  <ng-template #topParam>
+    <div class="row mb15 no-padding" [ngStyle]="{
+      marginBottom: '15px !important'
+    }">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>{{ labelList.year | translate: lang}}</label>
+          <input style="margin-left: 5px;" type="number" class="form-control" [(ngModel)]="year"
+            (ngModelChange)="onYearChange($event)">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>{{ labelList.salaryPeriod | translate: lang}}</label>
+          <core-dropdown [(ngModel)]="salPeriod" (ngModelChange)="onSalPeriodChange($event)"
+            [options$]="salaryPeridOptions$" [getByIdObject$]="atSalaryPeriodGetByIdObject$"
+            [paramMode]="true"></core-dropdown>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>{{ labelList.fromDate | translate : lang}}</label>
+          <core-date-picker [disabled]="disabled" [(ngModel)]="dateStart"
+            (ngModelChange)="onDateStartChange($event)"></core-date-picker>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>{{ labelList.toDate | translate: lang}}</label>
+          <core-date-picker [disabled]="disabled" [(ngModel)]="dateEnd"
+            (ngModelChange)="onDateEndChange($event)"></core-date-picker>
+        </div>
+      </div>
+    </div>
+    <div class="row mb15 no-padding" [ngStyle]="{
+      marginBottom: '15px !important'
+    }">
+
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>{{labelList.status | translate : lang}}</label>
+          <core-checklist [(ngModel)]="statuses" (ngModelChange)="onStatusChange($event)" [paramMode]="true"
+            [options$]="empStatusOptions$!"></core-checklist>
+        </div>
+      </div>
+
+      <div class="col-md-3" [ngStyle]="{ marginLeft: '5px'}">
+        <div class="form-group">
+          <label>{{ labelList.eployeeCode | translate: lang}}</label>
+          <core-form-control-seeker [boundFrom]="'id'" [shownFrom]="'fullname'" [multiMode]="false" [paramMode]="true"
+            [(ngModel)]="employeeId" [seekerSourceType]="employeeSeekerType"
+            (ngModelChange)="onEmployeeChange($event)"></core-form-control-seeker>
+        </div>
+      </div>
+
+      <div class="col-md-1" [ngStyle]="{
+        display: 'flex',
+        alignItems: 'center'
+      }">
+        <div [ngStyle]="{
+            transform: 'translate(-10px, 4px)'
+          }">
+          <core-button-group-vns [showCaption]="true" (buttonClick)="onButtonClick($event)" [shownItems]="buttonItems"
+            class="buttonGroupCustom"></core-button-group-vns>
+        </div>
+      </div>
+
+    </div>
+
+  </ng-template>
+
+  <ng-template #main>
+    <core-table [columns]="columns" [height]="tableHeight" [showCheckbox]="!!!hideCheck" [data]="innerBody"
+      [loading]="loading" (onRowClick)="onRowClick($event)" (onRowDoubleClick)="onRowDoubleClick($event)"
+      (onSelectedIdsChange)="onSelectedIdsChange($event)" [frozen]="2"
+      [headerWrap]="true"
+      [headerFirstRowHeight]="50"
+      [noPaddingCell]="true"
+      (onSearching)="onSearching($event)"
+      ></core-table>
+    <div class="d-flex-end pagination-wrapper" #paginationContainer>
+      <core-pagination-full [height]="paginationHeight" [currentPage$]="currentPage$" [pageSize$]="pageSize$"
+        [pageCount]="pageCount" [innerBodyCount$]="innerBodyCount$" [pagination$]="pagination$" [loading]="loading"
+        [background]="'#848484'" (onCurrentPageChange)="onCurrentPageChange($event)"></core-pagination-full>
+
+    </div>
+  </ng-template>
+
+  <ng-template #d01 let-value="context.d01" let-color="context.d1Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d02 let-value="context.d02" let-color="context.d2Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d03 let-value="context.d03" let-color="context.d3Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d04 let-value="context.d04" let-color="context.d4Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d05 let-value="context.d05" let-color="context.d5Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d06 let-value="context.d06" let-color="context.d6Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d07 let-value="context.d07" let-color="context.d7Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d08 let-value="context.d08" let-color="context.d8Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d09 let-value="context.d09" let-color="context.d9Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d10 let-value="context.d10" let-color="context.d10Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d11 let-value="context.d11" let-color="context.d11Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d12 let-value="context.d12" let-color="context.d12Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d13 let-value="context.d13" let-color="context.d13Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d14 let-value="context.d14" let-color="context.d14Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d15 let-value="context.d15" let-color="context.d15Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d16 let-value="context.d16" let-color="context.d16Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d17 let-value="context.d17" let-color="context.d17Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d18 let-value="context.d18" let-color="context.d18Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d19 let-value="context.d19" let-color="context.d19Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d20 let-value="context.d20" let-color="context.d20Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d21 let-value="context.d21" let-color="context.d21Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d22 let-value="context.d22" let-color="context.d22Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d23 let-value="context.d23" let-color="context.d23Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d24 let-value="context.d24" let-color="context.d24Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d25 let-value="context.d25" let-color="context.d25Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d26 let-value="context.d26" let-color="context.d26Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d27 let-value="context.d27" let-color="context.d27Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d28 let-value="context.d28" let-color="context.d28Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d29 let-value="context.d29" let-color="context.d29Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d30 let-value="context.d30" let-color="context.d30Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+  <ng-template #d31 let-value="context.d31" let-color="context.d31Color"><div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div></ng-template>
+
+</div>
+

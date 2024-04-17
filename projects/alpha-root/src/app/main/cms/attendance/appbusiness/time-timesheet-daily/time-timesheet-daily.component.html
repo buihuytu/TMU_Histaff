@@ -1,0 +1,169 @@
+<div class="time-sheet-daily-container">
+  <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+    [title]="title" [left]="orgTree" [top]="topParam" [outerParam$]="outerParam$" [outerInOperators]="outerInOperators"
+    [outerFilterOperators]="filterOperators" [autoResizeWithWindow]="true" [extraManualOffset]="190"
+    (onInstanceCreated)="onInstanceCreated($event)" (selectedIdsChange)="onSelectedIdsChangeeee($event)"
+    (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)" [frozen]="2"
+    [noPaddingCell]="true" [headerWrap]="true" [headerFirstRowHeight]="headerFirstRowHeight"
+    [outerSort]="outerSort"
+  ></core-page-list>
+
+  <ng-template #orgTree>
+    <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+    </core-org-tree>
+
+  </ng-template>
+
+  <ng-template #topParam>
+    <div class="row mb15" style="margin-left: 5px;">
+
+      <div class="col-md-2">
+        <div class="form-group vertical">
+          <label>{{ labelList.year | translate: lang}}</label>
+          <core-dropdown [(ngModel)]="year" (ngModelChange)="onYearChange($event)" [options$]="yearPeridOptions$"
+            [getByIdObject$]="yearPeriodGetByIdObject$" [shownFrom]="shownFrom"></core-dropdown>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group vertical">
+          <label>{{ labelList.salPeriod | translate: lang}}</label>
+          <core-dropdown [(ngModel)]="salPeriod" (ngModelChange)="onSalPeriodChange($event)"
+            [options$]="salaryPeridOptions$" [getByIdObject$]="atSalaryPeriodGetByIdObject$"
+            [shownFrom]="shownFrom"></core-dropdown>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group vertical">
+          <label>{{ labelList.startDate | translate: lang}}</label>
+          <core-date-picker 
+            [(ngModel)]="dateStart" 
+            (ngModelChange)="onDateStartChange($event)"
+            [rangeLimit] = "rangeLimit"
+          ></core-date-picker>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group vertical">
+          <label>{{ labelList.endDate | translate: lang}}</label>
+          <core-date-picker 
+              [(ngModel)]="dateEnd" 
+              (ngModelChange)="onDateEndChange($event)"
+              [rangeLimit] = "rangeLimit"
+          ></core-date-picker>
+        </div>
+      </div>
+      <div class="col-md-3" [ngStyle]="{ marginLeft: '5px'}">
+        <div class="form-group vertical">
+          <label>{{ labelList.employeeCode | translate: lang}}</label>
+
+          <core-form-control-seeker [boundFrom]="'id'" [shownFrom]="'fullname'" [multiMode]="false" [paramMode]="true"
+            [(ngModel)]="employeeId" [seekerSourceType]="employeeSeekerType"
+            (ngModelChange)="onEmployeeChange($event)"></core-form-control-seeker>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="row mb15" style="margin-left: 5px;">
+
+      <div class="col-md-4">
+        <div class="form-group vertical">
+          <label>{{ labelList.status | translate: lang}}</label>
+          <core-checklist [(ngModel)]="statuses" (ngModelChange)="onStatusChange($event)" [paramMode]="true"
+            [options$]="checklistOptions$!"></core-checklist>
+        </div>
+      </div>
+
+      <div class="col-md-1">
+        <div class="form-group vertical">
+          <!-- <label style="margin-top:-5px"></label> -->
+          <core-button-group-vns [showCaption]="true" (buttonClick)="onButtonClick($event)" [shownItems]="buttonItems"
+            class="buttonGroupCustom"></core-button-group-vns>
+        </div>
+      </div>
+      <!-- <div class="col-md-1">
+          <button class="btn-calculate" (click)="calculate()">Tổng hợp</button> -->
+      <!-- Sau này thay "Tổng hợp" bằng EnumTranslateKey để dịch -->
+      <!-- </div> -->
+
+    </div>
+  </ng-template>
+  <ng-template #employeeCode let-value="context.employeeCode" let-color="context.codeColor">
+    <div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div>
+  </ng-template>
+  <ng-template #employeeName let-value="context.employeeName" let-color="context.codeColor">
+    <div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div>
+  </ng-template>
+  <ng-template #positionName let-value="context.positionName" let-color="context.codeColor">
+    <div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div>
+  </ng-template>
+  <ng-template #orgName let-value="context.orgName" let-color="context.codeColor">
+    <div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div>
+  </ng-template>
+  <ng-template #workingday let-value="context.workingday" let-color="context.codeColor">
+    <div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value | tableCell: 'DATE': lang}}</div>
+  </ng-template>
+  <ng-template #shiftCode let-value="context.shiftCode" let-color="context.codeColor">
+    <div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div>
+  </ng-template>
+  <ng-template #shiftStart let-value="context.shiftStart" let-color="context.codeColor">
+    <div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value | tableCell: 'TIME_HHMM' : lang }}</div>
+  </ng-template>
+  <ng-template #shiftEnd let-value="context.shiftEnd" let-color="context.codeColor">
+    <div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value | tableCell: 'TIME_HHMM' : lang}}</div>
+  </ng-template>
+  <ng-template #valin1 let-value="context.valin1" let-color="context.codeColor">
+    <div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value | tableCell: 'TIME_HHMM' : lang}}</div>
+  </ng-template>
+  <ng-template #valin4 let-value="context.valin4" let-color="context.codeColor">
+    <div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value | tableCell: 'TIME_HHMM' : lang}}</div>
+  </ng-template>
+  <ng-template #workinghour let-value="context.workinghour" let-color="context.codeColor">
+    <div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div>
+  </ng-template>
+  <ng-template #manualCode let-value="context.manualCode" let-color="context.codeColor">
+    <div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div>
+  </ng-template>
+  <ng-template #late let-value="context.late" let-color="context.codeColor">
+    <div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div>
+  </ng-template>
+  <ng-template #comebackout let-value="context.comebackout" let-color="context.codeColor">
+    <div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div>
+  </ng-template>
+  <ng-template #dimuonVesomThucte let-value="context.dimuonVesomThucte" let-color="context.codeColor">
+    <div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div>
+  </ng-template>
+  <ng-template #otTotalConvert let-value="context.otTotalConvert" let-color="context.codeColor">
+    <div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div>
+  </ng-template>
+  <ng-template #signDefaultName let-value="context.signDefaultName" let-color="context.codeColor">
+    <div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div>
+  </ng-template>
+  <ng-template #otWeekday let-value="context.otWeekday" let-color="context.codeColor">
+    <div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div>
+  </ng-template>
+  <ng-template #otSunday let-value="context.otSunday" let-color="context.codeColor">
+    <div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div>
+  </ng-template>
+  <ng-template #otHoliday let-value="context.otHoliday" let-color="context.codeColor">
+    <div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div>
+  </ng-template>
+  <ng-template #otWeeknight let-value="context.otWeeknight" let-color="context.codeColor">
+    <div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div>
+  </ng-template>
+  <ng-template #otSundaynight let-value="context.otSundaynight" let-color="context.codeColor">
+    <div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div>
+  </ng-template>
+  <ng-template #otHolidayNight let-value="context.otHolidayNight" let-color="context.codeColor">
+    <div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div>
+  </ng-template>
+  <!-- <ng-template #isConfirm let-value="context.isConfirm" let-color="context.codeColor">
+    <div class="color-cell" [ngStyle]="{ background: getColorByCode(color) }">{{ value }}</div>
+  </ng-template> -->
+
+  <ng-template #isConfirm let-isConfirm="context.isConfirm">
+    <core-checkbox [disabled]="true" [inputValue]="isConfirm"></core-checkbox>
+  </ng-template>
+  
+  <app-fullscreen-modal-loader *ngIf="loading"></app-fullscreen-modal-loader>
+</div>

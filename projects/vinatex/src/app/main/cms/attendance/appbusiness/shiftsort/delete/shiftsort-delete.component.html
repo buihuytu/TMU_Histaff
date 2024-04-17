@@ -1,0 +1,9 @@
+<core-page-edit *ngIf="!!sections.length" [width]="800" [captionCode]="captionCode"     
+    [sections]="sections" [crud]="crud"
+    [entityTable]="entityTable" (onFormCreated)="onFormCreated($event)"
+    (onInitialValueStringReady)="onFormReinit($event)"
+    [autoSubmitLogicOff]="true"
+    (submitLogic)="onDelete($event)"
+    [customFormButtonItems]="customFormButtonItems"
+></core-page-edit>
+

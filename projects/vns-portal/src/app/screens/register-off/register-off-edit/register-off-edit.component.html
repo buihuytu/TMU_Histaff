@@ -1,0 +1,21 @@
+<div class="container container-fluid">
+<div class="register-off-edit">
+    <core-page-edit *ngIf="!!sections.length" [width]="1000" [sections]="sections" [crud]="crud" [normalMode]="true"
+    [entityTable]="entityTable" (onFormCreated)="onFormCreated($event)" [disableSaveButton]="true"
+    (onInitialValueStringReady)="onFormReinit($event)"></core-page-edit>
+</div>
+
+
+<div class="row">
+    <div [class]="landscapeMode ? 'col-5' : 'col-8'">
+        <div class="col-5 left">
+            {{ totalLeaveDay | translate: lang}}: {{ leaveDayRemaining }}
+        </div>
+        <div class="col-2" class="separator"></div>
+        <div class="col-5 right">
+             
+            {{ totalLeaveDayUse | translate: lang}}: {{ leaveDayUsed }}
+        </div>
+    </div>
+</div>
+</div>

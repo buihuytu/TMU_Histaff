@@ -1,0 +1,520 @@
+<div class="app-contact-container">
+    <div class="row list-data">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="label-text">Địa chỉ thường trú:</span>
+                    </div>
+                    <div class="col-md-6 label-content">
+                       <span class="address">{{listContactInfo?.address}}</span> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="label-text">Email cá nhân:</span>
+                    </div>
+                    <div class="col-md-6 label-content">
+                        <span class="email">{{listContactInfo?.email}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <button *ngIf="listContactInfoApproving.length == 0 && listContactInfoSave.length == 0" (click)="clickBtnEdit(listContactInfo)" class="btn-edit">
+                    <i class="feather-edit-2"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="label-text">Thành phố thường trú:</span>
+                    </div>
+                    <div class="col-md-6 label-content">
+                       <span class="provinceName">{{listContactInfo?.provinceName}}</span> 
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="label-text">Điện thoại cố định:</span>
+                    </div>
+                    <div class="col-md-6 label-content">
+                       <span class="mobilePhoneLand">{{listContactInfo?.mobilePhoneLand}}</span> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="label-text">Quận/huyện thường trú:</span>
+                    </div>
+                    <div class="col-md-6 label-content">
+                        <span class="districtName">{{listContactInfo?.districtName}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="label-text">Điện thoại di động:</span>
+                    </div>
+                    <div class="col-md-6 label-content">
+                      <span class="mobilePhone">{{listContactInfo?.mobilePhone}}</span>  
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="label-text">Xã/phường thường trú:</span>
+                    </div>
+                    <div class="col-md-6 label-content">
+                        <span class="wardName">{{listContactInfo?.wardName}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="label-text">Địa chỉ tạm trú:</span>
+                    </div>
+                    <div class="col-md-6 label-content"><span class="curAddress">{{listContactInfo?.curAddress}}</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="label-text">Thành phố tạm trú:</span>
+                    </div>
+                    <div class="col-md-6 label-content"><span class="curProvinceName">{{listContactInfo?.curProvinceName}}</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="label-text">Quận/huyện tạm trú:</span>
+                    </div>
+                    <div class="col-md-6 label-content"><span class="curDistrictName">{{listContactInfo?.curDistrictName}}</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="label-text">Xã/phường tạm trú:</span>
+                    </div>
+                    <div class="col-md-6 label-content"><span class="curWardName">{{listContactInfo?.curWardName}}</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top: 20px;" *ngIf="!!title" class="row list-data">
+        <div class="row" style="color:red">Lý do không phê duyệt</div>
+        <div class="row">{{title}}</div>
+    </div>
+    <div *ngIf="!!!id">
+        <div class="row list-data mt-3" *ngFor="let item of listContactInfoSave">
+            <div class="row">
+                <span class="color-info">(Đã lưu)</span>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Địa chỉ thường trú:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.address}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Email cá nhân:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.email}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <button (click)="clickBtnSaveEdit(item)" class="btn-edit">
+                        <i class="feather-edit-2"></i>
+                    </button>
+                    <button (click)="clickBtnDelete(item)" class="btn-edit">
+                        <i class="feather-trash-2"></i>
+                      </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Thành phố thường trú:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.provinceName}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Điện thoại cố định:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.mobilePhoneLand}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Quận/huyện thường trú:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.districtName}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Điện thoại di động:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.mobilePhone}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Xã/phường thường trú:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.wardName}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Địa chỉ tạm trú:</span>
+                        </div>
+                        <div class="col-md-6 label-content">{{item?.curAddress}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Thành phố tạm trú:</span>
+                        </div>
+                        <div class="col-md-6 label-content">{{item?.curProvinceName}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Quận/huyện tạm trú:</span>
+                        </div>
+                        <div class="col-md-6 label-content">{{item?.curDistrictName}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Xã/phường tạm trú:</span>
+                        </div>
+                        <div class="col-md-6 label-content">{{item?.curWardName}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row list-data mt-3" *ngFor="let item of listContactInfoUnapprove">
+            <div class="row">
+                <span class="color-danger">Từ chối ({{item.reason}})</span>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Địa chỉ thường trú:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.address}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Email cá nhân:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.email}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <button (click)="clickBtnSaveEdit(item)" class="btn-edit">
+                        <i class="feather-edit-2"></i>
+                    </button>
+                    <button (click)="clickBtnDelete(item)" class="btn-edit">
+                        <i class="feather-trash-2"></i>
+                      </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Thành phố thường trú:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.provinceName}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Điện thoại cố định:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.mobilePhoneLand}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Quận/huyện thường trú:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.districtName}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Điện thoại di động:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.mobilePhone}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Xã/phường thường trú:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.wardName}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Địa chỉ tạm trú:</span>
+                        </div>
+                        <div class="col-md-6 label-content">{{item?.curAddress}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Thành phố tạm trú:</span>
+                        </div>
+                        <div class="col-md-6 label-content">{{item?.curProvinceName}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Quận/huyện tạm trú:</span>
+                        </div>
+                        <div class="col-md-6 label-content">{{item?.curDistrictName}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Xã/phường tạm trú:</span>
+                        </div>
+                        <div class="col-md-6 label-content">{{item?.curWardName}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row list-data mt-3" *ngFor="let item of listContactInfoApproving">
+            <div class="row">
+                <span class="color-warning">(Chờ phê duyệt)</span>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Địa chỉ thường trú:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.address}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Email cá nhân:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.email}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Thành phố thường trú:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.provinceName}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Điện thoại cố định:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.mobilePhoneLand}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Quận/huyện thường trú:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.districtName}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Điện thoại di động:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.mobilePhone}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Xã/phường thường trú:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.wardName}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Địa chỉ tạm trú:</span>
+                        </div>
+                        <div class="col-md-6 label-content">{{item?.curAddress}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Thành phố tạm trú:</span>
+                        </div>
+                        <div class="col-md-6 label-content">{{item?.curProvinceName}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Quận/huyện tạm trú:</span>
+                        </div>
+                        <div class="col-md-6 label-content">{{item?.curDistrictName}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Xã/phường tạm trú:</span>
+                        </div>
+                        <div class="col-md-6 label-content">{{item?.curWardName}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

@@ -1,0 +1,30 @@
+<core-page-list 
+  [apiDefinition]="apiDefinition" 
+  [columns]="columns" 
+  [crud]="crud"
+  [editRoute]="editRoute"
+  [title]="title" 
+  [top]="header"
+  [hideHeader]="true" 
+  [hideButtonGroup]="true"
+  [autoResizeWithWindow]="true"
+  [selfResolveCorePageHeaderButtonClick]="true"
+  [disableDoubleClick]="true"
+  (onInstanceCreated)="onInstanceCreated($event)"
+  (selectedDataChange)="onSelectedDataChange($event)" 
+  (selectedIdsChange)="onSelectedIdsChange($event)"
+  (rowDoubleClick)="onRowDoubleClick($event)"
+></core-page-list>
+
+<ng-template #header>
+  <core-page-header (buttonClick)="corePageHeaderButtonClick($event)" ></core-page-header>
+</ng-template>
+
+<ng-template #sticker let-code="context.status">
+    <core-status-sticker [code]="code"></core-status-sticker>
+</ng-template>
+
+<div class="col-md no-padding no-margin">
+  <router-outlet></router-outlet>
+  <router-outlet name="group"></router-outlet>
+</div>

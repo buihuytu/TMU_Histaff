@@ -1,0 +1,133 @@
+<div class="hu-commend-edit-container">
+    <form #formRef (ngSubmit)="onFormSubmit()" [formGroup]="form" autocomplete="off">
+        <core-accordion [sectors]="sectors" [refs]="[basic,cv]" [enableSwap]="false" [editDisabled]="true"
+            (onItemClick)="onAccordionItemClick($event)"></core-accordion>
+        <ng-template #basic>
+            <div class="row">
+                <div class="col-3">
+                    <core-control [control]="year" [form]="form" [checkError$]="checkError$"></core-control>
+                </div>
+                <div class="col-3 basic commendObjId">
+                    <core-control [control]="commendObjId" [form]="form" [checkError$]="checkError$"></core-control>
+                </div>
+                <div class="col-3 basic no">
+                    <core-control [control]="no" [form]="form" [checkError$]="checkError$"></core-control>
+                </div>
+                <div class="col-3">
+                    <core-control [control]="orgLevelId" [form]="form" [checkError$]="checkError$"></core-control>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <core-control [control]="reason" [form]="form" [checkError$]="checkError$"></core-control>
+                </div>
+                <div class="col-3">
+                    <core-control [control]="awardTitleId" [form]="form" [checkError$]="checkError$"></core-control>
+                </div>
+                <div class="col-3">
+                    <core-control [control]="salaryIncreaseTime" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                </div>
+                <div class="col-3">
+                    <core-control [control]="attachmentBuffer" [form]="form" [checkError$]="checkError$"></core-control>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3 basic signDate">
+                    <core-control [control]="signDate" [form]="form" [checkError$]="checkError$"></core-control>
+                </div>
+                <div class="col-3">
+                    <core-control [control]="signId" [form]="form" [checkError$]="checkError$"></core-control>
+                </div>
+                <div class="col-3">
+                    <core-control [control]="positionName" [form]="form" [checkError$]="checkError$"></core-control>
+                </div>
+                <div class="col-3 cv statusPaymentId">
+                    <core-control [control]="statusPaymentId" [form]="form" [checkError$]="checkError$"></core-control>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <core-control [control]="note" [form]="form" [checkError$]="checkError$"></core-control>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template #cv>
+            <div class="row">
+                <div class="col-3 cv paymentNo">
+                    <core-control [control]="paymentNo" [form]="form" [checkError$]="checkError$"></core-control>
+                </div>
+                <div class="col-3 cv effectDate">
+                    <core-control [control]="effectDate" [form]="form" [checkError$]="checkError$"></core-control>
+                </div>
+
+                <!--
+                <div class="col-3">
+                    <core-control [control]="rewardLevelId" [form]="form" [checkError$]="checkError$"></core-control>
+                </div>
+                -->
+
+                <!-- đây là checklist -->
+                <div class="col-3">
+                    <core-control [control]="listRewardLevelId" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                </div>
+
+                <div class="col-3">
+                    <core-control [control]="rewardId" [form]="form" [checkError$]="checkError$"></core-control>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <core-control [control]="fundSourceId" [form]="form" [checkError$]="checkError$"></core-control>
+                </div>
+                <div class="col-3 cv money">
+                    <core-control [control]="money" [form]="form" [checkError$]="checkError$"></core-control>
+                </div>
+                <div class="col-3 mt_8px">
+                    <core-control [control]="isTax" [form]="form" [checkError$]="checkError$"></core-control>
+                </div>
+                <div class="col-3">
+                    <core-control [control]="monthTax" [form]="form" [checkError$]="checkError$"></core-control>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3 cv signPaymentDate">
+                    <core-control [control]="signPaymentDate" [form]="form" [checkError$]="checkError$"></core-control>
+                </div>
+                <div class="col-3">
+                    <core-control [control]="signPaymentId" [form]="form" [checkError$]="checkError$"></core-control>
+                </div>
+                <div class="col-3">
+                    <core-control [control]="positionPaymentName" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                </div>
+                <div class="col-3">
+                    <core-control [control]="paymentAttachmentBuffer" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-9">
+                    <core-control [control]="paymentContent" [form]="form" [checkError$]="checkError$"></core-control>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <core-control (click)="onClickItem($event)" [control]="employeeIds" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <core-control [control]="employeeList" [form]="form" [checkError$]="checkError$"></core-control>
+                </div>
+            </div>
+        </ng-template>
+        <div class="h10"></div>
+        <div class="form-row">
+            <core-button-group-vns [showCaption]="true" [shownItems]="buttonItems" (buttonClick)="onButtonClick($event)"
+                class="buttonGroupCustom btn-group-custom"></core-button-group-vns>
+        </div>
+    </form>
+</div>

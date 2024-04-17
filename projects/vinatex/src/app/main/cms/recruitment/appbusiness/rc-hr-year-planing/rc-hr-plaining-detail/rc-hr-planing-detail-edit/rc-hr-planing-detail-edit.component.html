@@ -1,0 +1,7 @@
+<core-page-edit *ngIf="!!sections.length" [width]="1000" [captionCode]="captionCode" [sections]="sections" [crud]="crud"
+    [entityTable]="entityTable" (onFormCreated)="onFormCreated($event)"
+    (onInitialValueStringReady)="onFormReinit($event)"></core-page-edit>
+
+    <ng-template #detail  let-detail="context">
+        <button type="button" class="btn btn-secondary text" >Chi tiết</button>
+    </ng-template>

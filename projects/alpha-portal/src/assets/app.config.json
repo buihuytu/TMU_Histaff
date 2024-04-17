@@ -1,0 +1,24 @@
+{
+    "APP_TYPE": "PORTAL",
+    "BASE_URL": "https://alphaportal.histaff.vn",
+    "GOLIVE_URL": "https://alphaportal.histaff.vn",
+    "DEBUG_ENABLED": false,
+
+    "LOGO_LOGIN": "images/vns-logo.png",
+    "LOGO_HEADER": "images/vnsteel_logo.svg",
+    "HOME_BACKGROUND_IMAGE": "images/vns_home_bg.png",
+
+    "OAUTH2OIDC_ENABLED": false,
+    "OAUTH2OIDC_CLIENT_ID": "",
+    
+    "SAML2ADFS_ENABLED": false,
+    "SAML2ADFS_IDP": "https://sso.vnsteel.vn/adfs/ls",
+    "SAML2ADFS_IDENTIFIER": "https://qlns.vnsteel.vn",
+    "SAML2ADFS_WA_SIGNIN": "wsignin1.0",
+    "SAML2ADFS_WA_SIGNOUT": "wsignout1.0",
+    "SAML2ADFS_WREPLY": "/api/Authentication/HandleADFSResponsePortal",
+
+    "HANGFIRE_PATH": "/jobs",
+    "STATIC_FOLDER": "static",
+    "AVATAR_FOLDER": "avatars"
+}

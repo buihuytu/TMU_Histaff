@@ -1,0 +1,35 @@
+.app-contact-container {
+    margin: 0 30px;
+    .list-data {
+        border: 1px solid #D1D1D1;
+        padding: 45px 80px;
+        border-radius: 5px;
+    }
+
+    .label-text {
+        font-size: 16px;
+        color: #848484;
+    }
+
+    .label-content {
+        font-size: 16px;
+        color: #464646;
+    }
+
+    .btn-edit {
+        outline: none;
+        border: none;
+        background: none;
+    }
+
+    .color-warning {
+        color: #ffc107;
+    }
+
+    .color-info {
+        color: #0dcaf0;
+    }
+    .color-danger{
+        color: #dc3545;
+    }
+}

@@ -1,0 +1,56 @@
+<div class="app-quick-number-container" [ngStyle]="{
+    height: cardHeight + 'px',
+    display: 'flex',
+    alignItems: 'center',
+    backgroundColor: cardBackgroundColor,
+    borderRadius: '5px',
+    width: '100%',
+    maxWidth: '100%'
+}">
+    <div class="icon-wrapper" [ngStyle]="{
+        width: circleSize + 'px',
+        height: circleSize + 'px',
+        borderRadius: '50%',
+        backgroundColor: circleBacgroundColor,
+        marginLeft: layoutService.basicSpacing + 'px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'absolute'
+    }">
+        <img [src]="iconPath" [width]="layoutService.quickLinkItemSize * 0.66"
+            [height]="layoutService.quickLinkItemSize * 0.66">
+    </div>
+
+    <div [ngStyle]="{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            justifyContent: 'center',
+            marginLeft: layoutService.basicSpacing*2 + layoutService.quickLinkItemSize + 'px'
+        }">
+        <div [ngStyle]="{
+            height: cardHeight + 'px'
+        }">
+            <div [ngStyle]="{
+                fontSize: '40px',
+                marginTop:'10px',
+                marginBottom:'-10px',
+                fontWeight: '700',
+                animation: 'fadeIn .5s ease-out'
+            }">
+                {{ value }}
+            </div>
+            <div [ngStyle]="{
+                color: '#848484',
+                fontSize: '15px',
+                maxWidth: '100%',
+                whiteSpace: 'nowrap',
+                textOverflow: 'ellipsis',
+                overflow: 'hidden'
+            }" [appTooltip]="caption | translate: lang">
+                {{ caption | translate: lang }}
+            </div>
+        </div>
+    </div>
+</div>

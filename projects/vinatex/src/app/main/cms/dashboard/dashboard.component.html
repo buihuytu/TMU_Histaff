@@ -1,0 +1,36 @@
+<core-page-header [title]="title" [hideButtonGroup]="true"></core-page-header>
+<div class="app-cms-dashboard-container" [ngStyle]="{ height: height + 'px' }">
+  <div class="container container-fluid">
+    <div class="row">
+      <app-general-overview [orgIds]="activeIds"></app-general-overview>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-6 d-flex block-parent">
+        <div class="col-md-6  dash-widget">
+          <app-gender-chart [orgIds]="activeIds" [height]="chartHeight"></app-gender-chart>
+        </div>
+        <div class="col-md-6  dash-widget">
+          <app-contract-chart [orgIds]="activeIds" [height]="chartHeight"></app-contract-chart>
+        </div>
+      </div>
+      <div class="col-md-6 block-parent padding-left-com dash-widget">
+        <app-seniority-chart [orgIds]="activeIds" [height]="chartHeight"></app-seniority-chart>
+        <!-- <app-learnning-chart [height]="chartHeight"></app-learnning-chart> -->
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-6 block-parent dash-widget">
+        <app-emp-month-chart [orgIds]="activeIds" [height]="chartHeight"></app-emp-month-chart>
+      </div>
+      <div class="col-md-6 block-parent padding-left-com  dash-widget">
+        <app-new-emp-month-chart [orgIds]="activeIds" [height]="chartHeight"></app-new-emp-month-chart>
+      </div>
+    </div>
+    <div class="row">
+      <div [formGroup]="form" class="col-md-3 no-padding block-parent dash-widget">
+        <app-custom-seeker-org (onHandleClick)="onItemDoubleClick($event)"></app-custom-seeker-org>
+      </div>
+      
+    </div>
+  </div>
+</div>

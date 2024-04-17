@@ -1,0 +1,15 @@
+
+.required-paper-container{
+    --width: 815px;
+    width: var(--width);
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    padding:10px;
+    // margin-top:15px!important
+    
+}
+
+:host ::ng-deep .mb15{
+    margin-bottom: 0px !important;
+ }
+

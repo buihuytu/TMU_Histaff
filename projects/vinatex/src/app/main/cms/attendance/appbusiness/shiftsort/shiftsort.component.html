@@ -1,0 +1,78 @@
+<div class="shift-sort-container">
+  <core-page-header [title]="title" (buttonClick)="onCorePageHeaderButtonClick($event)">
+  </core-page-header>
+
+  <input #fileImport type="file" name="name" id="fileInput"
+  accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+  style="display: none;" (change)='inputFile($event)' />
+
+  <core-composition [left]="orgTree" [main]="main" [top]="top" [height]="compositionHeight">
+  </core-composition>
+
+  <ng-template #top>
+    <div class="row mb20">
+      <div class="col-md-4">
+        <div class="form-group vertical" >
+          <label>{{ labelList.year | translate: lang}}</label>
+            <core-dropdown [(ngModel)]="year" (ngModelChange)="onYearChange($event)"
+            [options$]="yearOptions$" [getByIdObject$]="yearGetByIdObject$"
+            [shownFrom]="shownFrom"></core-dropdown>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group vertical">
+          <label>{{ labelList.salPeriod | translate: lang}}</label>
+          <core-dropdown [(ngModel)]="salPeriod" (ngModelChange)="onSalPeriodChange($event)"
+            [options$]="salaryPeridOptions$" [getByIdObject$]="atSalaryPeriodGetByIdObject$"
+            [shownFrom]="shownFrom"></core-dropdown>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div style="margin-top:45px" class="form-group vertical">
+          <!-- <button style="margin-top: 30px;" class="btn btn-primary" type="button" (click)="onSelect()">Search</button> -->
+          <core-button-group-vns [showCaption]="true" (buttonClick)="onButtonClick($event)" [shownItems]="buttonItems"
+                class="buttonGroupCustom" ></core-button-group-vns>
+        </div>  
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #main> 
+    
+    <core-table [columns]="columns" [height]="tableHeight" [showCheckbox]="!!!hideCheck" [data]="innerBody" [loading]="loading" 
+    (onRowDoubleClick)="onRowDoubleClick($event)" (onRowClick)="onRowClick($event)" [frozen]="2"
+    (onSelectedIdsChange)="onSelectedIdsChange($event)" (onSearching)="onSearching($event)"
+    [headerWrap]="true" [headerFirstRowHeight]="50"
+    ></core-table>
+
+    <div class="d-flex-end pagination-wrapper" #paginationContainer>
+      <core-pagination-full [height]="paginationHeight" [currentPage$]="currentPage$" [pageSize$]="pageSize$"
+          [pageCount]="pageCount"
+          [innerBodyCount$]="innerBodyCount$" [pagination$]="pagination$" [loading]="loading"
+          [background]="'#848484'"
+          (onCurrentPageChange)="onCurrentPageChange($event)"
+          ></core-pagination-full>
+  
+    </div>
+  </ng-template>
+
+
+  <!-- <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+    [title]="title" [left]="orgTree" [top]="topParam" [outerParam$]="outerParam$" [outerInOperators]="outerInOperators"
+    [autoResizeWithWindow]="true"></core-page-list> -->
+
+  <ng-template #orgTree>
+    <core-org-tree [accessorMode]="accessorMode" [height]="treeHeight" [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+    </core-org-tree>
+  </ng-template>
+
+  <!-- click row to active (display dropdown-list)  -->
+  <ng-template #shift let-context="context" let-allowEdit="allowEdit" let-employeeCode="context.employeeCode">
+  </ng-template>
+
+  <!-- Popup -->
+  <router-outlet name="corePageListAux"></router-outlet>
+
+  
+  
+</div>
+<app-fullscreen-modal-loader *ngIf="loadingExport"></app-fullscreen-modal-loader>

@@ -1,0 +1,34 @@
+<div class="leaveJob-container">
+  <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+    [title]="title" [left]="orgTree" [top]="paramKitCustom"
+    [outerParam$]="outerParam$"
+    (rowClick)="onRowClick($event)"
+    (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+    [outerFilterOperators]="outerFilterOperators"
+    [outerInOperators]="outerInOperators"
+    (selectedIdsChange)="onSelectedIdsChange($event)"
+    [autoResizeWithWindow]="true"
+    [normalMode]="true"
+    [frozen]="3"
+    [headerWrap]="true"
+    [outerSort]="outerSort"
+    [headerFirstRowHeight]="headerFirstRowHeight"
+    ></core-page-list>
+
+  <ng-template #orgTree>
+    <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+    </core-org-tree>
+  </ng-template>
+  <ng-template #paramKitCustom>
+    <div class="row">
+        <div class="col-md-12">
+            <core-header-params [rows]="paramRows"></core-header-params>
+        </div>
+    </div>
+  </ng-template>
+
+  <ng-template #sticker let-code="context.statusName">
+    <core-status-sticker [code]="code"></core-status-sticker>
+  </ng-template>
+</div>
+<app-fullscreen-modal-loader *ngIf="loading"></app-fullscreen-modal-loader>

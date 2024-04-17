@@ -1,0 +1,46 @@
+<div class="app-inside-company-container">
+    <div class="header-text">{{title | translate: lang }}</div>
+    <div class="content">
+        <div class="card-info" *ngFor="let work of works">
+            <p class="type">{{work.typeName}}</p>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{decisionNo | translate: lang }}:</p>
+                <p class="text col-md-3">{{work.decisionNo}}</p>
+                <p class="label col-md-2">{{effectDate | translate: lang }}:</p>
+                <p class="text col-md-3">{{work.effectDate | date: 'dd/MM/yyyy'}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{orgName | translate: lang }}:</p>
+                <p class="text col-md-3">{{work.orgName}}</p>
+                <p class="label col-md-2">{{expireDate | translate: lang }}:</p>
+                <p class="text col-md-3">{{work.expireDate | date: 'dd/MM/yyyy'}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{positionName | translate: lang }}:</p>
+                <p class="text col-md-3">{{work.positionName}}</p>
+                <p class="label col-md-2">{{signerName | translate: lang }}:</p>
+                <p class="text col-md-3">{{work.signerName}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{lmPositionName | translate: lang }}:</p>
+                <p class="text col-md-3">{{work.lmPosition}}</p>
+                <p class="label col-md-2">{{signDate | translate: lang }}:</p>
+                <p class="text col-md-3">{{work.signDate | date: 'dd/MM/yyyy'}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{workAddress | translate: lang }}:</p>
+                <p class="text col-md-3">{{work.workAddress}}</p>
+                <p class="label col-md-2">{{signerPosition | translate: lang }}:</p>
+                <p class="text col-md-3">{{work.signerPosition}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{statusName | translate: lang }}:</p>
+                <p class="text col-md-3">{{work.statusName}}</p>
+                <p class="label col-md-2">{{note | translate: lang }}:</p>
+                <p class="text col-md-3">{{work.note}}</p>
+            </div>
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,17 @@
+<div class="seldap-container">
+  <core-page-list
+    [apiDefinition]="apiDefinition"
+    [columns]="columns"
+    [editRoute]="editRoute"
+    [outerParam$]="outerParam$"
+    [outerInOperators]="outerInOperators"
+    [crud]="crud"
+    [title]="title"
+    [autoResizeWithWindow]="true"
+    [left]="orgTree"
+  ></core-page-list>
+
+  <ng-template #orgTree>
+    <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)"> </core-org-tree>
+  </ng-template>
+</div>

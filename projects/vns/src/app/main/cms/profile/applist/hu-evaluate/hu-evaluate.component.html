@@ -1,0 +1,37 @@
+<div class="app-hu-evaluate">
+    <core-page-list [apiDefinition]="apiDefinition"   [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+    [title]="title" 
+    [normalMode]="true"
+    [autoResizeWithWindow]="true"
+    [left]="orgTree"
+    (rowClick)="onRowClick($event)"
+
+    [frozen]="4"
+    [outerParam$]="outerParam$"
+    [outerInOperators]="outerInOperators"
+    [showParamKit]="true"
+    [hideDatePeriodComparison]="true"
+    [hideStatusInclusion]="false"
+    [statusInclusionFor]="statusInclusionFor"
+    [statusOptionsApi]="statusOptionsApi"
+    (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+    [statusInclusionForLabelKey]="statusInclusionForLabelKey"
+    [generateTemplateRequest]="generateTemplateRequest"
+    [importPreviewPath]="importPreviewPath" 
+    [outerSort]="outerSort"
+    (onInstanceCreated) = "onInstanceCreated($event)"
+     ></core-page-list>
+
+     <input #fileImport type="file" name="name"
+     accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+     style="display: none;" (change)='inputFile($event)' />
+ 
+
+     <ng-template #orgTree>
+        <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+        </core-org-tree>
+      </ng-template>
+      <app-evaluate-dialog [buttonItems]="buttonItems" *ngIf="evaluateDialogService.showConfirmDialog$.value == true"></app-evaluate-dialog>
+</div>
+
+<core-api-progress *ngIf="longApiRunning" (onClose)="onProgressWindowClose($event)"></core-api-progress>

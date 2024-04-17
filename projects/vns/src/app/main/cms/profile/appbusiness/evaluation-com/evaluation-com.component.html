@@ -1,0 +1,135 @@
+<!-- đầu tiên là thêm 1 thẻ div -->
+<div class="evaluation-com-container">
+  <!-- thứ 2 là sử dụng thẻ core-page-list -->
+  <core-page-list
+    [apiDefinition]="apiDefinition"
+    [columns]="columns"
+    [outerParam$]="outerParam$"
+    [outerInOperators]="outerInOperators"
+    [editRoute]="editRoute"
+    [crud]="crud"
+    [title]="title"
+    [outerSort]="outerSort"
+    [normalMode]="false"
+    [autoResizeWithWindow]="true"
+    [extraManualOffset]="188"
+    [frozen]="3"
+    [left]="orgTree"
+    [top]="topParam"
+
+
+    [showParamKit]="true"
+    
+
+    [hideStatusInclusion]="false"
+    [statusInclusionFor]="statusInclusionFor"
+    [statusInclusionForLabelKey]="statusInclusionForLabelKey"
+    [statusOptionsApi]="workStatusOptionsApi"
+
+    [generateTemplateRequest]="generateTemplateRequest"
+    [hideDatePeriodComparison]="true"
+    [datePeriodComparisonFor]="datePeriodComparisonFor"
+    [datePeriodComparisonForLabelKey]="datePeriodComparisonForLabelKey"
+    [importPreviewPath]="'evaluation-com-import'"
+  >
+    <!--
+      thuộc tính [outerParam$]="outerParam$"
+      giúp lập trình chức năng tìm kiếm theo năm
+
+      tại Tester yêu cầu ẩn cái input
+      nên tôi mới ẩn input tìm kiếm theo năm
+
+      lúc này khai báo [outerParam$]="outerParam$"
+      bị thừa
+
+      nếu sau này cần làm chức năng tương tự
+      thì nhớ lấy ra mà dùng
+
+
+      nếu bạn muốn ẩn cái tìm kiếm theo ngày
+      thì sử dụng [hideDatePeriodComparison]="true"
+    -->
+
+
+    <!--
+      thật ra 3 cái này đang bị thừa
+      nhưng tôi cứ để vậy
+      để sau này cần dùng đến thì copy cho nhanh
+      [hideDatePeriodComparison]="true"
+      [datePeriodComparisonFor]="datePeriodComparisonFor"
+      [datePeriodComparisonForLabelKey]="datePeriodComparisonForLabelKey"
+    -->
+  </core-page-list>
+  
+  <!-- đối với màn hình "Quản lý đánh giá Đảng viên hàng năm" -->
+  <!-- thì [normalMode] phải sửa thành false -->
+  <!-- vì nó là điều hướng trang -->
+
+
+  <!-- nếu màn hình Pop Up -->
+  <!-- thì bạn để [normalMode] là true thì đúng -->
+
+
+  <!-- sau đó bạn cũng phải sửa [normalMode] ở trong -->
+  <!-- evaluation-com-edit.component.html -->
+  <!-- thành false -->
+
+
+  <!-- thêm dòng code này -->
+  <!-- để tạo ra bảng bên trái -->
+  <!-- có chức năng lọc nhân viên theo tổ chức -->
+  <ng-template #orgTree>
+    <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)"> </core-org-tree>
+  </ng-template>
+
+
+  <!--
+    để có được cái tìm kiếm
+    theo năm
+    
+    thì phải dùng chức tăng tạo template
+
+    cú pháp là:
+    ng-template <tên_thẻ>
+
+    tên thẻ thì đặt theo ý thích
+  -->
+  <ng-template #topParam>
+    <div class="row mb20">
+      <!--
+        ẩn trường tìm kiếm theo năm
+        Tester yêu cầu sub task vns 445
+      -->
+
+      <!-- đây là cái tìm kiếm -->
+      <!--  
+      <div class="col-md-2">
+        <div class="form-group vertical">
+          <label>Năm</label>
+          <input type="number"  class="form-control" #nam>
+        </div>
+      </div>
+      -->
+
+
+      <!--
+        ẩn cái button tìm kiếm
+        Tester yêu cầu sub task vns 445
+      -->
+      <!-- đây là button tìm kiếm -->
+      <!--
+      <div class="col-md-1">
+        <div class="form-group vertical">
+          <label></label>
+          <core-button-group-vns
+            [showCaption]="true" (buttonClick)="onButtonClick(nam.value)"
+            [shownItems]="buttonItems" class="buttonGroupCustom"
+          >
+          </core-button-group-vns>
+        </div>  
+      </div>
+      -->
+
+    </div>
+  </ng-template>
+</div>

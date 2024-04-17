@@ -1,0 +1,96 @@
+<div #container class="personnel-left-menu-container">
+    <form [formGroup]="form">
+        <div class="avatar-wrapper">
+            <core-file-uploader [uploadFileType]="uploadFileType" [fileDataControlName]="fileDataControlName"
+                [fileNameControlName]="fileNameControlName" [fileTypeControlName]="fileTypeControlName"
+                [defaultAvatar]="defaultAvatar" [hidePreview]="true" formControlName="avatar" [verticalMode]="true"></core-file-uploader>
+        </div>
+        <!-- <div class="d-flex-center" *ngIf="personnelCenterService.avatar !== personnelCenterService.pendingAvatar">
+            <i class="save-avatar feather-save"></i>
+        </div> -->
+        <div class="employee-cv-fullname">{{ employeeCv?.fullName | normalizeHumanName}}</div>
+        <div class="row display">
+            <div class="col-6 label">
+           {{code | translate: lang}}:<br>
+           <span style="color:#000000; font-weight: 400;">{{employee?.code}}</span>
+            </div>
+            <!-- <div class="col-6 value">
+            
+            </div> -->
+        </div>
+        <div class="row display">
+            <div class="col-6 label">
+           {{profileCode | translate: lang}}:<br>
+           <span style="color:#000000; font-weight: 400;">{{employee?.profileCode}}</span>
+            </div>
+            <!-- <div class="col-6 value">
+           
+            </div> -->
+        </div>
+        <div class="row display">
+            <div class="col-6 label">
+                {{gender | translate: lang}}:<br>
+                <span style="color:#000000; font-weight: 400;">{{employeeCv?.gender}}</span>
+            </div>
+                 <!-- <div class="col-6 value">
+                 
+                 </div> -->
+        </div>
+        <div class="row display">
+            <div class="col-6 label">
+                {{birthDay | translate: lang}}:<br>
+                <span style="color:#000000; font-weight: 400;">{{employeeCv?.birthDate | tableCell: 'DATE' : lang}}</span>
+                 </div>
+                 <!-- <div class="col-6 value">
+                 
+                 </div> -->
+        </div>
+        <div class="row display">
+            <div class="col-6 label">
+                {{workStatus | translate: lang}}:<br>
+                <span style="color:#000000; font-weight: 400;">{{employee?.workStatus}}</span>
+                 </div>
+                 <!-- <div class="col-6 value">
+                 
+                 </div> -->
+        </div>
+        <div class="row display">
+            <div class="col-8 label">
+                {{workStatusDetail | translate: lang}}:<br>
+                <span style="color:#000000; font-weight: 400;">{{employee?.workStatusDetail}}</span>
+                 </div>
+                 <!-- <div class="col-6 value">
+                 
+                 </div> -->
+        </div>
+        <!-- <div class="row display custom">
+            <div class="col-5 custom-label">{{employee?.workStatus}}</div>
+            <div class="col-7 custom-value">{{employee?.workStatusDetail}}</div>
+        </div> -->
+        <core-line></core-line>
+        <div style="margin-left:0px;margin-right:0px;" class="row display2">
+            <i class="envelope-custom"></i>
+            <div class="col-11 value">
+                {{employeeCv?.email}}
+            </div>
+        </div>
+        <div style="margin-left:0px;margin-right:0px;" class="row display2">
+            <i class="telephone-custom"></i>
+            <div class="col-11 value">
+                {{employeeCv?.mobilePhone}}
+            </div>
+        </div>
+        <core-line></core-line>
+        <div class="personnel-menu">
+            <ul>
+                <li *ngFor="let item of items; let index=index"
+                    [class.active]="personnelCenterService.leftMenuActiveItemIndex===index">
+                    <a [routerLink]="[item.routerLink]">
+                        {{ item.code | translate: lang }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </form>
+</div>

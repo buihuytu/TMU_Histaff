@@ -1,0 +1,24 @@
+<div class="hucommend-container">
+  <core-page-list [apiDefinition]="apiDefinition" [normalMode]="true" [columns]="columns" [editRoute]="editRoute"
+    [crud]="crud" [title]="title" [autoResizeWithWindow]="true" [outerInOperators]="outerInOperators"
+    [outerParam$]="outerParam$" [left]="orgTree" (rowClick)="onRowClick($event)" [showParamKit]="true"
+    [datePeriodComparisonFor]="datePeriodComparisonFor"
+    [datePeriodComparisonForLabelKey]="datePeriodComparisonForLabelKey" [hideStatusInclusion]="false"
+    (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+    [statusInclusionFor]="statusInclusionFor" [statusInclusionForLabelKey]="statusInclusionForLabelKey"
+    [statusOptionsApi]="statusOptionsApi"
+    [generateTemplateRequest]="generateTemplateRequest"
+    [importPreviewPath]="'commend-import'"
+    [outerSort]="outerSort"
+    [headerWrap]="true"
+    [headerFirstRowHeight]="headerFirstRowHeight"
+    ></core-page-list>
+  <ng-template #orgTree>
+    <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+    </core-org-tree>
+  </ng-template>
+
+  <ng-template #sticker let-code="context.statusName">
+    <core-status-sticker [code]="code"></core-status-sticker>
+  </ng-template>
+</div>

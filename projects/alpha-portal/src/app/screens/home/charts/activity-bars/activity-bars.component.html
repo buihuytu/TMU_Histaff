@@ -1,0 +1,36 @@
+<div class="app-activity-bars-container" [ngStyle]="{
+    border: '1px solid #D1D1D1',
+    borderRadius: '5px',
+    maxWidth: '100%',
+    overflowX: 'auto'
+}">
+    <div [ngStyle]="{
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    padding: layoutService.basicSpacing/2 + 'px',
+    position: 'absolute',
+    height: '44px',
+    width: width + 'px',
+}">
+    {{ 'THÀNH VIÊN TÍCH CỰC' | translate: lang | uppercase }}
+
+    @if (!!authService.data$.value?.isAdmin) {
+        <span [ngStyle]="{
+            marginLeft: '15px',
+            cursor: 'pointer',
+        }">
+            <i class="feather-trash-2" (click)="onActivityHistoryReset()"></i>
+        </span>
+    }
+
+</div>
+    <div [ngStyle]="{
+        paddingTop: '44px'
+    }">
+        <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [results]="single" [gradient]="gradient"
+            [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [animations]="true">
+        </ngx-charts-bar-vertical>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="staff-profile-container">
+    <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+      [title]="title" [left]="orgTree"
+      [outerParam$]="outerParam$"
+      [normalMode]="true"
+      [outerInOperators]="outerInOperators"
+      [autoResizeWithWindow]="true"
+      [hideStatusInclusion]="true"
+      (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+      (onInputFileBase64DataReady)="onInputFileBase64DataReady($event)"
+      (onInstanceCreated)="onInstanceCreated($event)"
+      [frozen]="2"
+      [outerSort]="outerSort"
+      ></core-page-list>
+  
+    <ng-template #orgTree>
+      <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+      </core-org-tree>
+    </ng-template>
+  </div>
+  <app-fullscreen-modal-loader *ngIf="loadingExport"></app-fullscreen-modal-loader>

@@ -1,0 +1,85 @@
+<div class="app-content">
+  <core-page-header [title]="title"></core-page-header>
+
+  <core-composition
+    [main]="main"
+    [top]="topParamKit"
+  >
+  </core-composition>
+
+
+  <ng-template #topParamKit>
+    <div class="row no-padding mb15">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label  for="" class="label-style">{{ yearTitle | translate: lang }}</label>
+          
+          <div>
+              <input type="number" class="form-control" [(ngModel)]="year" (ngModelChange)="onYearChange($event)"/>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="" class="label-style">{{ educationProgramName | translate: lang }}</label>
+
+          <core-dropdown
+            [(ngModel)]="educationProgramValues"
+            [options$]="educationProgramOptions$"
+            [getByIdObject$]="educationProgramGetByIdObject$"
+            [shownFrom]="'name'"
+            (ngModelChange)="onDropDownListEducationProgramChange($event)"
+          >
+          </core-dropdown>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+
+<ng-template #main>
+  <div class="row">
+    <div class="col-7">
+      <core-page-list
+        [hideCheck]="true"
+        [hideButtonGroup]="true"
+        [height]="corePageListHeight"
+        [fixedPageSize]="!!!isDeskop ? 6 : 9"
+        [apiDefinition]="listEmployeeApiDefinition"
+        [wrap]="false"
+        rowHeight="50px"
+        [title]="listEmployeeTitle"
+        [columns]="columnsListEmployee"
+        [(ngModel)]="trAssessmentResultId" 
+        (ngModelChange)="onTrAssessmentResultIdChange($event)"
+        [extraManualOffset]="50"
+
+        [disableDoubleClick]="true"
+        [outerInOperators]="outerInOperators"
+      >
+      </core-page-list>
+    </div>
+
+
+    <div class="col-5">
+      <core-page-list
+        [normalMode]="false"
+        [hideCheck]="true"
+        [hideButtonGroup]="true"
+        [height]="corePageListHeight"
+        [fixedPageSize]="!!!isDeskop ? 6 : 9"
+        [apiDefinition]="resultEvaluateApiDefinition"
+        [wrap]="false"
+        rowHeight="50px"
+        [outerParam$]="employeeOuterParam$"
+        [title]="resultEvaluateTitle"
+        [columns]="columnsResultEvaluate"
+        [extraManualOffset]="50"
+      >
+      </core-page-list>
+    </div>
+  </div>
+</ng-template>

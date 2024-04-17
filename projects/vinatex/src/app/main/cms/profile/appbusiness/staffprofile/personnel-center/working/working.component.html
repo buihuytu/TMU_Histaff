@@ -1,0 +1,56 @@
+<div class="app-working-container">
+    <div class="header-text">{{title | translate: lang }}</div>
+    <div class="content">
+        <div class="card-info" *ngFor="let working of workings">
+            <p class="type">{{working.typeName}}</p>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-3">{{decisionNo | translate: lang }}:</p>
+                <p class="text col-md-3">{{working.decisionNo}}</p>
+                <p class="label col-md-3">{{salaryScaleName | translate: lang }}:</p>
+                <p class="text col-md-3">{{working.salaryScaleName}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-3">{{effectDate | translate: lang }}:</p>
+                <p class="text col-md-3">{{working.effectDate | date: 'dd/MM/yyyy'}}</p>
+                <p class="label col-md-3">{{salaryRankName | translate: lang }}:</p>
+                <p class="text col-md-3">{{working.salaryRankName}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-3">{{expireDate | translate: lang }}:</p>
+                <p class="text col-md-3">{{working.expireDate | date: 'dd/MM/yyyy'}}</p>
+                <p class="label col-md-3">{{salaryLevelName | translate: lang }}:</p>
+                <p class="text col-md-3">{{working.salaryLevelName}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-3">{{shortTempSalary | translate: lang }}:</p>
+                <p class="text col-md-3">{{working.shortTempSalary | number }}</p>
+                <p class="label col-md-3">{{coefficient | translate: lang }}:</p>
+                <p class="text col-md-3">{{working.coefficient }}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-3">{{salaryType | translate: lang }}:</p>
+                <p class="text col-md-3">{{working.salaryType }}</p>
+                <p class="label col-md-3">{{salaryScaleDcvName | translate: lang }}:</p>
+                <p class="text col-md-3">{{working.salaryScaleDcvName }}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-3">{{taxTableName | translate: lang }}:</p>
+                <p class="text col-md-3">{{working.taxTableName }}</p>
+                <p class="label col-md-3">{{salaryRankDcvName | translate: lang }}:</p>
+                <p class="text col-md-3">{{working.salaryRankDcvName }}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-3">{{regionName | translate: lang }}:</p>
+                <p class="text col-md-3">{{working.regionName }}</p>
+                <p class="label col-md-3">{{salaryLevelDcvName | translate: lang }}:</p>
+                <p class="text col-md-3">{{working.salaryLevelDcvName }}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-3">{{salPercent | translate: lang }}:</p>
+                <p class="text col-md-3">{{working.salPercent + (working.salPercent === '' ? '' : '%')}}</p>
+                <p class="label col-md-3">{{coefficientDcv | translate: lang }}:</p>
+                <p class="text col-md-3">{{working.coefficientDcv }}</p>
+            </div>
+        </div>
+    </div>
+</div>

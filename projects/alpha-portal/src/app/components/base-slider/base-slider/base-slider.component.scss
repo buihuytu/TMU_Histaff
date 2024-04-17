@@ -1,0 +1,18 @@
+.base-slider-container {
+
+    & .slider-dots {
+
+        & .dot {
+            box-sizing: border-box;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #E9E9E9;
+            margin: 0px 10px;
+        }
+
+        & .dot.active {
+            background-color: #CACACA;
+        }
+    }
+}

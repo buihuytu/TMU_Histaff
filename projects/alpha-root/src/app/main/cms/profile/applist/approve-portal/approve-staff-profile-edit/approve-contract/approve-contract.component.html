@@ -1,0 +1,65 @@
+<div class="app-approve-contract-container">
+    <core-page-list
+        [apiDefinition]="apiDefinition"
+        [columns]="columns"
+        [editRoute]="editRoute"
+        [crud]="crud"
+        [normalMode]="true"
+        [autoResizeWithWindow]="true"
+        [outerSort]="outerSort"
+        [outerParam$]="outerParam$"
+        [outerInOperators]="outerInOperators"
+        [left]="orgTree"
+        [height]="height"
+    >
+    </core-page-list>
+
+
+    <ng-template #orgTree>
+        <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)" [height]="treeHeight"> </core-org-tree>
+    </ng-template>
+</div>
+
+<ng-template #address let-address="context.address" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('address')" class="fill-color-column">{{address}}</div>
+</ng-template>
+
+<ng-template #provinceName let-provinceName="context.provinceName" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('provinceId')">{{provinceName}}</div>
+</ng-template>
+
+<ng-template #districtName let-districtName="context.districtName" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('districtId')">{{districtName}}</div>
+</ng-template>
+
+<ng-template #wardName let-wardName="context.wardName" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('wardId')">{{wardName}}</div>
+</ng-template>
+
+<ng-template #curAddress let-curAddress="context.curAddress" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('curAddress')">{{curAddress}}</div>
+</ng-template>
+
+<ng-template #curProvinceName let-curProvinceName="context.curProvinceName" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('curProvinceId')">{{curProvinceName}}</div>
+</ng-template>
+
+<ng-template #curDistrictName let-curDistrictName="context.curDistrictName" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('curDistrictId')">{{curDistrictName}}</div>
+</ng-template>
+
+<ng-template #curWardName let-curWardName="context.curWardName" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('curWardId')">{{curWardName}}</div>
+</ng-template>
+
+<ng-template #mobilePhone let-mobilePhone="context.mobilePhone" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('mobilePhone')">{{mobilePhone}}</div>
+</ng-template>
+
+<ng-template #mobilePhoneLand let-mobilePhoneLand="context.mobilePhoneLand" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('mobilePhoneLand')">{{mobilePhoneLand}}</div>
+</ng-template>
+
+<ng-template #email let-email="context.email" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('email')">{{email}}</div>
+</ng-template>

@@ -1,0 +1,63 @@
+<div class="app-approve-education-container">
+    <core-page-list
+        #pageListRef
+        [apiDefinition]="apiDefinition"
+        [columns]="columns"
+        [editRoute]="editRoute"
+        [crud]="crud"
+        [normalMode]="true"
+        [autoResizeWithWindow]="true"
+        *ngIf="!!educationLevel"
+        [outerSort]="outerSort"
+        [outerParam$]="outerParam$"
+        [outerInOperators]="outerInOperators"
+        [left]="orgTree"
+        [height]="height"
+    >
+    </core-page-list>
+
+
+    <ng-template #orgTree>
+        <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)" [height]="treeHeight"> </core-org-tree>
+    </ng-template>
+</div>
+
+<ng-template #educationLevel let-educationLevel="context.educationLevel" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('educationLevelId')">{{educationLevel}}</div>
+</ng-template>
+
+<ng-template #computerSkill let-computerSkill="context.computerSkill" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('computerSkillId')">{{computerSkill}}</div>
+</ng-template>
+
+<ng-template #license let-license="context.license" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('licenseId')" class="fill-color-column">{{license}}</div>
+</ng-template>
+
+<!-- <ng-template #learningLevel let-learningLevel="context.learningLevel">
+    <div class="fill-color-column">{{learningLevel}}</div>
+</ng-template>
+
+<ng-template #qualificationName let-qualificationName="context.qualificationName">
+    <div class="fill-color-column">{{qualificationName}}</div>
+</ng-template>
+
+<ng-template #qualificationName2 let-qualificationName2="context.qualificationName2">
+    <div class="fill-color-column">{{qualificationName2}}</div>
+</ng-template>
+
+<ng-template #qualificationName3 let-qualificationName3="context.qualificationName3">
+    <div class="fill-color-column">{{qualificationName3}}</div>
+</ng-template>
+
+<ng-template #traningFormName let-traningFormName="context.traningFormName">
+    <div class="fill-color-column">{{traningFormName}}</div>
+</ng-template>
+
+<ng-template #trainingFormName2 let-trainingFormName2="context.trainingFormName2">
+    <div class="fill-color-column">{{trainingFormName2}}</div>
+</ng-template>
+
+<ng-template #trainingFormName3 let-trainingFormName3="context.trainingFormName3">
+    <div class="fill-color-column">{{trainingFormName3}}</div>
+</ng-template> -->

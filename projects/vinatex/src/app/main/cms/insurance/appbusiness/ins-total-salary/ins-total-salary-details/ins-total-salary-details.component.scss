@@ -1,0 +1,89 @@
+.app-ins-total-salary-details-container {
+    width: 100vw * 0.7;
+
+    &>.custom-header-popup {
+        display: flex;
+    }
+
+    &>i {
+        display: block;
+        float: right;
+        font-size: 24px;
+        cursor: pointer;
+        margin: 10px;
+    }
+
+    &>caption {
+        display: block;
+        width: 100%;
+        color: #464646;
+        font-size: 16px;
+    }
+
+    .p2 {
+        padding: 5px;
+    }
+
+    .mt-60 {
+        margin-top: 60px;
+    }
+
+    .d-line {
+        position: relative;
+    }
+
+    .d-line ::after {
+        position: absolute;
+        top: 100%;
+        left: 2px;
+        content: "";
+        background-color: #d1d1d1;
+        width: 98%;
+        height: 0.5px;
+    }
+}
+
+.cl-ct {
+    width: 22%;
+}
+
+
+.t-trans {
+    text-transform: uppercase;
+}
+
+.content-title {
+    text-align: center;
+    padding: 3% 0;
+    font-weight: 500;
+    font-family: 'Roboto';
+}
+
+
+.content-table::after {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    content: "";
+    background-color: #d1d1d1;
+    width: 0.5px;
+    height: 100%;
+}
+
+.content-table {
+    padding: 3% 4%;
+    border: solid 1px #D1D1D1;
+    border-radius: 6px;
+    text-align: end;
+    position: relative;
+}
+
+
+.content-left-table {
+    padding: 3% 4%;
+    text-align: center;
+}
+
+.pad {
+    padding: 6px 0px;
+}

@@ -1,0 +1,88 @@
+<div class="border-container">
+    <div class="null" *ngIf="!checkData">{{ titleNull | translate : lang }}</div>
+
+    <div class="app-outside-company-container">
+      <div class="content">
+        <div class="card-info" *ngFor="let commend of data">
+          <div class="row btn-click d-flex align-items-center">
+            <p class="type">{{ commend.no }}</p>
+            <button (click)="onHandleItemClick(commend)" class="edit icon-wrapper">
+              <i class="d-flex feather-edit-2"></i>
+            </button>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="row no-padding no-margin col-12">
+                <p class="label col-md-6">{{ signDate | translate : lang }}:</p>
+                <p class="text col-md-6">{{ commend.signDate | date : 'dd/MM/yyyy' }}</p>
+              </div>
+              <div class="row no-padding no-margin col-12">
+                <p class="label col-md-6">{{ rewardName | translate : lang }}:</p>   
+                <p class="text col-md-6">{{ commend.rewardName }}</p>
+              </div>
+              <div class="row no-padding no-margin col-12">
+                <p class="label col-md-6">{{ year | translate : lang }}:</p>
+                <p class="text col-md-6">{{ commend.year }}</p>
+              </div>
+              <div class="row no-padding no-margin col-12">
+                <p class="label col-md-6">{{ reasonCommend | translate : lang }}:</p>
+                <p class="text col-md-6">{{ commend.reason }}</p>
+              </div>
+              <div class="row no-padding no-margin col-12">
+                <p class="label col-md-6">{{ paymentNo | translate : lang }}:</p>
+                <p class="text col-md-6">{{ commend.paymentNo }}</p>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="row no-padding no-margin col-12">
+                <p class="label col-md-6">{{ signPaymentDate | translate : lang }}:</p>
+                <p class="text col-md-6">{{ commend.signPaymentDate | date : 'dd/MM/yyyy' }}</p>
+              </div>
+              <div class="row no-padding no-margin col-12">
+                <p class="label col-md-6">{{ rewardLevelName | translate : lang }}:</p>
+                <p class="text col-md-6">{{ commend.rewardLevelName }}</p>
+              </div>
+              <div class="row no-padding no-margin col-12">
+                <p class="label col-md-6">{{ paymentContent | translate : lang }}:</p>
+                <p class="text col-md-6">{{ commend.paymentContent }}</p>
+              </div>
+              <div class="row no-padding no-margin col-12">
+                <p class="label col-md-6">{{ money | translate : lang }}:</p>
+                <p class="text col-md-6">{{ commend.money }}</p>
+              </div>
+              <div class="row no-padding no-margin col-12">
+                <p class="label col-md-6">{{ note | translate : lang }}:</p>
+                <p class="text col-md-6">{{ commend.note }}</p>
+              </div>
+              <div class="row no-padding no-margin col-12">
+                <p class="label col-md-6">{{ statusPaymentName | translate : lang }}:</p>
+                <p class="text col-md-6">{{ commend.statusPaymentName }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- modal -->
+<div id="popup1" class="overlay" *ngIf="showPopup">
+  <div class="popup">
+    <core-page-edit
+      *ngIf="!!sections.length"
+      [width]="600"
+      [sections]="sections"
+      [captionCode]="captionCode"
+      [normalMode]="true"
+      [entityTable]="entityTable"
+      (onFormCreated)="onFormCreated($event)"
+      [autoSubmitLogicOff]="true"
+      (submitLogic)="onClickSubmit($event)"
+      [autoCancelLogicOff]="true"
+      (cancelLogic)="onClickCancel($event)"
+      (onInitialValueStringReady)="onFormReinit($event)"
+      [customFormButtonItems] = "buttonItems"
+    >
+    </core-page-edit>
+  </div>
+</div>

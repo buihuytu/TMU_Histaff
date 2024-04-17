@@ -1,0 +1,73 @@
+<div class="form app-login-container">
+
+    <div class="login-form">
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+            <img class="logo" src="../../../assets/images/vns-logo.png" />
+            <div class="form-group">
+                <div class="label-grp">
+                    <span class="feather-user"></span>
+                    <p>Tên đăng nhập</p>
+                </div>
+                <input class="form-control" placeholder="Tên đăng nhập" type="text" formControlName="username">
+            </div>
+            <div class="h25"></div>
+            <div style="position: relative;" class="form-group">
+                <div class="label-grp">
+                    <span class="feather-lock"></span>
+                    <p>Mật khẩu</p>
+                </div>
+                <input id="passWord" class="form-control" placeholder="Mật khẩu" type="password"
+                    formControlName="password">
+                <i [class]="!!!visiblePassword ? 'feather-eye' : 'feather-eye-off'"
+                    (click)="toggglePassword($event)"></i>
+            </div>
+            <!-- <div class="h100"></div>
+            <div class="form-group horizontal">
+                <button class="btn btn-primary" type="submit">Đăng nhập</button>
+            </div> -->
+
+            <div class="sign-in">
+                <div class="remember">
+                    <label class="container">
+                        <input type="checkbox" formControlName="remember">
+                        <span class="checkmark"></span>
+                        <p>Ghi nhớ tài khoản</p>
+                    </label>
+                </div>
+                <!-- <div class="forget" style="width: 50%;">
+                    <a href="#">Quên mật khẩu?</a>
+                </div> -->
+            </div>
+            <!-- <label class="form-error h100" *ngIf="!!initializationError">{{ initializationError }}</label> -->
+            <div class="d-flex d-flex-between">
+                <button type="submit" id="submit">Đăng nhập</button>
+                @if (webSsoEnabled) {
+                    <div class="w50"></div>
+                    <button type="button" (click)="ssoLogin()">Đăng nhập SSO</button>
+                }
+            </div>
+        </form>
+        <div class="copyright">
+            <p>
+                Copyright © Công ty cổ phần Tư vấn Quản trị Doanh nghiệp Tinh Vân
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- <div>
+    <div id="demo-buttons">
+        <button type="button" id="register-button" label="Register credential" raised>Register credential</button>
+        <button type="button" id="authenticate-button" label="Authenticate with credential" raised>Authenticate with credential</button>
+        <i class="material-icons" id="loader">autorenew</i>
+    </div>
+
+    <button type="button" id="delete-button" label="Delete credential" raised>
+        <i class="material-icons" slot="left-icon">Delete credential</i>
+    </button>
+
+    <script src="js/webauthn.js"></script>
+</div> -->

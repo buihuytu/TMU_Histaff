@@ -1,0 +1,63 @@
+.app-family-info-container {
+    .list-family {
+        padding: 2rem 2rem;
+        border: 1px solid #d1d1d1;
+        border-radius: 10px;
+        margin: 0 2px;
+
+        .person-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #464646;
+        }
+
+        .text-title {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 40px;
+            color: #848484;
+        }
+
+        .text-content {
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 40px;
+            color: #464646;
+        }
+
+        .btn-edit {
+            outline: none;
+            border: none;
+            background: none;
+        }
+
+        .color-warning {
+            color: #ffc107;
+        }
+
+        .color-info {
+            color: #0dcaf0;
+        }
+
+        .refuse-color {
+            color: red;
+        }
+
+        .delete {
+            width: 3vh;
+            height: 3vh;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            border: none;
+            border-radius: 50%;
+            justify-content: center;
+
+            :hover {
+                cursor: pointer;
+            }
+        }
+
+    }
+}

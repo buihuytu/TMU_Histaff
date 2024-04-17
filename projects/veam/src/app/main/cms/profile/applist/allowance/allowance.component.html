@@ -1,0 +1,19 @@
+<div class="contracttype-profile-container">
+  <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+  [title]="title" 
+  [autoResizeWithWindow]="true"
+  ></core-page-list>
+  <ng-template #isInsurance let-isInsurance="context.isInsurance">
+    <core-checkbox [disabled]="true" [inputValue]="isInsurance"></core-checkbox> 
+  </ng-template>
+  <ng-template #isCoefficient let-isCoefficient="context.isCoefficient">
+    <core-checkbox [disabled]="true" [inputValue]="isCoefficient"></core-checkbox> 
+  </ng-template>
+  <ng-template #isSal let-isSal="context.isSal">
+    <core-checkbox [disabled]="true" [inputValue]="isSal"></core-checkbox> 
+  </ng-template>
+
+  <ng-template #sticker let-code="context.isActiveStr">
+    <core-status-sticker [code]="code"></core-status-sticker>
+  </ng-template>
+</div>

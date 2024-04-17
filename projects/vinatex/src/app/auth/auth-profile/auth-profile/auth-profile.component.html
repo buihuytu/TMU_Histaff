@@ -1,0 +1,17 @@
+<div #container class="app-auth-profile-container">
+    <div class="avatar-block" (click)="onAvatarBlockClick()">
+        <img #avatarImg [src]="smartAvatar">
+        <a class="full-name">
+            <span>{{ fullname }}</span>
+        </a>
+        <span class="feather-chevron-down"  (mouseout)="expandState = false"></span>
+    </div>
+    <div class="dropdown" [class.open]="expandState">
+        <ul>
+            <li *ngFor="let item of menu" (click)="onMenuItemClick(item)">
+                <i [class]="item.iconClass"></i>
+                <span>{{ item.translateCode | translate: lang }}</span>
+            </li>
+        </ul>
+    </div>
+</div>

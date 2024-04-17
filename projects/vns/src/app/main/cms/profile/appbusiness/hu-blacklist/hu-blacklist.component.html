@@ -1,0 +1,31 @@
+<div class="rc-exams-container">
+    <core-page-list
+        [apiDefinition]="apiDefinition"
+        [columns]="columns"
+        [crud]="crud"
+        [title]="title"
+        [normalMode]="false"
+        [autoResizeWithWindow]="true"
+
+        [left]="orgTree"
+        [outerInOperators]="outerInOperators"
+
+        [top]="paramKitCustom"
+        [outerFilterOperators]="outerFilterOperators"
+    >
+    </core-page-list>
+
+
+    <ng-template #orgTree>
+        <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)"> </core-org-tree>
+    </ng-template>
+
+
+    <ng-template #paramKitCustom>
+        <div class="row">
+            <div class="col-md-12">
+                <core-header-params [rows]="paramRows"></core-header-params>
+            </div>
+        </div>
+    </ng-template>
+</div>

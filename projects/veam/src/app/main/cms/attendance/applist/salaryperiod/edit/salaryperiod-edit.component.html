@@ -1,0 +1,7 @@
+<div class="app-salaryperiod-edit">
+  <core-page-edit *ngIf="!!sections.length" [width]="1000" [captionCode]="captionCode"
+    [leftInputSections]="leftSections" [leftInputSectionsFlexSize]="3" [sections]="sections" [crud]="crud"
+    [entityTable]="entityTable" (onFormCreated)="onFormCreated($event)"
+    [normalMode]="true"
+    (onInitialValueStringReady)="onFormReinit($event)"></core-page-edit>
+</div>

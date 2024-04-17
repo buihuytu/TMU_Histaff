@@ -1,0 +1,121 @@
+.app-auth-profile-container {
+
+    position: relative;
+
+    a {
+        text-decoration: none;
+        color: #464646;
+    }
+
+    &>.avatar-block {
+        &>.feather-chevron-down{
+            font-size : 15px;
+            margin-left: 10px;
+            font-weight: 300!important;
+        }
+
+        cursor: pointer;
+        padding: calc(var(--size-layout-block-cell-spacing) / 2);
+
+        &>img {
+            width: var(--size-form-control-height);
+            height: var(--size-form-control-height);
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: calc(var(--size-layout-block-cell-spacing) / 2);
+        }
+
+        & span {
+            font-size: 13px;
+            // font-weight: 700;
+        }
+
+    }
+
+    &>.dropdown {
+        position: absolute;
+        width: var(--size-left-bar-full-width);
+        top: var(--size-form-control-height);
+        right: 0px;
+        height: 0px;
+        overflow: hidden;
+        transition: height .5s ease-out;
+        --color-menu-level-1: #848484;
+        font-family: "Roboto", sans-serif !important;
+
+        color: var(--color-menu-level-1);
+
+        &>ul {
+            background-color: white;
+
+            &>li {
+
+                height: var(--size-form-control-height);
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+
+                &>i {
+                    margin-right: var(--size-layout-block-cell-spacing);
+                }
+            }
+        }
+    }
+
+    &>.dropdown.open {
+        display: block;
+        background-color: var(--color-bg-block);
+        padding: var(--size-layout-block-cell-spacing);
+        height: calc(var(--size-form-control-height) * 2 + var(--size-layout-block-cell-spacing) * 2);
+        transition: height .5s ease-out;
+        box-shadow: var(--decoration-box-shadow);
+    }
+    .full-name{
+        margin-left:5px
+    }
+
+    @media(max-width: 992px) {
+        .avatar-block>span {
+            display: none;
+        }
+
+        .avatar-block>img {
+            margin-right: 0;
+        }
+    }
+    @media(max-width: 768px) {
+        .full-name{
+            display: none;
+        }
+    }
+
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgb(0 0 0 / 52%);
+    transition: opacity 200ms;
+    z-index: 99999;
+    cursor: default;
+}
+
+@media (max-device-width: 700px) {
+    .popup {
+        width: 80% !important;
+    }
+}
+
+.popup {
+    margin: 30vh auto;
+    padding: 0 3vh;
+    background: #fff;
+    border-radius: 1vh;
+    width: 30%;
+    position: relative;
+    transition: all 500ms ease-in-out;
+    cursor: default;
+}

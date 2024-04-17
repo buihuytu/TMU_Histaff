@@ -1,0 +1,13 @@
+<div class="app-general-overview-container">
+    <div class="row mb-3">
+        <div *ngFor="let i of generalInfo" class="col-md-3 item">
+            <div class="item-icon">
+                <img [src]="i.urlAsset" />
+            </div>
+            <div class="item-text">
+                <span class="value">{{i.value}}</span>
+                <p class="item-title">{{i.text | translate: lang}}</p>
+            </div>
+        </div>
+    </div>
+</div>

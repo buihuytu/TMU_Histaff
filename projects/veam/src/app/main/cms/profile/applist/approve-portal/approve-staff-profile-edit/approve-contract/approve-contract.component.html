@@ -1,0 +1,65 @@
+<div class="app-approve-contract-container">
+    <core-page-list
+        [apiDefinition]="apiDefinition"
+        [columns]="columns"
+        [editRoute]="editRoute"
+        [crud]="crud"
+        [normalMode]="true"
+        [autoResizeWithWindow]="true"
+        [outerSort]="outerSort"
+        [outerParam$]="outerParam$"
+        [outerInOperators]="outerInOperators"
+        [left]="orgTree"
+        [height]="height"
+    >
+    </core-page-list>
+
+
+    <ng-template #orgTree>
+        <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)" [height]="treeHeight"> </core-org-tree>
+    </ng-template>
+</div>
+
+<ng-template #address let-address="context.address">
+    <div class="fill-color-column">{{address}}</div>
+</ng-template>
+
+<ng-template #provinceName let-provinceName="context.provinceName">
+    <div class="fill-color-column">{{provinceName}}</div>
+</ng-template>
+
+<ng-template #districtName let-districtName="context.districtName">
+    <div class="fill-color-column">{{districtName}}</div>
+</ng-template>
+
+<ng-template #wardName let-wardName="context.wardName">
+    <div class="fill-color-column">{{wardName}}</div>
+</ng-template>
+
+<ng-template #curAddress let-curAddress="context.curAddress">
+    <div class="fill-color-column">{{curAddress}}</div>
+</ng-template>
+
+<ng-template #curProvinceName let-curProvinceName="context.curProvinceName">
+    <div class="fill-color-column">{{curProvinceName}}</div>
+</ng-template>
+
+<ng-template #curDistrictName let-curDistrictName="context.curDistrictName">
+    <div class="fill-color-column">{{curDistrictName}}</div>
+</ng-template>
+
+<ng-template #curWardName let-curWardName="context.curWardName">
+    <div class="fill-color-column">{{curWardName}}</div>
+</ng-template>
+
+<ng-template #mobilePhone let-mobilePhone="context.mobilePhone">
+    <div class="fill-color-column">{{mobilePhone}}</div>
+</ng-template>
+
+<ng-template #mobilePhoneLand let-mobilePhoneLand="context.mobilePhoneLand">
+    <div class="fill-color-column">{{mobilePhoneLand}}</div>
+</ng-template>
+
+<ng-template #email let-email="context.email">
+    <div class="fill-color-column">{{email}}</div>
+</ng-template>

@@ -1,0 +1,16 @@
+<div class="pe-capacity-framework-container">
+    <core-page-list
+        [apiDefinition]="apiDefinition"
+        [columns]="columns"
+        [crud]="crud"
+        [title]="title"
+        [normalMode]="false"
+        [autoResizeWithWindow]="true"
+    >
+    </core-page-list>
+
+
+    <ng-template #sticker let-code="context.status">
+        <core-status-sticker [code]="code"></core-status-sticker>
+    </ng-template>
+</div>

@@ -1,0 +1,31 @@
+<div class="app-favourite-screens-container" [ngStyle]="{
+    border: '1px solid #D1D1D1',
+    borderRadius: '5px',
+    maxWidth: '100%',
+    height: '100%',
+    overflowX: 'auto'
+}">
+    <div [ngStyle]="{
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    padding: layoutService.basicSpacing/2 + 'px',
+    position: 'absolute',
+    height: '44px',
+}">{{ 'MỌI NGƯỜI ĐANG XEM GÌ?' | translate: lang | uppercase }}</div>
+<div [ngStyle]="{
+    paddingTop: '44px',
+}">
+<ngx-charts-pie-chart
+                [view]="view"
+                [scheme]="colorScheme"
+                [results]="single"
+                [legend]="showLegend"
+                [explodeSlices]="true"
+                [labels]="showLabels"
+                [doughnut]="doughnut"
+                [gradient]="gradient"
+                [labelFormatting]="labelFormatting"
+              ></ngx-charts-pie-chart>
+</div>
+</div>

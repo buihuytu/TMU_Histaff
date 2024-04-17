@@ -1,0 +1,18 @@
+<div class="other-list-container">
+  <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+    [title]="title" [left]="coreList" 
+    [outerParam$]="outerParam$"
+    [outerFilterOperators]="outerFilterOperators"
+    [autoResizeWithWindow]="true"
+    ></core-page-list>
+
+  <ng-template #coreList>
+    <core-list [options]="otherListOption" [(ngModel)]="typeId" (ngModelChange)="onOtherListTypeChange($event)">
+    </core-list>
+  </ng-template>
+
+  <ng-template #sticker let-code="context.status">
+    <core-status-sticker [code]="code"></core-status-sticker>
+</ng-template>
+
+</div>

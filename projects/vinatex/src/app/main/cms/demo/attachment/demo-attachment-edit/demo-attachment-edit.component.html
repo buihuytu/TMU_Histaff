@@ -1,0 +1,3 @@
+<core-page-edit [normalMode]="true" *ngIf="!!sections.length" [captionCode]="captionCode" [leftInputSections]="leftSections"
+    [leftInputSectionsFlexSize]="leftSectionsFlexSize" [sections]="sections" [crud]="crud" [entityTable]="entityTable"
+    (onFormCreated)="onFormCreated($event)" (onInitialValueStringReady)="onFormReinit($event)"></core-page-edit>

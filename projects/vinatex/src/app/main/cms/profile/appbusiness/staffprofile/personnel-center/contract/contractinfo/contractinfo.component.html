@@ -1,0 +1,41 @@
+<div class="app-contract-container">
+    <div class="header-text">{{title | translate: lang }}</div>
+    <div class="content">
+        <div class="card-info" *ngFor="let member of members">
+            <p class="type">{{member.contractType}}</p>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{contractNo | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.contractNo}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{startDate | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.startDate | date: 'dd/MM/yyyy'}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{expireDate | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.expireDate | date: 'dd/MM/yyyy'}}</p> 
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{signDate | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.signDate | date: 'dd/MM/yyyy'}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{signerName | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.signerName }}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{signPos | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.signPos }}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{statusName | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.statusName }}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{note | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.note }}</p>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,50 @@
+<div class="app-commend-container">
+    <div class="header-text">{{title | translate : lang }}</div>
+    <div class="content">
+        <div class="card-info" *ngFor="let commend of commends">
+            <h3 class="header-content type"> {{ commend.no }}</h3>
+            <div class="row no-padding no-margin">
+                <!-- số quyết định khen thưởng -->
+                <p class="label col-md-2">{{ no | translate: lang}}</p>
+                <p class="text col-md-4">{{commend.no | translate: lang}}</p>
+
+                <!-- số quyết định chi thưởng -->
+                <p class="label col-md-2">{{ paymentNo | translate: lang}}</p>
+                <p class="text col-md-4">{{commend.paymentNo | translate: lang}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <!-- ngày ký khen thưởng -->
+                <p class="label col-md-2">{{ signDate | translate: lang}}</p>
+                <p class="text col-md-4">{{commend.signDate | date: "dd/MM/yyyy"}}</p>
+
+                <!-- ngày ký chi thưởng -->
+                <p class="label col-md-2">{{ signPaymentDate | translate: lang}}</p>
+                <p class="text col-md-4">{{commend.signPaymentDate | date: "dd/MM/yyyy"}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <!-- cấp khen thưởng -->
+                <p class="label col-md-2">{{ orgLevelName | translate: lang}}</p>
+                <p class="text col-md-4">{{commend.orgLevelName | translate: lang}}</p>
+
+                <!-- cấp chi thưởng -->
+                <p class="label col-md-2">{{ rewardLevelName | translate: lang}}</p>
+                <p class="text col-md-4">{{commend.rewardLevelName | translate: lang}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <!-- danh hiệu khen thưởng -->
+                <p class="label col-md-2">{{ awardTitleName | translate: lang}}</p>
+                <p class="text col-md-4">{{commend.awardTitleName | translate: lang}}</p>
+
+                <p class="label col-md-2">{{ rewardName | translate: lang}}</p>
+                <p class="text col-md-4">{{commend.rewardName | translate: lang}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{ reason | translate: lang}}</p>
+                <p class="text col-md-4">{{commend.reason | translate: lang}}</p>
+
+                <p class="label col-md-2">{{ money | translate: lang}}</p>
+                <p class="text col-md-4">{{commend.money | translate: lang}}</p>
+            </div>
+        </div>
+    </div>
+</div>

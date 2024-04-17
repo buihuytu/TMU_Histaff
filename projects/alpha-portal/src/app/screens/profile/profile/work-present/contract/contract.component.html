@@ -1,0 +1,105 @@
+<div class="accordion" id="accordionPanelsStayOpenExample">
+  <div class="accordion-item" *ngFor="let item of data">
+    <h2 class="accordion-header" [attr.id]="'panelsStayOpen-heading' + item.id">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        [attr.data-bs-target]="'#panelsStayOpen-collapse' + item.id"
+        aria-expanded="true"
+        [attr.aria-controls]="'panelsStayOpen-collapse' + item.id"
+      >
+        <div class="header-content">
+          <div class="row btn-click d-flex align-items-center">
+            <p class="header-title">
+              {{ item.contractType | translate : lang }}
+            </p>
+            <button (click)="onHandleItemClick(item)" class="edit icon-wrapper">
+              <i class="d-flex feather-edit-2"></i>
+            </button>
+          </div>
+          <div class="info">
+            <div class="row no-padding no-margin col-12">
+              <p class="label col-md-3">{{ contractNo | translate : lang }}:</p>
+              <p class="text col-md-4">{{ item.contractNo }}</p>
+            </div>
+            <div class="row no-padding no-margin col-12">
+              <p class="label col-md-3">{{ salInsu | translate : lang }}:</p>
+              <p class="text col-md-4">{{ item.salInsu | tableCell:"NUMBER": lang }} VNĐ</p>
+
+              <!-- <p class="text col-md-4">{{ getSalInsu | tableCell:"NUMBER": lang }} VNĐ</p> -->
+            </div>
+            <div class="row no-padding no-margin col-12">
+              <p class="label col-md-3">{{ startDate | translate : lang }}:</p>
+              <p class="text col-md-4">{{ item.startDate | date : 'dd/MM/yyyy' }}</p>
+            </div>
+            <div class="row no-padding no-margin col-12">
+              <p class="label col-md-3">{{ expireDate | translate : lang }}:</p>
+              <p class="text col-md-4">{{ item.expireDate | date : 'dd/MM/yyyy' }}</p>
+            </div>
+          </div>
+        </div>
+      </button>
+    </h2>
+    <div [attr.id]="'panelsStayOpen-collapse' + item.id" class="accordion-collapse collapse">
+      <div class="accordion-body col-12">
+        <div class="pd-t">
+          <div class="header-title">Phụ lục hợp đồng</div>
+          <div class="content">
+            <div class="info col-md-4" *ngFor="let p of item.appendix">
+              <div class="row no-padding no-margin col-12">
+                <p class="label col-md-6">{{ contractAppendixNo | translate : lang }}:</p>
+                <p class="text col-md-6">{{ p.contractAppendixNo }}</p>
+              </div>
+              <div class="row no-padding no-margin col-12">
+                <p class="label col-md-6">{{ startDate | translate : lang }}:</p>
+                <p class="text col-md-6">{{ p.startDate | date : 'dd/MM/yyyy' }}</p>
+              </div>
+              <div class="row no-padding no-margin col-12">
+                <p class="label col-md-6">{{ expireDate | translate : lang }}:</p>
+                <p class="text col-md-6">{{ p.expireDate | date : 'dd/MM/yyyy' }}</p>
+              </div>
+              <div class="row no-padding no-margin col-12">
+                <p class="label col-md-6">{{ signDate | translate : lang }}:</p>
+                <p class="text col-md-6">{{ p.signDate | date : 'dd/MM/yyyy' }}</p>
+              </div>
+              <div class="row no-padding no-margin col-12">
+                <p class="label col-md-6">{{ allowanceName | translate : lang }}:</p>
+                <p class="text col-md-6">{{ p.allowanceName  }}</p>
+              </div>
+              <div class="row no-padding no-margin col-12">
+                <p class="label col-md-6">{{ coefficient | translate : lang }}:</p>
+                <p class="text col-md-6">{{ p.coefficient | tableCell:"NUMBER": lang }}</p>
+              </div>
+              <div class="row no-padding no-margin col-12">
+                <p class="label col-md-6">{{ salInsu | translate : lang }}:</p>
+                <p class="text col-md-6">{{ p.salInsu | tableCell:"NUMBER": lang }} VNĐ</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<div id="popup1" class="overlay" *ngIf="showPopup">
+  <div class="popup">
+    <core-page-edit
+      *ngIf="!!sections.length"
+      [width]="600"
+      [sections]="sections"
+      [captionCode]="captionCode"
+      [normalMode]="true"
+      [entityTable]="entityTable"
+      (onFormCreated)="onFormCreated($event)"
+      [autoSubmitLogicOff]="true"
+      (submitLogic)="onClickSubmit($event)"
+      [autoCancelLogicOff]="true"
+      (cancelLogic)="onClickCancel($event)"
+      (onInitialValueStringReady)="onFormReinit($event)"
+      [customFormButtonItems] = "buttonItems"
+    >
+    </core-page-edit>
+  </div>
+</div>

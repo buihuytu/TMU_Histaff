@@ -1,0 +1,390 @@
+<div class="app-additional-info-container">
+    <div class="row list-data">
+        <div class="row mt-1">
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="label-text">Sổ hộ chiếu:</span>
+                    </div>
+                    <div class="col-md-6 label-content">
+                        <span class="passNo">{{listAdditionalInfo?.passNo}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="label-text">Visa:</span>
+                    </div>
+                    <div class="col-md-6 label-content">
+                        <span class="visaNo">{{listAdditionalInfo?.visaNo}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <button
+                    *ngIf="listAdditionalInfoApproving.length == 0 && listAdditionalInfoSave.length == 0 && listAdditionalInfoUnapprove.length == 0"
+                    (click)="clickBtnEdit(listAdditionalInfo)" class="btn-edit">
+                    <i class="feather-edit-2"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row mt-1">
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="label-text">Ngày cấp:</span>
+                    </div>
+                    <div class="col-md-6 label-content">
+                        <span class="passDate">{{listAdditionalInfo?.passDate | tableCell: 'DATE' : lang}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="label-text">Ngày cấp:</span>
+                    </div>
+                    <div class="col-md-6 label-content"><span class="visaDate">{{listAdditionalInfo?.visaDate |
+                            tableCell: 'DATE' : lang}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-1">
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="label-text">Ngày hết hạn:</span>
+                    </div>
+                    <div class="col-md-6 label-content">
+                        <span class="passExpire"><span>{{listAdditionalInfo?.passExpire | tableCell: 'DATE' :
+                                lang}}</span> </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="label-text">Ngày hết hạn:</span>
+                    </div>
+                    <div class="col-md-6 label-content"><span class="visaExpire">{{listAdditionalInfo?.visaExpire |
+                            tableCell: 'DATE' : lang}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-1">
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="label-text">Nơi cấp:</span>
+                    </div>
+                    <div class="col-md-6 label-content">
+                        <span class="passPlace">{{listAdditionalInfo?.passPlace}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="label-text">Nơi cấp:</span>
+                    </div>
+                    <div class="col-md-6 label-content"><span class="visaPlace">{{listAdditionalInfo?.visaPlace}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 20px;" *ngIf="!!title" class="row list-data">
+        <div class="row" style="color:red">Lý do không phê duyệt</div>
+        <div class="row">{{title}}</div>
+    </div>
+
+    <span *ngIf="!!!id">
+        <div class="row list-data mt-3" *ngFor="let item of listAdditionalInfoSave">
+            <div class="row">
+                <span class="color-info">(Đã lưu)</span>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Sổ hộ chiếu:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            <span class="passNo">{{item?.passNo}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Visa:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            <span class="visaNo">{{item?.visaNo}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <button (click)="clickBtnSaveEdit(item)" class="btn-edit">
+                        <i class="feather-edit-2"></i>
+                    </button>
+                    <button (click)="clickBtnDelete(item)" class="btn-edit">
+                        <i class="feather-trash-2"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Ngày cấp:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            <span class="passDate">{{item?.passDate | tableCell: 'DATE' : lang}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Ngày cấp:</span>
+                        </div>
+                        <div class="col-md-6 label-content"><span class="visaDate">{{item?.visaDate | tableCell: 'DATE'
+                                : lang}}</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Ngày hết hạn:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            <span class="passExpire">{{item?.passExpire | tableCell: 'DATE' : lang}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Ngày hết hạn:</span>
+                        </div>
+                        <div class="col-md-6 label-content"><span class="visaExpire">{{item?.visaExpire | tableCell:
+                                'DATE' : lang}}</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Nơi cấp:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            <span class="passPlace">{{item?.passPlace}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Nơi cấp:</span>
+                        </div>
+                        <div class="col-md-6 label-content"><span class="visaPlace">{{item?.visaPlace}}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row list-data mt-3" *ngFor="let item of listAdditionalInfoUnapprove">
+            <div class="row">
+                <span class="color-danger">Từ chối ({{item.reason}})</span>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Sổ hộ chiếu:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            <span class="passNo">{{item?.passNo}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Visa:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            <span class="visaNo">{{item?.visaNo}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <button (click)="clickBtnSaveEdit(item)" class="btn-edit">
+                        <i class="feather-edit-2"></i>
+                    </button>
+                    <button (click)="clickBtnDelete(item)" class="btn-edit">
+                        <i class="feather-trash-2"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Ngày cấp:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            <span class="passDate">{{item?.passDate | tableCell: 'DATE' : lang}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Ngày cấp:</span>
+                        </div>
+                        <div class="col-md-6 label-content"><span class="visaDate">{{item?.visaDate | tableCell: 'DATE'
+                                : lang}}</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Ngày hết hạn:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            <span class="passExpire">{{item?.passExpire | tableCell: 'DATE' : lang}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Ngày hết hạn:</span>
+                        </div>
+                        <div class="col-md-6 label-content"><span class="visaExpire">{{item?.visaExpire | tableCell:
+                                'DATE' : lang}}</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Nơi cấp:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            <span class="passPlace">{{item?.passPlace}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Nơi cấp:</span>
+                        </div>
+                        <div class="col-md-6 label-content"><span class="visaPlace">{{item?.visaPlace}}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row list-data mt-3" *ngFor="let item of listAdditionalInfoApproving">
+            <div class="row">
+                <span class="color-warning">(Chờ phê duyệt)</span>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Sổ hộ chiếu:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.passNo}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Visa:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.visaNo}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Ngày cấp:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.passDate | tableCell: 'DATE' : lang}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Ngày cấp:</span>
+                        </div>
+                        <div class="col-md-6 label-content">{{item?.visaDate | tableCell: 'DATE' : lang}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Ngày hết hạn:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.passExpire | tableCell: 'DATE' : lang}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Ngày hết hạn:</span>
+                        </div>
+                        <div class="col-md-6 label-content">{{item?.visaExpire | tableCell: 'DATE' : lang}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Nơi cấp:</span>
+                        </div>
+                        <div class="col-md-6 label-content">
+                            {{item?.passPlace}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="label-text">Nơi cấp:</span>
+                        </div>
+                        <div class="col-md-6 label-content">{{item?.visaPlace }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </span>
+
+
+</div>

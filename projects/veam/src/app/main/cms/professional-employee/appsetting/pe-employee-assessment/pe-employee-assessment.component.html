@@ -1,0 +1,70 @@
+<div class="app-content">
+    <core-page-header [title]="title" [hideButtonGroup]="true">
+    </core-page-header>
+
+
+    <core-composition
+      [main]="main"
+      [top]="topParamKit"
+    >
+    </core-composition>
+
+
+    <ng-template #topParamKit>
+        <div class="row no-padding mb15">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="" class="label-style">{{ evaluationPeriodName | translate: lang }}</label>
+
+                    <core-dropdown
+                        [(ngModel)]="evaluationPeriodValues"
+                        [options$]="evaluationPeriodOptions$"
+                        [getByIdObject$]="evaluationPeriodGetByIdObject$"
+                        [shownFrom]="'name'"
+                        (ngModelChange)="onDropDownListEvaluationPeriodChange($event)"
+                    >
+                    </core-dropdown>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+
+    <ng-template #main>
+        <div class="container-fluid no-padding no-margin">
+            <div class="row no-padding no-margin">
+                <div class="col-md-7">
+                    <app-screen-left
+                        [whenInstanceNumberChange]="instanceNumberNow"
+                        [huCompetencyPeriodId]="huCompetencyPeriodId"
+                        (selectedIdsChange)="onSelectedIdsChange($event)"
+                    >
+                    </app-screen-left>
+                </div>
+
+                <div class="col-md-1">
+                    <div id="customize-group-button">
+                        <div class="customize-button" id="reverse-img" (click)="deleteEmployee()">
+                            <img src="data:image/svg+xml,%3Csvg width='16' height='20' viewBox='0 0 16 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L15 10L1 19V1Z' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" alt="SVG Example">
+                        </div>
+
+                        <br>
+
+                        <div class="customize-button" (click)="addEmployee()">
+                            <img src="data:image/svg+xml,%3Csvg width='16' height='20' viewBox='0 0 16 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L15 10L1 19V1Z' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" alt="SVG Example">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <app-screen-right
+                        [whenInstanceNumberChange]="instanceNumberNow"
+                        [huCompetencyPeriodId]="huCompetencyPeriodId"
+                        (selectedIdsChange)="onSelectedIdsChange2($event)"
+                    >
+                    </app-screen-right>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>

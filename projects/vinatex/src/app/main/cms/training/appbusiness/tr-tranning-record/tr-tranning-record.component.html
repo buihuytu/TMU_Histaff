@@ -1,0 +1,93 @@
+<div class="rc-exams-container-container">
+    <core-page-list
+        [apiDefinition]="apiDefinition"
+        [columns]="columns"
+        [crud]="crud"
+        [title]="title"
+        [normalMode]="false"
+        [autoResizeWithWindow]="true"
+        
+        [top]="topParamKit"
+        [outerInOperators]="outerInOperators"
+        [outerFilterOperators]="outerFilterOperators"
+    >
+    </core-page-list>
+
+
+    <ng-template #topParamKit>
+        <div class="row no-padding mb15">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="" class="label-style">{{ employeeSeekerName | translate: lang }}</label>
+                    
+                    <core-form-control-seeker
+                        [boundFrom]="'id'"
+                        [shownFrom]="'fullname'"
+                        [multiMode]="false"
+                        [paramMode]="true"
+                        [(ngModel)]="employeeId"
+                        [seekerSourceType]="employeeSeekerType"
+                        (ngModelChange)="onEmployeeChange($event)"
+                    >
+                    </core-form-control-seeker>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="" class="label-style">{{ datePickerName1 | translate: lang }}</label>
+
+                    <core-date-picker
+                        [(ngModel)]="dateFromPicker"
+                        (ngModelChange)="onDateFromChange($event)"
+                    >
+                    </core-date-picker>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="" class="label-style">{{ datePickerName2 | translate: lang }}</label>
+
+                    <core-date-picker
+                        [(ngModel)]="dateToPicker"
+                        (ngModelChange)="onDateToChange($event)"
+                    >
+                    </core-date-picker>
+                </div>
+            </div>
+        </div>
+
+        <div class="row no-padding mb15">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="" class="label-style">{{ courseName | translate: lang }}</label>
+
+                    <core-dropdown
+                        [(ngModel)]="courseValues"
+                        [options$]="courseOptions$"
+                        [getByIdObject$]="courseGetByIdObject$"
+                        [shownFrom]="'name'"
+                        (ngModelChange)="onDropDownListCourseChange($event)"
+                    >
+                    </core-dropdown>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="" class="label-style">{{ workStatusName | translate: lang }}</label>
+
+                    <core-checklist
+                        [(ngModel)]="workStatusValues"
+                        [options$]="workStatusOptions$"
+                        [getByIdObject$]="workStatusGetByIdObject$"
+                        [shownFrom]="'name'"
+                        (ngModelChange)="onCheckListworkStatusChange($event)"
+                    >
+                    </core-checklist>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>

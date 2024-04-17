@@ -1,0 +1,11 @@
+<core-tabs [headers]="headers" [contents]="[ insideCompany, outsideCompany ]"
+(onHeaderClick)="onCoreTabsHedaerClick($event)">
+</core-tabs>
+
+<ng-template #insideCompany>
+    <app-inside-company></app-inside-company>
+</ng-template>
+
+<ng-template #outsideCompany>
+    <app-outside-company></app-outside-company>
+</ng-template>

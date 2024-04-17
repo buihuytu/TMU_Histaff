@@ -1,0 +1,12 @@
+<div class="row full-width dash-card" [ngStyle]="{ height: height + 'px' }">
+    <div class="h35 title w-100 d-flex d-flex-center chart-block-header"
+        style="background-color:#dee2e6; border-radius: 10px 10px 0 0; color: #4B4B4D;">BIỂU ĐỒ THÂM NIÊN
+    </div>
+    <div class="dash-card-content dash-card-content-summary full-width">
+        <div class="row full-width">
+            <highcharts-chart [Highcharts]="Highcharts" [options]="options"
+                style="width: 100%; display: block; margin: auto; float: left;">
+            </highcharts-chart>
+        </div>
+    </div>
+</div>

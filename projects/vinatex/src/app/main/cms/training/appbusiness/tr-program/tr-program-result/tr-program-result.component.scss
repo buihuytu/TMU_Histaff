@@ -1,0 +1,28 @@
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.core-page-header {
+    width: 95%;
+}
+
+.captionText {
+    margin-left: 10px;
+}
+
+.feather-x {
+    display: flex;
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+    border-left: 1px solid #d1d1d1;
+    padding-left: 5px;
+    color: #2a2929;
+}
+
+.vertical-custom {
+    margin-top: 0px;
+}

@@ -1,0 +1,225 @@
+<div #container class="app-payroll-note-container">
+    <div class="row no-padding no-margin">                
+        <div class="row col-md-6 no-padding no-margin">
+                <div class="col-md-6">
+                    <div class="form-group vertical" >
+                        <label class="label-form">Năm</label>
+                        <core-dropdown [(ngModel)]="year" (ngModelChange)="onYearChange($event)"
+                        [options$]="yearOptions$" [getByIdObject$]="yearGetByIdObject$"
+                        [shownFrom]="shownFrom"></core-dropdown>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group vertical">
+                    <label class="label-form">Kỳ công</label>
+                    <core-dropdown [(ngModel)]="salPeriod" (ngModelChange)="onSalPeriodChange($event)"
+                        [options$]="salaryPeridOptions$" [getByIdObject$]="salaryPeriodGetByIdObject$"
+                        [shownFrom]="shownFrom"></core-dropdown>
+                    </div>
+                </div>
+            
+        </div>
+        
+            
+        <div class="row no-padding no-margin">
+            <div class="col-md-6">
+                <div class="detail-payroll mt-4">
+                    <div class="border-line">
+                        <div class="row" style="padding-bottom: 16px;">
+                            <div class="col-12 d-flex">
+                                <img class="icon" src="assets/images/home/circle-plus.svg">
+                                <div class="title-item d-flex d-flex-center">{{ listIncome | translate : lang }}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="lebel-item">Mức lương</p>
+                            </div>
+                            <div class="col-6 value">
+                                {{ data.cl10 | number }} 
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="lebel-item">Tiền thưởng</p>
+                            </div>
+                            <div class="col-6 value">
+                                {{ data.csum3 | number }} 
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="lebel-item">Luơng Bổ sung</p>
+                            </div>
+                            <div class="col-6 value">
+                                {{ data.totalPayrollSub }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="lebel-item">Lương tạm ứng</p>
+                            </div>
+                            <div class="col-6 value">
+                                {{ data.csum4 }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="lebel-item">Phụ cấp trách nhiệm</p>
+                            </div>
+                            <div class="col-6 value">
+                                {{ data.cl4 | number }} 
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="lebel-item">Phụ cấp công việc</p>
+                            </div>
+                            <div class="col-6 value">
+                                {{ data.cl6 | number }} 
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="lebel-item">Điểm công việc</p>
+                            </div>
+                            <div class="col-6 value">
+                                {{ data.cl7 }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="lebel-item">Ngày công chuẩn</p>
+                            </div>
+                            <div class="col-6 value">
+                                {{ data.cw1 }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="lebel-item">Ngày công làm việc</p>
+                            </div>
+                            <div class="col-6 value">
+                                {{ data.cw2 }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="lebel-item">Ngày công nghỉ phép</p>
+                            </div>
+                            <div class="col-6 value">
+                                {{ data.cw3 }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="lebel-item">Ngày công nghỉ, lễ</p>
+                            </div>
+                            <div class="col-6 value">
+                                {{ data.cw4 }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="lebel-item">Ngày công nghỉ việc riêng có lương</p>
+                            </div>
+                            <div class="col-6 value">
+                                {{ data.cw5 }}
+                            </div>
+                        </div>
+                        
+                        <!-- <div class="row">
+                            <div class="col-6">
+                                <p class="lebel-item">Ngày công nghỉ việc riêng không lương</p>
+                            </div>
+                            <div class="col-6 value">
+                                
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="title-item m-0 mt-2">{{ totalIncome | translate : lang }}</p>
+                        </div>
+                        <div class="col-6 m-0 mt-2 title-item align-right">
+                            {{ data.totalIncome | number }} 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="detail-payroll mt-4">
+                    <div class="border-line">
+                        <div class="row" style="padding-bottom: 16px;">
+                            <div class="col-12 d-flex">
+                                <img class="icon" src="assets/images/home/circle-minus.svg">
+                                <div class="title-item d-flex d-flex-center">Các khoản khấu trừ</div>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-6">
+                                <p class="lebel-item">Phí các khoản bảo hiểm</p>
+                            </div>
+                            <div class="col-6 value">
+                                {{ data.totalInsurance | number }} 
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-6">
+                                <p class="lebel-item">Nộp lương quỹ XHTT</p>
+                            </div>
+                            <div class="col-6 value">
+                                {{ data.deduct5 | number }} 
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-6">
+                                <p class="lebel-item">Trừ thuế TNCN</p>
+                            </div>
+                            <div class="col-6 value">
+                                {{ data.deduct4 | number }} 
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-6">
+                                <p class="lebel-item">Phí Công đoàn</p>
+                            </div>
+                            <div class="col-6 value">
+                                {{ data.deduct3 | number }} 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-6">
+                            <p class="title-item m-0 mt-2">Tổng khoản khấu trừ</p>
+                        </div>
+                        <div class="col-6 m-0 mt-2 title-item align-right">
+                            {{ data.totalMinus | number }} 
+                        </div>
+                    </div>
+                </div>
+                <div class="detail-payroll mt-4 total-payroll">
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="title-item m-0 cl-white">{{ realityPayroll | translate : lang }}</p>
+                        </div>
+                        <div class="col-6 m-0 title-item align-right cl-white">
+                            {{ data.csum2 | number }}
+                        </div>
+                    </div>
+                </div>
+                <div class="detail-payroll mt-4 empty-payroll" *ngIf="!checkData">
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="title-item m-0 cl-white">Không có dữ liệu lương</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+        
+    
+</div>

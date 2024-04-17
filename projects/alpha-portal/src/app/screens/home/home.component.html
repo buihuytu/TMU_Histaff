@@ -1,0 +1,93 @@
+<div class="app-home-container" #container [ngStyle]="{
+    height: 'calc(100vh - var(--cell-height) * 2 )'
+}">
+
+    <div class="p-relative">
+
+        <div class="inner-layout-header" [ngStyle]="{
+            height: '100%'
+        }">
+
+
+
+            <div class="row gx-3 gy-3" [ngStyle]="{
+                padding: landscapeMode ? '0px' : (layoutService.basicSpacing + 'px'),
+            }">
+
+
+                <div class="col-xl-3">
+                    <app-quick-number [cardHeight]="95" [cardBackgroundColor]="'#FBEDD9'" [circleSize]="50"
+                        [circleBacgroundColor]="'#FFA427'" [iconPath]="'/assets/images/home-ver2/qn1_calendar.svg'"
+                        [caption]="PWA_HOME_AVAILABLE_YEAR_OFF_DAYS" [value]="entilementCurHave"></app-quick-number>
+                </div>
+                <div class="col-xl-3">
+                    <app-quick-number [cardHeight]="95" [cardBackgroundColor]="'#D6FFD8'" [circleSize]="50"
+                        [circleBacgroundColor]="'#4BEEA7'" [iconPath]="'/assets/images/home-ver2/qn2_clock.svg'"
+                        [caption]="PWA_HOME_APPROVE_PENDING_YEAR_OFF_DAYS" [value]="entilementCurPending"></app-quick-number>
+                </div>
+                <div class="col-xl-3">
+                    <app-quick-number [cardHeight]="95" [cardBackgroundColor]="'#DFEDF7'" [circleSize]="50"
+                        [circleBacgroundColor]="'#1B8BE3'"
+                        [iconPath]="'/assets/images/home-ver2/qn3_calendar_clock.svg'"
+                        [caption]="PWA_HOME_USED_YEAR_OFF_DAYS" [value]="entilementCurUsed"></app-quick-number>
+                </div>
+                <div class="col-xl-3">
+                    <app-quick-number [cardHeight]="95" [cardBackgroundColor]="'#F9E5EA'" [circleSize]="50"
+                        [circleBacgroundColor]="'#EF2B58'" [iconPath]="'/assets/images/home-ver2/qn4_clock_danger.svg'"
+                        [caption]="PWA_HOME_BEING_OUTDATED_SOON_YEAR_OFF_DAYS"
+                        [value]="entilementPrevHave"></app-quick-number>
+                </div>
+
+
+                <div class="col-xl-6" #comingSoon>
+                    <app-comming-soon [width]="halfColWidth" [apiPath]="PORTAL_COMING_SOON_BIRTHDAY_LIST"
+                        [caption]="PWA_HOME_THIS_MONTH_BIRHDAYS"></app-comming-soon>
+                </div>
+                <div class="col-xl-6">
+                    <app-comming-soon [width]="halfColWidth" [apiPath]="PORTAL_COMING_SOON_OFF_EMPLOYEE_LIST"
+                        [caption]="PWA_HOME_THIS_MONTH_OFF_EMPLOYEES"></app-comming-soon>
+                </div>
+                <div class="col-xl-6">
+                   <app-history-approve [width]="halfColWidth" [apiPath]="PORTAL_AT_ENTILEMENT_GET_HISTORY_APPROVE" [caption]="PWA_HOME_THIS_HISTORY_APPROVE" ></app-history-approve>
+                </div>
+                <div class="col-xl-6" [ngStyle]="{marginBottom: 110 + 'px'}">
+                    <app-home-explain-work [width]="halfColWidth" [caption]="PWA_HOME_THIS_TIME_TABLE"></app-home-explain-work>
+                </div>
+
+                <!-- Ai muốn xem statistic thì đăng ký id của mình vào đây -->
+                @if (authService.data$.value!.id === '8c24683d-7d52-4f5a-8090-31c777e8869d') {
+
+                    <div class="col-xl-6">
+                        <app-activity-bars></app-activity-bars>
+                    </div>
+                    <div class="col-xl-6">
+                        <app-favourite-screens></app-favourite-screens>
+                    </div>
+
+                
+
+                    <!-- bottom gap -->
+                    <div class="col-xl-12">
+                        <div [ngStyle]="{ height: '200px' }"></div>
+                    </div>
+
+                }
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="home-footer">
+        <div class="p-relative d-flex d-flex-center" [ngStyle]="{
+            width: '100vw',
+            bottom: landscapeMode ? '0px' : layoutService.cellHeight + 'px',
+            height: layoutService.quickLinkItemSize + layoutService.basicSpacing * 2 + 'px',
+            backgroundColor: 'white'
+        }">
+            <app-quick-links></app-quick-links>
+        </div>
+    </div>
+
+</div>

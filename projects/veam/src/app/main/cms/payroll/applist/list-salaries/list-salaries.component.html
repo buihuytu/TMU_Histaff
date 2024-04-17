@@ -1,0 +1,60 @@
+ <div class="list-salaries-container">
+  <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+    [title]="title" 
+    [outerParam$]="outerParam$"
+    [normalMode]="true"
+    [top]="topParam"
+    [autoResizeWithWindow]="true"
+    [hideStatusInclusion]="true"
+    [statusInclusionFor]="listSalariesInclusionFor"
+    [statusInclusionForLabelKey]="listSalariesInclusionForLabelKey"
+    [statusOptionsApi]="listSalariesOptionsApi"
+    [extraManualOffset]="99"
+    [outerSort]="outerSort"
+    ></core-page-list>
+
+    <ng-template #isFormula let-isFormula="context.isFormula">
+      <core-checkbox [disabled]="true" [inputValue]="isFormula"></core-checkbox> 
+    </ng-template>
+    <ng-template #isSumFormula let-isSumFormula="context.isSumFormula">
+      <core-checkbox [disabled]="true" [inputValue]="isSumFormula"></core-checkbox> 
+    </ng-template>
+    <ng-template #isPayback let-isPayback="context.isPayback">
+      <core-checkbox [disabled]="true" [inputValue]="isPayback"></core-checkbox> 
+    </ng-template>
+    <ng-template #isVisible let-isVisible="context.isVisible">
+      <core-checkbox [disabled]="true" [inputValue]="isVisible"></core-checkbox> 
+    </ng-template>
+    <ng-template #isImport let-isImport="context.isImport">
+      <core-checkbox [disabled]="true" [inputValue]="isImport"></core-checkbox> 
+    </ng-template>
+    <ng-template #isQlTypeTn let-isQlTypeTn="context.isQlTypeTn">
+      <core-checkbox [disabled]="true" [inputValue]="isQlTypeTn"></core-checkbox> 
+    </ng-template>
+    <ng-template #sticker let-code="context.status">
+      <core-status-sticker [code]="code"></core-status-sticker>
+    </ng-template>
+
+  <ng-template #topParam>
+    <div class="row mb20">
+      <div class="col-md-3">
+        <div class="form-group vertical">
+          <label>Đối tượng lương</label>
+          <core-dropdown [(ngModel)]="onObjectSal" (ngModelChange)="onObjectSalChange($event)"
+          [options$] = "objectSalOptions$"
+          [getByIdObject$] = "objectSalGetByIdObject$"
+          [shownFrom]="shownFrom"
+          ></core-dropdown>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label></label>
+        <div class="form-group vertical">
+          <core-button-group-vns [showCaption]="true" (buttonClick)="onButtonClick($event)" [shownItems]="buttonItems"
+                class="buttonGroupCustom" ></core-button-group-vns>
+        </div>  
+      </div>
+    </div>
+  </ng-template>
+
+</div>

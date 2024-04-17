@@ -1,0 +1,38 @@
+<div class="cms-profile-contractinfor-container">
+  <core-page-list
+    [apiDefinition]="apiDefinition"
+    [columns]="columns"
+    [editRoute]="editRoute"
+    [crud]="crud"
+    [title]="title"
+    [left]="orgTree"
+    [outerParam$]="outerParam$"
+    [normalMode]="true"
+    [outerInOperators]="outerInOperators"
+    [autoResizeWithWindow]="true"
+    (rowClick)="onRowClick($event)"
+    [showParamKit]="true"
+    [datePeriodComparisonFor]="datePeriodComparisonFor"
+    [datePeriodComparisonForLabelKey]="datePeriodComparisonForLabelKey"
+    [statusInclusionFor]="statusInclusionFor"
+    [statusInclusionForLabelKey]="statusInclusionForLabelKey"
+    [statusOptionsApi]="statusOptionsApi"
+    [generateTemplateRequest]="generateTemplateRequest"
+    (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+    [importPreviewPath]="'contract-import'"
+    [outerSort]="outerSort"
+    [frozen]="3"
+    (selectedIdsChange)="customizeSelectedIdsChange($event)"
+    (onInstanceCreated)="onInstanceCreated($event)"
+  >
+  </core-page-list>
+
+  <ng-template #orgTree>
+    <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+    </core-org-tree>
+  </ng-template>
+
+  <ng-template #sticker let-code="context.statusName">
+    <core-status-sticker [code]="code"></core-status-sticker>
+  </ng-template>
+</div>

@@ -1,0 +1,11 @@
+
+<!-- PRINT PIE CHART -->
+<div *ngIf="!!optionCharts">
+    <highcharts-chart [Highcharts]="Highcharts" [options]="options" class="content-chart" id="content-print-pie">
+    </highcharts-chart>
+</div>
+<!-- PRINT COLUMN CHART -->
+<div *ngIf="!!optionChartColumns">
+    <highcharts-chart [Highcharts]="Highcharts" [options]="optionsColumn" class="content-chart" id="content-print-column">
+    </highcharts-chart>
+</div>

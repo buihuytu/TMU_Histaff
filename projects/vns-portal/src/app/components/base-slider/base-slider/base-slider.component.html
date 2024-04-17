@@ -1,0 +1,22 @@
+<div class="base-slider-container">
+
+    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" (init)="slickInit($event)"
+        (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)" (beforeChange)="beforeChange($event)">
+
+        <div ngxSlickItem *ngFor="let page of pagesContext; let index=index" class="slide">
+            <div class="page" *ngIf="pageRef">
+                <ng-container *ngTemplateOutlet="pageRef; context: { rows: page}"></ng-container>
+            </div>
+        </div>
+
+    </ngx-slick-carousel>
+
+    <div class="d-flex d-flex-center slider-dots" *ngIf="!!showDots" [ngStyle]="{
+        width: (dotsContainerWidth || (pagesContext.length || 0) * 30 || 200 ) + 'px',
+        height: (dotsContainerHeight || 50) + 'px'
+    }">
+        <div *ngFor="let item of pagesContext; let index=index" class="dot" [class.active]="activePage===index">
+        </div>
+    </div>
+
+</div>

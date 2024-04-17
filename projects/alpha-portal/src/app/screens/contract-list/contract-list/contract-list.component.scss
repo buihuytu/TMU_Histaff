@@ -1,0 +1,49 @@
+.app-contract-list-container{
+
+    & * {
+        box-sizing: border-box !important;
+    }
+
+    ul, li {
+        padding: 0;
+        margin: 0;
+    }
+
+    .search-text{
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    .search{
+        outline: none;
+    }
+    .custom-register{
+        max-width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    .custom-box {
+        width: 100%;
+        background-color: #F6F7FB;
+        border-radius: 5px;
+        height: 12vh;
+        display: flex;
+    }
+    .custom-avatar{
+        height: 58px;
+        width: 58px;
+        border-radius: 50%;
+        cursor: pointer;
+        object-fit: cover;
+    }
+    .employee-name{
+        font-size: 18px;
+        font-weight: 700;
+        color: #464646;
+        line-height: 2rem;
+    }
+    .job-name{
+        font-size: 15px;
+        color: #848484;
+        line-height: 1rem;
+    }
+}

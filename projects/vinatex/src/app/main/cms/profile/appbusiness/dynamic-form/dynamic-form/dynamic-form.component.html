@@ -1,0 +1,50 @@
+<core-page-header
+[shownItems]="shownItems"
+[title]="title"
+(buttonClick)="onCorePageHeaderButtonClick($event)"></core-page-header>
+<div class="dynamic-form-container">
+  <div class="form-group vertical">
+    <label class="label-content">{{'SELECT_DYNAMIC_FORM'| translate: lang}}</label>
+    <core-dropdown
+      [(ngModel)]="dynamicForm"
+      (ngModelChange)="dynamicFormChange($event)"
+      [options$]="dynamicFormOptions$"
+      [getByIdObject$]="dynamicFormGetByIdObject$"
+      [shownFrom]="shownFrom"
+    ></core-dropdown>
+  </div>
+  <div class="row">
+      <div class="col-6">
+          <core-table
+          [columns]="columnForms"
+          [showCheckbox]="true"
+          [data]="dataForms"
+          [loading]="loading"
+          (onRowClick)="onRowClickForms($event)"
+          (onSelectedDataChange)="onSelectedDataChangeForms($event)"
+          (onSelectedIdsChange)="onSelectedIdsChangeForms($event)"
+          (onSearching)="onSearching($event)"
+        ></core-table>
+      </div>
+      <ng-template #isHaveFile let-isHaveFile="context.isHaveFile">
+        <core-checkbox [disabled]="true" [inputValue]="isHaveFile"></core-checkbox> 
+      </ng-template>
+      <input #fileImport type="file" name="name"
+      accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+      style="display: none;" (change)='inputFile($event)' />
+
+      <div class="col-6">
+          <core-table
+          [columns]="columnViews"
+          [showCheckbox]="false"
+          [data]="dataViews"
+          [loading]="loading"
+          (onSearching)="onSearching2($event)"
+          (onRowClick)="onRowClickViews($event)"
+          (onSelectedDataChange)="onSelectedDataChangeViews($event)"
+          (onSelectedIdsChange)="onSelectedIdsChangeViews($event)"
+        ></core-table>
+      </div>
+
+    </div>
+</div>

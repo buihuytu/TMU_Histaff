@@ -1,0 +1,15 @@
+<div
+    class="app-education-edit-container"
+>
+    <core-page-edit
+        *ngIf="!!sections.length"
+        [width]="1000"
+        [sections]="sections"
+        [crud]="crud"
+        [normalMode]="true"
+        [entityTable]="entityTable"
+        (onFormCreated)="onFormCreated($event)"
+        (onInitialValueStringReady)="onFormReinit($event)"
+    >
+    </core-page-edit>
+</div>

@@ -1,0 +1,35 @@
+<div class="app-approve-education-container">
+    <core-page-list
+        #pageListRef
+        [apiDefinition]="apiDefinition"
+        [columns]="columns"
+        [editRoute]="editRoute"
+        [crud]="crud"
+        [normalMode]="true"
+        [autoResizeWithWindow]="true"
+        *ngIf="!!reasonChange"
+
+        [outerParam$]="outerParam$"
+        [outerInOperators]="outerInOperators"
+        [left]="orgTree"
+    >
+    </core-page-list>
+
+
+    <ng-template #orgTree>
+        <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)"> </core-org-tree>
+    </ng-template>
+</div>
+
+
+<ng-template #reasonChange let-reasonChange="context.reasonChange">
+    <div class="fill-color-column">{{reasonChange}}</div>
+</ng-template>
+
+<!--
+<ng-template #pathFile let-pathFile="context.pathFile">
+    <a href="/images/demoFile.jpg" download>
+        File name
+    </a>
+</ng-template>
+-->

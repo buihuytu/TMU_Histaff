@@ -1,0 +1,29 @@
+<div class="app-outside-company-container">
+    <div class="header-text">{{title | translate: lang }}</div>
+    <div class="content">
+        <div class="card-info" *ngFor="let work of works">
+            <p class="type">{{work.companyName}}</p>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{titleName | translate: lang }}:</p>
+                <p class="text col-md-4">{{work.titleName}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{fromDate | translate: lang }}:</p>
+                <p class="text col-md-4">{{work.fromDate | date: 'dd/MM/yyyy'}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{endDate | translate: lang }}:</p>
+                <p class="text col-md-4">{{work.endDate | date: 'dd/MM/yyyy'}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{mainDuty | translate: lang }}:</p>
+                <p class="text col-md-4">{{work.mainDuty}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{terReason | translate: lang }}:</p>
+                <p class="text col-md-4">{{work.terReason}}</p>
+            </div>
+        </div>
+    </div>
+
+</div>

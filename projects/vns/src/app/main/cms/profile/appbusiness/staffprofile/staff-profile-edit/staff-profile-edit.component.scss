@@ -1,0 +1,25 @@
+.staff-profile-edit{
+    height: calc(var(--content-container-height) - (var(--size-layout-block-acordion)));
+    overflow-y: auto;
+    .custom-text{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .form-row{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .custom-title{
+        color: rgba(0, 0, 0, 0.849);
+        font-weight: 450;
+        font-size: 20px;
+        text-transform: uppercase;
+    }
+    .row{
+        padding: 10px;
+    }
+}
+

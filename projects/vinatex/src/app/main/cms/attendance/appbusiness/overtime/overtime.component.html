@@ -1,0 +1,64 @@
+<div class="staff-profile-container">
+  <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+    [title]="title" [left]="orgTree"
+    [outerParam$]="outerParam$"
+    [normalMode]="true"
+    [top]="topParam"
+    [outerInOperators]="outerInOperators"
+    [outerFilterOperators]="filterOperators"
+    [autoResizeWithWindow]="true"
+    [hideStatusInclusion]="true"
+    [frozen]="2"
+    (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+    (onInputFileBase64DataReady)="onInputFileBase64DataReady($event)"
+    (onInstanceCreated)="onInstanceCreated($event)"
+    [outerSort]="outerSort"
+    ></core-page-list>
+
+  <ng-template #orgTree>
+    <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+    </core-org-tree>
+  </ng-template>
+
+  <ng-template #topParam>
+    <div class="row mb20">
+      <div class="col-md-2">
+        <div class="form-group vertical">
+          <label>Năm</label>
+          <input style="margin-left: 5px;" type="number" class="form-control" [(ngModel)]="year" (ngModelChange)="onYearChange($event)">
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group vertical">
+          <label>Kỳ công</label>
+          <core-dropdown [(ngModel)]="salPeriod" (ngModelChange)="onSalPeriodChange($event)"
+            [options$]="salaryPeridOptions$" [getByIdObject$]="atSalaryPeriodGetByIdObject$"
+            [shownFrom]="shownFrom"></core-dropdown>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group vertical">
+          <label>Từ ngày</label>
+          <core-date-picker [(ngModel)]="startDate" [readonly]="true" [disabled]="true"></core-date-picker>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group vertical">
+          <label>Đến ngày</label>
+          <core-date-picker [(ngModel)]="endDate" [readonly]="true" [disabled]="true"></core-date-picker>
+        </div>
+      </div>
+      <!-- <div class="col-md-2">
+        <div style="margin-top:45px" class="form-group vertical">
+            <core-button-group-vns 
+            [showCaption]="true" 
+            (buttonClick)="onButtonClick($event)" 
+            [shownItems]="buttonItems" 
+            class="buttonGroupCustom"
+          ></core-button-group-vns>
+        </div>
+      </div> -->
+    </div>
+  </ng-template>
+</div>
+<app-fullscreen-modal-loader *ngIf="loadingExport"></app-fullscreen-modal-loader>

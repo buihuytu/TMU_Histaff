@@ -1,0 +1,37 @@
+<div class="app-content">
+  <core-page-header [title]="title"></core-page-header>
+
+  <core-composition [left]="orgTree" [main]="main">
+  </core-composition>
+</div>
+
+<ng-template #orgTree>
+  <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+  </core-org-tree>
+</ng-template>
+
+<ng-template #main>
+
+  <div class="row">
+
+    <div class="col-5">
+      <core-page-list [hideCheck]="true" [hideButtonGroup]="true" [height]="corePageListHeight" [fixedPageSize]="!!!isDeskop ? 6 : 9"
+      [apiDefinition]="jobApiDefinition" [wrap]="false" rowHeight="50px" [title]="jobsTitle" [columns]="columnsJob"
+      [outerInOperators]="jobOuterInOperators" [(ngModel)]="jobId" 
+      (ngModelChange)="onJobIdChange($event)" [autoResizeWithWindow]="true"
+      [extraManualOffset]="50"
+      ></core-page-list>
+    </div>
+
+    <div class="col-7">
+      <core-page-list [hideCheck]="true" [hideButtonGroup]="true" [height]="corePageListHeight" [fixedPageSize]="!!!isDeskop ? 6 : 9"
+      [apiDefinition]="empApiDefinition" [wrap]="false" rowHeight="50px" [outerParam$]="employeeOuterParam$"
+      [outerInOperators]="jobOuterInOperators"
+      [title]="employeesTitle" [columns]="columnsEmp" [clearData$]="clearEmployeeListData$"
+      [extraManualOffset]="50" [autoResizeWithWindow]="true"
+      ></core-page-list>
+    </div>
+
+  </div>
+
+</ng-template>

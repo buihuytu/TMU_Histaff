@@ -1,0 +1,21 @@
+<div class="hu-asset-mng-container">
+    <core-page-list [apiDefinition]="apiDefinition" [left] ="orgTree" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+        [title]="title"
+        [outerParam$]="outerParam$"
+        [outerInOperators]="outerInOperators"
+        (rowClick)="onRowClick($event)"
+        (selectedIdsChange)="onSelectedIdsChange($event)" 
+        [autoResizeWithWindow]="true" [normalMode]="true"
+        [showParamKit]="true"
+        [datePeriodComparisonFor]="dateIssueComparisonFor"
+        [datePeriodComparisonForLabelKey]="dateIssueComparisonForLabelKey"
+        [statusInclusionFor]="statusInclusionFor"
+        [statusInclusionForLabelKey]="statusInclusionForLabelKey"
+        [statusOptionsApi]="statusOptionsApi"></core-page-list>
+</div>
+<ng-template #orgTree>
+    <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+    </core-org-tree>
+
+  </ng-template>
+  <app-fullscreen-modal-loader *ngIf="loading"></app-fullscreen-modal-loader>

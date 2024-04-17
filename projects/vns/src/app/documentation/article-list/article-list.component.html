@@ -1,0 +1,33 @@
+<div class="article-list-container">
+
+    <core-pagination [currentPage$]="currentPage$" [pageCount]="pageCount" [loading]="loading" [showAdd]="false"
+        ></core-pagination>
+
+    <ul class="open-font">
+        <li *ngFor="let post of posts">
+
+            <div class="post">
+
+                <div class="d-flex-between">
+                    <a [routerLink]="[post.id]">
+                        <div class="card p25 mv25">
+                            <div class="title">{{ post.artCaption }}</div>
+                        </div>
+                    </a>
+                </div>
+                <a [routerLink]="[post.id]">
+                    <div class="cover">
+                        <img [src]="post.artImgLink | mapImgToServer" (error)="onImageError($event)">
+                    </div>
+                    <div class="paragraph" [innerHtml]="post.artBody | stringHtml"></div>
+                </a>
+            </div>
+
+        </li>
+    </ul>
+
+    <core-pagination [currentPage$]="currentPage$" [pageCount]="pageCount" [loading]="loading"
+    [showAdd]="false" *ngIf="!!pageCount"></core-pagination>
+
+
+</div>

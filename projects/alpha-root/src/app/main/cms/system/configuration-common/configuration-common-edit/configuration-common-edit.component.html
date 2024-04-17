@@ -1,0 +1,56 @@
+<core-page-edit
+    *ngIf="!!sections.length"
+    [width]="1000"
+    [captionCode]="captionCode"
+    [sections]="sections"
+    [crud]="crud"
+    [entityTable]="entityTable"
+    [normalMode]="true"
+
+    (onFormCreated)="onFormCreated($event)"
+    (onInitialValueStringReady)="onFormReinit($event)"
+>
+    <!--
+        khi bạn sử dụng thẻ core-page-edit
+        thì nó sẽ báo lỗi
+        vì bạn chưa thêm thư viện CorePageEditComponent
+
+        cách sửa cho hết lỗi
+        là thêm thư viện CorePageEditComponent
+        vào file "configuration-common.module.ts"
+    -->
+
+    <!--
+        dòng code *ngIf="!!sections.length"
+        dùng để làm gì
+    -->
+
+    <!-- cái [width] để thiết lập chiều rộng -->
+
+    <!-- cái [captionCode] để thiết lập tiêu đề -->
+
+    <!--
+        cái [sections] dùng để truyền dữ liệu
+        từ file .component.ts ra file .html
+    -->
+
+    <!-- cái [crud] để thiết lập đường dẫn cho API -->
+
+    <!--
+        cái [entityTable] để khai báo
+        bảng trong DB sẽ được làm việc
+    -->
+
+    <!--
+        cái [normalMode]="true"
+        thì liên quan đến điều hướng Pop Up
+
+        nếu bạn không điều hướng đến Pop Up
+        thi hãy để là false
+
+        nếu ở đây là [normalMode]="true"
+        thì bên màn hình chính cũng phải là true
+
+        đây là code Pop Up đấy
+    -->
+</core-page-edit>

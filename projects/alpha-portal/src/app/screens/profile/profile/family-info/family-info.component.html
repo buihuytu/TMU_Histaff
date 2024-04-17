@@ -1,0 +1,904 @@
+<div class="app-family-info-container">
+    <div class="list-family row my-3" *ngFor="let item of listFamily">
+        <div class="null" *ngIf="!item">Không có dữ liệu của thông tin người thân!</div>
+        <div class="row d-flex justify-content-between">
+            <div class="col-8">
+                <h3 class="person-name text-content">{{item.fullname}}</h3>
+            </div>
+            <div *ngIf="listFamilyEdit.length ==0 && listFamilyEditSave.length ==0 " class="col-1">
+                <button *ngIf="!!!hideEditBtn" (click)="clickBtnEdit(item)" class="btn-edit">
+                    <i class="feather-edit-2"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Mối quan hệ: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.relationshipName}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Giới tính: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.genderName}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Số CMND/CCCD: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.idNo}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Ngày sinh: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.birthDate | tableCell: 'DATE' : lang}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Nghề nghiệp: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.carrer}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Mã số thuế người phụ thuộc: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.pitCode}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Quốc tịch: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.nationalityName}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Cùng công ty: </span>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <core-checkbox class="text-content" [disabled]="true"
+                            [(ngModel)]="item.sameCompany"></core-checkbox>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Nơi đăng ký GKS: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.birthCerPlace}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Đã mất: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <core-checkbox class="text-content" [disabled]="true" [(ngModel)]="item.isDead"></core-checkbox>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Tỉnh thành: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.birthCerProvinceName}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Đối tượng giảm trừ: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <core-checkbox class="text-content" [disabled]="true"
+                            [(ngModel)]="item.isDeduct"></core-checkbox>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Quận/huyện: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.birthCerDistrictName}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Ngày đăng ký giảm trừ: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.registDeductDate | tableCell: 'DATE' : lang}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Phường/xã: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.birthCerWardName}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Ngày bắt đầu giảm trừ: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.deductFrom | tableCell: 'DATE' : lang}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Ghi chú: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.note}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Ngày kết thúc: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.deductTo | tableCell: 'DATE' : lang}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!!title" class="list-family row my-3">
+        <div style="margin-top: 20px;" class="row list-data">
+            <div class="row" style="color:red">Lý do không phê duyệt</div>
+            <div class="row">{{title}}</div>
+        </div>
+    </div>
+    <span *ngIf="!!!id">
+        <div class="list-family my-3 row" *ngFor="let item of listFamilyEditSave">
+            <div class="row d-flex justify-content-between">
+                <div class="col-8">
+                    <h3 class="person-name">{{item.fullname}}</h3>
+                </div>
+                <div class="col-1 d-flex justify-content-around">
+                    <button (click)="clickBtnSaveEdit(item)" class="btn-edit">
+                        <i class="feather-edit-2"></i>
+                    </button>
+                    <button (click)="clickBtnDelete(item.id)" class="delete icon-wrapper">
+                        <i class="d-flex feather-trash-2"></i>
+                    </button>
+                </div>
+                
+            </div>
+            <div class="row">
+                <span class="color-info">(Đã lưu)</span>
+            </div>
+            <div class="row my-3">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Mối quan hệ: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.relationshipName}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Giới tính: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.genderName}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Số CMND/CCCD: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.idNo}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Ngày sinh: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.birthDate | tableCell: 'DATE' : lang}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Nghề nghiệp: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.carrer}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Mã số thuế người phụ thuộc: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.pitCode}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Quốc tịch: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.nationalityName}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Cùng công ty: </span>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <core-checkbox class="text-content" [disabled]="true"
+                                [(ngModel)]="item.sameCompany"></core-checkbox>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Nơi đăng ký GKS: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.birthCerPlace}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mt-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Đã mất: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <core-checkbox class="text-content" [disabled]="true" [(ngModel)]="item.isDead"></core-checkbox>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Tỉnh thành: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.birthCerProvinceName}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mt-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Đối tượng giảm trừ: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <core-checkbox class="text-content" [disabled]="true"
+                                [(ngModel)]="item.isDeduct"></core-checkbox>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Quận/huyện: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.birthCerDistrictName}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Ngày đăng ký giảm trừ: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.registDeductDate | tableCell: 'DATE' : lang}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Phường/xã: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.birthCerWardName}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Ngày bắt đầu giảm trừ: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.deductFrom | tableCell: 'DATE' : lang}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Ghi chú: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.note}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Ngày kết thúc: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.deductTo | tableCell: 'DATE' : lang}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="list-family my-3 row" *ngFor="let item of listFamilyEdit">
+            <div class="row d-flex justify-content-between">
+                <div class="col-8">
+                    <h3 class="person-name">{{item.fullname}}</h3>
+                </div>
+                
+            </div>
+            <div class="row">
+                <span class="color-warning">(Chờ phê duyệt)</span>
+            </div>
+            <div class="row my-3">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Mối quan hệ: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.relationshipName}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Giới tính: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.genderName}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Số CMND/CCCD: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.idNo}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Ngày sinh: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.birthDate | tableCell: 'DATE' : lang}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Nghề nghiệp: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.carrer}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Mã số thuế người phụ thuộc: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.pitCode}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Quốc tịch: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.nationalityName}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Cùng công ty: </span>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <core-checkbox class="text-content" [disabled]="true"
+                                [(ngModel)]="item.sameCompany"></core-checkbox>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Nơi đăng ký GKS: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.birthCerPlace}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mt-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Đã mất: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <core-checkbox class="text-content" [disabled]="true" [(ngModel)]="item.isDead"></core-checkbox>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Tỉnh thành: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.birthCerProvinceName}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mt-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Đối tượng giảm trừ: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <core-checkbox class="text-content" [disabled]="true"
+                                [(ngModel)]="item.isDeduct"></core-checkbox>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Quận/huyện: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.birthCerDistrictName}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Ngày đăng ký giảm trừ: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.registDeductDate | tableCell: 'DATE' : lang}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Phường/xã: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.birthCerWardName}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Ngày bắt đầu giảm trừ: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.deductFrom | tableCell: 'DATE' : lang}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Ghi chú: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.note}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Ngày kết thúc: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content">{{item.deductTo | tableCell: 'DATE' : lang}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngFor="let item of dataChangeOnState">
+            <div class="list-family row my-3">
+                <div class="null" *ngIf="!item">Không có dữ liệu về thông tin người thân!</div>
+                <div class="row d-flex justify-content-between head">
+                    <div class="col-8">
+                        <h3 class="person-name">{{item.fullname}}</h3>
+                    </div>
+                    <div class="col-1 d-flex justify-content-around">
+                        <button (click)="clickBtnSaveEdit(item)" class="btn-edit">
+                            <i class="feather-edit-2"></i>
+                        </button>
+                        <button (click)="clickBtnDelete(item.id)" class="delete icon-wrapper">
+                            <i class="d-flex feather-trash-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="refuse-color">(Bản ghi từ chối phê duyệt)</span>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="text-title">Mối quan hệ: </span>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="text-content">{{item.relationshipName}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="text-title">Giới tính: </span>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="text-content">{{item.genderName}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="text-title">Số CMND/CCCD: </span>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="text-content">{{item.idNo}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="text-title">Ngày sinh: </span>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="text-content">{{item.birthDate | tableCell: 'DATE' : lang}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="text-title">Nghề nghiệp: </span>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="text-content">{{item.carrer}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="text-title">Mã số thuế người phụ thuộc: </span>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="text-content">{{item.pitCode}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="text-title">Quốc tịch: </span>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="text-content">{{item.nationalityName}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="text-title">Cùng công ty: </span>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <core-checkbox class="text-content" [disabled]="true"
+                                    [(ngModel)]="item.sameCompany"></core-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="text-title">Nơi đăng ký GKS: </span>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="text-content">{{item.birthCerPlace}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mt-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="text-title">Đã mất: </span>
+                            </div>
+                            <div class="col-md-6">
+                                <core-checkbox class="text-content" [disabled]="true" [(ngModel)]="item.isDead"></core-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="text-title">Tỉnh thành: </span>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="text-content">{{item.birthCerProvinceName}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mt-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="text-title">Đối tượng giảm trừ: </span>
+                            </div>
+                            <div class="col-md-6">
+                                <core-checkbox class="text-content" [disabled]="true"
+                                    [(ngModel)]="item.isDeduct"></core-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="text-title">Quận/huyện: </span>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="text-content">{{item.birthCerDistrictName}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="text-title">Ngày đăng ký giảm trừ: </span>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="text-content">{{item.registDeductDate | tableCell: 'DATE' : lang}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="text-title">Phường/xã: </span>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="text-content">{{item.birthCerWardName}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="text-title">Ngày bắt đầu giảm trừ: </span>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="text-content">{{item.deductFrom | tableCell: 'DATE' : lang}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="text-title">Ghi chú: </span>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="text-content">{{item.note}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="text-title">Ngày kết thúc: </span>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="text-content">{{item.deductTo | tableCell: 'DATE' : lang}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row list-family">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span style="color:red">Lý do không phê duyệt</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span>{{item.reason}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </span>
+    
+
+</div>
+

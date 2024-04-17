@@ -1,0 +1,124 @@
+<div class="border-container" *ngIf="!checkData">{{ titleNull | translate : lang }}</div>
+  <div class="accordion" id="accordionPanelsStayOpenExample">
+    <div class="accordion-item" *ngFor="let item of data;">
+      <h2 class="accordion-header"  [attr.id]="'panelsStayOpen-heading' + item.id" >
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#panelsStayOpen-collapse' + item.id"  aria-expanded="true" [attr.aria-controls]="'panelsStayOpen-collapse' + item.id">
+          <img class="icon" src="assets/images/home/circle-waiting-approve.svg">
+          <div class="header-content">
+              <div class="header-title">
+                <p class="title">{{ registerLeave | translate: lang }}</p>
+                <p class="split">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</p>
+                <p class="send-date">{{ item.sendDate | date: 'HH:mm dd.MM.yyyy' }}</p>
+              </div>
+              <div class="info">
+                <p class="name">{{ item.employeeName }}</p>
+                <div class="dot">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <circle cx="2.5" cy="2.5" r="2.5" fill="#D9D9D9"/>
+                  </svg>
+                </div>
+                <p class="position">{{ item.positionName }}</p>
+                <div class="dot">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <circle cx="2.5" cy="2.5" r="2.5" fill="#D9D9D9"/>
+                  </svg>
+                </div>
+                <p class="position">{{ item.orgName }}</p>
+              </div>
+          </div>
+        </button>
+      </h2>
+      <div [attr.id]="'panelsStayOpen-collapse' + item.id" class="accordion-collapse collapse" [attr.aria-labelledby]="'ppanelsStayOpen-heading' + item.id">
+        <div class="accordion-body">
+          <div class="row">
+            <div class="col-md-6 info">
+              <div class="row">
+                <div class="col-md-5 col-lg-5 col-5">
+                  <p class="text">{{ sendTime | translate: lang }}:</p>
+                </div>
+                <div class="col-md-7 col-lg-7 col-7">
+                  <p class="value">{{ item.sendDate | date: 'HH:mm dd.MM.yyyy' }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 info">
+              <div class="row">
+                <div class="col-md-5 col-lg-5 col-5">
+                  <p class="text">{{ leaveType | translate: lang }}:</p>
+                </div>
+                <div class="col-md-7 col-lg-7 col-7">
+                  <p class="value">{{ item.timeTypeName }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 info">
+              <div class="row">
+                <div class="col-md-5 col-lg-5 col-5">
+                  <p class="text">{{ fromDate | translate: lang }}:</p>
+                </div>
+                <div class="col-md-7 col-lg-7 col-7">
+                  <p class="value">{{ item.dateStart | date: 'dd.MM.yyyy' }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 info">
+              <div class="row">
+                <div class="col-md-5 col-lg-5 col-5">
+                  <p class="text">{{ reason | translate: lang }}:</p>
+                </div>
+                <div class="col-md-7 col-lg-7 col-7">
+                  <p class="value">{{ item.note }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 info">
+              <div class="row">
+                <div class="col-md-5 col-lg-5 col-5">
+                  <p class="text">{{ toDate | translate: lang }}:</p>
+                </div>
+                <div class="col-md-7 col-lg-7 col-7">
+                  <p class="value">{{ item.dateEnd | date: 'dd.MM.yyyy' }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="item.isEachDay != true">
+            <div class="col-md-12 info">
+              <div class="row">
+                <div class="col-12">
+                  <p class="title" style="font-weight: 500; font-size: 18px;">{{ registerDetail | translate: lang }}:</p>
+                </div>
+                <div class="row">
+                  <table>
+                    <thead>
+                      <tr class="table-header">
+                        <th class="title-header" style="border-bottom-left-radius: 5px;
+                        border-top-left-radius: 5px; padding-left: 3%;" scope="col">{{ date | translate: lang }}</th>
+                        <th class="title-header" scope="col">{{ dType | translate: lang }}</th>
+                        <th class="title-header" scope="col">{{ day | translate: lang }}</th>
+                        <th class="title-header" scope="col">{{ shift | translate: lang }}</th>
+                        <th class="title-header" style="border-bottom-right-radius: 5px;
+                        border-top-right-radius: 5px;" scope="col">{{ shiftCode | translate: lang }}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let detail of item.listDetail">
+                        <th style="padding-left: 3%;"><p class="value">{{ detail.date | date: 'dd/MM/yyyy' }}</p></th>
+                        <td><p class="value">{{ detail.dType }}</td>
+                        <td><p class="value">{{ detail.number }}</td>
+                        <td><p class="value">{{ detail.shiftName }}</td>
+                        <td><p class="value">{{ detail.shiftCode }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>

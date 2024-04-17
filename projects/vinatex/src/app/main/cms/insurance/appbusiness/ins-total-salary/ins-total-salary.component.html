@@ -1,0 +1,50 @@
+<div class="ins-total-salary-container">
+    <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [title]="title"
+        [frozen]="3" [headerWrap]="true" [headerFirstRowHeight]="50" [top]="topParam" [outerParam$]="outerParam$"
+        [outerInOperators]="outerInOperators" (onInstanceCreated)="onInstanceCreated($event)"
+        [disableDoubleClick]="true" (corePageHeaderButtonClick)="corePageHeaderButtonClick($event)"
+        [autoResizeWithWindow]="true"></core-page-list>
+
+    <ng-template #topParam>
+        <div>
+            <div class="row mb15">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>{{ labelList.year | translate : lang }}</label>
+                        <div [ngStyle]="{ marginLeft: '5px' }">
+                            <input type="number" class="form-control" [(ngModel)]="year"
+                                (ngModelChange)="onYearChange($event)" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>{{ labelList.month | translate : lang }}</label>
+                        <core-dropdown [(ngModel)]="salPeriod" (ngModelChange)="onGetList($event)"
+                            [options$]="salaryPeriodOptions$" [getByIdObject$]="atSalaryPeriodGetByIdObject$"
+                            [shownFrom]="'name'"></core-dropdown>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>{{ labelList.unit | translate : lang }}<span style="color: red;">*</span></label>
+                        <core-dropdown [(ngModel)]="insOrgId" [options$]="groupOptionsInsOrg$"
+                            (ngModelChange)="onGetList($event)" [getByIdObject$]="insOrgGetByIdObject$"
+                            [shownFrom]="'name'"></core-dropdown>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>{{ labelList.arisingGroup | translate : lang }}</label>
+                        <core-checklist [(ngModel)]="insChangeTypeId" (ngModelChange)="onGetList($event)"
+                            [options$]="changeTypeOptions$" [getByIdObject$]="insOrgGetByIdObject$"
+                            [shownFrom]="'name'"></core-checklist>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+    <router-outlet name="corePageListAux"></router-outlet>
+</div>
+<app-fullscreen-modal-loader *ngIf="loading"></app-fullscreen-modal-loader>

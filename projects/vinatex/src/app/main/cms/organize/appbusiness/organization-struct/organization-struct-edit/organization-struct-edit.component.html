@@ -1,0 +1,9 @@
+<core-page-edit [normalMode]="true" *ngIf="!!sections.length" [captionCode]="captionCode" [sections]="sections"
+    [crud]="crud" [entityTable]="entityTable" (onFormCreated)="onFormCreated($event)"
+    (onFormRefCreated)="onFormRefCreated($event)"
+    (onInitialValueStringReady)="onFormReinit($event)"
+    [autoSubmitLogicOff]="true"
+    (submitLogic)="onSubmit($event)"
+    ></core-page-edit>
+
+<app-fullscreen-modal-loader *ngIf="loading"></app-fullscreen-modal-loader>

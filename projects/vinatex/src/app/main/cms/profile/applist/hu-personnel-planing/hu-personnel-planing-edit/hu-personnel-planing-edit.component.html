@@ -1,0 +1,5 @@
+<div class="app-hu-personnel-planing-edit-container">
+    <core-page-edit *ngIf="!!sections.length" [width]="1000" [captionCode]="captionCode" [normalMode]="true" [sections]="sections" [crud]="crud"
+    [entityTable]="entityTable" (onFormCreated)="onFormCreated($event)"
+    (onInitialValueStringReady)="onFormReinit($event)"></core-page-edit>
+</div>

@@ -1,0 +1,48 @@
+<div class="app-position-extended-container">
+    <div class="row no-padding mb15">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="">{{chooseEmployee | translate: lang}}</label>
+                <core-form-control-seeker [boundFrom]="'id'" [shownFrom]="'fullname'" [multiMode]="false" [paramMode]="true"
+                [(ngModel)]="employeeId" [seekerSourceType]="employeeSeekerType"
+                (ngModelChange)="onEmployeeChange($event)"></core-form-control-seeker>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="">{{chooseChair | translate: lang}}</label>
+                <core-checklist [(ngModel)]="chair" (ngModelChange)="onChairChange($event)" [paramMode]="true" [options$]="chairOptions$"></core-checklist>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="">{{chooseOrg | translate: lang}}</label>
+                <core-form-control-seeker  [boundFrom]="'id'" [shownFrom]="'name'" [multiMode]="false" [paramMode]="true"
+                [(ngModel)]="orgId" [seekerSourceType]="orgSeekerType"
+                (ngModelChange)="onOrgChange($event)"></core-form-control-seeker>
+            </div>
+        </div>
+    </div>
+    <core-page-list [apiDefinition]="apiDefinition" [columns]="columnExtend" [editRoute]="editRoute" [crud]="crud"
+      [title]="title" [left]="orgTree" [normalMode]="true" [outerParam$]="outerParam$"
+      [outerInOperators]="outerInOperators" [autoResizeWithWindow]="true"
+      [hideHeader]="hideHeader"
+      [hideLeft]="true"
+      [height]="corePageListHeight"
+      (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+      (selectedIdsChange)="onSelectedIdsChangeeee($event)"
+      (onInstanceCreated)="onInstanceCreatedLocal($event)"></core-page-list>
+  
+    <ng-template #orgTree>
+    </ng-template>
+  
+    <ng-template #isTDV let-isTDV="context.isTDV">
+    </ng-template>
+  
+    <ng-template #isNotot let-isNotot="context.isNotot">
+    </ng-template>
+  
+    <ng-template #sticker let-code="context.active">
+    </ng-template>
+
+  </div>

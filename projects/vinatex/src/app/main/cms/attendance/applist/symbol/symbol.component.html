@@ -1,0 +1,35 @@
+<div class="at-symbol-container">
+  <core-page-list
+    [apiDefinition]="apiDefinition"
+    [columns]="columns"
+    [editRoute]="editRoute"
+    [crud]="crud"
+    [title]="title"
+    [autoResizeWithWindow]="true"
+  ></core-page-list>
+</div>
+<!-- [selfResolveCorePageHeaderButtonClick]="true"
+    (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+    (rowDoubleClick)="onRowDoubleClick($event)" -->
+<ng-template #isOff let-isOff="context.isOff">
+  <core-checkbox class="text-center" [disabled]="true" [inputValue]="isOff"></core-checkbox>
+</ng-template>
+<ng-template #isHolidayCal let-isHolidayCal="context.isHolidayCal">
+  <core-checkbox class="text-center" [disabled]="true" [inputValue]="isHolidayCal"></core-checkbox>
+</ng-template>
+<ng-template #isInsArising let-isInsArising="context.isInsArising">
+  <core-checkbox [disabled]="true" class="text-center" [inputValue]="isInsArising"></core-checkbox>
+</ng-template>
+<ng-template #isPortal let-isPortal="context.isPortal">
+  <core-checkbox [disabled]="true" [inputValue]="isPortal" class="text-center"></core-checkbox>
+</ng-template>
+<ng-template #isRegister let-isRegister="context.isRegister">
+  <core-checkbox [disabled]="true" [inputValue]="isRegister" class="text-center"></core-checkbox>
+</ng-template>
+<ng-template #isHaveSal let-isHaveSal="context.isHaveSal">
+  <core-checkbox [disabled]="true" [inputValue]="isHaveSal" class="text-center"></core-checkbox>
+</ng-template>
+
+<ng-template #sticker let-code="context.isActiveStr">
+  <core-status-sticker [code]="code"></core-status-sticker>
+</ng-template>

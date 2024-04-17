@@ -1,0 +1,26 @@
+<div class="app-discipline-container">
+    <div class="header-text">{{title | translate: lang }}</div>
+    <div class="content">
+        <div class="card-info" *ngFor="let discipline of disciplines">
+            <p class="type">{{discipline.disciplineTypeName}}</p>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{decisionNo | translate: lang }}:</p>
+                <p class="text col-md-4">{{discipline.decisionNo}}</p>
+                <p class="label col-md-2">{{effectDate | translate: lang }}:</p>
+                <p class="text col-md-4">{{discipline.effectDate | date: 'dd/MM/yyyy'}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{expireDate | translate: lang }}:</p>
+                <p class="text col-md-4">{{discipline.expireDate | date: 'dd/MM/yyyy'}}</p>
+                <p class="label col-md-2">{{issuedDate | translate: lang }}:</p>
+                <p class="text col-md-4">{{discipline.issuedDate | date: 'dd/MM/yyyy'}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{reason | translate: lang }}:</p>
+                <p class="text col-md-4">{{discipline.reason}}</p>
+                <p class="label col-md-2">{{note | translate: lang }}:</p>
+                <p class="text col-md-4">{{discipline.note}}</p>
+            </div>
+        </div>
+    </div>
+</div>

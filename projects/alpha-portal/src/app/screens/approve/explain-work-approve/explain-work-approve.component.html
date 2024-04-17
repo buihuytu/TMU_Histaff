@@ -1,0 +1,149 @@
+<div class="row col-md-12" style="margin-bottom: 20px;">
+  <div class="col-md-4">
+    <div class="form-group vertical">
+      <label>{{ startDate | translate: lang}}</label>
+      <core-date-picker 
+        [(ngModel)]="dateStart" 
+        (ngModelChange)="onDateStartChange($event)"
+      ></core-date-picker>
+      
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group vertical">
+      <label>{{ endDate | translate: lang}}</label>
+      <core-date-picker 
+          [(ngModel)]="dateEnd" 
+          (ngModelChange)="onDateEndChange($event)"
+      ></core-date-picker>
+    </div>
+  </div>
+
+</div>
+
+<div class="border-container" *ngIf="!checkData">{{ titleNull | translate : lang }}</div>
+<div class="accordion" id="accordionPanelsStayOpenExample">
+  <div class="accordion-item" *ngFor="let item of data">
+    <h2 class="accordion-header" [attr.id]="'panelsStayOpen-heading' + item.id">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        [attr.data-bs-target]="'#panelsStayOpen-collapse' + item.id"
+        aria-expanded="true"
+        [attr.aria-controls]="'panelsStayOpen-collapse' + item.id"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <path
+            d="M20 0C16.0444 0 12.1776 1.17298 8.8886 3.37061C5.59962 5.56823 3.03617 8.69181 1.52242 12.3463C0.00866562 16.0009 -0.387401 20.0222 0.384303 23.9018C1.15601 27.7814 3.06082 31.3451 5.85787 34.1421C8.65492 36.9392 12.2186 38.844 16.0982 39.6157C19.9778 40.3874 23.9992 39.9913 27.6537 38.4776C31.3082 36.9638 34.4318 34.4004 36.6294 31.1114C38.827 27.8224 40 23.9556 40 20C40 14.6957 37.8929 9.60859 34.1421 5.85786C30.3914 2.10714 25.3043 0 20 0ZM20 37.5C16.5388 37.5 13.1554 36.4736 10.2775 34.5507C7.39967 32.6278 5.15665 29.8947 3.83212 26.697C2.50758 23.4993 2.16103 19.9806 2.83627 16.5859C3.51151 13.1912 5.17822 10.073 7.62564 7.62563C10.0731 5.17821 13.1913 3.5115 16.5859 2.83626C19.9806 2.16102 23.4993 2.50757 26.697 3.83211C29.8947 5.15664 32.6278 7.39966 34.5507 10.2775C36.4736 13.1554 37.5 16.5388 37.5 20C37.5 24.6413 35.6563 29.0925 32.3744 32.3744C29.0925 35.6562 24.6413 37.5 20 37.5Z"
+            fill="#FE9400"
+          />
+          <path
+            d="M27.5 18.75H12.5C12.1685 18.75 11.8505 18.8817 11.6161 19.1161C11.3817 19.3505 11.25 19.6685 11.25 20C11.25 20.3315 11.3817 20.6495 11.6161 20.8839C11.8505 21.1183 12.1685 21.25 12.5 21.25H27.5C27.8315 21.25 28.1495 21.1183 28.3839 20.8839C28.6183 20.6495 28.75 20.3315 28.75 20C28.75 19.6685 28.6183 19.3505 28.3839 19.1161C28.1495 18.8817 27.8315 18.75 27.5 18.75Z"
+            fill="#FE9400"
+          />
+        </svg>
+        <div class="header-content">
+          <div class="header-title">
+            <p class="title">{{ explainWork | translate : lang }}</p>
+            <p class="split">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</p>
+            <p class="send-date">{{ item.sendDate | date : 'hh:m dd.MM.yyyy' }}</p>
+          </div>
+          <div class="info">
+            <p class="name">{{ item.employeeName }}</p>
+            <div class="dot">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <circle cx="2.5" cy="2.5" r="2.5" fill="#D9D9D9" />
+              </svg>
+            </div>
+            <p class="position">{{ item.positionName }}</p>
+            <div class="dot">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <circle cx="2.5" cy="2.5" r="2.5" fill="#D9D9D9" />
+              </svg>
+            </div>
+            <p class="position">{{ item.orgName }}</p>
+          </div>
+        </div>
+      </button>
+    </h2>
+    <div [attr.id]="'panelsStayOpen-collapse' + item.id" class="accordion-collapse collapse" [attr.aria-labelledby]="'ppanelsStayOpen-heading' + item.id">
+      <div class="accordion-body">
+        <div class="row">
+          <div class="col-md-6 info">
+            <div class="row">
+              <div class="col-md-5 col-lg-5 col-5">
+                <p class="text">{{ sendTime | translate : lang }}:</p>
+              </div>
+              <div class="col-md-7 col-lg-7 col-7">
+                <p class="value">{{ item.sendDate | date : 'HH:mm dd.MM.yyyy' }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 info">
+            <div class="row">
+              <div class="col-md-5 col-lg-5 col-5">
+                <p class="text">{{ explainType | translate : lang }}:</p>
+              </div>
+              <div class="col-md-7 col-lg-7 col-7">
+                <p class="value">{{ item.typeId === 0 ? 'Thiếu dữ liệu chấm công' : 'Đi muộn/về sớm' }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 info">
+            <div class="row">
+              <div class="col-md-5 col-lg-5 col-5">
+                <p class="text">{{ workDate | translate : lang }}:</p>
+              </div>
+              <div class="col-md-7 col-lg-7 col-7">
+                <p class="value">{{ item.workingDay | date : 'dd.MM.yyyy' }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 info">
+            <div class="row">
+              <div class="col-md-5 col-lg-5 col-5">
+                <p class="text">{{ reason | translate : lang }}:</p>
+              </div>
+              <div class="col-md-7 col-lg-7 col-7">
+                <p class="value">{{ item.note }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 info">
+            <div class="row">
+              <div class="col-md-5 col-lg-5 col-5">
+                <p class="text">{{ leaveEarly | translate : lang }}:</p>
+              </div>
+              <div class="col-md-7 col-lg-7 col-7">
+                <p class="value">{{ item.late ?? 0}}/{{ item.comebackout ?? 0}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 info">
+            <div class="row">
+              <div class="col-12">
+                <p class="text">{{ note | translate : lang }}:</p>
+              </div>
+              <div class="col-12">
+                <textarea rows="3" class="text-area" [attr.id]="'note-text-area-' + item.id"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 btn-group">
+            <button class="btn-reject" (click)="onRejectClick(item.id, item.appLevel)">{{ reject | translate : lang }}</button>
+            <button class="btn-approve" (click)="onApproveClick(item.id, item.appLevel)">{{ approve | translate : lang }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

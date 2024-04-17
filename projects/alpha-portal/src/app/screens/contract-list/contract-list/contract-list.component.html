@@ -1,0 +1,107 @@
+<div class="app-contract-list-container containter containter-fluid">
+
+    <div class="row">
+        <div [ngStyle]="{
+        display: 'block',
+        position: 'fixed',
+        verticalAlign: 'center',
+        backgroundColor: 'white',
+        top: layoutService.cellHeight * 2 + 'px',
+        left: '0px',
+        width: '100vw',
+        margin: '0px',
+        padding: '0px',
+        zIndex: 9999
+    }">
+            <div class="d-flex d-flex-v d-flex-start" [ngStyle]="{
+                    alignItems: 'flex-start',
+                    paddingLeft: layoutService.cellWidth + 'px',
+                    paddingRight: layoutService.cellWidth + (landscapeMode ? 10 : 0) + 'px',
+                    width: xl12Width + layoutService.cellWidth
+                }">
+                <input class="form-control search" type="text" [placeholder]="placeholder | translate: lang"
+                    placeholder="Nhập tên..." [(ngModel)]="searchText" autocomplete="false"
+                    (ngModelChange)="onSearchChange($event)" [ngStyle]="{
+                    marginTop: '5px',
+                    width: landscapeMode ? 'calc(50% - 10px)' : '100%'
+                }">
+            </div>
+        </div>
+    </div>
+
+    <div class="row no-padding" [ngStyle]="{
+        marginTop: landscapeMode ? (layoutService.formControlHeight * 2 + 'px') : (layoutService.formControlHeight + 'px'),
+    }">
+
+        <div #xl12 class="col-xl-12" [ngStyle]="{
+            paddingBottom: landscapeMode ? '0px' : layoutService.cellHeight + 'px',
+        }">
+            <div #scollContainer [ngStyle]="{
+                height: scollContainerHeight + 'px',
+                overflow: 'auto',
+            }" (scroll)="onScrollLoading($event)">
+
+                <div class="viewport" [ngStyle]="{ 
+                    overflow: 'hidden', 
+                    willChange: 'transform', 
+                    height: totalHeight + 'px',
+                    position: 'relative' 
+                }">
+
+                    <ul [ngStyle]="{
+                        willChange: 'transform', 
+                        transform: 'translateY(' + offsetY + 'px)',
+                    }">
+                        @for (item of items; track item.id) {
+                        <li class="custom-register" [ngStyle]="{
+                                                height: itemHeight + 'px'
+                                            }">
+                            <div class="custom-box" style="display: flex; justify-content: space-between;"
+                                (click)="itemClick(item)">
+                                <div class="d-flex">
+                                    <div style="border-radius: '50%'; justify-content: space-between;"
+                                        [ngStyle]="{ paddingLeft: layoutService.cellWidth + 'px' }">
+                                        <img class="custom-avatar"
+                                            [src]="item?.avatar != null ? (item?.avatar | mapAvatarToServer) : defaultAvatar"
+                                            appImageErrorResolver>
+                                    </div>&nbsp;&nbsp;
+                                    <div [ngStyle]="{
+                                                    height: '100%',
+                                                    lineHeight: '100%',
+                                                    display: 'flex',
+                                                    flexDirection: 'column',
+                                                    alignItems: 'start',
+                                                    justifyContent: 'center'
+                                                }">
+                                        <div [ngStyle]="{
+                                                        paddingLeft: '10px',
+                                                        width: '100%',
+                                                        textAlign: 'left',
+                                                        animation: 'fadeId .5s ease-out'
+                                                    }">
+                                            <div class="employee-name">{{ item?.name! | normalizeHumanName }}</div>
+                                            <span class="job-name">{{item?.jobName}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    style="display: flex;justify-content: center;align-items: center;padding-right: 20px;cursor: pointer;">
+                                    <img class="" src="assets/images/home/bigger-icon.svg" />
+                                </div>
+                            </div>
+                        </li>
+                        }
+                        <li>
+                            <app-threedots *ngIf="loading"></app-threedots>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

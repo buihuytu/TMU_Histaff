@@ -1,0 +1,24 @@
+.btn-calculate {   
+    color:  white;
+    background-color: #F37540;
+    cursor: pointer;
+    font-size :15px;
+    height: 36px;
+    width: 100px;
+    border-radius: 50px;
+    transition: 0s!important;
+    border:  var(--color-bg-pagination-button) 1px solid;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    justify-content: center;
+    &:hover{
+        background-color: #E7E7E7;
+    }
+}
+
+.col-md-1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

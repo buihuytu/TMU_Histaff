@@ -1,0 +1,33 @@
+<div #container class="app-notification-header-container">
+    <div class="bell-group" (click)="AccodionClick()">
+        <div class="bell-icon">
+            <i class="fa fa-bell-o"></i>
+        </div>
+        <div class="notification-amount">
+            <span>{{total}}</span>
+        </div>
+    </div>
+
+    <div class="dropdown" [class.open]="expandState">
+        <div class="title">
+            <h4>Thông báo</h4>
+        </div>
+        <div class="border"></div>
+        <div class="menuItem">
+            <div *ngFor="let item of data ; let a = index">
+                <div (click)="toggle(a)" class="headerContent">
+                    <div>{{item.name}} ({{item.count}})</div>
+                    <div [@rotatedState]="item.state"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
+                </div>
+                <div [@myfirstanimation]='item.state' class="content">
+                    <div class="item" *ngFor="let i of item.value">
+                        <div class="emp">
+                            <img [src]="avatar || defaultAvatar" class="in-table-avatar " appImageErrorResolver>
+                            <a (click)="Directional(item.code, i)" class="link">{{i.code}} - {{i.name}} </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

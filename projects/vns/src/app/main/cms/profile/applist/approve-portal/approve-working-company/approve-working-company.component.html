@@ -1,0 +1,44 @@
+<div class="app-approve-working-company">
+    <core-page-list
+        #pageListRef
+        [apiDefinition]="apiDefinition"
+        [columns]="columns"
+        [editRoute]="editRoute"
+        [crud]="crud"
+        [title]="title"
+        [normalMode]="true"
+        [autoResizeWithWindow]="true"
+        *ngIf="!!reasonChange"
+        [outerSort]="outerSort"
+        [outerParam$]="outerParam$"
+        [outerInOperators]="outerInOperators"
+        [left]="orgTree"
+        [disableDoubleClick]="true"
+    >
+    </core-page-list>
+
+
+    <ng-template #orgTree>
+        <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)"> </core-org-tree>
+    </ng-template>
+
+    <ng-template #reasonChange let-reasonChange="context.reasonChange">
+        <!-- bật css chữ xanh -->
+        <!-- <div class="fill-color-column">{{reasonChange}}</div> -->
+
+
+        <!-- tắt css chữ xanh -->
+        <div> {{reasonChange}} </div>
+    </ng-template>
+
+
+    <ng-template #fileName let-fileName="context.fileName">
+        <core-attachment
+            [readonly]="true"
+            [valueToShow]="fileName!"
+            *ngIf="!!fileName"
+        >
+        </core-attachment>
+    </ng-template>
+
+</div>

@@ -1,0 +1,44 @@
+.time-sheet-daily-container {
+    .vertical {
+        margin-top: 0px;
+    }
+
+    .h20 {
+        height: 0px !important;
+    }
+
+    .color-cell {
+        width: 100%;
+        height: 46px;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        padding: 0 8px;
+    }
+
+    .btn-calculate {
+        margin: 20px auto;
+        margin-left: 15%;
+        color: white;
+        background-color: #F37540;
+        cursor: pointer;
+        font-size: 15px;
+        height: 36px;
+        width: 100px;
+        border-radius: 50px;
+        transition: 0s !important;
+        border: var(--color-bg-pagination-button) 1px solid;
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+        justify-content: center;
+
+        &:hover {
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+    }
+}
+
+:host::ng-deep .headerButtonSearch {
+    margin-top: 15px !important;
+}

@@ -1,0 +1,1157 @@
+<div *ngIf="!dataChangeOnState; else dataChangeOnStateTemplate" class="app-certificate-container">
+    <div class="list-certificate row my-3" *ngFor="let item of certificate">
+        <div class="null" *ngIf="!item">Không có dữ liệu về quá trình công tác!</div>
+        <div class="row d-flex justify-content-between">
+            <div class="col-8">
+                <h3 class="person-name">{{item.name}}</h3>
+            </div>
+            <div class="col-1">
+                <button
+                    *ngIf="listCertificateIsSave.length == 0 && listCertificateRefuse.length == 0 && listCertificateIsSave.length == 0"
+                    (click)="clickBtnEdit(item)" class="btn-edit">
+                    <i class="feather-edit-2"></i>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
+                    <span class="text-title">Là bằng chính: </span>
+                </div>
+                <div class="col-md-6">
+                    <core-checkbox class="text-content" [disabled]="true" [(ngModel)]="item.isPrime"></core-checkbox>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Nội dung đào tạo: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.contentTrain}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Loại bằng cấp/Chứng chỉ: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.typeCertificateName}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Trường đào tạo: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.schoolName}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Ngày chứng chỉ có hiệu lực: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.birthDate | date: 'dd/MM/yyyy'}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Năm tốt nghiệp: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.year}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Thời gian đào tạo từ: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.trainFromDate | date: 'dd/MM/yyyy'}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Điểm số: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.mark}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Thời gian đào tạo đến: </span>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <h4 class="text-content">{{item.trainToDate | date: 'dd/MM/yyyy'}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Xếp loại tốt nghiệp: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.classification}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Trình độ: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.levelName}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Hình thức đào tạo: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.typeTrainName}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Chuyên ngành: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.levelTrainName}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Đính kèm tệp tin: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.fileName}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Trình độ chuyên môn: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.major }}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Ghi chú: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.remark}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="list-certificate my-3 row" *ngFor="let item of listCertificateIsSave">
+        <div class="row d-flex justify-content-between">
+            <div class="col-8">
+                <h3 class="person-name">{{item.name}}</h3>
+            </div>
+            <div class="col-1 d-flex justify-content-around">
+                <button (click)="clickBtnSaveEdit(item)" class="btn-edit">
+                    <i class="feather-edit-2"></i>
+                </button>
+                <button (click)="clickBtnDelete(item.id)" class="btn-edit">
+                    <i class="d-flex feather-trash-2"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <span class="color-info">(Đã lưu)</span>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
+                    <span class="text-title">Là bằng chính: </span>
+                </div>
+                <div class="col-md-6">
+                    <core-checkbox class="text-content" [disabled]="true" [(ngModel)]="item.isPrime"></core-checkbox>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Nội dung đào tạo: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.contentTrain}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Loại bằng cấp/Chứng chỉ: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.typeCertificateName}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Trường đào tạo: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.schoolName}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Ngày chứng chỉ có hiệu lực: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.birthDate | date: 'dd/MM/yyyy'}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Năm tốt nghiệp: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.year}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Thời gian đào tạo từ: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.trainFromDate | date: 'dd/MM/yyyy'}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Điểm số: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.mark}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Thời gian đào tạo đến: </span>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <h4 class="text-content">{{item.trainToDate | date: 'dd/MM/yyyy'}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Xếp loại tốt nghiệp: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.classification}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Trình độ: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.levelName}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Hình thức đào tạo: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.typeTrainName}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Chuyên ngành: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.levelTrainName}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Đính kèm tệp tin: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.fileName}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Trình độ chuyên môn: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.major }}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Ghi chú: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.remark}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="list-certificate my-3 row" *ngFor="let item of listCertificateUnapprove">
+        <div class="row d-flex justify-content-between">
+            <div class="col-8">
+                <h3 class="person-name">{{item.name}}</h3>
+            </div>
+            <div class="col-1 d-flex justify-content-around">
+                <button (click)="clickBtnSaveEdit(item)" class="btn-edit">
+                    <i class="feather-edit-2"></i>
+                </button>
+                <button (click)="clickBtnDelete(item.id)" class="btn-edit">
+                    <i class="d-flex feather-trash-2"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <span class="color-danger">Từ chối ({{item.reason}})</span>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
+                    <span class="text-title">Là bằng chính: </span>
+                </div>
+                <div class="col-md-6">
+                    <core-checkbox class="text-content" [disabled]="true" [(ngModel)]="item.isPrime"></core-checkbox>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Nội dung đào tạo: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.contentTrain}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Loại bằng cấp/Chứng chỉ: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.typeCertificateName}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Trường đào tạo: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.schoolName}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Ngày chứng chỉ có hiệu lực: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.birthDate | date: 'dd/MM/yyyy'}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Năm tốt nghiệp: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.year}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Thời gian đào tạo từ: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.trainFromDate | date: 'dd/MM/yyyy'}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Điểm số: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.mark}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Thời gian đào tạo đến: </span>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <h4 class="text-content">{{item.trainToDate | date: 'dd/MM/yyyy'}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Xếp loại tốt nghiệp: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.classification}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Trình độ: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.levelName}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Hình thức đào tạo: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.typeTrainName}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Chuyên ngành: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.levelTrainName}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Đính kèm tệp tin: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.fileName}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Trình độ chuyên môn: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.major }}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Ghi chú: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.remark}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="list-certificate my-3 row" *ngFor="let item of listCertificateIsApprove">
+        <div class="row d-flex justify-content-between">
+            <div class="col-8">
+                <h3 class="person-name">{{item.name}}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <span class="color-warning">(Bản ghi từ chối phê duyệt)</span>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
+                    <span class="text-title">Là bằng chính: </span>
+                </div>
+                <div class="col-md-6">
+                    <core-checkbox class="text-content" [disabled]="true" [(ngModel)]="item.isPrime"></core-checkbox>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Nội dung đào tạo: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.contentTrain}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Loại bằng cấp/Chứng chỉ: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.typeCertificateName}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Trường đào tạo: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.schoolName}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Ngày chứng chỉ có hiệu lực: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.birthDate | date: 'dd/MM/yyyy'}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Năm tốt nghiệp: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.year}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Thời gian đào tạo từ: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.trainFromDate | date: 'dd/MM/yyyy'}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Điểm số: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.mark}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Thời gian đào tạo đến: </span>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <h4 class="text-content">{{item.trainToDate | date: 'dd/MM/yyyy'}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Xếp loại tốt nghiệp: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.classification}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Trình độ: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.levelName}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Hình thức đào tạo: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.typeTrainName}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Chuyên ngành: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.levelTrainName}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Đính kèm tệp tin: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.fileName}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Trình độ chuyên môn: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.major }}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Ghi chú: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.remark}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="list-certificate my-3 row" *ngFor="let item of listCertificateRefuse">
+        <div class="row d-flex justify-content-between">
+            <div class="col-8">
+                <h3 class="person-name">{{item.name}}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <span class="color-warning">(Chờ phê duyệt)</span>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
+                    <span class="text-title">Là bằng chính: </span>
+                </div>
+                <div class="col-md-6">
+                    <core-checkbox class="text-content" [disabled]="true" [(ngModel)]="item.isPrime"></core-checkbox>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Nội dung đào tạo: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.contentTrain}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Loại bằng cấp/Chứng chỉ: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.typeCertificateName}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Trường đào tạo: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.schoolName}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Ngày chứng chỉ có hiệu lực: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.birthDate | date: 'dd/MM/yyyy'}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Năm tốt nghiệp: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.year}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Thời gian đào tạo từ: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.trainFromDate | date: 'dd/MM/yyyy'}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Điểm số: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.mark}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Thời gian đào tạo đến: </span>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <h4 class="text-content">{{item.trainToDate | date: 'dd/MM/yyyy'}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Xếp loại tốt nghiệp: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.classification}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Trình độ: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.levelName}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Hình thức đào tạo: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.typeTrainName}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Chuyên ngành: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.levelTrainName}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Đính kèm tệp tin: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.fileName}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Trình độ chuyên môn: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.major }}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Ghi chú: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-content">{{item.remark}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #dataChangeOnStateTemplate>
+    <div class="app-certificate-container">
+        <div class="list-certificate row my-3" *ngFor="let item of dataChangeOnState">
+            <div class="null" *ngIf="!item">Không có dữ liệu bằng cấp, chứng chỉ!</div>
+            <div class="row d-flex justify-content-between">
+                <div class="col-3">
+                    <h3 class="person-name">{{item.name}}</h3>
+                </div>
+                <div class="col-1">
+                    <button (click)="clickBtnEdit(item)" class="btn-edit">
+                        <i class="feather-edit-2"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-title">Là bằng chính: </span>
+                    </div>
+                    <div class="col-md-6">
+                        <core-checkbox class="text-content isPrime" [disabled]="true"
+                            [(ngModel)]="item.isPrime"></core-checkbox>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Nội dung đào tạo: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content contentTrain">{{item.contentTrain}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Loại bằng cấp/Chứng chỉ: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content typeCertificateName">{{item.typeCertificateName}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Trường đào tạo: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content schoolName">{{item.schoolName}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Ngày chứng chỉ có hiệu lực: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content birthDate">{{item.birthDate | date: 'dd/MM/yyyy'}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Năm tốt nghiệp: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content year">{{item.year}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Thời gian đào tạo từ: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content trainFromDate">{{item.trainFromDate | date: 'dd/MM/yyyy'}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Điểm số: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content mark">{{item.mark}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Thời gian đào tạo đến: </span>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <h4 class="text-content trainToDate">{{item.trainToDate | date: 'dd/MM/yyyy'}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Xếp loại tốt nghiệp: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content classification">{{item.classification}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mt-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Trình độ: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content levelName">{{item.levelName}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Hình thức đào tạo: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content typeTrainName">{{item.typeTrainName}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mt-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Chuyên ngành: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content levelTrainName">{{item.levelTrainName}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Đính kèm tệp tin: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content fileName">{{item.fileName}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Trình độ chuyên môn: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content levelName">{{item.levelName }}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="text-title">Ghi chú: </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-content remark">{{item.remark}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!!title" class="app-certificate-container">
+        <div class="list-certificate">
+            <div class="row" style="color:red">Lý do không phê duyệt</div>
+            <div class="row">{{title}}</div>
+        </div>
+    </div>
+
+</ng-template>

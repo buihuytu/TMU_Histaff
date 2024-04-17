@@ -1,0 +1,39 @@
+:host::ng-deep .core-tabs-headers-line {
+    width:  var(--profile-info) !important;
+}
+:host::ng-deep .core-tabs-headers {
+    width: 100% !important;
+    // border-radius: 15px;
+    // border: 1px solid #D1D1D1;
+    // padding-left:15px!important;
+    padding-right:15px!important;
+    &>li{
+        margin-right:50px!important;
+    }
+}
+:host::ng-deep .core-table-container.hide-search{
+    margin-top: 10px!important;
+}
+:host::ng-deep .required-paper-container{
+    border: 1px solid #D1D1D1;
+    padding-left:15px!important;
+    padding-right:15px!important;
+    border-radius: 5px;
+    padding-left:15px!important;
+    padding-right:15px!important;
+}
+:host::ng-deep .core-tabs-container .core-tabs-headers{
+    transform: translateY(-16px);
+}
+
+:host::ng-deep .core-page-header-container .title{
+    font-size: 15px !important;
+}
+
+:host::ng-deep .core-page-edit-container .feather-x{
+    display: none !important;
+}
+
+:host::ng-deep .core-checkbox-container span{
+    color: black !important;
+}

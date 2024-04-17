@@ -1,0 +1,51 @@
+<div #container class="app-profile-recruitment-center-container">
+    <form [formGroup]="form">
+        <div class="avatar-wrapper">
+            <core-file-uploader [uploadFileType]="uploadFileType" [fileDataControlName]="fileDataControlName"
+                [fileNameControlName]="fileNameControlName" [fileTypeControlName]="fileTypeControlName"
+                [defaultAvatar]="defaultAvatar" [hidePreview]="true" formControlName="avatar" [verticalMode]="true"></core-file-uploader>
+        </div>
+        <!-- Họ tên -->
+        <div class="candidate-cv-fullname">{{ candidateCv?.fullName | normalizeHumanName}}</div>
+        <!-- Mã ứng viên -->
+        <div class="row display">
+            <div class="col-6 label">
+           {{code | translate: lang}}:<br>
+           <span style="color:#000000; font-weight: 400;">{{candidate?.code}}</span>
+            </div>
+        </div>
+        <!-- Giới tính -->
+        <div class="row display">
+            <div class="col-6 label">
+                {{genderName | translate: lang}}:<br>
+                <span    span style="color:#000000; font-weight: 400;">{{candidate?.gender}}</span>
+            </div>
+        </div>
+        <!-- Nguồn ứng viên -->
+        <div class="row display">
+            <div class="col-6 label">
+                {{rcSourceRecName | translate: lang}}:<br>
+                <span style="color:#000000; font-weight: 400;">{{candidate?.rcSourceRecName}}</span>
+            </div>
+        </div>
+        <!-- Ban/Phòng -->
+        <div class="row display">
+            <div class="col-6 label">
+                {{orgName | translate: lang}}:<br>
+                <span style="color:#000000; font-weight: 400;">{{candidateCv?.orgName}}</span>
+            </div>
+        </div>
+        <core-line></core-line>
+        <div class="personnel-menu">
+            <ul>
+                <li *ngFor="let item of items; let index=index"
+                    [class.active]="profileRecruitmentCenterService.leftMenuActiveItemIndex===index">
+                    <a [routerLink]="[item.routerLink]">
+                        {{ item.code | translate: lang }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </form>
+</div>

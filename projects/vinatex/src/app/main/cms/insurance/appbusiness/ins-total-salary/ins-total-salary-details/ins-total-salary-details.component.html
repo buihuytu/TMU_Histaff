@@ -1,0 +1,271 @@
+<div class="modal-container">
+    <div class="modal-content-root">
+
+        <div #container class="app-ins-total-salary-details-container">
+            <i class="feather-x" (click)="onCancel()"></i>
+            <core-tabs [headers]="headers" [contents]="[ inPeriod, endPeriod ]"
+                (onHeaderClick)="onCoreTabsHeaderClick($event)">
+            </core-tabs>
+        </div>
+        <ng-template #inPeriod>
+            <div style="padding-top: 3%;" class="inperiod-container d-flex justify-content-between">
+                <div class="row w-100">
+                    <div class="col-md-2 mt-60">
+                        <div class="content-bh">
+                            <div class="content-title t-trans"></div>
+                            <div class="content-left-table">
+                                <div class="row pad">
+                                    <div class="col-md-12 t-trans"></div>
+                                </div>
+                                <div class="row pad">
+                                    <div class="col-md-12">{{title.empNumber |translate:lang}}</div>
+                                </div>
+                                <div class="row pad">
+                                    <div class="col-md-12">{{title.totalSalary |translate:lang}}</div>
+                                </div>
+                                <div class="row pad">
+                                    <div class="col-md-12">{{title.numberToClose |translate:lang}}</div>
+                                </div>
+                                <div class="row pad">
+                                    <div class="col-md-12">{{title.adjust |translate:lang}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-10 row">
+                        <div class="col-md-3 no-padding p2">
+                            <div class="content-bh">
+                                <div class="content-title t-trans">{{title.bhxh |translate:lang}}</div>
+                                <div class="content-table">
+                                    <div class="row pad d-line">
+                                        <div class="col-md-6 t-trans">{{title.increase |translate:lang}}</div>
+                                        <div class="col-md-6 t-trans">{{title.reduce |translate:lang}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataInPeriod.soLaoDong.bhxhTang | number}}</div>
+                                        <div class="col-md-6">{{dataInPeriod.soLaoDong.bhxhGiam | number}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataInPeriod.tongQuyLuong.bhxhTang | number}}</div>
+                                        <div class="col-md-6">{{dataInPeriod.tongQuyLuong.bhxhGiam | number}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataInPeriod.soPhaiDong.bhxhTang | number}}</div>
+                                        <div class="col-md-6">{{dataInPeriod.soPhaiDong.bhxhGiam | number}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataInPeriod.dieuChinh.bhxhTang | number}}</div>
+                                        <div class="col-md-6">{{dataInPeriod.dieuChinh.bhxhGiam | number}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 no-padding p2">
+                            <div class="content-bh">
+                                <div class="content-title t-trans">{{title.bhyt |translate:lang}}</div>
+                                <div class="content-table">
+                                    <div class="row d-line pad">
+                                        <div class="col-md-6 t-trans">{{title.increase |translate:lang}}</div>
+                                        <div class="col-md-6 t-trans">{{title.reduce |translate:lang}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataInPeriod.soLaoDong.bhytTang | number}}</div>
+                                        <div class="col-md-6">{{dataInPeriod.soLaoDong.bhytGiam | number}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataInPeriod.tongQuyLuong.bhytTang | number}}</div>
+                                        <div class="col-md-6">{{dataInPeriod.tongQuyLuong.bhytGiam | number}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataInPeriod.soPhaiDong.bhytTang | number}}</div>
+                                        <div class="col-md-6">{{dataInPeriod.soPhaiDong.bhytGiam | number}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataInPeriod.dieuChinh.bhytTang | number}}</div>
+                                        <div class="col-md-6">{{dataInPeriod.dieuChinh.bhytGiam | number}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 no-padding p2">
+                            <div class="content-bh">
+                                <div class="content-title t-trans">{{title.bhtn |translate:lang}}</div>
+                                <div class="content-table ">
+                                    <div class="row pad d-line">
+                                        <div class="col-md-6 t-trans">{{title.increase |translate:lang}}</div>
+                                        <div class="col-md-6 t-trans">{{title.reduce |translate:lang}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataInPeriod.soLaoDong.bhtnTang | number}}</div>
+                                        <div class="col-md-6">{{dataInPeriod.soLaoDong.bhtnGiam | number}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataInPeriod.tongQuyLuong.bhtnTang | number}}</div>
+                                        <div class="col-md-6">{{dataInPeriod.tongQuyLuong.bhtnGiam | number}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataInPeriod.soPhaiDong.bhtnTang | number}}</div>
+                                        <div class="col-md-6">{{dataInPeriod.soPhaiDong.bhtnGiam | number}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataInPeriod.dieuChinh.bhtnTang | number}}</div>
+                                        <div class="col-md-6">{{dataInPeriod.dieuChinh.bhtnGiam | number}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 no-padding p2">
+                            <div class="content-bh">
+                                <div class="content-title t-trans">{{title.bhbnn |translate:lang}}</div>
+                                <div class="content-table">
+                                    <div class="row pad d-line">
+                                        <div class="col-md-6 t-trans">{{title.increase |translate:lang}}</div>
+                                        <div class="col-md-6 t-trans">{{title.reduce |translate:lang}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataInPeriod.soLaoDong.bhbnnTang | number }}</div>
+                                        <div class="col-md-6">{{dataInPeriod.soLaoDong.bhbnnGiam | number}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataInPeriod.tongQuyLuong.bhbnnTang | number}}</div>
+                                        <div class="col-md-6">{{dataInPeriod.tongQuyLuong.bhbnnGiam | number}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataInPeriod.soPhaiDong.bhbnnTang | number}}</div>
+                                        <div class="col-md-6">{{dataInPeriod.soPhaiDong.bhbnnGiam | number}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataInPeriod.dieuChinh.bhbnnTang | number}}</div>
+                                        <div class="col-md-6">{{dataInPeriod.dieuChinh.bhbnnGiam | number}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+
+        <ng-template #endPeriod>
+            <div style="padding-top: 3%;" class="inperiod-container d-flex justify-content-between">
+                <div class="row w-100">
+                    <div class="col-md-2 mt-60">
+                        <div class="content-bh">
+                            <div class="content-title t-trans"></div>
+                            <div class="content-left-table">
+                                <div class="row pad">
+                                    <div class="col-md-12 t-trans"></div>
+                                </div>
+                                <div class="row pad">
+                                    <div class="col-md-12">{{title.empNumber |translate:lang}}</div>
+                                </div>
+                                <div class="row pad">
+                                    <div class="col-md-12">{{title.totalSalary |translate:lang}}</div>
+                                </div>
+                                <div class="row pad">
+                                    <div class="col-md-12">{{title.numberToClose |translate:lang}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-10 row">
+                        <div class="col-md-3 no-padding p2">
+                            <div class="content-bh">
+                                <div class="content-title t-trans">{{title.bhxh |translate:lang}}</div>
+                                <div class="content-table">
+                                    <div class="row pad d-line">
+                                        <div class="col-md-6 t-trans">{{title.previousPeriod |translate:lang}}</div>
+                                        <div class="col-md-6 t-trans">{{title.thisPeriod |translate:lang}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataEndPeriod.soLaoDong.bhbnnTang | number }}</div>
+                                        <div class="col-md-6">{{dataEndPeriod.soLaoDong.bhbnnGiam | number}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataEndPeriod.tongQuyLuong.bhbnnTang | number}}</div>
+                                        <div class="col-md-6">{{dataEndPeriod.tongQuyLuong.bhbnnGiam | number}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataEndPeriod.soPhaiDong.bhbnnTang | number}}</div>
+                                        <div class="col-md-6">{{dataEndPeriod.soPhaiDong.bhbnnGiam | number}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 no-padding p2">
+                            <div class="content-bh">
+                                <div class="content-title t-trans">{{title.bhyt |translate:lang}}</div>
+                                <div class="content-table">
+                                    <div class="row d-line pad">
+                                        <div class="col-md-6 t-trans">{{title.previousPeriod |translate:lang}}</div>
+                                        <div class="col-md-6 t-trans">{{title.thisPeriod |translate:lang}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataEndPeriod.soLaoDong.bhbnnTang | number }}</div>
+                                        <div class="col-md-6">{{dataEndPeriod.soLaoDong.bhbnnGiam | number}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataEndPeriod.tongQuyLuong.bhbnnTang | number}}</div>
+                                        <div class="col-md-6">{{dataEndPeriod.tongQuyLuong.bhbnnGiam | number}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataEndPeriod.soPhaiDong.bhbnnTang | number}}</div>
+                                        <div class="col-md-6">{{dataEndPeriod.soPhaiDong.bhbnnGiam | number}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 no-padding p2">
+                            <div class="content-bh">
+                                <div class="content-title t-trans">{{title.bhtn |translate:lang}}</div>
+                                <div class="content-table ">
+                                    <div class="row pad d-line">
+                                        <div class="col-md-6 t-trans">{{title.previousPeriod |translate:lang}}</div>
+                                        <div class="col-md-6 t-trans">{{title.thisPeriod |translate:lang}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataEndPeriod.soLaoDong.bhbnnTang | number }}</div>
+                                        <div class="col-md-6">{{dataEndPeriod.soLaoDong.bhbnnGiam | number}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataEndPeriod.tongQuyLuong.bhbnnTang | number}}</div>
+                                        <div class="col-md-6">{{dataEndPeriod.tongQuyLuong.bhbnnGiam | number}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataEndPeriod.soPhaiDong.bhbnnTang | number}}</div>
+                                        <div class="col-md-6">{{dataEndPeriod.soPhaiDong.bhbnnGiam | number}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 no-padding p2">
+                            <div class="content-bh">
+                                <div class="content-title t-trans">{{title.bhbnn |translate:lang}}</div>
+                                <div class="content-table">
+                                    <div class="row pad d-line">
+                                        <div class="col-md-6 t-trans">{{title.previousPeriod |translate:lang}}</div>
+                                        <div class="col-md-6 t-trans">{{title.thisPeriod |translate:lang}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataEndPeriod.soLaoDong.bhbnnTang | number }}</div>
+                                        <div class="col-md-6">{{dataEndPeriod.soLaoDong.bhbnnGiam | number}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataEndPeriod.tongQuyLuong.bhbnnTang | number}}</div>
+                                        <div class="col-md-6">{{dataEndPeriod.tongQuyLuong.bhbnnGiam | number}}</div>
+                                    </div>
+                                    <div class="row pad">
+                                        <div class="col-md-6">{{dataEndPeriod.soPhaiDong.bhbnnTang | number}}</div>
+                                        <div class="col-md-6">{{dataEndPeriod.soPhaiDong.bhbnnGiam | number}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>
+
+<app-fullscreen-modal-loader *ngIf="loading"></app-fullscreen-modal-loader>

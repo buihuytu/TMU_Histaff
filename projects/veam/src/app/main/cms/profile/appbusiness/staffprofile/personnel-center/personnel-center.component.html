@@ -1,0 +1,30 @@
+<div class="app-personnel-center-container">
+  <div class="header-wrapper">
+    <core-page-header [title]="title" [hideButtonGroup]="true" (buttonClick)="onCorePageHeaderButtonClick($event)"></core-page-header>
+   <a style="font-size: 13px!important;color:#848484!important" routerLink="/cms/profile/business/staffprofile">
+    <span class="icon-back"></span>&nbsp;<span style="text-decoration: underline!important;">{{ 'UI.PERSONNEL_LEFT_MENU_BACK_TO_LIST' | translate: lang }}</span>
+  </a>
+  </div>
+
+
+  <div class="container container-fluid">
+
+    <div class="row no-padding no-margin">
+
+      <div class="fixed-left no-padding no-margin">
+        <app-personnel-left-menu></app-personnel-left-menu>
+      </div>
+
+      <div class="block-divider-vertical"></div>
+
+      <div class="col-md no-padding no-margin">
+        <router-outlet></router-outlet>
+        <router-outlet name="personnelCenterAux"></router-outlet>
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>

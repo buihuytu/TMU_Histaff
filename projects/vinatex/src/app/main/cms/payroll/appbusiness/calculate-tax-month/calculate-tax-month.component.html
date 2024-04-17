@@ -1,0 +1,158 @@
+<div class="cms-app-calculate-tax-month-container">
+  <!-- HEADER -->
+  <core-page-header
+    [hidden]="false"
+    [title]="title"
+    [shownItems]="headerButtons"
+    (buttonClick)="onCorePageHeaderButtonClick($event)"
+  ></core-page-header>
+
+  <!-- LAYOUT MAIN -->
+  <core-composition [left]="orgTreeChecked" [top]="top" [main]="main" [height]="compositionHeight"></core-composition>
+
+  <!-- ORG TREE CHECKBOX -->
+  <ng-template #orgTreeChecked>
+    <core-org-tree [accessorMode]="accessorMode" [(ngModel)]="listOrgIds" [height]="treeHeight"></core-org-tree>
+  </ng-template>
+
+
+  <ng-template #top>
+
+
+      <div class="row mb15" style="margin-right: 5px">
+        <div class="col-md-3">
+          <div class="form-group vertical">
+            <label>{{ labelList.year | translate : lang }}</label>
+            <core-dropdown
+              [(ngModel)]="year"
+              (ngModelChange)="onYearChange($event)"
+              [options$]="yearOptions$"
+              [getByIdObject$]="yearGetByIdObject$"
+              [shownFrom]="shownFrom"
+            ></core-dropdown>
+          </div>
+          <div style="height: 25px">
+            <div style="margin: 0" class="form-control-error" *ngIf="showRequiredYear" >
+              {{ errorRequired | translate : lang }}
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group vertical">
+            <label>{{ labelList.month | translate : lang }}</label>
+            <core-dropdown
+              [(ngModel)]="month"
+              (ngModelChange)="onMonthChange($event)"
+              [options$]="monthOptions$"
+              [getByIdObject$]="monthGetByIdObject$"
+              [shownFrom]="shownFrom"
+            ></core-dropdown>
+          </div>
+          <div style="height: 25px">
+            <div style="margin: 0" class="form-control-error" *ngIf="showRequiredMonth">
+              {{ errorRequired | translate : lang }}
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group vertical">
+            <label>{{ labelList.taxDate | translate : lang }}</label>
+            <core-dropdown
+              [(ngModel)]="taxDateId"
+              (ngModelChange)="onTaxDateChange($event)"
+              [options$]="taxDateOptions$"
+              [getByIdObject$]="taxDateGetByIdObject$"
+              [shownFrom]="shownFrom"
+            ></core-dropdown>
+          </div>
+          <div style="height: 25px">
+            <div style="margin: 0" class="form-control-error" *ngIf="showRequiredTaxDate">
+              {{ errorRequired | translate : lang }}
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group vertical">
+            <label>{{ labelList.objSalary | translate : lang }}</label>
+            <core-dropdown
+              [(ngModel)]="objSalary"
+              (ngModelChange)="onObjSalaryChange($event)"
+              [options$]="objSalaryOptions$"
+              [getByIdObject$]="objSalaryGetByIdObject$"
+              [shownFrom]="shownFrom"
+            ></core-dropdown>
+          </div>
+          <div style="height: 25px">
+            <div style="margin: 0" class="form-control-error" *ngIf="showRequiredObjSalary">
+              {{ errorRequired | translate : lang }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb15" style="margin-right: 5px; margin-bottom: 0px;">
+        <div class="col-md-3">
+          <div class="form-group vertical vertical-custom">
+            <label>{{ labelList.employeeCal | translate : lang }}</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="employeeCal"
+              (ngModelChange)="onEmployeeCalChange($event)"
+              [readonly]="true"
+            />
+          </div>
+          <div style="height: 25px">
+            <div style="margin: 0" class="form-control-error" *ngIf="showRequiredEmployeeCal">
+              {{ errorRequired | translate : lang }}
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div style="margin-top:20px" class="form-group vertical vertical-custom">
+            <core-button-group-vns
+              class="buttonGroupCustom"
+              [showCaption]="true"
+              (buttonClick)="onButtonClick($event)"
+              [shownItems]="buttonItems"
+            ></core-button-group-vns>
+          </div>
+        </div>
+      </div>
+
+  </ng-template>
+
+  <!-- MAIN -->
+  <ng-template #main>
+    <!-- FILLTER FORM -->
+    
+    <!-- GRID DATA -->
+    <core-table
+      [columns]="columns"
+      [height]="tableHeight"
+      [frozen]="2"
+      [showCheckbox]="!!!hideCheck"
+      [data]="innerBody"
+      [loading]="loading"
+      (onSearching)="onSearching($event)"
+      [headerWrap]="true"
+      [headerFirstRowHeight]="headerFirstRowHeight"
+    ></core-table>
+
+    <div class="d-flex-end pagination-wrapper" >
+      <core-pagination-full
+        [height]="paginationHeight"
+        [currentPage$]="currentPage$"
+        [pageSize$]="pageSize$"
+        [pageCount]="pageCount"
+        [innerBodyCount$]="innerBodyCount$"
+        [pagination$]="pagination$"
+        [loading]="loading"
+        [background]="'#848484'"
+        (onCurrentPageChange)="onCurrentPageChange($event)"
+      ></core-pagination-full>
+    </div>
+  </ng-template>
+</div>
+
+<app-fullscreen-modal-loader *ngIf="loadingPage"></app-fullscreen-modal-loader>

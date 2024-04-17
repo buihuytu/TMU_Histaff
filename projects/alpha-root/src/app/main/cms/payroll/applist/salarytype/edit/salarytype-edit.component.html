@@ -1,0 +1,86 @@
+<core-page-edit *ngIf="!!sections.length" [width]="1000" [captionCode]="captionCode" [sections]="sections" [crud]="crud"
+    [entityTable]="entityTable" (onFormCreated)="onFormCreated($event)"
+    (onInitialValueStringReady)="onFormReinit($event)"></core-page-edit>
+
+<!-- <div class="app-main-content">
+  <div class="app-container">
+    <div class="app-toolbar">
+      <div class="card-center">
+        <div class="app-breadcrum">
+          <div class="brackcrum">
+            <i class="fa fa-sitemap" aria-hidden="true"></i>Hồ sơ <i class="fa fa-angle-double-right"
+              aria-hidden="true"></i>Danh mục
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <span class="brackcrum-active" href='/cms/profile/list/salarytype'>Bảng lương</span>
+          </div>
+        </div>
+        <app-common-tools name="salarytype-edit" [items$]="toolItems$" (toolItemClicked)="clickToolbar($event)"></app-common-tools>
+      </div>
+    </div>
+    <div class="app-content">
+    <div class="card-center">
+      <form name="editForm" [formGroup]="editForm" novalidate>
+        <div class="group-box">
+          <div class="card-head">
+            <div class="icon-info histaff-icon"></div>
+            <label class="title">Thông tin</label>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group vertical">
+                <label class="e-float-text required">Mã</label>
+                <input class="form-control" type="text" formControlName="code" [(ngModel)]="model.code" maxlength="31">
+                <span class="input-error"
+                  *ngIf="editForm.get('code')!.hasError('required') && !editForm.get('code')!.untouched">
+                  Bắt buộc nhập
+                </span>
+                <span class="input-error "
+                  *ngIf="editForm.get('code')!.hasError('incorrect') && !editForm.get('code')!.untouched">
+                  Sai định dạng
+                </span>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group vertical">
+                <label class="e-float-text required" for="name">Tên</label>
+                <input class="form-control" type="text" formControlName="name" [(ngModel)]="model.name" maxlength="51">
+                <span class="input-error"
+                  *ngIf="editForm.get('name')!.hasError('required') && !editForm.get('name')!.untouched">
+                  Bắt buộc nhập
+                </span>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group vertical">
+                <label class="e-float-text ">Ghi
+                  chú</label>
+                <textarea class="form-control" type="text" formControlName="note" [(ngModel)]="model.note"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="model.id==null">
+            <div class="col-sm-4">
+              <div class="form-group vertical">
+                <label class="e-float-text required" for="coppyId">Sao chép từ</label>
+                <ejs-dropdownlist id='coppyId' [dataSource]='lstType' formControlName="coppyId" [showClearButton]="true"
+                  [(ngModel)]="model.coppyId" [fields]='fields'>
+                </ejs-dropdownlist>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    </div>
+  </div>
+</div>
+
+<gohr-confirm-modal id="confirm-back-modal">
+  <div class="row full-width gohr-modal-header">
+    Những thay đổi hiện tại sẽ bị mất. Bạn có thực sự muốn tiếp tục?
+  </div>
+  <div class="row full-width gohr-modal-footer text-center">
+    <button class="btn btn-primary" (click)="confirmBack('ok')">Đồng ý</button>
+    <button class="btn btn-default" (click)="confirmBack('cancel')">Hủy</button>
+  </div>
+</gohr-confirm-modal> -->

@@ -1,0 +1,87 @@
+.app-orgchart-container {
+
+    position: relative;
+
+    .lib-wrapper {
+
+        position: relative;
+
+        .settings {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: var(--size-layout-block-cell-spacing);
+            top: var(--size-layout-block-cell-spacing);
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border-radius: 50%;
+            z-index: 1;
+
+            .setting-dropdown {
+                display: block;
+                width: 400px;
+                top: 30px;
+                border-radius: 20px;
+                background-color: white;
+                box-shadow: var(--decoration-box-shadow);
+                padding: var(--size-layout-block-cell-spacing);
+            }
+        }
+    
+    }
+
+
+    .org-title {
+        padding: var(--size-layout-block-cell-spacing);
+        color: #848484;
+    }
+    .masters-wrapper {
+    
+        margin-top: var(--size-layout-block-cell-spacing);
+
+        .group-name {
+            text-align: left;
+            margin-bottom: 5px;
+            color: lightgray;
+        }
+    
+        .person-wrapper {
+    
+            margin-bottom: calc(var(--size-layout-block-cell-spacing) * 0.618);
+            border: 1px solid lightgrey;
+            padding: var(--size-layout-block-cell-spacing);
+            border-radius: 15px;
+            overflow: hidden;
+    
+            img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+    
+            .person-name,
+            .position-name {
+                color: #848484;
+                opacity: .5;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: calc(100%);
+            }
+
+            .person-name {
+                width: auto;
+            }
+
+            .position-name {
+                width: auto;
+            }
+        }
+    }
+
+}
+

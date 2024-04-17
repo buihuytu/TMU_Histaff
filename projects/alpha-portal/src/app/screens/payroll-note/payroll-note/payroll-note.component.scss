@@ -1,0 +1,198 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.app-payroll-note-container {
+
+    
+    .align-right{
+        text-align: right;
+    }
+
+    .cl-white{
+       color: #FFFFFF !important; 
+    }
+
+    .m-0{
+        margin: 0;
+    }
+
+    .grid-payroll{
+        margin-top: 20px;
+    }
+
+    .payroll-item {
+        margin: 0px;
+        color: #848484;
+        padding: 22px;
+        border-radius: 10px;
+        text-align: center;
+        background-color: #F6F7FB;
+    }
+
+    .active {
+        border: 1.5px solid #F37540;
+        background-color: #FFFFFF;
+    }
+
+    .label-form{
+        font-weight: 700;
+        font-size: 18px !important;
+        color: #464646;
+        margin-bottom: 10px;
+    }
+
+    .label{
+        padding: 5px 30px 5px 30px;
+        display: inline-block;
+        border-radius: 20px;
+        background: #E7E7E7;
+        color: #464646;
+        margin-top: 15px;
+        font-weight: 400;
+        font-size: 18px;
+    }
+
+    .content{
+        margin-top: 20px;
+    }
+
+    .title{
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 18px;
+    }
+
+    .money{
+        font-weight: 700;
+        font-size: 18px;
+        margin-bottom: 15px;
+        color: #464646;
+    }
+
+    .text-bold{
+        font-weight: bold;
+    }
+
+    .border-line{
+        border-bottom: 1px solid #D6D6D6;
+        padding: 1.5vh;
+    }
+
+    .detail-payroll {
+        margin: 0px;
+        color: #848484;
+        font-size: 18px;
+        padding: 22px;
+        border: 1px solid #D1D1D1;
+        border-radius: 20px !important;
+    }
+
+    .icon{
+        margin-right: 5px;
+    }
+
+    .title-item{
+        font-weight: 700;
+        size: 18px;
+        color: #464646;
+    }
+
+    .value{
+        text-align: right;
+        color: #464646;
+    }
+
+    .total-payroll{
+        background-color: #F37540;
+    }
+
+    .empty-payroll{
+        background-color: #EB0910;
+    }
+}
+
+
+
+// @media (max-width: 768px) {
+        
+//     .app-payroll-note-container {
+//         --calendar-width: 100%;
+
+//         .text-info>div {
+//             justify-content: center !important;
+//         }
+
+//         .text-info>div>span:first-child {
+//             display: none;
+//         }
+
+//         .weekday-header {
+//             display: flex;
+//             justify-content: space-between;
+//             width: 100%;
+//         }
+
+//         .lebel-item {
+//             font-size: 13px;
+//         }
+//     }
+// }
+
+// @media (max-width: 576px) {
+
+//     .app-payroll-note-container {
+
+//         .weekday-header {
+//             font-size: 10px;
+//         }
+
+//         .calendar-body>ul>li>div {
+//             padding-top: 0;
+//             .late-status {
+//                 position: relative;
+//             }
+//         }
+
+//         .calendar-body>ul>li>div>div.date {
+//             font-size: 12px;
+//         }
+
+//         .off-day {
+//             width: 36px;
+//             &::after {
+//                 content: '';
+//             }
+
+//         }
+//         .late-warning {
+//             &::before {
+//                 content: '';
+//                 display: inline-block;
+//                 width: 4px;
+//                 height: 4px;
+//                 border-radius: 2px;
+//                 background-color: #FF5053;
+//                 transform: translateY(-2px, 1px);
+//                 margin-right: 5px;
+//             }
+//         }
+
+//         .btnShowExplanation,
+//         .btnSend {
+//             width: 50%;
+//             height: 50px;
+//             background-color: #F37540;
+//             color: white;
+//             border: none;
+//             border-radius: 30px;
+//         }
+    
+//     }
+
+// }

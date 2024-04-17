@@ -1,0 +1,81 @@
+.app-general-overview-container {
+    font-family: Roboto;
+
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item {
+    height: 6rem;
+    width: 24%;
+    border-radius: 15px;
+    padding: 0 1rem;
+    background-color: #dee2e6b0;
+    display: flex;
+    align-items: center;
+}
+
+.item-icon {
+    min-height: 58px;
+    min-width: 62px;
+    padding: 1rem 0;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1 / 1;
+    margin-right: 4%;
+
+}
+
+.item-text {
+    // height: 70%;
+    // width: 70%;
+    margin-top: 0.5em;
+}
+
+.value {
+    color: var(--Black, #000);
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.item-title {
+    color: var(--Gray, #848484);
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+@media screen and (max-width:1000px) {
+    .item {
+        width: 49%;
+        margin-bottom: 1rem;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .row {
+        display: block;
+    }
+
+    .item {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .item-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}

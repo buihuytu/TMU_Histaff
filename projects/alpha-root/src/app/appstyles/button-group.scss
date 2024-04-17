@@ -1,0 +1,54 @@
+.core-button-group-vns-container {
+
+    @keyframes slideIn {
+        from {
+            transform: translateX(50px);
+        }
+        to {
+            transform: translateX(0px);
+        }
+    }
+
+    &>* {
+        display: inline-block;
+        height: 30px;
+        line-height: 30px;
+    }
+
+    height: 30px;
+    line-height: 30px;
+
+    box-sizing: border-box;
+    margin: 5px;
+    display: flex;
+    position: relative;
+
+    .setting-trigger {
+        color: #464646;
+        margin-top: 3px;
+        background-color:#FFFFFF;
+        cursor: pointer;
+        height: 28px;
+        width: 28px;
+        font-size :15px;
+        border-radius: 50px;
+        transition: 0s!important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:hover{
+            background-color: #E7E7E7;
+        }
+        & i {
+            color: #464646;
+        }
+    }
+
+    .separator {
+        width: 1px;
+        height: 30px;
+        background-color: #D9D9D9;
+        margin: 0 10px;
+    }
+    
+}

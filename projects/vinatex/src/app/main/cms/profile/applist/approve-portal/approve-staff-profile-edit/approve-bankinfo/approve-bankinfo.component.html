@@ -1,0 +1,47 @@
+<div class="app-approve-bankinfo-container">
+    <core-page-list
+        [apiDefinition]="apiDefinition"
+        [columns]="columns"
+        [editRoute]="editRoute"
+        [crud]="crud"
+        [normalMode]="true"
+        [autoResizeWithWindow]="true"
+        [outerSort]="outerSort"
+        [outerParam$]="outerParam$"
+        [outerInOperators]="outerInOperators"
+        [left]="orgTree"
+        [height]="height"
+        [frozen]="3"
+        [headerWrap]="true"
+    >
+    </core-page-list>
+
+
+    <ng-template #orgTree>
+        <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)" [height]="treeHeight"> </core-org-tree>
+    </ng-template>
+</div>
+
+<ng-template #bankNo let-bankNo="context.bankNo">
+    <div class="fill-color-column">{{bankNo}}</div>
+</ng-template>
+
+<ng-template #bankBranchName let-bankBranchName="context.bankBranchName">
+    <div class="fill-color-column">{{bankBranchName}}</div>
+</ng-template>
+
+<ng-template #bankName let-bankName="context.bankName">
+    <div class="fill-color-column">{{bankName}}</div>
+</ng-template>
+
+<ng-template #bankNo2 let-bankNo2="context.bankNo2">
+    <div class="fill-color-column">{{bankNo}}</div>
+</ng-template>
+
+<ng-template #bankBranchName2 let-bankBranchName2="context.bankBranchName2">
+    <div class="fill-color-column">{{bankBranchName2}}</div>
+</ng-template>
+
+<ng-template #bankName2 let-bankName2="context.bankName2">
+    <div class="fill-color-column">{{bankName2}}</div>
+</ng-template>

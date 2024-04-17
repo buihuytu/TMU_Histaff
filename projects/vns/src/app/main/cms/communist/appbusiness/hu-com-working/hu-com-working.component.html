@@ -1,0 +1,9 @@
+<div class="com-working-container">
+    <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+        [outerInOperators]="outerInOperators" [title]="title" [autoResizeWithWindow]="true" [outerParam$]="outerParam$"
+        [normalMode]="true" [left]="orgTree"></core-page-list>
+
+    <ng-template #orgTree>
+        <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)"></core-org-tree>
+    </ng-template>
+</div>

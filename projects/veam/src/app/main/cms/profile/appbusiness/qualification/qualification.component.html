@@ -1,0 +1,32 @@
+<div class="certificate-container">
+
+  <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud" *ngIf="!!isPrime"
+  [title]="title" [autoResizeWithWindow]="true" [left]="orgTree" [outerInOperators]="outerInOperators" [outerParam$]="outerParam$"
+
+  [showParamKit]="true"
+  [datePeriodComparisonFor]="datePeriodComparisonFor"
+  [datePeriodComparisonForLabelKey]="datePeriodComparisonForLabelKey"
+  [hideStatusInclusion]="false"
+  [statusInclusionFor]="statusInclusionFor"
+  [statusInclusionForLabelKey]="statusInclusionForLabelKey"
+  [statusOptionsApi]="workStatusOptionsApi"
+  [generateTemplateRequest]="generateTemplateRequest"
+  [outerSort]="outerSort"
+  [importPreviewPath]="'qualification-import'"
+  [headerWrap]="true"
+  [headerFirstRowHeight]="headerFirstRowHeight"
+  [frozen]="2"
+></core-page-list>
+  <ng-template #orgTree>
+    <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+    </core-org-tree>
+  </ng-template>
+
+  <ng-template #isPrime let-isPrime="context.isPrime">
+    <core-checkbox [disabled]="true" [inputValue]="isPrime"></core-checkbox>
+  </ng-template>
+
+  <ng-template #isLicense let-isLicense="context.isLicense">
+    <core-checkbox [disabled]="true" [inputValue]="isLicense"></core-checkbox>
+  </ng-template>
+</div>

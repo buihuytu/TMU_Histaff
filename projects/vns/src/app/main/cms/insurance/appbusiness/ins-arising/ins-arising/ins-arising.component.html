@@ -1,0 +1,80 @@
+<div class="ins-arising-container" >
+
+    <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud" 
+      [title]="title" [autoResizeWithWindow]="true" [outerParam$]="outerParam$"      
+      [outerInOperators]="outerInOperators"
+      [outerFilterOperators]="filterOperators"
+      (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+      [outerFilterOperators]="outerFilterOperators"
+      (selectedIdsChange)="onSelectedIdsChange($event)" 
+      [selfResolveCorePageHeaderButtonClick]="true"
+      (rowDoubleClick)="onRowDoubleClick($event)"
+      (onInstanceCreated)="onInstanceCreated($event)"
+      [top]="paramKitCustom"
+      [left]="orgTree" [frozen]="2"
+      [outerSort]="outerSort"
+      >
+    </core-page-list>
+
+    <ng-template #orgTree>
+      <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+      </core-org-tree>
+  
+    </ng-template>
+
+    <ng-template #hi let-hi="context.hi">
+      <core-checkbox [disabled]="true" [inputValue]="hi"></core-checkbox>
+    </ng-template>
+    <ng-template #si let-si="context.si">
+      <core-checkbox [disabled]="true" [inputValue]="si"></core-checkbox>
+    </ng-template>
+    <ng-template #ui let-ui="context.ui">
+      <core-checkbox [disabled]="true" [inputValue]="ui"></core-checkbox>
+    </ng-template>
+    <ng-template #ai let-ai="context.ai">
+      <core-checkbox [disabled]="true" [inputValue]="ai"></core-checkbox>
+    </ng-template>
+    <ng-template #paramKitCustom>
+      <div class="row mb20">
+        <div class="col-md-2">
+          <div class="form-group vertical">
+            <label>Ngày hiệu lực từ</label>
+            <core-date-picker [(ngModel)]="startDate"></core-date-picker>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group vertical">
+            <label>Ngày hiệu lực đến</label>
+            <core-date-picker [(ngModel)]="endDate"></core-date-picker>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group vertical">
+            <label>Đơn vị đóng bảo hiểm</label>
+            <core-dropdown [(ngModel)]="insOrgId"
+              [options$]="groupOptionsInsOrg$" [getByIdObject$]="insOrgGetByIdObject$"
+              [shownFrom]="shownFrom"></core-dropdown>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group vertical">
+            <label>Nhóm biến động</label>
+            <core-dropdown [(ngModel)]="insGroupType"
+              [options$]="groupOptionsArisingGroup$" [getByIdObject$]="arisingGroupGetByIdObject$"
+              [shownFrom]="shownFrom"></core-dropdown>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div style="margin-top:45px" class="form-group vertical">
+              <core-button-group-vns 
+              [showCaption]="true" 
+              (buttonClick)="onButtonClick($event)" 
+              [shownItems]="buttonItemSearch" 
+              class="buttonGroupCustom"
+            ></core-button-group-vns>
+          </div>
+        </div>
+  
+      </div>
+    </ng-template>
+</div>

@@ -1,0 +1,10 @@
+<div class="app-hu-com-commend-container">
+    <core-page-list [title]="title" [apiDefinition]="apiDefinition" [normalMode]="true" [columns]="columns"
+        [editRoute]="editRoute" [crud]="crud" [title]="title" [autoResizeWithWindow]="true"
+        [outerInOperators]="outerInOperators" [outerParam$]="outerParam$" [left]="orgTree" [normalMode]="true"
+        [showParamKit]="true"></core-page-list>
+    <ng-template #orgTree>
+        <core-org-tree (ngModel)="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+        </core-org-tree>
+    </ng-template>
+</div>

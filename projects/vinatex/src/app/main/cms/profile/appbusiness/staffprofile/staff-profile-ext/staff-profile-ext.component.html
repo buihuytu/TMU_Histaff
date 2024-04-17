@@ -1,0 +1,41 @@
+<div class="staff-profile-container">
+    <core-page-list 
+      [height]="height"
+      [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+      [title]="title" [left]="orgTree" *ngIf="!!avatar"
+      [outerParam$]="outerParam$"
+      [outerInOperators]="outerInOperators"
+      [autoResizeWithWindow]="true"
+      [selfResolveCorePageHeaderButtonClick]="true"
+      (rowDoubleClick)="onRowDoubleClick($event)"
+      (rowClick)="onRowClick($event)"
+      (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+      (selectedIdsChange)="onSelectedIdsChange1($event)"
+      [frozen]="3"
+      [outerSort]="outerSort"
+      [showParamKit]="true"
+      [datePeriodComparisonFor]="datePeriodComparisonFor"
+      [datePeriodComparisonForLabelKey]="datePeriodComparisonForLabelKey"
+      [hideStatusInclusion]="false"
+      [statusInclusionFor]="statusInclusionFor"
+      [statusInclusionForLabelKey]="statusInclusionForLabelKey"
+      [statusOptionsApi]="statusOptionsApi"
+      [generateTemplateRequest]="generateTemplateRequest"
+      [importPreviewPath]="'staffprofile-import'"                          
+      ></core-page-list>
+  
+    <ng-template #orgTree>
+      <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+      </core-org-tree>
+  
+      
+    </ng-template>
+  
+    <ng-template #avatar let-avatar="context.avatar">
+      <img *ngIf="avatar != null" [src]="avatar | mapAvatarToServer" class="in-table-avatar" appImageErrorResolver>
+      <img *ngIf="avatar == null" [src]="defaultAvatar" class="in-table-avatar" appImageErrorResolver>
+  
+    </ng-template>
+  
+  </div>
+  <app-fullscreen-modal-loader *ngIf="loading"></app-fullscreen-modal-loader>

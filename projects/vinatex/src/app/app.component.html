@@ -1,0 +1,15 @@
+@if (!!authenticated && !initializing) {
+  <app-layout></app-layout>  
+} @else if (!authenticated && !initializing) {
+  <app-login></app-login> 
+}
+
+@if (!!initializing) {
+  <app-fullscreen-modal-loader [content]="animatedText"></app-fullscreen-modal-loader>
+}
+
+<ng-template #animatedText>
+    <app-threedots></app-threedots>
+</ng-template>
+
+<core-alert></core-alert>

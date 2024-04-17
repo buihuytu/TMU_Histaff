@@ -1,0 +1,24 @@
+
+<div class="welfare-profile-container">
+  <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+    caption="WELFARE"
+    [title]="title"
+    [outerParam$]="outerParam$"
+    [autoResizeWithWindow]="true"
+    [deleteValidateFn]="deleteValidateFn"
+    [headerWrap]="true" [headerFirstRowHeight]="headerFirstRowHeight"
+    ></core-page-list>
+    
+    <ng-template #isAutoActive let-isAutoActive="context.isAutoActive">
+      <core-checkbox [disabled]="true" [inputValue]="isAutoActive"></core-checkbox> 
+    </ng-template>
+    
+    <ng-template #isCalTax let-isCalTax="context.isCalTax">
+      <core-checkbox [disabled]="true" [inputValue]="isCalTax"></core-checkbox> 
+    </ng-template>
+
+    <ng-template #sticker let-code="context.active">
+      <core-status-sticker [code]="code"></core-status-sticker>
+    </ng-template>
+</div>
+

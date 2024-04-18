@@ -4,9 +4,9 @@
     "GOLIVE_URL": "https://veam.histaff.vn",
     "DEBUG_ENABLED": false,
 
-    "LOGO_LOGIN": "images/veam-logo.png",
-    "LOGO_HEADER": "images/veam_logo_only.png",
-    "HOME_BACKGROUND_IMAGE": "images/veam_home_bg.png",
+    "LOGO_LOGIN": "images/tvc_logo.png",
+    "LOGO_HEADER": "images/tvc_logo.png",
+    "HOME_BACKGROUND_IMAGE": "images/tvc_bg.png",
 
     "OAUTH2OIDC_ENABLED": false,
     "OAUTH2OIDC_CLIENT_ID": "",

@@ -19,7 +19,7 @@ export class ContractChartComponent extends BaseComponent implements OnChanges, 
   @Input() height!: number;
   @Input() orgIds!: number[];
 
-  titleChart = EnumTranslateKey.UI_COMPONENT_TITLE_PARTY_MEMBER_PERSONNEL;
+  titleChart = EnumTranslateKey.UI_COMPONENT_TITLE_MANPOWER_TYPE;
   chartNo: boolean = false;
   expandStateList: boolean = false;
   expandStateListPrint: boolean = false;
@@ -33,10 +33,6 @@ export class ContractChartComponent extends BaseComponent implements OnChanges, 
   colorReset = PIE_COLORS_V2;
   //<!-- MENU CHON BIEU DO -->
   menu = [
-    {
-      translateCode: EnumTranslateKey.UI_COMPONENT_TITLE_PARTY_MEMBER_PERSONNEL, //'Thống kê nhân sự  đảng viên',
-      value: false,
-    },
     {
       translateCode: EnumTranslateKey.UI_COMPONENT_TITLE_MANPOWER_TYPE,//'Biểu đồ loại nhân lực',
       value: true,
@@ -151,7 +147,7 @@ export class ContractChartComponent extends BaseComponent implements OnChanges, 
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.subscriptions.push(
-        this.appService.post(api.HU_CONTRACT_DASHBOARD_EMP_GETMEMBERINFOMATIONDASHBOARD, { orgIds: [] }).subscribe(x => {
+        this.appService.post(api.HU_CONTRACT_DASHBOARD_EMP_GETJOBINFOMATIONDASHBOARD, { orgIds: this.orgIds }).subscribe(x => {
           if (x.ok && x.status === 200) {
             const body = x.body as IFormatedResponse
             if (body.statusCode === 200) {
@@ -169,6 +165,7 @@ export class ContractChartComponent extends BaseComponent implements OnChanges, 
               })
               this.dataNew = body.innerBody;
               this.bindData(body.innerBody)
+              this.titleChart = EnumTranslateKey.UI_COMPONENT_TITLE_MANPOWER_TYPE;
             }
           }
         })
@@ -176,8 +173,6 @@ export class ContractChartComponent extends BaseComponent implements OnChanges, 
     })
   }
   onAvatarBlockClick(): void {
-    this.expandStateListPrint = false;
-    this.expandStateList = !this.expandStateList;
   }
   onMenuItemClick(item: any): void {
     this.expandStateList = !this.expandStateList;

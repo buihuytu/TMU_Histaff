@@ -159,39 +159,6 @@ export class TimesheetSummaryComponent extends BaseComponent implements AfterVie
       pipe: EnumCoreTablePipeType.NUMBER
     },
     {
-      caption: EnumTranslateKey.UI_COMPONENT_LABEL_AT_TIMESHEET_SUMMARY_MIN_LATE,
-      field: 'totalLate',
-      type: 'string',
-      align: 'right',
-      width: 70,
-      pipe: EnumCoreTablePipeType.NUMBER,
-
-    },
-    {
-      caption: EnumTranslateKey.UI_COMPONENT_LABEL_AT_TIMESHEET_SUMMARY_LATE_TIME,
-      field: 'totalDmPhat',
-      type: 'string',
-      align: 'right',
-      width: 70,
-      pipe: EnumCoreTablePipeType.NUMBER
-    },
-    {
-      caption: EnumTranslateKey.UI_COMPONENT_LABEL_AT_TIMESHEET_SUMMARY_MIN_COMEBACKOUT,
-      field: 'totalComebackout',
-      type: 'string',
-      align: 'right',
-      width: 75,
-      pipe: EnumCoreTablePipeType.NUMBER
-    },
-    {
-      caption: EnumTranslateKey.UI_COMPONENT_LABEL_AT_TIMESHEET_SUMMARY_COMEBACKOUT_TIME,
-      field: 'totalVsPhat',
-      type: 'string',
-      align: 'right',
-      width: 65,
-      pipe: EnumCoreTablePipeType.NUMBER
-    },
-    {
       caption: EnumTranslateKey.UI_COMPONENT_LABEL_AT_TIMESHEET_SUMMARY_WORKING_RO,
       field: 'workingRo',
       type: 'string',
@@ -271,62 +238,6 @@ export class TimesheetSummaryComponent extends BaseComponent implements AfterVie
       type: 'string',
       align: 'right',
       width: 120,
-      pipe: EnumCoreTablePipeType.NUMBER
-    },
-    {
-      caption: EnumTranslateKey.UI_COMPONENT_LABEL_AT_TIMESHEET_SUMMARY_WORKING_D,
-      field: 'workingD',
-      type: 'string',
-      align: 'right',
-      width: 100,
-      pipe: EnumCoreTablePipeType.NUMBER
-    },
-    {
-      caption: EnumTranslateKey.UI_COMPONENT_LABEL_AT_TIMESHEET_SUMMARY_TOTAL_OT_WEEKDAY,
-      field: 'totalOtWeekday',
-      type: 'string',
-      align: 'right',
-      width: 240,
-      pipe: EnumCoreTablePipeType.NUMBER
-    },
-    {
-      caption: EnumTranslateKey.UI_COMPONENT_LABEL_AT_TIMESHEET_SUMMARY_TOTAL_OT_SUNDAY,
-      field: 'totalOtSunday',
-      type: 'string',
-      align: 'right',
-      width: 240,
-      pipe: EnumCoreTablePipeType.NUMBER
-    },
-    {
-      caption: EnumTranslateKey.UI_COMPONENT_LABEL_AT_TIMESHEET_SUMMARY_TOTAL_OT_HOLIDAY,
-      field: 'totalOtHoliday',
-      type: 'string',
-      align: 'right',
-      width: 240,
-      pipe: EnumCoreTablePipeType.NUMBER
-    },
-    {
-      caption: EnumTranslateKey.UI_COMPONENT_LABEL_AT_TIMESHEET_SUMMARY_TOTAL_OT_WEEKNIGHT,
-      field: 'totalOtWeeknight',
-      type: 'string',
-      align: 'right',
-      width: 240,
-      pipe: EnumCoreTablePipeType.NUMBER
-    },
-    {
-      caption: EnumTranslateKey.UI_COMPONENT_LABEL_AT_TIMESHEET_SUMMARY_TOTAL_OT_SUNDAYNIGTH,
-      field: 'totalOtSundaynigth',
-      type: 'string',
-      align: 'right',
-      width: 240,
-      pipe: EnumCoreTablePipeType.NUMBER
-    },
-    {
-      caption: EnumTranslateKey.UI_COMPONENT_LABEL_AT_TIMESHEET_SUMMARY_TOTAL_OT_HOLIDAY_NIGTH,
-      field: 'totalOtHolidayNigth',
-      type: 'string',
-      align: 'right',
-      width: 240,
       pipe: EnumCoreTablePipeType.NUMBER
     },
     {

@@ -1,0 +1,91 @@
+<div class="cms-attendance-payrollformula-edit-container">
+
+  <div class="container no-padding no-margin" style="max-width: unset !important;">
+    <div class="title"><span class="captionText">{{ title | translate:lang | uppercase }}</span></div>
+    <i class="feather-x" (click)="onCancel()"></i>
+  </div>
+
+  <div class="container no-padding no-margin" style="max-width: unset !important;">
+
+    <div class="row no-padding no-margin">
+
+      <div class="col-md-9 left">
+        <!-- Top -->
+        <div class="row no-padding no-margin">
+          <div class="col-md-12">
+            <div class="row scrollEdit">
+              <core-page-list 
+                [hideHeader] = "true"
+                [apiDefinition]="apiDefinitionLeft" 
+                [columns]="columnsLeft" 
+                [autoResizeWithWindow]="true"
+                [selfResolveCorePageHeaderButtonClick]="true" 
+                (rowDoubleClick)="onRowDoubleClick($event)"
+                [outerParam$]="outerParam$"
+                (onInstanceCreated)="onInstanceCreated($event)"
+                [height]="tableHeight"
+              ></core-page-list>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom -->
+        <div class="row no-padding no-margin form-input" >
+          <div class="col-md-12" style="padding-bottom: 20px;">
+            <!-- <div style="margin-top: 20px;">
+              <div class="title">
+                Số thứ tự: 
+              </div>
+              <div class="button-group">
+                <core-button-group-vns (buttonClick)="onButtonClick($event)" [shownItems]="buttonItems"
+                class="buttonGroupCustom" ></core-button-group-vns>
+              </div>
+            </div> -->
+
+            
+            <div class="d-flex-between pd-25" style="margin-top: 20px;">
+              <div class="titleOrder">
+                <div class="titleEdit">{{ titleEdit | translate: lang  }}</div>
+                <input *ngIf="displayInputOrder" type="text" class="form-control input-order" 
+                [(ngModel)]="formulaOrders" (ngModelChange)="onFormulaOrdersChange($event)">
+                <div style="height: 25px;">
+                  <div style="margin: 0;" class="form-control-error" *ngIf="showRequiredOrders">{{ errorRequired | translate: lang}}</div>
+                </div>
+              </div>
+              <div>
+                <core-button-group-vns [shownItems]="buttonItems" class="buttonGroupCustom" (buttonClick)="onButtonClick($event)"
+                    ></core-button-group-vns>
+              </div>
+              <!-- <button *ngIf="isDevMode" type="button" class="btn btn-secondary text" (click)="updatePayload()">Show
+                  values</button>
+              <button *ngIf="isDevMode" type="button" class="btn btn-secondary text"
+                  (click)="updateValidorOverview()">Show
+                  validators</button> -->
+            </div>
+            <div style="margin-top: 20px;">
+              <textarea class="form-control" [(ngModel)]="formulaText" rows="6"
+                style="height: 150px; max-height: 200px;" [disabled]="disabledTextArea"
+              ></textarea>
+            </div>
+            <!-- <core-form [formName]="'form'" [submitText]="submitText" [showCaptionButton]="showCaptionButton"
+                  [leftInputSections]="leftInputSections" [leftInputSectionsFlexSize]="leftInputSectionsFlexSize"
+                  [inputSections]="sections" 
+                  (onFormCreated)="onFormCreated($event)"
+                  (onSubmit)="onSubmit()" (onCancal)="onCancel()"></core-form> -->
+          </div>
+        </div>
+      </div>
+      <!-- Left -->
+      <div class="col-md-3">
+        <core-list [options]="listSalaries" [(ngModel)]="typeName" (ngModelChange)="onListSalariesChange($event)">
+        </core-list>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+</div>

@@ -1,0 +1,75 @@
+.app-inside-company-container {
+    background-color: white;
+    padding: var(--size-layout-block-cell-spacing);
+    border-radius: var(--decoration-block-border-radius);
+    height: 100%;
+    margin-top: 20px;
+    p {
+        margin: 0;
+        padding: 0;
+    }
+    .header-text {
+        font-weight: 500;
+        font-size: 15px;    
+        border-bottom: solid #cdcdcd 1px;
+        padding-bottom: 12px;
+        text-transform: uppercase;
+    }
+    .content {
+        margin-top: 14px;
+        margin-left: 4px;
+        .card-info:nth-child(1) {
+            .type {
+                padding-top: 0px;
+            }
+            .type::before { 
+                top: 4px;
+            }
+        }
+        .card-info:nth-child(1)::before {
+            height: calc(100% - 10px);
+        }
+        .card-info::before {
+            content: "";
+            background: #A3A3A3;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 100%;
+            width: 2px;
+        }
+        .card-info {
+            padding-left: var(--size-layout-block-cell-spacing);
+            position: relative;
+            .type::before {
+                content: "";
+                display: block;
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background-color: #A2A2A2;
+                position: absolute;
+                left: -5px;
+                top: 18px;
+            }
+            .type {
+                font-weight: 500;
+                text-transform: uppercase;
+                margin-bottom: 6px;
+                padding-top: 14px;
+            }
+            .label {
+                font-weight: 400;
+                line-height: 30px;
+                color: #A3A3A3;
+                text-align: left;
+            }
+            .text {
+                font-weight: 500;
+                line-height: 30px;
+                color: #464646;
+                text-align: left;
+            }
+        }
+    }
+}

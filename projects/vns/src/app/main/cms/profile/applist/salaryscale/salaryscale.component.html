@@ -1,0 +1,18 @@
+<div class="salaryscale-profile-container">
+  <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+    caption="SALARYSCALE" *ngIf="!!isTableScore"
+    [outerParam$]="outerParam$"
+    [autoResizeWithWindow]="true"
+    [title]="title"
+    [headerWrap]="true"
+    [headerFirstRowHeight]="headerFirstRowHeight"
+    ></core-page-list>
+    <ng-template #isTableScore let-isTableScore="context.isTableScore">
+      <core-checkbox [disabled]="true" [inputValue]="isTableScore"></core-checkbox> 
+    </ng-template>
+
+    <ng-template #sticker let-code="context.status">
+      <core-status-sticker [code]="code"></core-status-sticker>
+    </ng-template>
+</div>
+

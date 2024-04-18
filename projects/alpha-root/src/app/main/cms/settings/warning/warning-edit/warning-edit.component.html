@@ -1,0 +1,56 @@
+<div class="app-warning-edit">
+    <core-page-header [title]="title" (buttonClick)="onCorePageHeaderButtonClick($event)"
+       [hideButtonGroup] = "true" ></core-page-header>
+
+    <div class="container container-fluid warning-list">
+
+        <ng-container *ngFor="let row of listWarning">
+
+            <div class="row g-2">
+
+                <ng-container *ngFor="let item of row">
+
+                    <div class="col-lg-4 gx-4 gy-4 warning-item">
+                        <div class="first-row item-list d-flex align-items-center mb-2">
+                            <core-checkbox [(ngModel)]="item.isActive"></core-checkbox>
+                            <label class="label-head" for="">{{ item.label | translate: lang }}</label>
+                        </div>
+                        <div class="second-row item-list d-flex align-items-center">
+                            <label class="item-head me-2" for="">{{ item.warningOn | translate: lang }} </label>
+                            <input class="form-control" type="number" min="1" [(ngModel)]="item.value"
+                                (ngModelChange)="onNgModelChange($event, item)">
+                            <label class="item-head ms-2" for=""> {{ item.unit | translate: lang }}</label>
+                        </div>
+                        <div class="error-wrapper">
+                            <div class="error" [class.shown]="item.isActive && item.value === null">{{ item.errorMessage | translate: lang }}</div>
+                        </div>
+                        
+                    </div>
+
+
+                </ng-container>
+
+            </div>
+
+        </ng-container>
+        <div class="h10"></div>
+
+        <div class="form-row">
+
+            <core-button-group-vns [shownItems]="buttonItems" [showCaption]="true" (buttonClick)="onButtonClick($event)"
+                class="buttonGroupCustom btn-group-custom"></core-button-group-vns>
+
+        </div>
+
+    </div>
+
+
+    <!-- <div>
+        <core-form *ngIf="!!sections.length" [formName]="'form'" [submitText]="submitText"
+        [leftInputSections]="leftInputSections" [leftInputSectionsFlexSize]="leftInputSectionsFlexSize"
+        [inputSections]="sections" [mode$]="mode$" 
+        [bottomTemplateRef]="bottomTemplateRef"
+        (onFormCreated)="onFormCreatedLocal($event)" (onSubmit)="onSubmit()"
+        (onCancal)="onCancel()"></core-form>
+    </div> -->
+</div>

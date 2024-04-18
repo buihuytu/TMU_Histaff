@@ -1,0 +1,72 @@
+.cms-attendance-payrollformula-edit {}
+
+
+.title {
+  color: rgba(0, 0, 0, 0.849);
+  font-weight: 700;
+  font-size: 20px;
+  margin-left: 5px;
+  display: inline-block;
+}
+
+.captionText {
+  margin-left: 10px;
+}
+
+.feather-x {
+  display: flex;
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 25px;
+}
+
+.form-input {
+  max-height: 400px;
+  overflow: scroll;
+  background-color: #c0c0c057;
+  border-radius: 15px;
+  margin-top: -45px;
+  z-index: 99999999;
+}
+
+
+.titleEdit {
+  color: rgba(0, 0, 0, 0.849);
+  font-weight: 700;
+  font-size: 20px;
+  margin-left: 5px;
+  width: 80px;
+}
+
+.button-group {
+  display: flex;
+  float: right;
+}
+
+// .scrollEdit{
+//     max-height: 670px;
+//     overflow: scroll;
+// }
+
+.core-page-list-container {
+  --height: 100% !important;
+}
+
+.core-page-list-container .core-composition-container {
+  --height: 100% !important;
+}
+
+.titleOrder {
+  display: flex;
+}
+
+.input-order {
+  width: 100px;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

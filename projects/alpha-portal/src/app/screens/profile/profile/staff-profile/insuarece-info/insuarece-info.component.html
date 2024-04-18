@@ -1,0 +1,96 @@
+<div class="app-insuarece-info-container">
+    <div class="row list-data">
+        <div class="row">
+            <div class="col-md-4">
+                <span>Số sổ BHXH:</span>
+            </div>
+            <div class="col-md-7">
+                {{listInsuarenceInfo?.insurenceNumber}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <span>Nơi KCB:</span>
+            </div>
+            <div class="col-md-7">
+                {{listInsuarenceInfo?.insWherehealthName}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <span>Số thẻ BHYT:</span>
+            </div>
+            <div class="col-md-7">
+                {{listInsuarenceInfo?.insCardNumber}}
+            </div>
+        </div>
+    </div>
+    <div class="row list-data mt-3" *ngFor="let item of listInsuarenceInfoSave">
+        <div class="row">
+            <span class="color-info">(Đã lưu)</span>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <span>Số sổ BHXH:</span>
+            </div>
+            <div class="col-md-7">
+                {{item?.insurenceNumber}}
+            </div>
+            <div class="col-md-1">
+                <button (click)="clickBtnSaveEdit(item)" class="btn-edit "></button>
+                <div class="col-1 d-flex justify-content-around">
+                    <button (click)="clickBtnEdit(item)" class="btn-edit">
+                        <i class="feather-edit-2"></i>
+                    </button>
+                    <button (click)="clickBtnDelete(item.id)" class="btn-edit">
+                        <i class="d-flex feather-trash-2"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <span>Nơi KCB:</span>
+                </div>
+                <div class="col-md-7">
+                    {{item?.insWherehealthName}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <span>Số thẻ BHYT:</span>
+                </div>
+                <div class="col-md-7">
+                    {{item?.insCardNumber}}
+                </div>
+            </div>
+        </div>
+        <div class="row list-data mt-3" *ngFor="let item of listInsuarenceInfoApproving">
+            <div class="row">
+                <span class="color-warning">(Chờ phê duyệt)</span>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <span>Số sổ BHXH:</span>
+                </div>
+                <div class="col-md-7">
+                    {{item?.insurenceNumber}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <span>Nơi KCB:</span>
+                </div>
+                <div class="col-md-7">
+                    {{item?.insWherehealthName}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <span>Số thẻ BHYT:</span>
+                </div>
+                <div class="col-md-7">
+                    {{item?.insCardNumber}}
+                </div>
+            </div>
+        </div>
+    </div>

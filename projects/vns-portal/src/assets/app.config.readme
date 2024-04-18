@@ -1,0 +1,7 @@
+"BASE_URL" cases
+
+development                         "https://localhost:44359"
+demo backend for devs               "https://tanleica.com"
+tvc backend for UAT local           "https://192.168.60.122:1972"
+tvc backend for UAT local NAT       "https://vnst.histaff.vn:1972"
+vns backend for UAT vns local NAT   "https://192.168.104.20:1975"

@@ -1,0 +1,26 @@
+<core-page-edit *ngIf="!!sections.length" [width]="1000" [captionCode]="captionCode" [sections]="sections" [crud]="crud"
+    [entityTable]="entityTable" (onFormCreated)="onFormCreated($event)" [normalMode]="true" [bottomTemplateRef]="allowanceList"
+    (onInitialValueStringReady)="onFormReinit($event)"></core-page-edit>
+
+    <ng-template #allowanceList>
+        <core-table
+            [columns]="columnsAllowance"
+            [data]="huWorkingAllowList"
+        ></core-table>
+    </ng-template>
+
+    <!-- <ng-template #allowanceList>
+        <core-page-list [hideCheck]="true" [hideButtonGroup]="true" [height]="corePageListHeight"
+        [apiDefinition]="allowanceApiDefinition" [wrap]="false" rowHeight="50px" [outerParam$]="allowanceOuterParam$"
+        [title]="employeesTitle" [columns]="columnsAllowance" 
+        ></core-page-list>
+
+        <ng-template #allowanceList>
+            <core-page-list [hideCheck]="true" [hideButtonGroup]="true" [height]="corePageListHeight"
+            [apiDefinition]="allowanceApiDefinition" [wrap]="false" rowHeight="50px" [outerParam$]="allowanceOuterParam$"
+            [title]="employeesTitle" [columns]="columnsAllowance" 
+            ></core-page-list>
+
+    </ng-template> -->
+    <!-- <h2>YOU CAN RENDER ALOWANCE LIST HERE SUBSCRIBEB TO WAGE_ID CHANGES</h2>
+    <h2>HINT: USE CorePageListContentComponent</h2> -->

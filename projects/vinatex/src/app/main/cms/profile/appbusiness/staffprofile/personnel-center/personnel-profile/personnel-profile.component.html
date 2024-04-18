@@ -1,0 +1,17 @@
+<core-tabs [headers]="headers" [contents]="[ profileInfo, paper ]"
+(onHeaderClick)="onCoreTabsHedaerClick($event)">
+</core-tabs>
+
+<ng-template #profileInfo>
+    <app-profile-info></app-profile-info>
+</ng-template>
+
+<!-- <ng-template #concurrent>
+    <app-concurrent-positions></app-concurrent-positions>
+</ng-template> -->
+
+<ng-template #paper>
+    <app-required-papers></app-required-papers>
+</ng-template>
+
+<router-outlet name="personnelProfileAux"></router-outlet>

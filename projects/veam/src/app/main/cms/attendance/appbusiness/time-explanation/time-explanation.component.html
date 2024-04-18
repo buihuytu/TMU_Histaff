@@ -1,0 +1,24 @@
+<div class="timeexplanation-container">
+    <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud" 
+    [title]="title" 
+    [autoResizeWithWindow]="true"
+    [datePeriodComparisonFor]="datePeriodComparisonFor"
+    [datePeriodComparisonForLabelKey]="datePeriodComparisonForLabelKey"
+    [outerInOperators]="outerInOperators"
+    [left]="orgTree"
+    [top]="topParam"
+    [outerSort]="outerSort"
+    [frozen]="2"
+    [normalMode]="true"
+    ></core-page-list>
+    <ng-template #orgTree>
+      <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)"> </core-org-tree>
+    </ng-template>
+    <ng-template #topParam>
+      <div class="row">
+          <div class="col-md-10">
+              <core-header-params [rows]="paramRows"></core-header-params>
+          </div>
+      </div>
+    </ng-template>
+</div>

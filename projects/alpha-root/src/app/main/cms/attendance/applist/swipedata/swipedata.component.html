@@ -1,0 +1,25 @@
+<div class="swipe-data-container">
+  <core-page-list
+    [apiDefinition]="apiDefinition"
+    [columns]="columns"  [left]="orgTree"
+    [outerParam$]="outerParam$"
+    [outerInOperators]="outerInOperators"
+    [editRoute]="editRoute"
+    [title]="title"
+    [autoResizeWithWindow]="true"
+    [frozen]="2"
+    [showParamKit]="true"
+    [outerSort]="outerSort"
+    [datePeriodComparisonFor]="datePeriodComparisonFor"
+    [datePeriodComparisonForLabelKey]="datePeriodComparisonForLabelKey"
+    [hideStatusInclusion]="true"
+    [statusInclusionFor]="statusInclusionFor"
+    [statusInclusionForLabelKey]="statusInclusionForLabelKey"
+    [generateTemplateRequest]="generateTemplateRequest"
+    [importPreviewPath]="'swipe-data-import'"                          
+  ></core-page-list>
+  <ng-template #orgTree>
+    <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+    </core-org-tree>
+  </ng-template>
+</div>

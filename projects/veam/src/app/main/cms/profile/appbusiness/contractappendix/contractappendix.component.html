@@ -1,0 +1,43 @@
+<div class="staff-profile-container">
+  <core-page-list
+    [apiDefinition]="apiDefinition"
+    [columns]="columns"
+    
+    [crud]="crud"
+    [title]="title"
+    
+    [left]="orgTree"
+    
+    [outerParam$]="outerParam$"
+    
+    [normalMode]="true"
+    [frozen]="3"
+    [outerInOperators]="outerInOperators"
+    [autoResizeWithWindow]="true"
+    [generateTemplateRequest]="generateTemplateRequest"
+    [showParamKit]="true"
+    [outerSort]="outerSort"
+    [datePeriodComparisonFor]="datePeriodComparisonFor"
+    [datePeriodComparisonForLabelKey]="datePeriodComparisonForLabelKey"
+    [statusInclusionFor]="statusInclusionFor"
+    [statusInclusionForLabelKey]="statusInclusionForLabelKey"
+    [statusOptionsApi]="statusOptionsApi"
+    (rowClick)="onRowClick($event)"
+    (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+    (selectedIdsChange)="customizeSelectedIdsChange($event)"
+
+    [importPreviewPath]="'contract-appendix-import'"
+    ></core-page-list>
+
+  <ng-template #orgTree>
+    <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+    </core-org-tree>
+
+    <ng-template #sticker let-code="context.statusName">
+      <core-status-sticker [code]="code"></core-status-sticker>
+    </ng-template>
+  </ng-template>
+
+</div>
+
+<app-fullscreen-modal-loader *ngIf="loading"></app-fullscreen-modal-loader>

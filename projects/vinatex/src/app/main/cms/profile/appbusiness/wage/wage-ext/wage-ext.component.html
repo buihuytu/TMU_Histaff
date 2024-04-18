@@ -1,0 +1,39 @@
+<div class="cms-profile-wage-container">
+    <core-page-list
+      [apiDefinition]="apiDefinition"
+      [columns]="columns"
+      [editRoute]="editRoute"
+      [crud]="crud"
+      [title]="title" [left]="orgTree"
+      [normalMode]="true"
+      [outerParam$]="outerParam$"
+      [outerInOperators]="outerInOperators"
+      [autoResizeWithWindow]="true"
+      (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+      (selectedIdsChange)="onSelectedIdsChangeeee($event)" 
+      [extraManualOffset]="178"
+      (rowClick)="onRowClick($event)"
+      [showParamKit]="true"
+      [datePeriodComparisonFor]="datePeriodComparisonFor"
+      [datePeriodComparisonForLabelKey]="datePeriodComparisonForLabelKey"
+      [hideStatusInclusion]="false"
+      [statusInclusionFor]="statusInclusionFor"
+      [statusInclusionForLabelKey]="statusInclusionForLabelKey"
+      [statusOptionsApi]="workStatusOptionsApi"
+      (onInstanceCreated)="onInstanceCreated($event)"
+      [frozen]="3"
+      [outerSort]="outerSort"
+      [generateTemplateRequest]="generateTemplateRequest"
+      [importPreviewPath]="'hu-working-hsl-pc-import'"
+      ></core-page-list>
+  
+    <ng-template #orgTree>
+      <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+      </core-org-tree>
+    </ng-template>
+  
+    <ng-template #sticker let-code="context.statusName">
+      <core-status-sticker [code]="code"></core-status-sticker>
+    </ng-template>
+    <app-evaluate-dialog [buttonItems]="buttonItems" *ngIf="evaluateDialogService.showConfirmDialog$.value == true"></app-evaluate-dialog>
+  </div>

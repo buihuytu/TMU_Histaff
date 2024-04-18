@@ -1,0 +1,13 @@
+<div class="hu-asset-container">
+    <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+        [title]="title" caption="ASSET"
+        (rowClick)="onRowClick($event)"
+        (selectedIdsChange)="onSelectedIdsChange($event)" 
+        [autoResizeWithWindow]="true" [normalMode]="true"></core-page-list>
+
+        <ng-template #sticker let-code="context.status">
+          <core-status-sticker [code]="code"></core-status-sticker>
+        </ng-template>
+</div>
+  <app-fullscreen-modal-loader *ngIf="loading"></app-fullscreen-modal-loader>
+

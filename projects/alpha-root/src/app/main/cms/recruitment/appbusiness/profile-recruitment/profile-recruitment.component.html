@@ -1,0 +1,23 @@
+<div class="profile-recruitment-container">
+    <core-page-list 
+      [height]="height"
+      [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+      [title]="title" *ngIf="!!avatar"
+      [autoResizeWithWindow]="true"
+      [selfResolveCorePageHeaderButtonClick]="true"
+      (rowDoubleClick)="onRowDoubleClick($event)"
+      (rowClick)="onRowClick($event)"
+      (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+      (selectedIdsChange)="onSelectedIdsChange1($event)"
+      ></core-page-list>
+  
+  
+    <ng-template #avatar let-avatar="context.avatar">
+      <img *ngIf="avatar != null" [src]="avatar | mapAvatarToServer" class="in-table-avatar" appImageErrorResolver>
+      <img *ngIf="avatar == null" [src]="defaultAvatar" class="in-table-avatar" appImageErrorResolver>
+    </ng-template>
+    <ng-template #isWorkPermit let-isWorkPermit="context.isWorkPermit">
+      <core-checkbox [disabled]="true" [inputValue]="isWorkPermit"></core-checkbox>
+    </ng-template>
+  </div>
+  <app-fullscreen-modal-loader *ngIf="loading"></app-fullscreen-modal-loader>

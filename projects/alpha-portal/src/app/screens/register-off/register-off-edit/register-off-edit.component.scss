@@ -1,0 +1,55 @@
+app-register-off-edit {
+    .headerButtonSave {
+        display: none !important;
+    }
+
+}
+
+.separator {
+    width: 1px;
+    height: 20px;
+    background-color: #D9D9D9;
+    margin: 0;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+}
+
+.table-row{
+}
+
+.col-5 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F6F7FB;
+    height: 100%;
+    border-radius: 10px;
+    // &.left{
+    //     border-bottom-left-radius: 20px;
+    //     border-top-left-radius: 20px;
+
+    // }
+    // &.right{
+    //     border-bottom-right-radius: 20px;
+    //     border-top-right-radius: 20px;
+
+    // }
+}
+
+.col-8 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.separator {
+    height: 60%;
+    width: 2px;
+    background-color: #D1D1D1;
+}

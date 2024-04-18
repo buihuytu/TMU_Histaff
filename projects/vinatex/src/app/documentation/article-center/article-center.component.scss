@@ -1,0 +1,104 @@
+.article-center-container {
+
+    padding: 20px;
+
+    .paragraph {
+        text-align: justify;
+        text-indent: 12px;
+
+        h1::first-letter,
+        h2::first-letter,
+        div::first-letter,
+        pre::first-letter {
+            font-size: inherit;
+            font-weight: inherit;
+            color: inherit;
+            text-indent: 0px;
+        }
+    }
+
+    ul.child-paragraphs>li .paragraph {
+        margin-top: 25px;
+    }
+
+    .paragraph:has(pre>code),
+    .paragraph:has(>img),
+    .paragraph:has(>video) {
+        text-indent: 0;
+    }
+
+    .paragraph:not(:has(*))::first-letter {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: brown;
+        text-indent: 12px !important;
+    }
+
+    .picture-description {
+        font-size: 15px;
+        color: lightgray;
+        line-height: 1.5em;
+    }
+
+    ul>li .paragraph:has(.picture-description) {
+        margin-top: 0px;
+    }
+
+    /*
+icons to represent RxJs diagrams
+*/
+
+    .inline-icon {
+        box-sizing: border-box;
+        display: inline-block;
+        position: relative;
+        width: 16px;
+        height: 16px;
+
+        &::before {
+            display: inline-block;
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            top: 0;
+            left: 0;
+            font-family: 'feather';
+            font-size: 16px;
+            line-height: 1em;
+            text-indent: 0;
+            transform: translateY(2px);
+        }
+    }
+
+    .inline-circle::before {
+        content: "\e937";
+    }
+
+    .inline-circle::before {
+        border-radius: 50%;
+    }
+
+    .fill-red::before {
+        background: red;
+    }
+
+    .fill-green::before {
+        background: lightgreen;
+    }
+
+    .fill-blue::before {
+        background: blue;
+    }
+
+    .inline-square::before {
+        content: "\e9d4";
+    }
+
+    .inline-diamond::before {
+        content: "\e9d4";
+        transform: rotate(45deg);
+    }
+
+
+    /* =============================*/
+}

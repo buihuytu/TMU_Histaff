@@ -1,0 +1,9 @@
+<div class="ins-specifiedobjects-container">
+    <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+        [title]="title" 
+        [normalMode]="true"
+        (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+        (selectedDataChange)="onSelectedDataChange($event)"
+        [autoResizeWithWindow]="true" [headerWrap]="true" [headerFirstRowHeight]="headerFirstRowHeight">
+    </core-page-list>
+</div>

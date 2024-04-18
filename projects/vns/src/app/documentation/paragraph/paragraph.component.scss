@@ -1,0 +1,80 @@
+.paragraph-container {
+
+
+    .cover {
+        width: 50%;
+        float: left;
+        margin: var(--size-layout-block-cell-spacing);
+        margin-left: 0px;
+        overflow: hidden;
+        display: block;
+    }
+    
+    @media (max-width: 576px) {
+        .cover {
+            width: 100%;
+        }
+    }
+
+
+    .paragraph-tools {
+        transform: translateY(-20px);
+        opacity: .5;
+        margin-top: 2em;
+    }
+
+    .queue-mark {
+        margin-right: 10px;
+    }
+
+    .markdown {
+        background-color: burlywood;
+    }
+
+    .queue-mark::before {
+        content: "[";
+    }
+
+    .queue-mark::after {
+        content: "]";
+    }
+
+    .tool-icon {
+        display: inline-block;
+    }
+
+    .tool-icon::before {
+        font-family: "feather";
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid grey;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        margin: 5px;
+    }
+
+    .tool-icon:hover::before {
+        background-color: cadetblue;
+    }
+
+    .add::before {
+        content: "\e9b1";
+    }
+
+    .insert::before {
+        content: "\e949";
+    }
+
+    .edit::before {
+        content: "\e959";
+    }
+
+    .remove::before {
+        content: "\e9e4";
+        color: brown;
+    }
+
+}

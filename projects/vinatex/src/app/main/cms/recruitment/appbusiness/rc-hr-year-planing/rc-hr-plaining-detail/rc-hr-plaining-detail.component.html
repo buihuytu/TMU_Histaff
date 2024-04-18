@@ -1,0 +1,58 @@
+<div class="rc-hr-planing-detail-container">
+    <!-- <div class="header-wrapper">
+        <core-page-header [title]="title" (buttonClick)="corePageHeaderButtonClick($event)"></core-page-header>
+       <a style="font-size: 13px!important;color:#848484!important" routerLink="/cms/recruitment/business/rc-year-plaining/">
+        <span class="icon-back"></span>&nbsp;<span style="text-decoration: underline!important;">{{ 'UI.BACK_TO_PREVIOUS_PAGE' | translate: lang }}</span>
+      </a>
+    </div> -->
+
+    <core-page-list
+        [apiDefinition]="apiDefinition"
+        [columns]="columns"
+        [crud]="crud"
+        [title]="title"
+        [top]="top"
+        [left]="orgTree"
+        [outerParam$]="outerParam$"
+        [outerInOperators]="outerInOperators"
+        [autoResizeWithWindow]="true"
+        [editRoute]="editRoute">
+    </core-page-list>
+
+    <ng-template #orgTree>
+        <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)"> </core-org-tree>
+    </ng-template>
+    <ng-template #top>
+        <div class="container-header-table">
+            <a style="font-size: 14px!important;color:#848484!important" routerLink="/cms/recruitment/business/rc-year-plaining/">
+                <span class="icon-back"></span>&nbsp;<span style="text-decoration: underline!important;">{{ 'UI.BACK_TO_PREVIOUS_PAGE' | translate: lang }}</span>
+              </a>
+            <div class="row mt-2">
+                <div class="col-md-4 d-flex">
+                    <span class="label-tb">{{label.year | translate:lang}}: </span>
+                    <p>&nbsp; {{yearPlaning.year}}</p>
+                </div>
+                <div class="col-md-4 d-flex">
+                    <span class="label-tb">{{label.version | translate:lang}}: </span>
+                    <p>&nbsp; {{yearPlaning.version}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 d-flex">
+                    <span class="label-tb">{{label.effectDate | translate:lang}}: </span>
+                    <p>&nbsp; {{yearPlaning.effectDate | date :'dd/MM/yyyy'}}</p>
+                </div>
+                <div class="col-md-4 d-flex">
+                    <span class="label-tb">{{label.position | translate:lang}}: &nbsp;</span>
+                    <core-dropdown [ngStyle]="{width: '100%'}"
+                        [(ngModel)]="positionId"
+                        (ngModelChange)="onPositionChange($event)"
+                        [options$]="positionOptions$"
+                        [getByIdObject$]="positionGetByIdObject$"
+                        [shownFrom]="'name'"
+                        ></core-dropdown>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>

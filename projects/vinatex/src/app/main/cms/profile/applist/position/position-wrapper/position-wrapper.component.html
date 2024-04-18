@@ -1,0 +1,35 @@
+<div class="position-wrapper-container">
+  <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+    [title]="title" [left]="orgTree" [normalMode]="true" [outerParam$]="outerParam$"
+    [outerInOperators]="outerInOperators" [autoResizeWithWindow]="true"
+    (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+    (selectedIdsChange)="onSelectedIdsChangeeee($event)"></core-page-list>
+  
+    <ng-template #orgTree>
+      <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+      </core-org-tree>
+    </ng-template>
+  
+    <ng-template #isMaster let-isMaster="context.isMaster">
+      <core-checkbox [disabled]="true" [inputValue]="isMaster"></core-checkbox>
+    </ng-template>
+
+    <ng-template #isTDV let-isTDV="context.isTDV">
+      <core-checkbox [disabled]="true" [inputValue]="isTDV"></core-checkbox>
+    </ng-template>
+  
+    <ng-template #isNotot let-isNotot="context.isNotot">
+      <core-checkbox [disabled]="true" [inputValue]="isNotot"></core-checkbox>
+    </ng-template>
+  
+    <ng-template #sticker2 let-code="context.active">
+      <core-status-sticker [code]="code"></core-status-sticker>
+    </ng-template>
+    <!-- <ng-template #isplan let-isplan="context.isplan">
+        <core-checkbox [disabled]="true" [inputValue]="isplan"></core-checkbox> 
+      </ng-template>
+      
+      <ng-template #isnonphysical let-isnonphysical="context.isnonphysical">
+        <core-checkbox [disabled]="true" [inputValue]="isnonphysical"></core-checkbox> 
+      </ng-template> -->
+  </div>

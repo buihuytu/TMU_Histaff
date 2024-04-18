@@ -1,0 +1,51 @@
+<div class="app-approve-additinal-info-container">
+    <core-page-list
+        [apiDefinition]="apiDefinition"
+        [columns]="columns"
+        [editRoute]="editRoute"
+        [crud]="crud"
+        [normalMode]="true"
+        [autoResizeWithWindow]="true"
+
+        [outerParam$]="outerParam$"
+        [outerInOperators]="outerInOperators"
+        [left]="orgTree"
+        [height]="height"
+        [frozen]="3"
+    >
+    </core-page-list>
+
+
+    <ng-template #orgTree>
+        <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)" [height]="treeHeight"> </core-org-tree>
+    </ng-template>
+</div>
+
+<ng-template #passNo let-passNo="context.passNo">
+    <div class="fill-color-column">{{passNo}}</div>
+</ng-template>
+
+<ng-template #passDate let-passDate="context.passDate">
+    <div class="fill-color-column">{{passDate | tableCell: 'DATE' : lang}}</div>
+</ng-template>
+
+<ng-template #passExpire let-passExpire="context.passExpire">
+    <div class="fill-color-column">{{passExpire | tableCell: 'DATE' : lang}}</div>
+</ng-template>
+
+<ng-template #passPlace let-passPlace="context.passPlace">
+    <div class="fill-color-column">{{passPlace}}</div>
+</ng-template>
+
+<ng-template #visaNo let-visaNo="context.visaNo">
+    <div class="fill-color-column">{{visaNo}}</div>
+</ng-template>
+
+<ng-template #visaDate let-visaDate="context.visaDate">
+    <div class="fill-color-column">{{visaDate | tableCell: 'DATE' : lang}}</div>
+</ng-template>
+
+<ng-template #visaPlace let-visaPlace="context.visaPlace">
+    <div class="fill-color-column">{{visaPlace}}</div>
+</ng-template>
+

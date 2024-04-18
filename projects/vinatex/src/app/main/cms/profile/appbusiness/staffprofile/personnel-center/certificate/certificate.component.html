@@ -1,0 +1,44 @@
+<div class="app-certificate-container">
+    <div class="header-text">{{title | translate: lang }}</div>
+    <div class="content">
+        <div class="card-info" *ngFor="let member of members">
+            <p class="type">{{member.name}}</p>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{typeName | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.typeCertificateName}}</p>
+                <p class="label col-md-2">{{effectDate | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.effectFrom | date: 'dd/MM/yyyy'}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{trainFrom | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.trainFromDate | date: 'dd/MM/yyyy'}}</p>
+                <p class="label col-md-2">{{trainTo | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.trainToDate | date: 'dd/MM/yyyy'}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{level | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.levelName}}</p>
+                <p class="label col-md-2">{{major | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.major}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{levelTrainName | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.levelTrainName}}</p>
+                <p class="label col-md-2">{{schoolName | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.schoolName}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{year | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.year}}</p>
+                <p class="label col-md-2">{{classification | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.classification}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{isPrime | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.isPrimeStr}}</p>
+                <p class="label col-md-2">{{note | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.remark}}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="hu-competency-peroid-container">
+    <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+        [title]="title"
+        (rowClick)="onRowClick($event)"
+        (selectedIdsChange)="onSelectedIdsChange($event)" 
+        [autoResizeWithWindow]="true" [normalMode]="true"></core-page-list>
+</div>
+  <app-fullscreen-modal-loader *ngIf="loading"></app-fullscreen-modal-loader>
+

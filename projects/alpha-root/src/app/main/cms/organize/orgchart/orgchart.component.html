@@ -1,0 +1,110 @@
+<div class="app-orgchart-container">
+
+    <core-page-header [title]="title" (buttonClick)="onCorePageHedearButtonClick($event)"></core-page-header>
+
+    <div class="lib-wrapper" #content>
+
+        <core-loading-surface [loading]="loading" [height]="height"></core-loading-surface>
+
+        <div class="settings" #dropdown>
+
+            <div class="p-relative">
+
+                <div class="icon-wrapper">
+                    <i class="feather-settings" (click)="toggleShowSettings()"></i>
+                </div>
+                <div class="setting-dropdown p-absolute" [class.d-none]="!!!showSettings">
+                    <div class="p-relative">
+                        <div class="d-flex d-flex-end w-100">
+                            <i class="feather-x" (click)="toggleShowSettings()"></i>
+                        </div>
+                        <div class="d-flex d-flex-between w-100 p15">
+                            <div class="text">{{ 'UI_ORG_CHART_TREE_SHOW_TDVS' | translate: lang }}</div>
+                            <core-ios-switcher [bgColor]="'#358ccb'" [(ngModel)]="showTdvs"
+                                (ngModelChange)="compactModeDetect()"></core-ios-switcher>
+                        </div>
+                        <div class="d-flex d-flex-between w-100 p15">
+                            <div class="text">{{ 'UI_ORG_CHART_TREE_SHOW_MASTERS' | translate: lang }}</div>
+                            <core-ios-switcher [bgColor]="'#358ccb'" [(ngModel)]="showMasters"
+                                (ngModelChange)="compactModeDetect()"></core-ios-switcher>
+                        </div>
+                        <div class="d-flex d-flex-between w-100 p15">
+                            <div class="text">{{ 'UI_ORG_CHART_TREE_SHOW_INTERIMS' | translate: lang }}</div>
+                            <core-ios-switcher [bgColor]="'#358ccb'" [(ngModel)]="showInterims"
+                                (ngModelChange)="compactModeDetect()"></core-ios-switcher>
+                        </div>
+                        <div class="d-flex d-flex-between w-100 p15">
+                            <div class="text">{{ 'UI.CORE_ORG_TREE.SHOW_OUTDATED_UNITS' | translate: lang }}</div>
+                            <core-ios-switcher [bgColor]="'#358ccb'" [(ngModel)]="showDissolved"
+                                ></core-ios-switcher>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div #printArea>
+            <core-orgchartflex [data]="nestedItems" [width]="width" [height]="height" [itemTemplate]="itemTemplate"
+                [compactMode]="compactMode" [showDissolved]="showDissolved" (onPrintAreaRendered)="onPrintAreaRendered($event)"></core-orgchartflex>
+        </div>
+    </div>
+
+    <ng-template #itemTemplate let-item="item" let-orgTitle="item.tree$Title" let-tdvs="item.tdvs"
+        let-masterPositions="item.masterPositions" let-interimPositions="item.interimPositions">
+        <div class="org-title" [appTooltip]="orgTitle">
+            {{ orgTitle }}
+        </div>
+        <div class="masters-wrapper" *ngIf="showTdvs">
+            <div class="group-name" *ngIf="!!tdvs.length">{{ 'UI_ENTITY_FIELD_CAPTION_POSITION_IS_TDV' | translate: lang
+                }}</div>
+            <div class="person-wrapper" *ngFor="let tdv of tdvs" [appTooltip]="tdv.TdvFullname">
+                <div class="d-flex d-flex-between w-100" (click)="onPersonClick(tdv.tdvId)">
+                    <img [src]="(tdv.avatar | mapAvatarToServer) || defaultAvatar">
+                    <div class="card-right">
+                        <div class="person-name">
+                            {{ tdv.tdvFullname | tableCell: 'NORMALIZE_HUMAN_NAME': lang}}
+                        </div>
+                        <div class="position-name">{{ tdv.positionName }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="masters-wrapper" *ngIf="showMasters">
+            <div class="group-name" *ngIf="!!masterPositions.length">{{ 'UI_ENTITY_FIELD_CAPTION_POSITION_MASTER' |
+                translate: lang }}</div>
+            <div class="person-wrapper" *ngFor="let master of masterPositions">
+                <div class="d-flex d-flex-between w-100" [appTooltip]="master.masterFullname"
+                    (click)="onPersonClick(master.master)">
+                    <img [src]="(master.avatar | mapAvatarToServer) || defaultAvatar">
+                    <div class="card-right">
+                        <div class="person-name">
+                            {{ master.masterFullname | tableCell: 'NORMALIZE_HUMAN_NAME': lang}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex d-flex-start" [appTooltip]="master.positionName">
+                    <div class="position-name">{{ master.positionName }}</div>
+                </div>
+
+            </div>
+        </div>
+        <div class="masters-wrapper" *ngIf="showInterims">
+            <div class="group-name" *ngIf="!!interimPositions.length">{{ 'UI_ENTITY_FIELD_CAPTION_POSITION_INTERIM' |
+                translate: lang }}</div>
+            <div class="person-wrapper" *ngFor="let interim of interimPositions">
+                <div class="d-flex d-flex-between w-100" [appTooltip]="interim.interimFullname"
+                    (click)="onPersonClick(interim.interim)">
+                    <img [src]="(interim.avatar | mapAvatarToServer) || defaultAvatar">
+                    <div class="person-name">
+                        {{ interim.interimFullname | tableCell: 'NORMALIZE_HUMAN_NAME': lang}}
+                    </div>
+                    <div class="position-name">{{ interim.positionName }}</div>
+                </div>
+
+            </div>
+        </div>
+    </ng-template>
+
+</div>

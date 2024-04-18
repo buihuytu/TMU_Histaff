@@ -1,0 +1,15 @@
+<div class="se-document-container">
+    <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+        [title]="title" 
+        [autoResizeWithWindow]="true"
+        [headerWrap]="true"
+        [headerFirstRowHeight]="headerFirstRowHeight">
+    </core-page-list>
+</div>
+<ng-template #isObligatory let-isObligatory="context.isObligatory">
+    <core-checkbox [disabled]="true" [inputValue]="isObligatory"></core-checkbox>
+</ng-template>
+<ng-template #isPermissveUpload let-isPermissveUpload="context.isPermissveUpload">
+    <core-checkbox [disabled]="true" [inputValue]="isPermissveUpload"></core-checkbox>
+</ng-template>
+

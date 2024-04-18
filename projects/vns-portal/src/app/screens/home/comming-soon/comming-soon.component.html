@@ -1,0 +1,119 @@
+<!-- width: (layoutService.comingSoonAvatarSize + layoutService.basicSpacing) * columnCount + 'px', -->
+<div class="app-coming-soon-container" [ngStyle]="{
+    width: (width - layoutService.basicSpacing) + 'px',
+    maxWidth: '100%',
+    overflow: 'hidden',
+    border: '1px solid #D1D1D1',
+    borderRadius: '5px'
+}">
+
+    <div [ngStyle]="{
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        padding: layoutService.basicSpacing/2 + 'px',
+    }">{{ caption | translate: lang | uppercase }}</div>
+
+    <div class="slider" [ngStyle]="{
+        display: 'block',
+        padding: layoutService.basicSpacing/2 + 'px',
+        height: layoutService.comingSoonCardHeight + layoutService.basicSpacing + 'px',
+        lineHeight: layoutService.comingSoonCardHeight + layoutService.basicSpacing + 'px',
+        width: width + 'px',
+        maxWidth: '100%'
+    }">
+    <!-- width: (layoutService.comingSoonAvatarSize + layoutService.basicSpacing) * columnCount + 'px', -->
+
+        <base-slider [pagesContext]="pages" [pageRef]="pageRef" [showArows]="true" (onItemClick)="onMenuItemClick($event)"></base-slider>
+
+    </div>
+
+</div>
+
+<ng-template #pageRef let-rows="rows">
+    <div [ngStyle]="{
+        width: (layoutService.comingSoonAvatarSize + layoutService.basicSpacing) * columnCount + 'px',
+        height: layoutService.comingSoonCardHeight + 'px',
+        overflow: 'hidden',
+        animation: 'fadeIn .5s ease-out'
+      }">
+
+        <div class="d-flex d-flex-start" *ngFor="let row of rows">
+            <div *ngFor="let item of row" (click)="onMenuItemClick(item)">
+
+                <div class="d-flex d-flex-start" [ngStyle]="{ 
+                          width: layoutService.comingSoonAvatarSize + layoutService.basicSpacing + 'px',
+                          height: layoutService.comingSoonCardHeight + 'px',
+                          paddingLeft: layoutService.basicSpacing / 2 + 'px',
+                          paddingRight: layoutService.basicSpacing / 2 + 'px'
+                      }">
+
+                    <div [ngStyle]="{ 
+                        display: 'block',
+                        height: layoutService.comingSoonCardHeight + 'px',
+                        width: layoutService.comingSoonAvatarSize + 'px',
+                    }">
+
+                        <!-- start Avatar -->
+                        <div [ngStyle]="{
+                            position: 'relative',
+                            height: layoutService.comingSoonAvatarSize + 'px',
+                        }">
+
+                            <div [ngStyle]="{
+                                width: layoutService.comingSoonAvatarSize + 'px',
+                                height: layoutService.comingSoonAvatarSize + 'px',
+                                position: 'absolute',
+                                display: 'block'
+                            }">
+                                <img class="" [src]="item.avatar | mapAvatarToServer " [ngStyle]="{
+                                cursor: 'pointer',
+                                width: layoutService.comingSoonAvatarSize + 'px',
+                                height: layoutService.comingSoonAvatarSize + 'px',
+                                borderRadius: '50%'
+                                }">
+                            </div>
+
+                        </div>
+                        <!-- end Avatar -->
+
+                        <div [ngStyle]="{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: layoutService.comingSoonAvatarSize + 'px',
+                            maxWidth: '100%',
+                            }">
+                            <div [ngStyle]="{
+                                maxWidth: '100%',
+                                overflow: 'hidden',
+                                whiteSpace: 'nowrap',
+                                textOverflow: 'ellipsis',
+                                fontSize: '13px',
+                                color: '#00000',
+                                lineHeight: '25px'
+                            }"
+                            [appTooltip]="item.fullName | normalizeHumanName"
+                            >
+                                {{ item.fullName | normalizeHumanName }}
+                            </div>
+                        </div>
+
+                        <div [ngStyle]="{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            fontSize: '13px',
+                            color: '#848484',
+                            lineHeight: '15px'
+                            }">{{ item.comingDate | tableCell: 'DATE': lang }}</div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ng-template>

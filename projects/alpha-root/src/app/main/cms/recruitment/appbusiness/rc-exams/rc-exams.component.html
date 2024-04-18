@@ -1,0 +1,19 @@
+<div class="rc-exams-container">
+    <core-page-list
+        [apiDefinition]="apiDefinition"
+        [columns]="columns"
+        [crud]="crud"
+        [title]="title"
+        [normalMode]="false"
+        [autoResizeWithWindow]="true"
+
+        [left]="orgTree"
+        [outerInOperators]="outerInOperators"
+    >
+    </core-page-list>
+
+
+    <ng-template #orgTree>
+        <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)"> </core-org-tree>
+    </ng-template>
+</div>

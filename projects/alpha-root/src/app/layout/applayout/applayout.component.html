@@ -1,0 +1,78 @@
+<div #container class="mkf-container roboto-font" *ngIf="!!!appInitializing && !!authenticated">
+
+    <core-navigation-tracker></core-navigation-tracker>
+
+    <!-- <div class="navigating-bar-container">
+        <div class="loader" [ngStyle]="{
+            opacity: 1
+        }">
+            <div class="loaderBar"></div>
+        </div>
+    </div> -->
+
+    <input id="mkf-menu-state" class="roboto-font form-control" type="checkbox" [(ngModel)]="menuOpen"
+        (ngModelChange)="onIsOpenChange($event)">
+    <!-- <input #appNavigating type="checkbox" id="app-navigating" [(ngModel)]="navigating"> -->
+    <div>
+        <div>
+            <img class="lg" src="../../../assets/icon/histaff_logo-new.svg">
+        </div>
+    </div>
+    <div class="THE_APP_HEADER z7 d-flex-between pl15 pr5">
+        <div class="MENU_REDUCER">
+            <i class="feather-menu pointer" (click)="onLeftbarRecucerClick()"
+                [appTooltip]="!!leftbarReduced ? ('UI_LAYOUT_EXPAND_MENU' | translate: lang) : ( 'UI_LAYOUT_COLLAPSE_MENU' | translate: lang)"
+                [showAnyway]="true"></i>
+        </div>
+        <div class="HEADER_LOGO">
+            <div class="logo-wrapper d-flex" (click)="onClickAvatar()"
+                [appTooltip]="!!currentVersion ? (('SW_UPDATE_CURRENT_APP_VERSION' | translate: lang ) + ': ' + currentVersion) : ''">
+                <img src="../../../assets/icon/histaff_logo-new.svg" class="lg">
+            </div>
+        </div>
+        <div id="secretLeft" (click)="onClickSecretLeft()"></div>
+        <div id="secretRight" (click)="onClickSecretRight()"></div>
+        <div class="HEADER_RIGHT">
+            <div class="header-right-section d-flex d-flex-end">
+                <div style="margin: 5px; width: 40px; height: 40px; background: url(../../../assets/icons/icon-96x96.png); background-size: cover;">
+                </div>
+
+                <div class="separator"></div>
+                <div class="mr10">
+                    <app-notification-header></app-notification-header>
+                </div>
+                <div class="separator"></div>
+                <app-language-changer [lang]="lang"></app-language-changer>
+                <div class="separator"></div>
+                <app-auth-profile></app-auth-profile>
+
+                <label #mkfMenuBtn for="mkf-menu-state" class="pointer">
+                    <div id="mkf-menu-btn"> </div>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div #leftBar class="THE_LEFT_BAR" [class.reduced]="leftbarReduced">
+
+        <div class="navigator-wrapper">
+            <corelib-navigator *ngIf="authenticated"></corelib-navigator>
+        </div>
+
+    </div>
+
+
+    <div class="outlet-content pos-abs t0">
+        <div class="content-container" #contentContainer>
+            <router-outlet></router-outlet>
+            <router-outlet name="popupAux"></router-outlet>
+            <router-outlet name="popupAux2"></router-outlet>
+            <app-dialog-state *ngIf="showDialogState"></app-dialog-state>
+
+        </div>
+    </div>
+</div>
+<core-confirm-dialog></core-confirm-dialog>
+
+<!-- THIS MAKES LoginComponent ABLE TO BE RENDERED -->
+<router-outlet *ngIf="!!!appInitializing && !!!authenticated"></router-outlet>

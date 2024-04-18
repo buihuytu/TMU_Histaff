@@ -1,0 +1,17 @@
+<div class="rc-hr-year-planing-container">
+    <core-page-list
+        [apiDefinition]="apiDefinition"
+        [columns]="columns"
+        [crud]="crud"
+        [title]="title"
+        [autoResizeWithWindow]="true"
+        [disableDoubleClick]="true"
+        [editRoute]="editRoute"
+        (corePageHeaderButtonClick)="corePageHeaderButtonClick($event)"
+        (rowDoubleClick)="rowDoubleClick($event)">
+    </core-page-list>
+
+    <ng-template #detail  let-detail="context">
+        <button type="button" class="btn btn-secondary text" (click)="onHandleClickDetail(detail)">Chi tiết</button>
+    </ng-template>
+</div>

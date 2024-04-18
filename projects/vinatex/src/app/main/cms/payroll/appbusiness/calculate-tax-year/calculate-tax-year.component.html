@@ -1,0 +1,135 @@
+<div class="cms-app-calculate-tax-year-container">  
+    <!-- HEADER -->
+    <core-page-header 
+      [hidden]="false"
+      [title]="title" 
+      [shownItems]="headerButtons"
+      (buttonClick)="onCorePageHeaderButtonClick($event)"
+    ></core-page-header>
+  
+    <!-- LAYOUT MAIN -->
+<!-- LAYOUT MAIN -->
+<core-composition [left]="orgTreeChecked" [top]="top" [main]="main" [height]="compositionHeight"></core-composition>
+
+<!-- ORG TREE CHECKBOX -->
+<ng-template #orgTreeChecked>
+  <core-org-tree [accessorMode]="accessorMode" [(ngModel)]="listOrgIds" [height]="treeHeight"></core-org-tree>
+</ng-template>
+  
+
+    <!-- TOP -->
+    <ng-template #top>
+      <!-- FILLTER FORM -->
+
+      <div [ngStyle]="{
+        marginLeft: '5px'
+      }">
+
+      <div class="row mb15" style="margin-right: 5px;">
+        <div class="col-md-3">
+          <div class="form-group vertical" >
+            <label>{{ labelList.year | translate: lang}}</label>
+              <core-dropdown [(ngModel)]="year" (ngModelChange)="onYearChange($event)"
+              [options$]="yearOptions$" [getByIdObject$]="yearGetByIdObject$"
+              [shownFrom]="shownFrom"></core-dropdown>
+          </div>
+          <div *ngIf="showRequiredYear" style="height: 25px;">
+            <div style="margin: 0;" class="form-control-error" >{{ errorRequired | translate: lang}}</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group vertical">
+            <label>{{ labelList.dateStart | translate: lang}}</label>
+            <core-date-picker 
+              [disabled]="disabled"
+              [(ngModel)]="dateStart" 
+              (ngModelChange)="onDateStartChange($event)"
+            ></core-date-picker>
+          </div>
+          <div *ngIf="showRequiredDateStart" style="height: 25px;">
+            <div style="margin: 0;" class="form-control-error" >{{ errorRequired | translate: lang}}</div>
+          </div>
+        </div> 
+        <div class="col-md-3">
+          <div class="form-group vertical">
+            <label>{{ labelList.dateEnd | translate: lang}}</label>
+            <core-date-picker 
+              [disabled]="disabled"
+              [(ngModel)]="dateEnd" 
+              (ngModelChange)="onDateEndChange($event)"
+            ></core-date-picker>
+          </div>
+          <div *ngIf="showRequiredDateEnd" style="height: 25px;">
+            <div style="margin: 0;" class="form-control-error" >{{ errorRequired | translate: lang}}</div>
+          </div>
+        </div> 
+        <div class="col-md-3">
+          <div class="form-group vertical">
+            <label>{{ labelList.objSalary | translate: lang}}</label>
+            <core-dropdown [(ngModel)]="objSalary" (ngModelChange)="onObjSalaryChange($event)"
+              [options$]="objSalaryOptions$" [getByIdObject$]="objSalaryGetByIdObject$"
+              [shownFrom]="shownFrom"></core-dropdown>
+          </div>
+          <div *ngIf="showRequiredObjSalary" style="height: 25px;">
+            <div style="margin: 0;" class="form-control-error" >{{ errorRequired | translate: lang}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb15" style="margin-right: 5px;">
+        <div class="col-md-3">
+          <div class="form-group vertical">
+            <label>{{ labelList.employeeCal | translate : lang }}</label>
+              <input
+                type="text"
+                class="form-control form-control-disabled"
+                [(ngModel)]="employeeCal"
+                (ngModelChange)="onEmployeeCalChange($event)"
+                [readonly]="true"
+              />
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div style="margin-top : 45px" class="form-group vertical">
+            <core-button-group-vns 
+              class="buttonGroupCustom"
+              [showCaption]="true" 
+              (buttonClick)="onButtonClick($event)" 
+              [shownItems]="buttonItems" 
+            ></core-button-group-vns>
+          </div>
+        </div>
+      </div>
+
+      </div>
+  
+    </ng-template>
+    <!-- MAIN -->
+    <ng-template #main>
+      
+      <!-- GRID DATA -->
+      <core-table 
+      [columns]="columns" 
+      [height]="tableHeight" 
+      [showCheckbox]="!!!hideCheck" 
+      [frozen]="2"
+      [data]="innerBody" 
+      [loading]="loading" 
+      [headerWrap]="true"
+      [headerFirstRowHeight]="headerFirstRowHeight"
+      (onSearching)="onSearching($event)"
+      ></core-table>
+  
+      <!-- Pagination -->
+      <div class="d-flex-end pagination-wrapper" >
+        <core-pagination-full  [currentPage$]="currentPage$" [pageSize$]="pageSize$"
+            [pageCount]="pageCount"
+            [innerBodyCount$]="innerBodyCount$" [pagination$]="pagination$" [loading]="loading"
+            [background]="'#848484'"
+            (onCurrentPageChange)="onCurrentPageChange($event)"
+            ></core-pagination-full>
+    
+      </div>
+    </ng-template>
+  </div>
+  
+  <app-fullscreen-modal-loader *ngIf="loadingPage"></app-fullscreen-modal-loader>

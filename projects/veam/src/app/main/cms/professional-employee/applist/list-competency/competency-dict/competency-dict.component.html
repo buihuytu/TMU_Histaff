@@ -1,0 +1,19 @@
+<core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+    (onInstanceCreated)="onInstanceCreated($event)" [autoResizeWithWindow]="true" [frozen]="2" [top]="top"
+    (selectedDataChange)="selectedDataChange($event)" [hideHeader]="true" [disableDoubleClick]="true"
+    [selfResolveCorePageHeaderButtonClick]="true" (selectedIdsChange)="selectedIdsChange($event)"
+    (rowDoubleClick)="onRowDoubleClick($event)">
+
+</core-page-list>
+<ng-template #sticker let-code="context.status">
+    <core-status-sticker [code]="code"></core-status-sticker>
+</ng-template>
+
+<ng-template #top>
+    <core-page-header (buttonClick)="corePageHeaderButtonClick($event)"></core-page-header>
+</ng-template>
+
+<div class="col-md no-padding no-margin">
+    <router-outlet></router-outlet>
+    <router-outlet name="dictionary"></router-outlet>
+</div>

@@ -1,0 +1,15 @@
+<core-page-header [title]="title" [hideButtonGroup]="true"></core-page-header>
+
+<div class="container-fluid no-margin no-padding">
+    <div class="row gx-5 gy-5">
+        @for (file of files; track file) {
+            <div class="col-md-3" (click)="onFileClick($event, file)">
+                <div class="card p-3 pointer" [ngStyle]="{
+                    userSelect: 'none'
+                }">
+                    {{ file }}
+                </div>
+            </div>
+        }
+    </div>
+</div>

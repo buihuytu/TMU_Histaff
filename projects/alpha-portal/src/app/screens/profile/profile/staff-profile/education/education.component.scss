@@ -1,0 +1,146 @@
+.app-education-container {
+    width: 100%;
+            
+    box-sizing: border-box;
+    border: solid 1px #D1D1D1;
+    border-radius: 10px;
+            
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    margin-bottom: 40px;
+
+    position: relative;
+}
+
+.grid-data-education {
+    width: 90%;
+    box-sizing: border-box;
+}
+
+.grid-data-row {
+    height: 70px;
+}
+
+.col {
+    padding: 0px;
+}
+
+.p-title {
+    margin: 0px;
+    padding: 0px;
+
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+
+    font-size: 18px;
+    color: #848484;
+}
+
+.p-content {
+    width: 80%;
+
+    margin: 0px;
+    padding: 0px;
+
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+
+    font-size: 18px;
+    color: #464646;
+    font-weight: 500;
+
+    // thiết lập chữ quá dài sẽ thành 3 chấm
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.label-saved {
+    font-size: 18px;
+
+    // padding: 0px;
+
+    // position: relative;
+    // top: 0px;
+    // left: 0px;
+    // z-index: 6;
+    color: #0dcaf0;
+}
+
+.label-notification_send {
+    font-size: 18px;
+
+    // padding: 0px;
+
+    // position: relative;
+    // top: 0px;
+    // left: 0px;
+    // z-index: 6;
+    color: #ffc107;
+}
+
+.label-notification_unapprove{
+    font-size: 18px;
+
+    // padding: 0px;
+
+    // position: relative;
+    // top: 0px;
+    // left: 0px;
+    // z-index: 6;
+    color: red;
+}
+
+.btn_pencil {
+    display: block;
+    width: 35px;
+    height: 35px;
+    padding-top: 7.5px;
+    padding-left: 9.5px;
+    background: white;
+    border-radius: 50%;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: black;
+}
+
+.delete {
+    width: 3vh;
+    height: 3vh;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    border: none;
+    border-radius: 50%;
+    justify-content: center;
+
+    position: absolute;
+    top: 4px;
+    right: -25px;
+
+    :hover {
+        cursor: pointer;
+    }
+}
+
+#alertContext {
+    color: black;
+            font-size: 18px;
+            text-align: center;
+            padding-top: 50px;
+}
+
+#btn_div {
+    position: absolute;
+    top: 20px;
+    right: 13dvh;
+    z-index: 5;
+}
+
+#element_i_context {
+    background: white;
+    width: 16px;
+    height: 16px;
+}

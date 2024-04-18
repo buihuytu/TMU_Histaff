@@ -1,0 +1,142 @@
+<core-page-header
+[shownItems]="shownItems"
+[title]="title"
+(buttonClick)="onCorePageHeaderButtonClick($event)"></core-page-header>
+
+<div class="dynamic-report-container">
+  <core-composition [left]="orgTree" [main]="main" >
+  </core-composition>
+  <ng-template #main>
+    <div class="row mb20">
+      <div class="col-md-3">
+        <div class="form-group vertical">
+          <label class="label-content">{{'SELECT_DYNAMIC_REPORT'| translate: lang}}</label>
+          <core-dropdown
+            [(ngModel)]="dynamicReport"
+            (ngModelChange)="dynamicReportChange($event)"
+            [options$]="dynamicReportOptions$"
+            [getByIdObject$]="dynamicReportGetByIdObject$"
+            [shownFrom]="shownFrom"
+          ></core-dropdown>
+        </div>
+      </div>
+      <div class="col-md-4" style="margin-top:29px">
+        <!-- <input style="height:15px;width:15px;border-radius: 10px;" type="checkbox">&nbsp;
+        <span>{{'ONLY_LIST_EMPLOYEE_OFF_DYNAMIC_REPORT'| translate: lang}}</span> -->
+        <span class="custom-params-kit">
+          <core-common-param-kit 
+           [statusInclusionForLabelKey]="statusInclusionForLabelKey" [hideDatePeriodComparison]="true" [hideGeneralSearch]="true"
+          [statusOptionsApi]="statusOptionsApi" (onChange)="onParamKitValueChange($event)"></core-common-param-kit>
+        </span>
+        
+      </div>
+      <!-- <div class="col-md-4" style="margin-top:55px">
+        <input type="checkbox">&nbsp;&nbsp;
+        <span>Liệt kê cả nhân viên nghỉ việc</span>
+      </div> -->
+    </div>
+    <div class="row mb20">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-6">
+            <span class="header-dynamic">{{'LIST_COL_DYNAMIC_REPORT'| translate: lang}}</span>
+            <div class="border-box">
+              <div class="row" style="height:198px">
+                <div class="col-md-10 ul-custom">
+                  <input class="input-search" [(ngModel)]="search" placeholder="Tìm kiếm..." type="search" (onchange)="sortField($event)">
+                  <span  class="custom-row row" *ngFor="let item of colArrays | filter:search" [ngClass]="{'actived' : item.actived == true}" (click)="click($event,item)"><span>{{ item.columnName | translate: lang}}</span></span>
+                </div>
+                <div class="col-md-2 buttonGroupDynamic">
+                  <span (click)="upItem(dataSelected)" [ngClass]="{'disabled' : !dataSelected || this.colArrays.indexOf(dataSelected) == 0}" class="rblButton row"><i class="feather-arrow-up"></i></span>
+                  <span (click)="downItem(dataSelected)" [ngClass]="{'disabled' : !dataSelected || this.colArrays.indexOf(dataSelected) == this.colArrays.length - 1}" class="rblButton row"><i class="feather-arrow-down"></i></span>
+                  <span (click)="rightItem(dataSelected)" [ngClass]="{'disabled' : !dataSelected}" class="rblButton row"><i class="feather-arrow-right"></i></span>
+                  <span (click)="leftItem(dataChooseSelected)" [ngClass]="{'disabled' : !dataChooseSelected || this.colArraysSelected.length == 0}" class="rblButton row"><i class=" feather-arrow-left"></i></span>
+                  <span (click)="allRightItem()" [ngClass]="{'disabled' : colArrays.length == 0}" class="rblButton row"><i class="feather-chevrons-right"></i></span>
+                  <span (click)="allLeftItem()" [ngClass]="{'disabled' : colArraysSelected.length == 0}" class="rblButton row"><i class="feather-chevrons-left"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <span class="header-dynamic">{{'LIST_COL_DYNAMIC_REPORT_SELECTED'| translate: lang}}</span>
+            <div class="border-box">
+              <div class="row" style="height:198px">
+                <div class="col-md-10 ul-custom">
+                  <input class="input-search" [(ngModel)]="searchSelected" placeholder="Tìm kiếm..." type="search" (onchange)="sortFieldSelected($event)">
+                  <span class="custom-row row" *ngFor="let item of colArraysSelected | filter:searchSelected" [ngClass]="{'actived' : item.actived == true}" (click)="clickChoosed($event,item)"><span>{{ item.columnName | translate: lang}}</span></span>
+                </div>
+                <div class="col-md-2 buttonGroupDynamic2">
+                  <span (click)="upItemSelected(dataChooseSelected)" [ngClass]="{'disabled' : !dataChooseSelected || this.colArraysSelected.indexOf(dataChooseSelected) == 0}" class="rblButton2 row"><i class="feather-arrow-up"></i></span>
+                  <span (click)="downItemSelected(dataChooseSelected)" [ngClass]="{'disabled' : !dataChooseSelected || this.colArraysSelected.indexOf(dataChooseSelected) == this.colArraysSelected.length - 1}" class="rblButton3 row"><i class="feather-arrow-down"></i></span>
+                  <span (click)="superUpItemSelected(dataChooseSelected)" [ngClass]="{'disabled' : !dataChooseSelected || this.colArraysSelected.indexOf(dataChooseSelected) == 0}" class="rblButton4 row"><i class="feather-chevrons-up"></i></span>
+                  <span (click)="superDownItemSelected(dataChooseSelected)" [ngClass]="{'disabled' : !dataChooseSelected || this.colArraysSelected.indexOf(dataChooseSelected) == this.colArraysSelected.length - 1}" class="rblButton5 row"><i class="feather-chevrons-down"></i></span>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div style="margin: 18px 0px;" class="row">
+            <span class="col-md-3" style="display: flex;align-items: center;font-size: 13px;">{{'REPORT_DYNAMIC_NAME_DETAIL'| translate: lang}}</span>&nbsp;
+            <input [(ngModel)]="reportNameToSave" style="border : 1px solid #ced4da;border-radius: 5px;height: 30px;" class="col-md-3">
+          </div>
+          <core-table
+            [columns]="columns"
+            [showCheckbox]="true"
+            [data]="innerBody"
+            [loading]="loading"
+            (onRowClick)="onRowClick($event)"
+            (onSelectedDataChange)="onSelectedDataChange($event)"
+            (onSelectedIdsChange)="onSelectedIdsChange($event)"
+            [searchSwitchDisabled]="true"
+            [checkingResetFlag]="checkingResetFlag"
+          ></core-table>
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <span class="header-dynamic">{{'REPORT_DYNAMIC_CONDITION'| translate: lang}}</span>
+        <div class="border-box" style="height: 600px;">
+          <!-- <input placeholder="Tìm kiếm..." type="search"> -->
+          <div>
+            <!-- <div class="col-md-10 ul-custom">
+              <span class="row" *ngFor="let item of colArrays"><span>{{item.name}}</span></span>
+            </div>
+            <div class="col-md-2 buttonGroupDynamic">
+              <span class="rblButton row"><i class="feather-arrow-up"></i></span>
+              <span class="rblButton row"><i class="feather-arrow-down"></i></span>
+              <span class="rblButton row"><i class="feather-arrow-right"></i></span>
+              <span class="rblButton row"><i class=" feather-arrow-left"></i></span>
+              <span class="rblButton row"><i class="feather-chevrons-right"></i></span>
+              <span class="rblButton row"><i class="feather-chevrons-left"></i></span>
+            </div> -->
+            
+            <core-query-builder [mainForm]="queryForm" (jsonEmitter)="receiveJsonValue($event)" (expressionEmitter)="receiveExpressionValue($event)" [totalCols]="colArraysBinding"></core-query-builder>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+    <!-- <div class="d-flex-end pagination-wrapper" #paginationContainer>
+      <core-pagination-full
+        [height]="paginationHeight"
+        [currentPage$]="currentPage$"
+        [pageSize$]="pageSize$"
+        [pageCount]="pageCount"
+        [innerBodyCount$]="innerBodyCount$"
+        [pagination$]="pagination$"
+        [loading]="loading"
+        [background]="'#7eaccc'"
+      ></core-pagination-full>
+    </div> -->
+  </ng-template>
+  <ng-template #orgTree>
+    <core-org-tree
+      [(ngModel)]="orgIds" [height]="heightCoreOrgTree"
+      (ngModelChange)="onOrgIdsChange($event)"
+      [accessorMode]="treeAccessorMode"
+    >
+    </core-org-tree>
+  </ng-template>
+</div>

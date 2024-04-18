@@ -1,0 +1,604 @@
+<div class="curriculum-container">
+  <div class="row list-data">
+    <div class="row">
+      <div class="col-11"></div>
+      <div class="col-1">
+        <button
+          *ngIf="
+            dataApproving.length == 0 &&
+            dataUnapprove.length == 0 &&
+            dataSave.length == 0 
+          "
+          (click)="clickBtnEdit(data)"
+          class="btn-edit shown"
+        >
+          <i class="feather-edit-2"></i>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="row">
+          <div class="col-6">Nơi đăng ký giấy khai sinh:</div>
+          <div class="col-6">
+            {{ data?.birthRegisAddress }}
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="row">
+          <div class="col-6">Ngày cấp CMND/CCCD:</div>
+          <div class="col-6">
+            {{ data?.idDate | tableCell : "DATE" : lang }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="row">
+          <div class="col-6">Ngày sinh:</div>
+          <div class="col-6">
+            {{ data?.birthDate | tableCell : "DATE" : lang }}
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="row">
+          <div class="col-6">Nơi cấp CMND/CCCD:</div>
+          <div class="col-6">
+            {{ data?.idPlaceName }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="row">
+          <div class="col-6">Quê quán:</div>
+          <div class="col-6">
+            {{ data?.domicile }}
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="row">
+          <div class="col-6">Mã số thuế:</div>
+          <div class="col-6">
+            {{ data?.taxCode }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="row">
+          <div class="col-6">Nơi sinh:</div>
+          <div class="col-6">
+            {{ data?.birthPlace }}
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="row">
+          <div class="col-6">Ngày cấp:</div>
+          <div class="col-6">
+            {{ data?.taxCodeDate | tableCell : "DATE" : lang }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="row">
+          <div class="col-6">Quốc tịch:</div>
+          <div class="col-6">
+            {{ data?.nationality }}
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="row">
+          <div class="col-6">Nơi cấp:</div>
+          <div class="col-6">
+            {{ data?.taxCodeAddress }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="row">
+          <div class="col-6">Dân tộc:</div>
+          <div class="col-6">
+            <span class="nativeId">{{ data?.nativeName }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-6"></div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="row">
+          <div class="col-6">Tôn giáo:</div>
+          <div class="col-6">
+            <span class="religionId">{{ data?.religionName }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-6"></div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="row">
+          <div class="col-6">Tình trạng hôn nhân:</div>
+          <div class="col-6">
+            <span class="maritalStatusId">{{ data?.maritalStatusName }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-6"></div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="row">
+          <div class="col-6">Số CMND/CCCD:</div>
+          <div class="col-6">
+            <span class="idNo">{{ data?.idNo }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-6"></div>
+    </div>
+  </div>
+  <div style="margin-top: 20px" *ngIf="!!title" class="row list-data">
+    <div class="row" style="color: red">Lý do không phê duyệt</div>
+    <div class="row">{{ title }}</div>
+  </div>
+  <div class="data-after-send-approve" *ngIf="!!!id">
+    <div class="row list-data" *ngFor="let item of dataSave">
+      <div class="row">
+        <div class="col-11">
+          <span class="color-info">(Đã lưu)</span>
+        </div>
+        <div class="col-1">
+          <button
+            (click)="clickBtnSaveEdit(item)"
+            class="btn-edit"
+          >
+            <i class="feather-edit-2"></i>
+          </button>
+          <button (click)="clickBtnDelete(item)" class="btn-edit">
+            <i class="feather-trash-2"></i>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Nơi đang ký giấy khai sinh:</div>
+            <div class="col-6">
+              {{ item?.birthResgisAddress }}
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Ngày cấp CMND/CCCD:</div>
+            <div class="col-6">
+              {{ item?.idDate | tableCell : "DATE" : lang }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Ngày sinh:</div>
+            <div class="col-6">
+              {{ item?.birthDate | tableCell : "DATE" : lang }}
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Nơi cấp CMND/CCCD:</div>
+            <div class="col-6">
+              {{ item?.identityAddressName }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Quê quán:</div>
+            <div class="col-6">
+              {{ item?.domicele }}
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Mã số thuế:</div>
+            <div class="col-6">
+              {{ item?.taxCode }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Nơi sinh:</div>
+            <div class="col-6">
+              {{ item?.birthPlace }}
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Ngày cấp:</div>
+            <div class="col-6">
+              {{ item?.taxCodeDate | tableCell : "DATE" : lang }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Quốc tịch:</div>
+            <div class="col-6">
+              {{ item?.nationName }}
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Nơi cấp:</div>
+            <div class="col-6">
+              {{ item?.taxPlace }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Dân tộc:</div>
+            <div class="col-6">
+              {{ item?.nativeName }}
+            </div>
+          </div>
+        </div>
+        <div class="col-6"></div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Tôn giáo:</div>
+            <div class="col-6">
+              {{ item?.relegionName }}
+            </div>
+          </div>
+        </div>
+        <div class="col-6"></div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Tình trạng hôn nhân:</div>
+            <div class="col-6">
+              {{ item?.maritalStatusName }}
+            </div>
+          </div>
+        </div>
+        <div class="col-6"></div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Số CMND/CCCD:</div>
+            <div class="col-6">
+              {{ item?.idNo }}
+            </div>
+          </div>
+        </div>
+        <div class="col-6"></div>
+      </div>
+    </div>
+    <div  style="margin-top: 20px" class="row list-data" *ngFor="let item of dataUnapprove">
+      <div class="row">
+        <div class="col-11">
+          <span class="color-danger">Từ chối ({{ item.reason }})</span>
+        </div>
+        <div class="col-1">
+          <button (click)="clickBtnSaveEdit(item)" class="btn-edit">
+            <i class="feather-edit-2"></i>
+          </button>
+          <button (click)="clickBtnDelete(item)" class="btn-edit">
+            <i class="feather-trash-2"></i>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Nơi đang ký giấy khai sinh:</div>
+            <div class="col-6">
+              {{ item?.birthResgisAddress }}
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Ngày cấp CMND/CCCD:</div>
+            <div class="col-6">
+              {{ item?.idDate | tableCell : "DATE" : lang }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Ngày sinh:</div>
+            <div class="col-6">
+              {{ item?.birthDate | tableCell : "DATE" : lang }}
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Nơi cấp CMND/CCCD:</div>
+            <div class="col-6">
+              {{ item?.idPlaceName }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Quê quán:</div>
+            <div class="col-6">
+              {{ item?.domicele }}
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Mã số thuế:</div>
+            <div class="col-6">
+              {{ item?.taxCode }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Nơi sinh:</div>
+            <div class="col-6">
+              {{ item?.birthPlace }}
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Ngày cấp:</div>
+            <div class="col-6">
+              {{ item?.taxDate | tableCell : "DATE" : lang }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Quốc tịch:</div>
+            <div class="col-6">
+              {{ item?.nationName }}
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Nơi cấp:</div>
+            <div class="col-6">
+              {{ item?.taxPlace }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Dân tộc:</div>
+            <div class="col-6">
+              {{ item?.nativeName }}
+            </div>
+          </div>
+        </div>
+        <div class="col-6"></div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Tôn giáo:</div>
+            <div class="col-6">
+              {{ item?.relegionName }}
+            </div>
+          </div>
+        </div>
+        <div class="col-6"></div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Tình trạng hôn nhân:</div>
+            <div class="col-6">
+              {{ item?.maritalStatusName }}
+            </div>
+          </div>
+        </div>
+        <div class="col-6"></div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">Số CMND/CCCD:</div>
+            <div class="col-6">
+              {{ item?.idNo }}
+            </div>
+          </div>
+        </div>
+        <div class="col-6"></div>
+      </div>
+    </div>
+    <div  style="margin-top: 20px" class="row list-data" *ngFor="let item of dataApproving">
+      <div class="row">
+        <div class="col-11">
+          <span class="approving-text">(Chờ phê duyệt)</span>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="row">
+              <div class="col-6">Nơi đang ký giấy khai sinh:</div>
+              <div class="col-6">
+                {{ item?.birthResgisAddress }}
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="row">
+              <div class="col-6">Ngày cấp CMND/CCCD:</div>
+              <div class="col-6">
+                <span class="idDate">{{
+                  item?.idDate | tableCell : "DATE" : lang
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="row">
+              <div class="col-6">Ngày sinh:</div>
+              <div class="col-6">
+                {{ item?.birthDate | tableCell : "DATE" : lang }}
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="row">
+              <div class="col-6">Nơi cấp CMND/CCCD:</div>
+              <div class="col-6">
+                <span class="identityAddress">{{ item?.identityAddressName }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="row">
+              <div class="col-6">Quê quán:</div>
+              <div class="col-6">
+                {{ item?.domicele }}
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="row">
+              <div class="col-6">Mã số thuế:</div>
+              <div class="col-6">
+                {{ item?.taxCode }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="row">
+              <div class="col-6">Nơi sinh:</div>
+              <div class="col-6">
+                {{ item?.birthPlace }}
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="row">
+              <div class="col-6">Ngày cấp:</div>
+              <div class="col-6">
+                {{ item?.taxDate | tableCell : "DATE" : lang }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="row">
+              <div class="col-6">Quốc tịch:</div>
+              <div class="col-6">
+                {{ item?.nationName }}
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="row">
+              <div class="col-6">Nơi cấp:</div>
+              <div class="col-6">
+                {{ item?.taxPlace }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="row">
+              <div class="col-6">Dân tộc:</div>
+              <div class="col-6">
+                {{ item?.nativeName }}
+              </div>
+            </div>
+          </div>
+          <div class="col-6"></div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="row">
+              <div class="col-6">Tôn giáo:</div>
+              <div class="col-6">
+                {{ item?.relegionName }}
+              </div>
+            </div>
+          </div>
+          <div class="col-6"></div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="row">
+              <div class="col-6">Tình trạng hôn nhân:</div>
+              <div class="col-6">
+                {{ item?.maritalStatusName }}
+              </div>
+            </div>
+          </div>
+          <div class="col-6"></div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="row">
+              <div class="col-6">Số CMND/CCCD:</div>
+              <div class="col-6">
+                {{ item?.idNo }}
+              </div>
+            </div>
+          </div>
+          <div class="col-6"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

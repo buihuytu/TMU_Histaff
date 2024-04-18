@@ -1,0 +1,189 @@
+<div class="app-notification-container">
+
+  <span
+    *ngIf="(!!notifyStaffInfos && notifyStaffInfos.length > 0 || !!notifyRegister && notifyRegister.length > 0 || !!notifyApprove && notifyApprove.length > 0) else templateUndefine">
+    <core-accordion [sectors]="sectors" [refs]="[employee, register, approve]" [editDisabled]="true"
+      [manualHeightList]="true" [heightList]="heightList"></core-accordion>
+  </span>
+
+  <ng-template #employee>
+    <!-- <div *ngFor="let item "></div> -->
+    <div *ngFor="let item of notifyStaffInfos" [ngStyle]="{opacity : item?.isRead == true ? '0.5' : '1'}"
+      class="item-notify">
+      <div class="row" (click)="navigatingLink(item)">
+        <div class="col-3" style="width: 5.5%">
+          <span class="image-child" *ngIf="item.statusNotify == 1">
+            <!--đã phê duyệt-->
+            <img src="../../../../assets/images/home/approve-icon-noti.svg" />
+          </span>
+          <span class="image-child" *ngIf="item.statusNotify == 2">
+            <!--từ chối-->
+            <img src="../../../../assets/images/home/not-approve.svg" />
+          </span>
+        </div>
+        <div class="col-9" style="display: flex; align-items: center">
+          <div *ngIf="item.type == 4" style="color: #464646;cursor: pointer;" class="col-12">
+            Đơn yêu cầu chỉnh sửa sơ yếu lí lịch đã
+            {{ item.statusNotify == 1 ? "được phê duyêt" : "bị từ chối" }} <br /><span
+              style="color: #848484; font-size: 13px" class="col-12">{{ (item.updatedDate == null ? item.createdDate :
+              item.updatedDate) | tableCell: 'DATE_TIME' : lang}}</span>
+          </div>
+          <div *ngIf="item.type == 5" style="color: #464646;cursor: pointer;" class="col-12">
+            Đơn yêu cầu chỉnh sửa thông tin người thân đã
+            {{ item.statusNotify == 1 ? "được phê duyêt" : "bị từ chối" }} <br /><span
+              style="color: #848484; font-size: 13px" class="col-12">{{ (item.updatedDate == null ? item.createdDate :
+              item.updatedDate) | tableCell: 'DATE_TIME' : lang}}</span>
+          </div>
+          <div *ngIf="item.type == 6" style="color: #464646;cursor: pointer;" class="col-12">
+            Đơn yêu cầu chỉnh sửa bằng cấp chứng chỉ đã
+            {{ item.statusNotify == 1 ? "được phê duyêt" : "bị từ chối" }} <br /><span
+              style="color: #848484; font-size: 13px" class="col-12">{{ (item.updatedDate == null ? item.createdDate :
+              item.updatedDate) | tableCell: 'DATE_TIME' : lang }}</span>
+          </div>
+          <div *ngIf="item.type == 7" style="color: #464646;cursor: pointer;" class="col-12">
+            Đơn yêu cầu chỉnh sửa quá trình công tác đã
+            {{ item.statusNotify == 1 ? "được phê duyêt" : "bị từ chối" }} <br /><span
+              style="color: #848484; font-size: 13px" class="col-12">{{ (item.updatedDate == null ? item.createdDate :
+              item.updatedDate) | tableCell: 'DATE_TIME' : lang }}</span>
+          </div>
+          <div *ngIf="item.type == 8" style="color: #464646;cursor: pointer;" class="col-12">
+            Đơn yêu cầu chỉnh sửa quá trình công tác trước đây đã
+            {{ item.statusNotify == 1 ? "được phê duyêt" : "bị từ chối" }} <br /><span
+              style="color: #848484; font-size: 13px" class="col-12">{{ (item.updatedDate == null ? item.createdDate :
+              item.updatedDate) | tableCell: 'DATE_TIME' : lang }}</span>
+          </div>
+          <div *ngIf="item.type == 9" style="color: #464646;cursor: pointer;" class="col-12">
+            Đơn yêu cầu chỉnh sửa thông tin liên hệ đã
+            {{ item.statusNotify == 1 ? "được phê duyêt" : "bị từ chối" }} <br /><span
+              style="color: #848484; font-size: 13px" class="col-12">{{ (item.updatedDate == null ? item.createdDate :
+              item.updatedDate) | tableCell: 'DATE_TIME' : lang }}</span>
+          </div>
+          <div *ngIf="item.type == 10" style="color: #464646;cursor: pointer;" class="col-12">
+            Đơn yêu cầu chỉnh sửa thông tin phụ đã
+            {{ item.statusNotify == 1 ? "được phê duyêt" : "bị từ chối" }} <br /><span
+              style="color: #848484; font-size: 13px" class="col-12">{{ (item.updatedDate == null ? item.createdDate :
+              item.updatedDate) | tableCell: 'DATE_TIME' : lang }}</span>
+          </div>
+          <div *ngIf="item.type == 11" style="color: #464646;cursor: pointer;" class="col-12">
+            Đơn yêu cầu chỉnh sửa trình độ học vấn đã
+            {{ item.statusNotify == 1 ? "được phê duyêt" : "bị từ chối" }} <br /><span
+              style="color: #848484; font-size: 13px" class="col-12">{{ (item.updatedDate == null ? item.createdDate :
+              item.updatedDate) | tableCell: 'DATE_TIME' : lang }}</span>
+          </div>
+          <div *ngIf="item.type == 12" style="color: #464646;cursor: pointer;" class="col-12">
+            Đơn yêu cầu chỉnh sửa thông tin tài khoản đã
+            {{ item.statusNotify == 1 ? "được phê duyêt" : "bị từ chối" }} <br /><span
+              style="color: #848484; font-size: 13px" class="col-12">{{ (item.updatedDate == null ? item.createdDate :
+              item.updatedDate) | tableCell: 'DATE_TIME' : lang }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #register>
+    <div class="item-notify" *ngFor="let item of notifyRegister"
+      [ngStyle]="{opacity : item?.isRead == true ? '0.5' : '1'}">
+
+      <div class="row" (click)="navigatingLink(item)">
+        <div class="col-3" style="width: 5.5%">
+          <span class="image-child" *ngIf="item.statusNotify == 0">
+            <!--chờ phê duyệt-->
+            <img src="assets/images/home/pending-approve-icon.svg" />
+          </span>
+          <span class="image-child" *ngIf="item.statusNotify == 1">
+            <!--đã phê duyệt-->
+            <img src="assets/images/home/approve-icon-noti.svg" />
+          </span>
+          <span class="image-child" *ngIf="item.statusNotify == 2">
+            <!--từ chối-->
+            <img src="assets/images/home/not-approve.svg" />
+          </span>
+        </div>
+        <div class="col-9" style="display: flex; align-items: center">
+          <div *ngIf="item.type == 1" style="color: #464646;cursor: pointer;" class="col-12">
+            Đơn đăng ký nghỉ của bạn {{item.statusNotify == 1 ? 'đã được phê duyệt' : 'đã bị từ chối'}} <br /><span
+              style="color: #848484; font-size: 13px" class="col-12">{{ (item.updatedDate == null ? item.createdDate :
+              item.updatedDate) | tableCell: 'DATE_TIME' : lang }}</span>
+          </div>
+          <div *ngIf="item.type == 2" style="color: #464646;cursor: pointer;" class="col-12">
+            Đơn đăng ký làm thêm của bạn {{item.statusNotify == 1 ? 'đã được phê duyệt' : 'đã bị từ chối'}} <br /><span
+              style="color: #848484; font-size: 13px" class="col-12">{{ (item.updatedDate == null ? item.createdDate :
+              item.updatedDate) | tableCell: 'DATE_TIME' : lang }}</span>
+          </div>
+          <div *ngIf="item.type == 3" style="color: #464646;cursor: pointer;" class="col-12">
+            Đơn đăng ký giải trình công của bạn {{item.statusNotify == 1 ? 'đã được phê duyệt' : 'đã bị từ chối'}}
+            <br /><span style="color: #848484; font-size: 13px" class="col-12">{{ (item.updatedDate == null ?
+              item.createdDate : item.updatedDate) | tableCell: 'DATE_TIME' : lang }}</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </ng-template>
+  <ng-template #approve>
+    <div class="item-notify" *ngFor="let item of notifyApprove"
+      [ngStyle]="{opacity : item?.isRead == true ? '0.5' : '1'}">
+      <div class="row" (click)="navigatingLink(item)">
+        <div class="col-3" style="width: 5.5%">
+          <span class="image-child" *ngIf="item.statusNotify == 0">
+            <!--chờ phê duyệt-->
+            <img src="assets/images/home/pending-approve-icon.svg" />
+          </span>
+        </div>
+        <div class="col-9" style="display: flex; align-items: center">
+          <div *ngIf="item.type == 1" style="color: #464646;cursor: pointer;" class="col-12">
+            Bạn có đơn đăng ký nghỉ từ nhân viên {{item.name}} <br /><span style="color: #848484; font-size: 13px"
+              class="col-12">{{ (item.updatedDate == null ? item.createdDate : item.updatedDate) | tableCell:
+              'DATE_TIME' : lang }}</span>
+          </div>
+          <div *ngIf="item.type == 2" style="color: #464646;cursor: pointer;" class="col-12">
+            Bạn có đơn đăng ký làm thêm từ nhân viên {{item.name}} <br /><span style="color: #848484; font-size: 13px"
+              class="col-12">{{ (item.updatedDate == null ? item.createdDate : item.updatedDate) | tableCell:
+              'DATE_TIME' : lang }}</span>
+          </div>
+
+          <div *ngIf="item.type == 3" style="color: #464646;cursor: pointer;" class="col-12">
+            Bạn có đơn đăng ký giải trình công {{item.name}} <br /><span style="color: #848484; font-size: 13px"
+              class="col-12">{{ (item.updatedDate == null ? item.createdDate : item.updatedDate) | tableCell:
+              'DATE_TIME' : lang }}</span>
+          </div>
+        </div>
+        <!-- <div *ngIf="item.type == 1" style="color: #464646;cursor: pointer;" class="col-12">
+          Đơn đăng ký nghỉ đã {{ item.action == 3 ? 'được phê duyệt' : 'bị từ chối'}} <br/><span
+            style="color: #848484; font-size: 13px"
+            class="col-9"
+            >{{ item.updatedDate | tableCell: 'DATE_TIME' : lang }}</span
+          >
+        </div>
+        <div *ngIf="item.type == 2" style="color: #464646;cursor: pointer;" class="col-12">
+          Đơn đăng ký làm thêm đã {{ item.action == 3 ? 'được phê duyệt' : 'bị từ chối'}} <br/><span
+            style="color: #848484; font-size: 13px"
+            class="col-9"
+            >{{ item.updatedDate | tableCell: 'DATE_TIME' : lang }}</span
+          >
+        </div>
+        <div *ngIf="item.type == 3" style="color: #464646;cursor: pointer;" class="col-12">
+          Đơn đăng ký giải trình đã {{ item.action == 3 ? 'được phê duyệt' : 'bị từ chối'}} <br/><span
+            style="color: #848484; font-size: 13px"
+            class="col-9"
+            >{{ item.updatedDate | tableCell: 'DATE_TIME' : lang }}</span
+          >
+        </div> -->
+
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #templateUndefine>
+    <p style="
+            color: black;
+            font-size: 18px;
+            text-align: center;
+            padding-top: 50px;
+        ">
+      Không có thông báo mới nhất
+    </p>
+  </ng-template>
+
+
+</div>

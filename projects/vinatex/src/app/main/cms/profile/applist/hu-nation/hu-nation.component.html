@@ -1,0 +1,18 @@
+<div class="hu-salary-rank-container">
+  <core-page-list
+    [apiDefinition]="apiDefinition"
+    [columns]="columns"
+    [editRoute]="editRoute"
+    [crud]="crud"
+    [title]="title"
+    [autoResizeWithWindow]="true"
+
+    (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+    (selectedIdsChange) ="onSelectedIdsChange($event)"
+  >
+  </core-page-list>
+
+  <ng-template #sticker let-code="context.isActiveStr">
+    <core-status-sticker [code]="code"></core-status-sticker>
+  </ng-template>
+</div>

@@ -1,0 +1,179 @@
+<div class="ins-change-edit-container">
+
+  <core-page-header [title]="title" [hideButtonGroup]="true"></core-page-header>
+
+  <div>
+    <form #formRef (ngSubmit)="onFormSubmit()" [formGroup]="form" autocomplete="off">
+      <core-accordion
+        [sectors]="sectors"
+        [refs]="[basic, addInfIns, addInfAr, addInfWd]"
+        [editDisabled]="true"
+        (onItemClick)="onAccordionItemClick($event)"
+        (onItemClickEdit)="onAccordionItemClickEdit($event)"
+        [enableSwap]="false"
+      ></core-accordion>
+
+      <ng-template #basic>
+        <div class="row">
+          <div class="col-3">
+            <core-control [control]="employeeId" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="employeeName" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="orgName" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="positionName" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <core-control [control]="bhxhNo" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="idNo" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="idDate" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="addressIdentity" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <core-control [control]="birthDate" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="birthPlace" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template #addInfIns>
+        <div class="row">
+          <div class="col-3">
+            <core-control [control]="unitInsuranceTypeId" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="changeTypeId" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="insuranceType" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <core-control [control]="salaryBhxhOld" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="salaryBhytOld" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="salaryBhbnnOld" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="salaryBhtnOld" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <core-control [control]="salaryBhxhNew" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="salaryBhytNew" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="salaryBhbnnNew" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="salaryBhtnNew" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <core-control [control]="effectiveDate" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="expireDate" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="changeMonthString" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="declarationPeriodString" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <core-control [control]="bhytReimbursementDate" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-6">
+            <core-control [control]="note" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+        </div>
+      </ng-template>
+      <div class="h10"></div>
+
+      <ng-template #addInfAr>
+        <div class="row">
+          <div class="col-3">
+            <core-control [control]="arrearsFromMonthString" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="arrearsToMonthString" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <core-control [control]="arBhxhSalaryDifference" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="arBhytSalaryDifference" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="arBhtnldBnnSalaryDifference" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="arBhtnSalaryDifference" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+        </div>
+      </ng-template>
+      <div class="h10"></div>
+
+      <ng-template #addInfWd>
+        <div class="row">
+          <div class="col-3">
+            <core-control [control]="withdrawalFromMonthString" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="withdrawalToMonthString" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <core-control [control]="wdBhxhSalaryDifference" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="wdBhytSalaryDifference" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="wdBhtnldBnnSalaryDifference" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="wdBhtnSalaryDifference" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+        </div>
+      </ng-template>
+      <div class="h10"></div>
+
+      <div class="h10"></div>
+      <div class="form-row">
+        <core-button-group-vns [showCaption]="true" [shownItems]="buttonItems" (buttonClick)="onButtonClick($event)" class="buttonGroupCustom btn-group-custom"></core-button-group-vns>
+      </div>
+    </form>
+  </div>
+</div>

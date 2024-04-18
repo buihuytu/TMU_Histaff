@@ -1,0 +1,286 @@
+<div class="profile-info-container">
+  <div class="row">
+    <div class="row list-data">
+      <div class="col-md-2 center-item">
+        <img class="custom-avatar" [src]="data?.avatar != null ? (data?.avatar | mapAvatarToServer) : defaultAvatar"
+          appImageErrorResolver />
+        <input type="file" style="display: none" />
+      </div>
+      <div class="col-md-3 mx-auto my-auto center-item">
+        <div class="row center-item">
+          <div class="custom-name center-item">
+            <div class="center-item">{{ data?.fullName }}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            {{ data?.positionName }}
+          </div>
+        </div>
+      </div>
+      <div class="col-1 mx-auto my-auto">
+        <div class="line"></div>
+      </div>
+      <div class="col-md-6 my-auto">
+        <div class="row">
+          <div class="col-1"></div>
+          <div class="col-5 label">Mã nhân viên:</div>
+          <div class="col-6 value">{{ data?.employeeCode }}</div>
+        </div>
+        <div class="row">
+          <div class="col-1"></div>
+          <div class="col-5 label">Giới tính:</div>
+          <div class="col-6 value">{{ data?.gender }}</div>
+        </div>
+        <div class="row">
+          <div class="col-1"></div>
+          <div class="col-5 label">Trạng thái nhân viên:</div>
+          <div class="col-6 value">{{ data?.workStatus }}</div>
+        </div>
+        <div class="row">
+          <div class="col-1"></div>
+          <div class="col-5 label">Đối tượng nhân viên:</div>
+          <div class="col-6 value">{{ data?.employeeObject }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="row px-5 before-line mt-5 dp-none">
+      <div class="row my-3">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-4">
+              <span class="text-title">Công ty: </span>
+            </div>
+            <div class="col-md-8">
+              <h4 class="text-content">{{ data?.companyName }}</h4>
+            </div>
+          </div>
+        </div>
+
+        
+
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-4">
+              <span class="text-title">Thâm niên: </span>
+            </div>
+            <div class="col-md-8">
+              <h4 class="text-content"> {{ data?.seniorityStr }} </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3 px-5 dp-none">
+      <div class="row my-3">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-4">
+              <span class="text-title">Phòng ban: </span>
+            </div>
+            <div class="col-md-8">
+              <h4 class="text-content">{{ data?.orgName }}</h4>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-4">
+              <span class="text-title">Loại hợp đồng: </span>
+            </div>
+            <div class="col-md-8">
+              <h4 class="text-content">{{ data?.contractType }}</h4>
+            </div>
+          </div>
+        </div>
+        <!--
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-4">
+              <span class="text-title">Thời gian công tác: </span>
+            </div>
+            <div class="col-md-8">
+              <h4 class="text-content">{{ data?.workingTimeStr }} tháng</h4>
+            </div>
+          </div>
+        </div>
+        -->
+      </div>
+    </div>
+    <div class="row mt-3 px-5 dp-none">
+      <div class="row my-3">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-4">
+              <span class="text-title">Vị trí chức danh: </span>
+            </div>
+            <div class="col-md-8">
+              <h4 class="text-content">{{ data?.positionName }}</h4>
+            </div>
+          </div>
+        </div>
+        
+
+
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-4">
+              <span class="text-title">Từ ngày: </span>
+            </div>
+            <div class="col-md-8">
+              <h4 class="text-content">{{ data?.startDate | tableCell : 'DATE' : lang }}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3 px-5 dp-none">
+      <div class="row my-3">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-4">
+              <span class="text-title">Quản lý trực tiếp: </span>
+            </div>
+            <div class="col-md-8">
+              <h4 class="text-content">{{ data?.cmsName }}</h4>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-4">
+              <span class="text-title">Đến ngày: </span>
+            </div>
+            <div class="col-md-8">
+              <h4 class="text-content">{{ data?.expireDate | tableCell : 'DATE' : lang }}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3 px-5 dp-none">
+      <div class="row my-3">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-4">
+              <span class="text-title">Vị trí quản lý trực tiếp: </span>
+            </div>
+            <div class="col-md-8">
+              <h4 class="text-content">{{ data?.cmsJobName }}</h4>
+            </div>
+          </div>
+        </div>
+        
+
+
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-4">
+              <span class="text-title">Nơi làm việc: </span>
+            </div>
+            <div class="col-md-8">
+              <h4 class="text-content">{{ data?.address }}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="row">
+        <hr>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-5 label">
+                   Tôn giáo:
+                </div>
+                <div class="col-6 value">
+                    {{data?.religion}}
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-5 label">
+                    Dân tộc:
+                </div>
+                <div class="col-6 value">
+                    {{data?.nation}}
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-5 label">
+                    Tình trạng hôn nhân:
+                </div>
+                <div class="col-6 value">
+                    {{data?.maritalStatus}}
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-5 label">
+                    Số CMND/CCCD:
+                </div>
+                <div class="col-6 value">
+                    {{data?.idNo}}
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-5 label">
+                    Ngày cấp:
+                </div>
+                <div class="col-6 value">
+                    {{data?.idDate}}
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-5 label">
+                    Ngày hết hiệu lực:
+                </div>
+                <div class="col-6 value">
+                    {{data?.idDateExpried}}
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-5 label">
+                    Nơi cấp:
+                </div>
+                <div class="col-6 value">
+                    {{data?.idDate}}
+                </div>
+            </div>
+        </div>
+    </div> -->
+</div>

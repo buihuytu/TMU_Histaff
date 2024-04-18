@@ -1,0 +1,18 @@
+<div class="app-sys-mail-template-container">
+    <div class="row">
+        <core-page-header [title]="title" (buttonClick)="onCorePageHeaderButtonClick($event)"></core-page-header>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <core-page-list [apiDefinition]="apiDefinition" [hideHeader]="true" (selectedIdsChange)=" onSelectedIdsChange($event)" (rowClick)="onClickItem($event)" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+                [title]="title" [outerParam$]="outerParam$" [normalMode]="true"
+                [autoResizeWithWindow]="true"></core-page-list>
+        </div>
+        <div class="col-md-6">
+            <ckeditor (change)="onChangeContent($event)" [editor]="editor" [data]="data"></ckeditor>
+        </div>
+    </div>
+    <ng-template #isMailCc let-isMailCc="context.isMailCc">
+        <core-checkbox [disabled]="true" [inputValue]="isMailCc"></core-checkbox> 
+      </ng-template>
+</div>

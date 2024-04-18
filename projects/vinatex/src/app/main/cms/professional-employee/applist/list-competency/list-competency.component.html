@@ -1,0 +1,21 @@
+<div class="list-competency-container">
+
+    <core-page-header [title]="title" [hideButtonGroup]="true"></core-page-header>
+
+    <core-tabs [headers]="headers" [contents]="[prepare,infoClass,detailResult, courseResult]"
+        (onHeaderClick)="onCoreTabsHeaderClick($event)" [height]="coreTabsHeight"></core-tabs>
+    <!-- LAYOUT MAIN -->
+
+    <ng-template #prepare>
+        <app-group-competency></app-group-competency>
+    </ng-template>
+    <ng-template #infoClass>
+        <app-competency></app-competency>
+    </ng-template>
+    <ng-template #detailResult>
+        <app-aspect></app-aspect>
+    </ng-template>
+    <ng-template #courseResult>
+        <app-competency-dict></app-competency-dict>
+    </ng-template>
+</div>

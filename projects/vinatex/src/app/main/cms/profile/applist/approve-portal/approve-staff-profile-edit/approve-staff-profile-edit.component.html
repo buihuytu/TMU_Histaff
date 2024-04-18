@@ -1,0 +1,26 @@
+<core-page-header [title]="title" [hideButtonGroup]="true"></core-page-header>
+<core-tabs [headers]="headers"
+ [contents]="[cv, contract, additionalinfo,education,bankinfo]"
+ (onHeaderClick)="onCoreTabsHedaerClick($event)" [height]="coreTabsHeight"></core-tabs>
+
+<ng-template #cv>
+    <app-approve-cv [height]="corePageListHeight"></app-approve-cv>
+</ng-template>
+
+<ng-template #contract>
+    <app-approve-contract [height]="corePageListHeight"></app-approve-contract>
+</ng-template>
+
+<ng-template #additionalinfo>
+    <app-approve-additinal-info [height]="corePageListHeight"></app-approve-additinal-info>
+</ng-template>
+
+<ng-template #education>
+    <app-approve-education [height]="corePageListHeight"></app-approve-education>
+</ng-template>
+
+<ng-template #bankinfo>
+    <app-approve-bankinfo [height]="corePageListHeight"></app-approve-bankinfo>
+</ng-template>
+<!-- <router-outlet name="personnelProfileAux"></router-outlet> -->
+

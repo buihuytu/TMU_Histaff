@@ -1,0 +1,74 @@
+<div class="app-layout-container" #container>
+
+    <core-navigation-tracker></core-navigation-tracker>
+
+    <div class="layout-header">
+        <div class="inner-layout-header d-flex d-flex-between">
+            <div class="logo-wrapper d-flex" [appTooltip]="!!currentVersion ? (('SW_UPDATE_CURRENT_APP_VERSION' | translate: lang ) + ': ' + currentVersion) : ''">
+                <img src="assets/images/histaf-logo.svg" [class.mobile]="!!!landscapeMode">
+            </div>
+            <div class="layout-header-right d-flex" *ngIf="!!landscapeMode">
+                <div class="home-wrapper d-flex" (click)="goBackHome()">
+                    <!-- <img src="assets/images/footer/footer-home.svg"> -->
+                    <i class="feather-home"></i>
+                </div>
+                <div class="notification-wrapper d-flex" (click)="goToNotification()">
+                    <img src="assets/images/bell.svg">
+                    <div *ngIf="layoutService.notificationCount$.value > 0" class="notification-badge d-flex d-flex-center">{{ layoutService.notificationCount$.value }}</div>
+                </div>
+                <app-auth-profile></app-auth-profile>
+                <div class="logout-wrapper d-flex" (click)="logout()">
+                    <img src="assets/images/logout.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layout-navigator d-flex d-flex-between" [class.d-none]="iAmHome">
+        <div class="d-flex d-flex-start">
+            <div (click)="goBack()">
+                <i class="feather-arrow-left" [ngStyle]="{
+                    transform: 'translateX(-5px)',
+                    width: layoutService.cellWidth + 'px',
+                    height: layoutService.cellHeight + 'px',
+                }"></i>
+            </div>
+            <div (click)="goBack()">
+                <div [class.titleScreen]="landscapeMode">{{ currentScreenCaption }}</div>
+            </div>
+        </div>
+        
+        <div *ngIf="this.buttonClick.length > 0" >
+            <div *ngFor="let b of this.buttonClick">
+                    <i *ngIf="b.code == 'SAVE'" [class]="'feather-edit-2 ' + b.styleClass" (click)="editChange($event)"></i>
+                    <i *ngIf="b.code == 'CREATE'" [class]="'feather-plus ' + b.styleClass" (click)="clickChange($event)"></i>
+            </div>
+        </div>
+    </div>
+    <div class="outlet-content roboto-font" [class.i-am-home]="iAmHome" [ngStyle]="{
+        paddingTop: layoutService.headerHeight * (iAmHome ? 1 : 2) + layoutService.basicSpacing  + 'px',
+        marginBottom: landscapeMode ? '0px' : (layoutService.cellHeight + 'px'),
+    }">
+        <core-confirm-dialog></core-confirm-dialog>
+        <router-outlet></router-outlet>
+    </div>
+    <div class="layout-footer" *ngIf="!!!landscapeMode">
+        <div class="inner-layout-footer d-flex d-flex-between">
+            <div class="home-wrapper d-flex" (click)="goBackHome()">
+                <i class="feather-home"></i>
+            </div>
+            <div class="notification-wrapper d-flex" (click)="goToNotification()">
+                <i class="feather-bell"></i>
+                <div class="notification-badge d-flex d-flex-center">{{ layoutService.notificationCount$.value }}</div>
+            </div>
+            <div class="logout-wrapper d-flex" (click)="goInfo()">
+                <i class="feather-user"></i>
+            </div>
+            <div class="logout-wrapper d-flex" (click)="goChangePassword()">
+                <i class="feather-lock"></i>
+            </div>
+            <div class="logout-wrapper d-flex" (click)="logout()">
+                <i class="feather-power"></i>
+            </div>
+        </div>
+    </div>
+</div>

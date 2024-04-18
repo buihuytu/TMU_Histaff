@@ -1,0 +1,31 @@
+<div class="tr-plan-container">
+    <core-page-list [apiDefinition]="apiDefinition" [left]="leftParams" 
+    [top]="topParams" [normalMode]="true"  [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+    [title]="title"
+    [autoResizeWithWindow]="true"
+    [outerSort]="outerSort"
+    [selfResolveCorePageHeaderButtonClick]="true"
+    (rowDoubleClick)="onRowDoubleClick($event)"
+    [outerParam$]="outerParam$"
+    [outerInOperators]="outerInOperators"
+    [frozen]="2"
+    (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+    (onInstanceCreated)="onInstanceCreated($event)"></core-page-list>
+</div>
+
+<ng-template #leftParams>
+    <core-org-tree [(ngModel)]="orgId" (ngModelChange)="onOrgIdChange($event)"></core-org-tree>
+   
+</ng-template>
+
+<ng-template #topParams>
+    <div class="row">
+        <div class="col-md-10">
+            <core-header-params [rows]="paramRows"></core-header-params>
+        </div>
+        <!-- <div class="col-md-1">
+            <button class="btn btn-primary btn-calculate" (click)="calculate()">Tổng hợp</button>
+        </div> -->
+        <!-- Sau này thay "Tổng hợp" bằng EnumTranslateKey để dịch -->
+    </div>
+</ng-template>

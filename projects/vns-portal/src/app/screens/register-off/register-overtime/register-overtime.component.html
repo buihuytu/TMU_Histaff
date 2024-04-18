@@ -1,0 +1,12 @@
+<div class="container container-fluid">
+<div class="register-over-time">
+        <core-page-edit *ngIf="!!sections.length" [width]="1000" [sections]="sections" [crud]="crud" [normalMode]="true"
+    [entityTable]="entityTable" (onFormCreated)="onFormCreated($event)"
+    [disableSaveButton]="true"
+    (onInitialValueStringReady)="onFormReinit($event)"></core-page-edit>
+</div>
+
+<div class="row" style="display: flex; align-items: center;justify-content: center;">
+    {{ totalOtOfMonth | translate: lang}}: {{totalOtMonth}}
+</div>
+</div>

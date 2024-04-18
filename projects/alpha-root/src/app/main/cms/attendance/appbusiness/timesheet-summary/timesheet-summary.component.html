@@ -1,0 +1,58 @@
+<div class="staff-profile-container">
+    <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [crud]="crud"
+      [title]="title" [left]="orgTree"
+      [outerParam$]="outerParam$"
+      [top]="topParam"
+      [normalMode]="true"
+      [outerInOperators]="outerInOperators"
+      [autoResizeWithWindow]="true"
+      [hideStatusInclusion]="true"
+      [outerFilterOperators]="outerFilterOperators"
+      [disableDoubleClick]="true"
+      (rowDoubleClick)="onRowDoubleClick($event)"
+      (onInstanceCreated)="onInstanceCreated($event)"
+      (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+      [frozen]="2"
+      [headerWrap]="true"
+      [headerFirstRowHeight]="headerFirstRowHeight"
+      [outerSort]="outerSort"
+      ></core-page-list>
+  
+    <ng-template #orgTree>
+      <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+      </core-org-tree>
+    </ng-template>
+
+    <ng-template #topParam>
+      <div class="row">
+          <div class="col-md-10">
+              <core-header-params [rows]="paramRows"></core-header-params>
+          </div>
+          <!-- <div class="col-md-1">
+              <button class="btn-calculate" (click)="calculate()">Tổng hợp</button> -->
+              <!-- Sau này thay "Tổng hợp" bằng EnumTranslateKey để dịch -->
+          <!-- </div> -->
+          <div class="col-md-1">
+            <div class="form-group vertical">
+              <!-- <label style="margin-top:-5px"></label> -->
+                <!-- <core-button-group-vns 
+                [showCaption]="true" 
+                (buttonClick)="onButtonClick($event)" 
+                [shownItems]="buttonItems" 
+                class="buttonGroupCustom"
+              ></core-button-group-vns> -->
+            </div>
+          </div>
+      </div>
+      <!-- <div class="row">
+          <div class="col-md-1">
+            <button class="btn btn-primary btn-lock" (click)="lock()">Khóa</button>
+          </div>
+          <div class="col-md-1">
+              <button class="btn btn-primary btn-unlock" (click)="unlock()">Mở khóa</button>
+          </div>
+      </div> -->
+      
+    </ng-template>
+    <app-fullscreen-modal-loader *ngIf="loading"></app-fullscreen-modal-loader>
+  </div>

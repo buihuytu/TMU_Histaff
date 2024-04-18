@@ -1,0 +1,123 @@
+<div>
+
+  <core-page-header [title]="title" [hideButtonGroup]="true"></core-page-header>
+
+  <div>
+    <form #formRef (ngSubmit)="onFormSubmit()" [formGroup]="form" autocomplete="off">
+      <core-accordion
+        [sectors]="sectors"
+        [refs]="[basic, basic1, basic2]"
+        [editDisabled]="true"
+        (onItemClick)="onAccordionItemClick($event)"
+        (onItemClickEdit)="onAccordionItemClickEdit($event)"
+        [manualHeightList]="manualHeightList"
+        [heightList]="heightListVisible"
+        [enableSwap]="false"
+      ></core-accordion>
+
+      <ng-template #basic>
+        <div class="row">
+          <div class="col-3">
+            <core-control [control]="employeeId" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="employeeName" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="positionName" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="orgName" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <core-control [control]="bhxhNo" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="birthDate" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="birthPlace" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template #basic1>
+        <div class="row">
+          <div class="col-3">
+            <core-control [control]="insGroupId" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="regimeId" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <core-control [control]="startDate" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="endDate" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="dayCalculator" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="accumulateDay" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <core-control [control]="childrenNo" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="averageSalSixMonth" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="bhxhSalary" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="regimeSalary" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <core-control [control]="subsidyAmountChange" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="subsidyMoneyAdvance" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="declareDate" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="dateCalculator" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <core-control [control]="status" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-6">
+            <core-control [control]="note" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template #basic2>
+        <div class="row">
+          <div class="col-3">
+            <core-control [control]="insPayAmount" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="approvDayNum" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+          <div class="col-3">
+            <core-control [control]="payApproveDate" [form]="form" [checkError$]="checkError$"></core-control>
+          </div>
+        </div>
+      </ng-template>
+      <div class="form-row">
+        <core-button-group-vns (buttonClick)="onButtonClick($event)" [shownItems]="buttonItems" [showCaption]="true" class="buttonGroupCustom"></core-button-group-vns>
+      </div>
+    </form>
+  </div>
+</div>

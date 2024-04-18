@@ -1,0 +1,73 @@
+<div class="border-container">
+  <div class="null" *ngIf="!checkData">{{ titleNull | translate : lang }}</div>
+
+  <div class="app-outside-company-container">
+    <div class="content">
+      <div class="card-info" *ngFor="let work of data">
+        <div class="row btn-click d-flex align-items-center">
+          <p class="type">{{ work.companyName }}</p>
+          <button (click)="onHandleItemClick(work.id)" class="edit icon-wrapper">
+            <i class="d-flex feather-edit-2"></i>
+          </button>
+        </div>
+        <div class="row no-padding no-margin col-12">
+          <p class="label col-md-3">{{ titleName | translate : lang }}:</p>
+          <p class="text col-md-4">{{ work.titleName }}</p>
+        </div>
+        <div class="row no-padding no-margin col-12">
+          <p class="label col-md-3">{{ fromDate | translate : lang }}:</p>
+          <p class="text col-md-4">{{ work.fromDate | date : 'dd/MM/yyyy' }}</p>
+        </div>
+        <div class="row no-padding no-margin col-12">
+          <p class="label col-md-3">{{ endDate | translate : lang }}:</p>
+          <p class="text col-md-4">{{ work.endDate | date : 'dd/MM/yyyy' }}</p>
+        </div>
+
+        <!--
+        Tiến BA yêu cầu ẩn chức danh chính - portal
+
+        <div class="row no-padding no-margin col-12">
+          <p class="label col-md-3">{{ mainDuty | translate : lang }}:</p>
+          <p class="text col-md-4">{{ work.mainDuty }}</p>
+        </div>
+        -->
+
+        <div class="row no-padding no-margin col-12">
+          <p class="label col-md-3">{{ seniority | translate : lang }}:</p>
+          <p class="text col-md-4">{{ work.seniority }}</p>
+        </div>
+        <div class="row no-padding no-margin col-12">
+          <p class="label col-md-3">{{ terReason | translate : lang }}:</p>
+          <p class="text col-md-4">{{ work.terReason }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal -->
+<div id="popup1" class="overlay">
+  <div class="popup">
+    <div class="header-popup">
+      <h4 class="title-edit">{{ popupTitle | translate : lang }}</h4>
+      <a class="close" (click)="onClose()">&times;</a>
+    </div>
+    <div class="content">
+      <div class="row no-padding no-margin">
+        <div class="info">
+          <div class="col-12">
+            <span class="label">{{ reasonChange | translate : lang }}:</span>
+            <textarea rows="5" [(ngModel)]="reason" class="form-control text-area"></textarea>
+            <label class="text-danger" *ngIf="!checkedReason">*{{ required | translate : lang }}</label>
+          </div>
+        </div>
+        <div class="info">
+          <div class="col-12 btn-group">
+            <button class="btn-send" (click)="onHandleSend()">
+              {{ send | translate : lang }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

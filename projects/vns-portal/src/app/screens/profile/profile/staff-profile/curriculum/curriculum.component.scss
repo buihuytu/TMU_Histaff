@@ -1,0 +1,35 @@
+.curriculum-container {
+    >.row {
+        margin: 20px;
+    }
+    .data-after-send-approve{
+        margin: 30px;
+    }
+    .list-data {
+        border: 1px solid #D1D1D1;
+        padding: 45px 90px;
+        border-radius: 5px;
+    }
+
+    .btn-edit {
+        outline: none;
+        border: none;
+        background: none;
+    }
+
+    .approving-text {
+        color: #ffc107;
+    }
+    .color-info {
+        color: #0dcaf0;
+    }
+    .hidden{
+        display: none !important;
+    }
+    .shown{
+        display: block;
+    }
+    .color-danger{
+        color: #dc3545;
+    }
+}

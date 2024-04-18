@@ -1,0 +1,36 @@
+<div class="app-terminate-container">
+    <div class="header-text">{{headers | translate: lang }}</div>
+    <div class="content">
+        <div class="card-info" *ngFor="let member of members">
+            <p class="type">{{member.contractTypeName}}</p>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-4">{{joinDate | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.joinDate | date: 'dd/MM/yyyy'}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-4">{{seniority | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.seniority}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-4">{{dateStart | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.dateStart | date: 'dd/MM/yyyy'}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-4">{{dateEnd | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.dateEnd | date: 'dd/MM/yyyy'}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-4">{{lastDate | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.lastDate | date: 'dd/MM/yyyy'}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-4">{{decisionNo | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.decisionNo}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-4">{{effectDate | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.effectDate | date: 'dd/MM/yyyy'}}</p>
+            </div>
+        </div>
+
+    </div>

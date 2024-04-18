@@ -1,0 +1,53 @@
+<div class="app-tr-program-commit-container">
+  <core-page-list
+    [title]="nullTitle"
+    [apiDefinition]="apiDefinition"
+    [columns]="columns"
+    [editRoute]="editRoute"
+    [crud]="crud"
+    [hideHeader]="true"
+    [autoResizeWithWindow]="true"
+    [frozen]="1"
+    
+    [outerParam$]="outerParam$"
+    
+    (selectedDataChange)="onSelectedDataChange($event)"
+    (selectedIdsChange)="onSelectedIdsChange($event)"
+    (onInstanceCreated)="onInstanceCreated($event)"
+
+    [top]="top"
+  >
+  </core-page-list>
+
+
+  <ng-template #top>
+    <div class="header container no-padding no-margin" style="max-width: unset !important;">
+      <!-- <div class="title"><span class="captionText">{{ title | translate:lang | uppercase }}</span></div> -->
+
+      <!-- <i class="feather-x" (click)="onCancel()"></i> -->
+    </div>
+
+    <div class="row mb15" style="margin-left: 5px;">
+      <div class="col-md-6 d-flex">
+        <div class="col-md-6">
+          <div class="form-group vertical">
+            <label>{{ labelList.programLabel | translate: lang}}</label>
+            <input type="text" class="form-control" [(ngModel)]="programCode" [readonly]="true">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group vertical">
+            <label>{{ labelList.courseLabel | translate: lang}}</label>
+            <input type="text" class="form-control" [(ngModel)]="courseName" [readonly]="true">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 d-flex align-items-end">
+        <div class="core-page-header">
+          <core-page-header [hidden]="false" [shownItems]="headerButtons"
+            (buttonClick)="onCorePageHeaderButtonClick($event)"></core-page-header>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

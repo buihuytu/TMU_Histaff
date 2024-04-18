@@ -1,0 +1,47 @@
+<div class="app-approve-bankinfo-container">
+    <core-page-list
+        [apiDefinition]="apiDefinition"
+        [columns]="columns"
+        [editRoute]="editRoute"
+        [crud]="crud"
+        [normalMode]="true"
+        [autoResizeWithWindow]="true"
+        [outerSort]="outerSort"
+        [outerParam$]="outerParam$"
+        [outerInOperators]="outerInOperators"
+        [left]="orgTree"
+        [height]="height"
+        [frozen]="3"
+        [headerWrap]="true"
+    >
+    </core-page-list>
+
+
+    <ng-template #orgTree>
+        <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)" [height]="treeHeight"> </core-org-tree>
+    </ng-template>
+</div>
+
+<ng-template #bankNo let-bankNo="context.bankNo" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('bankNo')">{{bankNo}}</div>
+</ng-template>
+
+<ng-template #bankBranchName let-bankBranchName="context.bankBranchName" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('bankBranchId')">{{bankBranchName}}</div>
+</ng-template>
+
+<ng-template #bankName let-bankName="context.bankName" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('bankId')">{{bankName}}</div>
+</ng-template>
+
+<ng-template #bankNo2 let-bankNo2="context.bankNo2" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('bankNo2')">{{bankNo2}}</div>
+</ng-template>
+
+<ng-template #bankBranchName2 let-bankBranchName2="context.bankBranchName2" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('bankBranchId2')">{{bankBranchName2}}</div>
+</ng-template>
+
+<ng-template #bankName2 let-bankName2="context.bankName2" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('bankId2')">{{bankName2}}</div>
+</ng-template>

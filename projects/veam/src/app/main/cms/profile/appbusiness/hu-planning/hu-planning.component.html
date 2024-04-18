@@ -1,0 +1,37 @@
+<div class="app-hu-planning-container">
+    <core-page-list
+      [apiDefinition]="apiDefinition"
+      [columns]="columns"
+      [editRoute]="editRoute"
+      [crud]="crud"
+      [title]="title"
+      [left]="orgTree"
+      [outerParam$]="outerParam$"
+      [normalMode]="true"
+      [outerInOperators]="outerInOperators"
+      [autoResizeWithWindow]="true"
+      (rowClick)="onRowClick($event)"
+      [showParamKit]="true"
+      [generateTemplateRequest]="generateTemplateRequest"
+      (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+      (selectedDataChange)="onSelectedDataChangeLocal($event)"
+      (selectedIdsChange)="customizeSelectedIdsChange($event)"
+      [frozen]="3"
+      [datePeriodComparisonFor]="datePeriodComparisonFor"
+      [datePeriodComparisonForLabelKey]="datePeriodComparisonForLabelKey"
+      [statusInclusionFor]="statusInclusionFor"
+      [statusInclusionForLabelKey]="statusInclusionForLabelKey"
+      [statusOptionsApi]="statusOptionsApi" 
+      (rowClick)="onRowClickLocal($event)">
+    </core-page-list>
+  
+    <ng-template #orgTree>
+      <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+      </core-org-tree>
+    </ng-template>
+  </div>
+
+  <!-- 
+  [outerSort]="outerSort"
+  (selectedIdsChange)="customizeSelectedIdsChange($event)"
+  (onInstanceCreated)="onInstanceCreated($event)"-->

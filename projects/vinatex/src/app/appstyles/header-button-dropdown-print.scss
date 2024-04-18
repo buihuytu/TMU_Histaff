@@ -1,0 +1,52 @@
+.alpha-header-btn{
+    &>.headerButtonDropdownPrint {
+
+        color: #464646;
+        background-color:#FFFFFF;
+        cursor: pointer;
+        height: 28px;
+        width: 28px;
+        font-size :15px;
+        border-radius: 50px;
+        transition: 0s!important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:hover{
+            background-color: #E7E7E7;
+        }
+        
+        &>i {
+            background: url('data:image/svg+xml,<svg width="15" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.6 7.05001V1.33334H14.4V7.05001" stroke="%23464646" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.6 14.4H2.96667C2.53348 14.4 2.11803 14.2279 1.81172 13.9216C1.50541 13.6153 1.33333 13.1999 1.33333 12.7667V8.68335C1.33333 8.25016 1.50541 7.83472 1.81172 7.52841C2.11803 7.2221 2.53348 7.05002 2.96667 7.05002H16.0333C16.4665 7.05002 16.882 7.2221 17.1883 7.52841C17.4946 7.83472 17.6667 8.25016 17.6667 8.68335V12.7667C17.6667 13.1999 17.4946 13.6153 17.1883 13.9216C16.882 14.2279 16.4665 14.4 16.0333 14.4H14.4" stroke="%23464646" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.4 11.1333H4.6V17.6667H14.4V11.1333Z" stroke="%23464646" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+             background-size:auto;
+            background-repeat: no-repeat;
+            margin-top: 10px;
+            margin-left:5px;
+        }
+
+
+        &>.header-button-dropdown-wrapper {
+            background: white;
+            top: calc(100% + 5px);
+            right: 0px;
+            box-shadow: var(--decoration-box-shadow);
+            padding: var(--size-layout-block-cell-spacing);
+            width: 280px;
+
+            &>.header-button-dropdown-line {
+                height: 35px;
+                display: flex;
+
+                & span:last-child {
+                    max-width: 77%;
+                    white-space: nowrap;
+                    height: 30px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+            }
+
+        }
+    }
+}

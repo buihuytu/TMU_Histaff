@@ -1,0 +1,233 @@
+html {
+  height: 100%;
+}
+body {
+  background: white ;
+  background-size: cover;
+  height: 100%;
+  font-family: "Roboto";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.feather-user{
+  font-size: 21px;
+}
+.feather-lock{
+  font-size: 20px;
+}
+
+.form {
+  background: #fff;    
+  background-image: url('../../../assets/images/login-background.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-x: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  form {
+    z-index: 9999999999999;
+    transform: scale(0.9);
+    text-align: center;    
+    background: #fff;   
+    padding: 35px 50px 65px 50px;
+    width: 607px;
+    border-radius: 20px;
+    position: absolute;
+    top: calc((100vh - 675px) / 2.1);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    .logo {    
+      margin-bottom: 42px;
+    }
+    .label-grp {    
+      margin: 0 0 15px 25px;
+      display: flex;
+      img {
+        width: 18.5px;
+        height: 21px;
+      }
+      p {
+        color: rgba(70, 70, 70, 1);
+        margin: 0 0 0 0.8vw;
+        font-family: "Roboto";
+        font-size: 16px;
+      }
+    }
+    img {
+      width: 200px;
+      &:hover {
+        transform: unset;
+      }
+    }
+    input {
+      outline: none;
+      display: block;
+      width: 100%;
+      margin: 0 0 27px;
+      padding: 22px;
+      border: 1px solid #ccc;
+      color: rgba(70, 70, 70, 1);
+      font-family: "Roboto";
+      box-sizing: border-box;
+      font-size: 16px;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: 0.2s linear;
+      &input:focus {
+        color: #333;
+        border: 1px solid #44c4e7;
+      }
+      border-radius: 10vh;
+      height: 64px;
+    }
+    .sign-in {
+      display: flex;
+      margin-bottom: 38px;
+      .remember {
+        color: rgba(167, 167, 167, 1);
+        .container {
+          position: relative;
+          padding: 0;
+          p {
+            text-align: left;
+            margin: 2px 0 0 31px;
+            font-family: "Roboto";
+            font-size: 13px;
+          }
+          input {
+            display: none;
+          }
+          .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 23px;
+            width: 23px;
+            background-color: transparent;
+            border: 1px solid #D1D1D1;
+            border-radius: 6px;
+          }
+          &:hover input ~ .checkmark {
+            background-color: #ccc;
+          }
+
+          input:checked ~ .checkmark {
+            background-color: #6d7686;
+          }
+
+          .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+          }
+
+          input:checked ~ .checkmark:after {
+            display: block;
+          }
+          .checkmark:after {
+            left: 7px;
+            top: 3px;
+            width: 7px;
+            height: 13px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+          }
+        }
+      }
+      .forget {
+        text-align: right;
+        margin: 0 0 0 auto;
+        a {
+          color: #464646;
+          font-family: "Roboto";
+          font-size: 13px; 
+          text-decoration: none;
+        }
+      }
+    }
+    button {
+      cursor: pointer;
+      background: #6d7686;
+      width: 100%;
+      border: 0;
+      color: #fff;
+      font-family: "Roboto";
+      font-size: 16px; 
+      font-weight: 400;
+      &:hover {
+        background: #353a43;
+      }
+      border-radius: 10vh;
+      height: 64px;
+    }
+  }
+  .copyright {
+    bottom: calc(100vh - (675px + ((100vh - 675px) / 2)) - (100vh - 675px) / 2 / 2);
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    p {
+      margin: 0;
+      width: 100%;
+      text-align: center;
+      color: #9C9C9C;
+      font-family: "Roboto";
+      font-size: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+@media screen and (max-width: 1600px) {
+  .form {
+    form {
+      transform: scale(0.8);
+    }
+  }
+}
+@media screen and (max-width: 1280px) {
+  .form {
+    form {
+      transform: scale(0.7);
+    }
+  }
+}
+@media screen and (max-height: 600px) {
+  .form {
+    .copyright {
+      bottom: calc(100vh - (675px + (100vh - 675px) / 2) - (100vh - 675px) / 2 / 0.75) !important;
+    }
+  }
+}
+
+@media screen and (max-width: 607px) {
+  .form {
+    background-image: none;
+    form {
+      width: 100%;
+      border-radius: 0;
+      padding: 0;
+      box-shadow: none;
+      transform: scale(0.8);
+    }
+  }
+  .copyright {
+    p {
+      font-size:11px!important;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.error, .valid{display:none;}

@@ -1,0 +1,130 @@
+<div class="app-tr-reimbursement-container">
+    <core-page-list
+    [apiDefinition]="apiDefinition"
+    [columns]="columns"
+    [title]="title"
+    [left]="orgTree"
+    [top]="top"
+    [outerParam$]="outerParam$"
+    [outerInOperators]="outerInOperators"
+    [autoResizeWithWindow]="true"
+    [extraManualOffset]="200"
+    (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+    (rowDoubleClick)="onRowDoubleClick($event)"
+    (selectedIdsChange)="onSelectedIdsChange($event)"
+    [frozen]="3"
+    ></core-page-list>
+    <ng-template #orgTree>
+        <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+        </core-org-tree>
+    </ng-template>
+    <ng-template #top>
+        <div class="row mb15">
+            <div class="col-md-3">
+                <div class="form-group">
+                  <label>{{ labelList.year | translate : lang }}</label>
+                  <div [ngStyle]="{ marginLeft: '5px' }">
+                    <input
+                      type="number"
+                      class="form-control"
+                      [(ngModel)]="year"
+                      (ngModelChange)="onYearChange($event)"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>{{labelList.trProgaram | translate : lang}}</label>
+                    <core-dropdown [(ngModel)]="trProgramId"
+                        (ngModelChange)="onProgramIdChange($event)"
+                        [options$]="trProgramOptions$" 
+                        [getByIdObject$]="trProgramGetByIdObject$"
+                        [shownFrom]="shownFrom"   
+                    ></core-dropdown>
+                </div>                
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>{{labelList.dateStartComFrom | translate : lang}}</label>
+                    <core-date-picker
+                        [disabled]="disabled" [(ngModel)]="dateStartFrom"
+                        (ngModelChange)="onStartDateComFrom($event)">
+                    </core-date-picker>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>{{labelList.dateStartComTo |translate : lang}}</label>
+                    <core-date-picker
+                        [disabled]="disabled" [(ngModel)]="dateStartFrom"
+                        (ngModelChange)="onStartDateComFrom($event)">
+                    </core-date-picker>
+                </div>
+            </div>
+        </div>
+        <div class="row mb15">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>{{labelList.dateEndComFrom | translate : lang}}</label>
+                    <core-date-picker
+                        [disabled]="disabled" [(ngModel)]="dateEndFrom"
+                        (ngModelChange)="onStartDateComFrom($event)">
+                    </core-date-picker>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>{{labelList.dateEndComTo | translate : lang}}</label>
+                    <core-date-picker
+                        [disabled]="disabled" [(ngModel)]="dateEndTo"
+                        (ngModelChange)="onStartDateComFrom($event)">
+                    </core-date-picker>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                  <label>{{labelList.eployeeCode | translate : lang}}</label>
+                  <core-form-control-seeker
+                    [boundFrom]="'id'"
+                    [shownFrom]="'code'"
+                    [multiMode]="false"
+                    [paramMode]="true"
+                    [(ngModel)]="employeeId"
+                    [seekerSourceType]="employeeSeekerType"></core-form-control-seeker>
+                </div>  
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>{{labelList.empEsc | translate : lang}}</label>
+                    <core-checkbox [(ngModel)]="workStatus"></core-checkbox>
+                </div>
+            </div>
+            <div class="col-md-1 btnSearch" [ngStyle]="{ display: 'flex', alignItems: 'center'}" style="display: flex; flex-direction: row-reverse;">
+                <div [ngStyle]="{ transform: 'translate(-10px, 4px)'}">
+                  <core-button-group-vns [showCaption]="true" (buttonClick)="onButtonClick($event)" [shownItems]="buttonItems"
+                    class="buttonGroupCustom"></core-button-group-vns>
+                </div>
+            </div>
+        </div>
+
+        <label class="title" style="font-weight: 500;">Thông tin xử lý bồi hoàn</label>
+        <div class="row mb15" style=" border-top: 1px solid #e5e5e5;">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>{{labelList.empEsc | translate : lang}}</label>
+                    <core-checkbox [(ngModel)]="workStatus"></core-checkbox>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>{{labelList.dateFinal | translate : lang}}</label>
+                    <core-date-picker
+                        [disabled]="disabled" [(ngModel)]="dateFinal"
+                        (ngModelChange)="onStartDateComFrom($event)">
+                    </core-date-picker>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+</div>

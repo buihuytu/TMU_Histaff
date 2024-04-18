@@ -1,0 +1,151 @@
+<div class="cms-app-calculatepayroll-backdate-container">  
+    <!-- HEADER -->
+    <core-page-header 
+      [hidden]="false"
+      [title]="title" 
+      [shownItems]="headerButtons"
+      (buttonClick)="onCorePageHeaderButtonClick($event)"
+    ></core-page-header>
+  
+    <!-- LAYOUT MAIN -->
+  <core-composition [left]="orgTreeChecked" [top]="top" [main]="main" [height]="compositionHeight"></core-composition>
+
+  <!-- ORG TREE CHECKBOX -->
+  <ng-template #orgTreeChecked>
+    <core-org-tree [accessorMode]="accessorMode" [(ngModel)]="listOrgIds" [height]="treeHeight"></core-org-tree>
+  </ng-template>
+  
+
+  <!-- top -->
+  <ng-template #top>
+    <!-- FILLTER FORM -->
+    <div class="row mb15" style="margin-right: 5px;">
+      <div class="col-md-3">
+        <div class="form-group vertical" >
+          <label>{{ labelList.year | translate: lang}}</label>
+            <core-dropdown [(ngModel)]="year" (ngModelChange)="onYearChange($event)"
+            [options$]="yearOptions$" [getByIdObject$]="yearGetByIdObject$"
+            [shownFrom]="shownFrom"></core-dropdown>
+        </div>
+        <div *ngIf="showRequiredYear" style="height: 25px;">
+          <div style="margin: 0;" class="form-control-error" >{{ errorRequired | translate: lang}}</div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group vertical">
+          <label>{{ labelList.salPeriod | translate: lang}}</label>
+          <core-dropdown [(ngModel)]="salPeriod" (ngModelChange)="onSalPeriodChange($event)"
+            [options$]="salaryPeridOptions$" [getByIdObject$]="salaryPeriodGetByIdObject$"
+            [shownFrom]="shownFrom"></core-dropdown>
+        </div>
+        <div *ngIf="showRequiredSalPeriod" style="height: 25px;">
+          <div style="margin: 0;" class="form-control-error" >{{ errorRequired | translate: lang}}</div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group vertical">
+          <label>{{ labelList.salPeriodAdd | translate: lang}}</label>
+          <core-dropdown [(ngModel)]="salPeriodAdd" (ngModelChange)="onSalPeriodAddChange($event)"
+            [options$]="salaryPeridAddOptions$" [getByIdObject$]="salaryPeriodAddGetByIdObject$"
+            [shownFrom]="shownFrom"></core-dropdown>
+        </div>
+        <div *ngIf="showRequiredSalPeriodAdd" style="height: 25px;">
+          <div style="margin: 0;" class="form-control-error" >{{ errorRequired | translate: lang}}</div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group vertical">
+          <label>{{ labelList.objSalary | translate: lang}}</label>
+          <core-dropdown [(ngModel)]="objSalary" (ngModelChange)="onObjSalaryChange($event)"
+            [options$]="objSalaryOptions$" [getByIdObject$]="objSalaryGetByIdObject$"
+            [shownFrom]="shownFrom"></core-dropdown>
+        </div>
+        <div *ngIf="showRequiredObjSalary" style="height: 25px;">
+          <div style="margin: 0;" class="form-control-error" >{{ errorRequired | translate: lang}}</div>
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="row mb15" style="margin-right: 5px; margin-bottom: 15px;">
+      <div class="col-md-3">
+        <div class="form-group vertical vertical-custom">
+          <label>{{ labelList.payrollFund | translate: lang}}</label>
+          <core-dropdown [(ngModel)]="payrollFund" (ngModelChange)="onPayrollFundChange($event)"
+            [options$]="payrollFundOptions$" [getByIdObject$]="payrollFundGetByIdObject$"
+            [shownFrom]="shownFrom"></core-dropdown>
+        </div>
+        <div *ngIf="showRequiredPayrollFund" style="height: 25px;">
+          <div style="margin: 0;" class="form-control-error" >{{ errorRequired | translate: lang}}</div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group vertical vertical-custom" > 
+          <label>{{ labelList.employeeCal | translate: lang}}</label>
+          <input type="text" class="form-control" [(ngModel)]="employeeCal"
+          (ngModelChange)="onEmployeeCalChange($event)" [readonly]="true">
+        </div>
+        <div *ngIf="showRequiredEmployeeCal" style="height: 25px;">
+          <div style="margin: 0;" class="form-control-error" >{{ errorRequired | translate: lang}}</div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group vertical vertical-custom">
+          <label>{{ labelList.payDate | translate: lang}}</label>
+          <core-date-picker 
+            [disabled]="disabled"
+            [(ngModel)]="payDate" 
+            (ngModelChange)="onPayDateChange($event)"
+          ></core-date-picker>
+        </div>
+        <div *ngIf="showRequiredPayDate" style="height: 25px;">
+          <div style="margin: 0;" class="form-control-error">{{ errorRequired | translate: lang}}</div>
+        </div>
+      </div>   
+      <div class="col-md-1">
+        <div style="margin-top:20px" class="form-group vertical vertical-custom">
+          <core-button-group-vns 
+            class="buttonGroupCustom"
+            [showCaption]="true" 
+            (buttonClick)="onButtonClick($event)" 
+            [shownItems]="buttonItems" 
+          ></core-button-group-vns>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+    <!-- MAIN -->
+    <ng-template #main>
+      
+  
+      <!-- GRID DATA -->
+      <core-table 
+        [columns]="columns" 
+        [height]="tableHeight" 
+        [showCheckbox]="!!!hideCheck" 
+        [frozen]="2"
+        [data]="innerBody" 
+        [loading]="loading" 
+        (onSearching)="onSearching($event)"
+        [headerWrap]="true"
+        [headerFirstRowHeight]="headerFirstRowHeight"
+        (onSelectedIdsChange)="onSelectedIdsChange($event)"
+      ></core-table>
+  
+      <!-- Pagination -->
+      <div class="d-flex d-flex-end pagination-wrapper" 
+      [ngStyle]="{
+        height: paginationHeight+'px'
+      }">
+        <core-pagination-full  [currentPage$]="currentPage$" [pageSize$]="pageSize$"
+            [pageCount]="pageCount"
+            [innerBodyCount$]="innerBodyCount$" [pagination$]="pagination$" [loading]="loading"
+            [background]="'#848484'"
+            (onCurrentPageChange)="onCurrentPageChange($event)"
+            ></core-pagination-full>
+    
+      </div>
+    </ng-template>
+  </div>
+  
+  <app-fullscreen-modal-loader *ngIf="loadingPage"></app-fullscreen-modal-loader>

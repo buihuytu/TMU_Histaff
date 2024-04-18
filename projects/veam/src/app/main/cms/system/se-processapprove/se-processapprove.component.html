@@ -1,0 +1,85 @@
+<div class="se-processapprove-container">
+  <div class="container no-padding no-margin" style="max-width: unset !important;">
+    <div class="row no-padding no-margin">
+      <core-page-header [title]="title" [hideButtonGroup]="false" (buttonClick)="onCorePageHeaderButtonClick($event)">
+      </core-page-header>
+      <!-- <div class="col-md-3">
+        <core-page-list [hideHeader]="true" [apiDefinition]="apiDefinitionProcess" [columns]="columnsProcess" [hideCheck]="true"
+          [autoResizeWithWindow]="true"
+          (rowClick) = "selectProcess($event)"></core-page-list> 
+      </div> -->
+
+      <div class="col-md-3">
+        <br>
+        <h6 class="title-h6">Tên quy trình</h6>
+        <core-list [options]="processListOption" [(ngModel)]="processId"
+          (ngModelChange)="onFilterProcess($event)">
+        </core-list>
+      </div>
+
+      <div class="col-md-9">
+        <div class="row no-padding no-margin border-form">
+          <div class="col-md-12 pl">
+            <div class="row scrollEdit">
+              <!-- <core-page-edit *ngIf="!!sections.length" [width]="1000" [captionCode]="captionCode" [sections]="sections" [crud]="crudEdit"
+              [entityTable]="entityTable" (onFormCreated)="onFormCreated($event)" [normalMode]="true" 
+              (onInitialValueStringReady)="onFormReinit($event)"></core-page-edit> -->
+
+              <core-form [formName]="'form'" [submitText]="submitText" [showCaptionButton]="showCaptionButton"
+                [leftInputSections]="leftInputSections" [leftInputSectionsFlexSize]="leftInputSectionsFlexSize"
+                [inputSections]="sections" (onFormCreated)="onFormCreated($event)" (onSubmit)="onSubmit()"
+                (onCancal)="onCancel()"></core-form>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row bottom-list no-padding no-margin border-form mt10-pl10">
+          <div class="col-md-12 pr">
+            <core-page-list [hideHeader]="true" [apiDefinition]="apiDefinition" [columns]="columns"
+              [autoResizeWithWindow]="true" [extraManualOffset]="200" [outerParam$]="outerParam$" 
+              [selfResolveCorePageHeaderButtonClick]="true" (onInstanceCreated)="onInstanceCreated($event)"
+              (rowDoubleClick)="onRowDoubleClick($event)"
+              (selectedIdsChange)="onSelectedIdsChange($event)"></core-page-list>
+
+            <ng-template #managerSuperiorDepartments
+              let-managerSuperiorDepartments="context.managerSuperiorDepartments">
+              <core-checkbox [disabled]="true" [inputValue]="managerSuperiorDepartments"></core-checkbox>
+            </ng-template>
+            <ng-template #managerAffiliatedDepartments
+              let-managerAffiliatedDepartments="context.managerAffiliatedDepartments">
+              <core-checkbox [disabled]="true" [inputValue]="managerAffiliatedDepartments"></core-checkbox>
+            </ng-template>
+            <ng-template #directManager let-directManager="context.directManager">
+              <core-checkbox [disabled]="true" [inputValue]="directManager"></core-checkbox>
+            </ng-template>
+            <ng-template #approvalPosition let-approvalPosition="context.approvalPosition">
+              <core-checkbox [disabled]="true" [inputValue]="approvalPosition"></core-checkbox>
+            </ng-template>
+            <ng-template #sameApprover let-sameApprover="context.sameApprover">
+              <core-checkbox [disabled]="true" [inputValue]="sameApprover"></core-checkbox>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="se-processapprove-container">
+    <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+      [title]="title" [left]="orgTree"
+      [outerParam$]="outerParam$"
+      [normalMode]="true"
+      [outerInOperators]="outerInOperators"
+      [autoResizeWithWindow]="true"
+      ></core-page-list>
+  
+    <ng-template #orgTree>
+      <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+      </core-org-tree>
+  
+    </ng-template>
+  
+  </div> -->

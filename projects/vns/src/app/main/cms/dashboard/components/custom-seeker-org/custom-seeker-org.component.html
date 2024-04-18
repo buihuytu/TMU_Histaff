@@ -1,0 +1,35 @@
+<div #container class="custom-seeker-org-container">
+    <div class="input-wrapper">
+        <label #shownText type="text" class="text form-control" >
+            <span [appTooltip]="valueToShow" [position]="'above'">{{ valueToShow || title | translate : lang }}</span>
+        </label>
+        <div class="clear-icon-wrapper" [class.d-none]="!clearIcon "
+            (click)="onClickClear()">
+            <div class="flex-wrapper" [appTooltip]="'UI.CORE_CONTOL_COMMON_CLEAR' | translate: lang" [position]="'above'">
+                <i class="feather-x"></i>
+            </div>
+        </div>
+    </div>
+    <div class="seeker-icon-wrapper" (click)="onClickSeek()">
+        <div class="flex-wrapper" [class.form-control-disabled]="disabled">
+            <i class="feather-search"></i>
+        </div>
+    </div>
+
+    <div class="modal-container" *ngIf="!!sourceOpen">
+        <div class="modal-content">
+            <div class="source-container">
+                {{title | translate:lang}}
+                <i class="feather-x" (click)="onCancel()"></i>
+            </div>
+            <core-org-tree [accessorMode]="accessorMode" [(ngModel)]="listOrgIds" [height]="treeHeight"></core-org-tree>
+            <div class="footer">
+                <div class="d-flex-end">
+                    <button class="btn btn-primary" type="button" (click)="onSelect()">{{
+                        'UI_CORE_CONFIRM_DIALOG_BUTTON_SELECT' | translate: lang }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

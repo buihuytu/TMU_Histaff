@@ -1,0 +1,6 @@
+<div class="paragraph-container">
+    <div class="paragraph cover general-image-frame" *ngIf="!!item.paragImgLink">
+        <img [src]="item.paragImgLink | mapImgToServer" alt='ImgLink' width="100%" (error)="onImageError($event)">
+    </div>
+    <div [innerHtml]="item.paragBody | stringHtml" class="paragraph" *ngIf="!!item.paragBody"></div>
+</div>

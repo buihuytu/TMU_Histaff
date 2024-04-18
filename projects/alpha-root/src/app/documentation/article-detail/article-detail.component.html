@@ -1,0 +1,51 @@
+<div class="article-detail-container" *ngIf="!!article">
+
+    <router-outlet name="articleDetailAux"></router-outlet>
+
+    <app-article-fragments [postId]="article!.artID" [fragments]="fragments"></app-article-fragments>
+
+    <div class="article-navigation-container">
+        <div class="article-navigation">
+            <a (click)="toggleShowFragments()">
+                <div class="tool-icon map-pin"></div>
+            </a>
+            <a [routerLink]="['/developer-doc']">
+                <div class="tool-icon go-back"></div>
+            </a>
+            <a [routerLink]="'.'" fragment="__THE_TOP__">
+                <div class="tool-icon go-to-the-top"></div>
+            </a>
+            <a [routerLink]="'.'" fragment="__THE_END__">
+                <div class="tool-icon go-to-the-end"></div>
+            </a>
+        </div>
+    </div>
+
+    <a id="__THE_TOP__"></a>
+
+    <div #postDetail>
+        <section *ngIf="!!article" class="post-detail">
+            
+            <div class="detail-header">
+                <div class="d-flex-between">
+                    <div class="card p25 mv25">
+                        <div class="title">{{ article!.artCaption }}</div>
+                    </div>
+                </div>
+                <div class="cover">
+                    <img [src]="article!.artImgLink | mapImgToServer" alt='ImgLink' width="100%"
+                        (error)="onImageError($event)">
+                </div>
+                <div class="paragraph" [innerHtml]="article.artBody | stringHtml"></div>
+            </div>
+            <ul #paragraphNodes class="child-paragraphs">
+                <li *ngFor="let item of paragraphs">
+                    <app-paragraph [article]="article" [item]="item"></app-paragraph>
+                </li>
+            </ul>
+
+            <a id="__THE_END__"></a>
+
+        </section>
+    </div>
+</div>

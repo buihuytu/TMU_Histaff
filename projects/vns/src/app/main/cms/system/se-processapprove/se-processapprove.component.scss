@@ -1,0 +1,54 @@
+app-se-processapprove{
+    .scrollEdit{
+    max-height: 30rem;
+    overflow: scroll;
+
+    .core-radio-group-container {
+        padding-top: 0 !important;
+    }
+    .vertical{
+        margin-top: 0 !important;
+    }
+}
+.se-processapprove-container .col-md-3 .title-h6{
+    padding-left: 15px;
+    padding-top: 10px;
+    // overflow: scroll;
+    // max-height: 100;
+}
+// .core-list-container .ng-star-inserted .list{
+//     max-height: 600px;
+// }
+// .list{
+//     max-height: 600px;
+// }
+.border-form{
+    border: 1px solid #d9d5d5;
+    border-radius: 1vh;
+}
+.pl{
+    padding-left: 0;
+}
+.pr{
+    padding-right: 0;
+}
+.mt10-pl10{
+    margin-top: 10px;
+    padding-left: 10px;
+}
+.flex-container{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+
+}
+
+.core-radio-group-container{
+    padding-top: 10px;
+}
+.bottom-list{
+    height: 20rem;
+    overflow: auto;
+}
+}

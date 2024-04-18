@@ -1,0 +1,13 @@
+<div class="salaryperiod-container">
+  <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+    [title]="title" [autoResizeWithWindow]="true" [left]="orgTreeChecked" [normalMode]="true"
+    (rowClick)="onRowClick($event)"></core-page-list>
+</div>
+
+<ng-template #orgTreeChecked>
+  <core-org-tree [accessorMode]="accessorMode" [ngModel]="checkedOrgIds" [disabledLoopExpand]="true" disabled></core-org-tree>
+</ng-template>
+
+<ng-template #sticker let-code="context.actflg">
+  <core-status-sticker [code]="code"></core-status-sticker>
+</ng-template>

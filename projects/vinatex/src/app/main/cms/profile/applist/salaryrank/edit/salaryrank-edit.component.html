@@ -1,0 +1,147 @@
+<core-page-edit *ngIf="!!sections.length" [width]="1000" [captionCode]="captionCode" [sections]="sections" [crud]="crud" 
+    [entityTable]="entityTable" (onFormCreated)="onFormCreated($event)"
+    (onInitialValueStringReady)="onFormReinit($event)"></core-page-edit>
+
+<!-- <div class="app-main-content">
+  <div class="app-container">
+    <div class="app-toolbar">
+      <div class="card-center">
+        <div class="app-breadcrum">
+          <div class="brackcrum">
+            <i class="fa fa-sitemap" aria-hidden="true"></i>Hồ sơ <i
+              class="fa fa-angle-double-right" aria-hidden="true"></i>Danh mục
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <span class="brackcrum-active"
+              href='/cms/profile/list/salaryrank'>Ngạch lương</span>
+          </div>
+        </div>
+        <div class="main-toolbar">
+          <button id="add" class="btn-action" (click)="clickToolbar(itemButton)"
+            *ngFor="let itemButton of toolbar"
+            [disabled]="itemButton.isDisable === true">
+            <p class="text-center"><i
+                class="fa {{itemButton.prefixIcon}} {{itemButton.iconColorClass}}"></i>
+            </p>
+            <p class="text-center">{{itemButton.text}}</p>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-center">
+      <form name="editForm" [formGroup]="editForm" novalidate>
+        <div class="group-box">
+          <div class="card-head">
+            <div class="icon-info histaff-icon"></div>
+            <label class="title">Thông tin</label>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group vertical">
+                <label class="e-float-text required">Mã</label>
+                <input class="form-control" type="text" formControlName="code"
+                  [(ngModel)]="model.code" maxlength="31">
+                <span class="input-error"
+                  *ngIf="editForm.get('code')!.hasError('required') && !editForm.get('code')!.untouched">
+                  Bắt buộc nhập
+                </span>
+                <span class="input-error "
+                  *ngIf="editForm.get('code')!.hasError('incorrect') && !editForm.get('code')!.untouched">
+                  Sai định dạng
+                </span>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group vertical">
+                <label class="e-float-text required">Tên</label>
+                <input class="form-control" type="text" formControlName="name"
+                  [(ngModel)]="model.name" maxlength="51">
+                <span class="input-error"
+                  *ngIf="editForm.get('name')!.hasError('required') && !editForm.get('name')!.untouched">
+                  Bắt buộc nhập
+                </span>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group vertical">
+                <label class="e-float-text required">Thang
+                  lương</label>
+                <ejs-dropdownlist [dataSource]='lstSalaryScaleId'
+                  [fields]='fields' [showClearButton]="true"
+                  [(ngModel)]="model.salaryScaleId"
+                  formControlName="salaryScaleId" [placeholder]="''"
+                  [allowFiltering]='true'
+                  (filtering)='onFiltering($event,lstSalaryScaleId)'>
+                </ejs-dropdownlist>
+                <span class="input-error"
+                  *ngIf="editForm.get('salaryScaleId')!.hasError('required') && !editForm.get('salaryScaleId')!.untouched">
+                  Bắt buộc chọn
+                </span>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group vertical">
+                <label class="e-float-text ">Bậc bắt đầu</label>
+                <ejs-numerictextbox format="N0" locale="en" name="levelStart"
+                  formControlName="levelStart" [(ngModel)]="model.levelStart" min="0"
+                  max="999999999">
+                </ejs-numerictextbox>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group vertical">
+                <label class="e-float-text ">Số thứ
+                  tự</label>
+                <ejs-numerictextbox format="N0" locale="en" name="orders"
+                  formControlName="orders" [(ngModel)]="model.orders" min="0"
+                  max="999999999">
+                </ejs-numerictextbox>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group vertical">
+                <label class="e-float-text " for="name">Ghi
+                  chú</label>
+                <textarea class="form-control" type="text" formControlName="note"
+                  [(ngModel)]="model.note"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<gohr-confirm-modal id="confirm-back-modal">
+  <div class="row full-width gohr-modal-header">
+    Những thay đổi hiện tại sẽ bị mất. Bạn có thực sự muốn tiếp tục?
+  </div>
+  <div class="row full-width gohr-modal-footer text-center">
+    <button class="btn btn-primary" (click)="confirmBack('ok')">Đồng ý</button>
+    <button class="btn btn-default" (click)="confirmBack('cancel')">Hủy</button>
+  </div>
+</gohr-confirm-modal>
+
+<gohr-confirm-modal id="confirm-delete-modal">
+  <div class="row full-width gohr-modal-header">
+    Những thay đổi hiện tại sẽ bị mất. Bạn có thực sự muốn tiếp tục?
+  </div>
+  <div class="row full-width gohr-modal-footer text-center">
+    <button class="btn btn-primary" (click)="confirmDelete('ok')">Đồng
+      ý</button>
+    <button class="btn btn-default"
+      (click)="confirmDelete('cancel')">Hủy</button>
+  </div>
+</gohr-confirm-modal>
+
+<gohr-confirm-modal id="confirm-direct-modal">
+  <div class="row full-width gohr-modal-header">
+    Những thay đổi hiện tại sẽ bị mất. Bạn có thực sự muốn tiếp tục?
+  </div>
+  <div class="row full-width gohr-modal-footer text-center">
+    <button class="btn btn-primary">Đồng
+      ý</button>
+    <button class="btn btn-default">Hủy</button>
+  </div>
+</gohr-confirm-modal> -->

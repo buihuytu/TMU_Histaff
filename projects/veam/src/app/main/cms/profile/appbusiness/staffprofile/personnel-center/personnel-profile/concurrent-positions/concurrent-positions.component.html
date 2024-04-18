@@ -1,0 +1,4 @@
+<div #container class="concurrent-position-container">
+    <core-page-list [title]="title" [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud" [outerParam$]="outerParam$" [selfResolveCorePageHeaderButtonClick]="selfResolveCorePageHeaderButtonClick"
+    (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)" (selectedDataChange)="onSelectedDataChange($event)" [autoResizeWithWindow]="true"></core-page-list>
+  </div>

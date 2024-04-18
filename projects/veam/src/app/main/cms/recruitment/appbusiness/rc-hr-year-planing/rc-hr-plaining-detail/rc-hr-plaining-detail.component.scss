@@ -1,0 +1,26 @@
+.icon-back {
+    width: 9px;
+    height: 9px;
+    display: inline-block;
+    background-size: contain;
+    text-decoration: underline !important;
+    background-repeat: no-repeat;
+    background-image: url('data:image/svg+xml,<svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 1L1 3.5L3 6" stroke="%23848484" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 1L4 3.5L6 6" stroke="%23848484" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+
+.container-header-table {
+    padding-bottom: 2rem;
+}
+
+.row {
+    height: 4vh;
+}
+
+.d-flex {
+    font-size: 0.9em;
+}
+
+.label-tb {
+    font-weight: 500;
+    color: #5e5e5e;
+}

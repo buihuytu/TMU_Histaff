@@ -1,0 +1,249 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$HistaffPWA-primary: mat.define-palette(mat.$indigo-palette);
+$HistaffPWA-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$HistaffPWA-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$HistaffPWA-theme: mat.define-light-theme((
+  color: (
+    primary: $HistaffPWA-primary,
+    accent: $HistaffPWA-accent,
+    warn: $HistaffPWA-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($HistaffPWA-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+@import "./assets/css/feather.css";
+@import "app/appstyles/button-group.scss";
+
+@font-face {
+    font-family: Roboto;
+    src: url(/assets/fonts/Roboto-Regular.ttf) format("truetype");
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.roboto-font {
+    font-family: 'Roboto', sans-serif !important;
+}
+
+:root {
+    --color-basic-orange: #F37540; //checkbox color
+    --device-width: 414px; // iPhone XR - to be recalculated
+    --device-height: 896px; // iPhone XR - to be recalculated
+
+    --cell-width: 50px; // needed when in landscapeMode 16:9 - to be recalculated
+    --cell-height: 50px; // needed when in landscapeMode 16:9 - to be recalculated
+
+    --decoration-box-shadow: 0.4rem 0rem 2rem rgba(0, 0, 0, 0.18);
+    --size-form-control-height: 50px; // FIXED OVERALL THE APP
+    --size-layout-block-cell-spacing: 15px;
+    --decoration-block-border-radius: 5px;
+
+    --size-form-control-height: 35px; // FIXED OVERALL THE APP
+    --size-left-bar-full-width: 280px; // width of dropdown change password
+    --color-bg-block: white;
+}
+
+.form-control{
+    height: var(--size-form-control-height);
+}
+
+html,
+body {
+ padding: 0;
+ margin: 0;
+ height: var(--device-height);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.d-flex {
+    display: flex;
+    align-items: center;
+}
+
+.d-flex-start {
+    justify-content: flex-start;
+}
+
+.d-flex-around {
+    justify-content: space-around;
+}
+
+.d-flex-v {
+    flex-direction: column;
+}
+
+.d-flex-between {
+    justify-content: space-between;
+}
+
+.d-flex-center {
+    justify-content: center;
+}
+
+.d-flex-around {
+    justify-content: space-around;
+}
+
+.d-none {
+    display: none;
+}
+
+.d-inline {
+    display: inline;
+}
+
+.h25 {
+    height: 25px;
+}
+
+.h100 {
+    height: 100px;
+}
+
+.h200 {
+    height: 200px;
+}
+
+.p-relative {
+    position: relative;
+}
+
+.p-absolute {
+    position: absolute;
+}
+
+.no-padding {
+    padding: 0px !important;
+}
+
+.no-margin {
+    margin: 0px !important;
+}
+
+/* Clone from Microsoft*/
+
+.alert.is-success {
+    background-color: #dff6dd;
+    border: 1px solid #dff6dd;
+}
+
+.alert {
+
+    max-width: 576px;
+    float: right;
+
+    /*
+    background-color: #f2f2f2;
+    outline-color: #161616;
+    color: #161616;
+    word-wrap: break-word;
+    word-break: break-word;
+    border: 1px solid #fff0;
+    border-radius: 0.375rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    font-size: 1rem;
+    transition: height .5s ease-in,opacity .5s ease-in;
+    display: block;
+    position: relative;
+    */
+}
+
+.alert.is-success .alert-title,
+.alert.is-success a:not(.button) {
+    color: #054b16;
+}
+
+.alert .alert-title,
+.alert a:not(.button) {
+    color: currentColor;
+    font-weight: 600;
+}
+
+.alert>:first-child {
+    margin-top: 0;
+}
+
+.content p {
+    word-wrap: break-word;
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.alert>* {
+    max-width: 100%;
+}
+
+.alert.is-info {
+    background-color: #efd9fd;
+    border: 1px solid #efd9fd;
+}
+
+.docon {
+    font-family: docons;
+    font-size: inherit;
+    speak: none;
+    font-variant: normal;
+    text-transform: none;
+    text-align: center;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    display: inline-block;
+}
+
+.docon-lightbulb:before {
+    font-family: 'feather';
+    content: "\e978";
+}
+
+.docon-status-error-outline:before {
+    font-family: 'feather';
+    content: "\e97c";
+}
+
+/* End Clone from Microsoft*/
+
+.w50 {
+    width: 50px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

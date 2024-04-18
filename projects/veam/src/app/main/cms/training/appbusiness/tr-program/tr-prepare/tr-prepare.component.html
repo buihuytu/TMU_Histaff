@@ -1,0 +1,56 @@
+<div class="app-tr-prepare-container">
+
+
+  <ng-template #top>
+    <div class="row mb15" style="margin-left: 5px;">
+      <div class="col-md-6 d-flex">
+        <div class="col-md-6 ">
+            <div class="form-group vertical-custom">
+              <label>{{ labelList.programLabel | translate: lang}}</label>
+              <core-dropdown 
+                [(ngModel)]="program" 
+                (ngModelChange)="onProgramChange($event)"
+                [options$]="programOptions$" 
+                [getByIdObject$]="programGetByIdObject$"
+                [shownFrom]="shownFrom"
+              ></core-dropdown>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div style="margin-top:20px" class="form-group vertical-custom">
+            <core-button-group-vns 
+              class="buttonGroupCustom" 
+              [showCaption]="true" 
+              (buttonClick)="onButtonClick($event)"
+              [shownItems]="buttonItems"
+            ></core-button-group-vns>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 d-flex align-items-end">
+        <div class="core-page-header">
+          <core-page-header [hidden]="false" [shownItems]="headerButtons"
+            (buttonClick)="onCorePageHeaderButtonClick($event)"></core-page-header>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <core-page-list 
+    [disableDoubleClick]="true"
+    [apiDefinition]="apiDefinition" 
+    [columns]="columns" 
+    [editRoute]="editRoute" 
+    [crud]="crud" 
+    [top]="top"
+    [hideHeader]="true" 
+    [autoResizeWithWindow]="true" 
+    [frozen]="2" 
+    [outerParam$]="outerParam$"
+    (selectedDataChange)="onSelectedDataChange($event)" 
+    (selectedIdsChange)="onSelectedIdsChange($event)"
+    (onInstanceCreated)="onInstanceCreated($event)"
+    (rowDoubleClick)="onRowDoubleClick($event)"
+  ></core-page-list>
+
+</div>

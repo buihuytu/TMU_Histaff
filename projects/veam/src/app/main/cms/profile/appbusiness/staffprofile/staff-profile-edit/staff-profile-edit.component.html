@@ -1,0 +1,776 @@
+<div class="staff-profile-edit">
+    <div>
+        <div>
+            <caption class="custom-title" style="display:block">
+                Hồ sơ nhân viên
+            </caption>
+        </div>
+    </div>
+    <div>
+        <form #formRef (ngSubmit)="onFormSubmit()" [formGroup]="form" autocomplete="off">
+            <core-accordion [sectors]="sectors" [refs]="[basic,cv,info,charract,politicalOrganiztion,education,contact,bank,situation]" [editDisabled]="true"
+                (onItemClick)="onAccordionItemClick($event)" [manualHeightList]="manualHeightList" [enableSwap]="false" [heightList]="heightListVisible"
+                (onItemClickEdit)="onAccordionItemClickEdit($event)"></core-accordion>
+
+            <ng-template #basic>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="avatar-wrapper">
+                            <core-file-uploader [uploadFileType]="uploadFileType" [defaultAvatar]="defaultAvatar"
+                                [fileDataControlName]="fileDataControlName" [fileNameControlName]="fileNameControlName"
+                                [fileTypeControlName]="fileTypeControlName" [hidePreview]="true"
+                                formControlName="avatar"></core-file-uploader>
+                            <span class="custom-text"><i class="feather-upload"></i>Tải ảnh đại diện</span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="basic name col-6">
+                                <core-control [control]="name" [form]="form" [checkError$]="checkError$"></core-control>
+                                <div *ngIf="!!textValidate" style="color:brown">{{'UI_COMPONENT_TITLE_CHECK_FULL_NAME_ALREADY_EXIST' | translate: lang}}<br>{{this.textValidate}}</div>
+                            </div>
+                            
+                            <div class="col-6">
+                                <core-control [control]="otherName" [form]="form"
+                                    [checkError$]="checkError$"></core-control>
+                            </div>
+                           
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <core-control [control]="code" [form]="form" [checkError$]="checkError$"></core-control>
+                            </div>
+                            <div class="col-6">
+                                <core-control [control]="profileCode" [form]="form"
+                                    [checkError$]="checkError$"></core-control>
+                            </div>
+                            
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <core-control [control]="dateJoinCompany" [form]="form" [checkError$]="checkError$"></core-control>
+                            </div>
+                            
+                            <div class="col-6">
+                                <core-control [control]="dateOfficialContract" [form]="form" [checkError$]="checkError$"></core-control>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="row">
+                            <div class="col-12">
+                                <core-control [control]="allowedNameDuplicate" [form]="form"
+                                    [checkError$]="checkError$"></core-control>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <core-control [control]="isNotContract" [form]="form"
+                                    [checkError$]="checkError$"></core-control>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="basic titlePosition col-3">
+                        <core-control [control]="titlePosition" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="company" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="basic department col-3">
+                        <core-control [control]="department" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="addressWorking" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="basic employeeObjectId col-3">
+                        <core-control [control]="employeeObjectId" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    
+                    <div class="col-3">
+                        <core-control [control]="directManagementPosition" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="directManagement" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="itimeId" [form]="form" [checkError$]="checkError$"></core-control>
+                        <div *ngIf="!!textValidateitimeId" style="color:brown;font-size: 13px;">{{'UI_COMPONENT_TITLE_CHECK_ITIMEID_ALREADY_EXIST' | translate: lang}}&nbsp;{{this.textValidateitimeId}}</div>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template #cv>
+                <div class="row">
+                    <div class="cv genderId col-3">
+                        <core-control [control]="genderId" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="cv birthDay col-3">
+                        <core-control [control]="birthDay" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="nationId" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="nationalityId" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <core-control [control]="birthRegisAddress" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-6">
+                        <core-control [control]="domicile" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <core-control [control]="birthAddress" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="religionId" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="maritalStatusId" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="cv identityNumber col-3">
+                        <core-control [control]="identityNumber" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                            <!-- <div *ngIf="this.form.get('identityNumber')?.hasError('invalidLength')">
+                                Độ dài phải là 8 hoặc 12.
+                              </div> -->
+                              <div *ngIf="!!validateidentityNumber" style="color:brown;">{{'UI_COMPONENT_TITLE_CHECK_ID_NO_ALREADY_EXIST' | translate: lang}}&nbsp;{{this.validateidentityNumber}}</div>
+
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="identityNumberDate" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-6">
+                        <core-control [control]="identityNumberAddress" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="cv taxCode col-3">
+                        <core-control [control]="taxCode" [form]="form" [checkError$]="checkError$"></core-control>
+                        <div *ngIf="!!textValidateTaxCode" style="color:brown;">{{'UI_COMPONENT_TITLE_CHECK_TAX_CODE_ALREADY_EXIST' | translate: lang}}&nbsp;{{this.textValidateTaxCode}}</div>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="taxCodeDate" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-6">
+                        <core-control [control]="taxCodeDateAddress" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <core-control [control]="bloodGroup" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="height" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="weight" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="bloodPressure" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <core-control [control]="healthType" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="leftEye" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="rightEye" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="heart" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <core-control [control]="dateMedicalExam" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-6">
+                        <core-control [control]="healthNotes" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template #info>
+                <div class="row">
+                    <div class="col-3">
+                        <core-control [control]="passport" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="passportDate" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="passportDateExperiod" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-9">
+                        <core-control [control]="passportAddress" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <core-control [control]="visa" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="visaDate" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="visaDateExperiod" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-9">
+                        <core-control [control]="visaAddress" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+
+                </div>
+                <!-- <div class="row">
+                    <div class="col-4">
+                        <core-control [control]="laborBookNumber" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-4">
+                        <core-control [control]="laborBookDate" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-4">
+                        <core-control [control]="laborBookDateExperiod" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+
+                </div> -->
+                <!-- <div class="row">
+                    <div class="col-4">
+                        <core-control [control]="laborBookAddress" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-4">
+                        <core-control [control]="career" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-4">
+                        <core-control [control]="careerBeforeRecruitment" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                </div> -->
+                <div class="row">
+                    <div class="col-3">
+                        <core-control [control]="insurenceArea" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="info insurenceNumber col-3">
+                        <core-control [control]="insurenceNumber" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="medicalExamPlace" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="info insurenceCardNumber col-3">
+                        <core-control [control]="insurenceCardNumber" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <core-control [control]="familyMember" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-6">
+                        <core-control [control]="familyMatters" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <core-control [control]="veterans" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-6">
+                        <core-control [control]="defenseSecurityTraining" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <core-control [control]="titleConferred" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-6">
+                        <core-control [control]="forteWork" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template #charract>
+                <div class="row">
+                    <div class="col-6">
+                        <core-control [control]="notePrison" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-6">
+                        <core-control [control]="relatives" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <core-control [control]="yellowFlag" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-6">
+                        <core-control [control]="relations" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template #politicalOrganiztion>
+                <div class="row">
+                    <div class="col-3">
+                        <core-control [control]="isUnionist" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="unionistPosition" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="unionistDate" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="unionistAddress" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <core-control [control]="isJoinYouthGroup" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="youthGroupPosition" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="youthGroupAddress" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="youthGroupDate" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <!-- <core-control [control]="youthSaveNationDate" [form]="form" [checkError$]="checkError$"></core-control> -->
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="youthSaveNationDate" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="youthSaveNationPosition" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="youthSaveNationAddress" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <core-control [control]="isMember" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="memberPosition" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="memberDate" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="memberAddress" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <core-control [control]="resumeNumber" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="memberOfficalDate" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="livingCell" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="cardNumber" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div  class="col-3">
+                        <!-- <core-control [control]="enlistmentDate" [form]="form" [checkError$]="checkError$"></core-control> -->
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="enlistmentDate" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="dischargeDate" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="highestMilitaryPosition" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <!-- <core-control [control]="vateransPosition" [form]="form" [checkError$]="checkError$"></core-control> -->
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="vateransPosition" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="vateransMemberDate" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="vateransAddress" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="politicalTheoryLevel" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="currentPartyCommittee" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-3">
+                        <core-control [control]="partytimePartyCommittee" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template #education>
+                <div class="row">
+                    <div class="col-4">
+                        <core-control [control]="educationLevelId" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+
+                    <!-- <div class="col-4">
+                        <core-control [control]="learningLevelId" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div> -->
+
+                    <div class="col-4">
+                        <core-control [control]="computerSkillId" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+
+                    <div class="col-4">
+                        <core-control [control]="licenseId" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+
+                
+
+                <!-- <div class="row">
+                    <div class="col-4">
+                        <core-control [control]="qualificationId" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-4">
+                        <core-control [control]="trainingFormId" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-4">
+                        <core-control [control]="schoolId" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                </div> -->
+
+                <!-- <div class="row">
+                    <div class="col-4">
+                        <core-control [control]="qualificationId2" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-4">
+                        <core-control [control]="trainingFormId2" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-4">
+                        <core-control [control]="schoolId2" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                </div> -->
+
+                <!-- <div class="row">
+                    <div class="col-4">
+                        <core-control [control]="qualificationId3" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-4">
+                        <core-control [control]="trainingFormId3" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-4">
+                        <core-control [control]="schoolId3" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                </div> -->
+
+                <!-- <div class="row">
+                    <div class="col-4">
+                        <core-control [control]="languageId" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-4">
+                        <core-control [control]="languageId2" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-4">
+                        <core-control [control]="languageId3" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                </div> -->
+                <!-- <div class="row">
+                    <div class="col-4">
+                        <core-control [control]="languageLevelId" [form]="form"
+                            [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-4">
+                        <core-control [control]="languageLevelId2" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                    <div class="col-4">
+                        <core-control [control]="languageLevelId3" [form]="form" [checkError$]="checkError$"></core-control>
+                    </div>
+                </div> -->
+            </ng-template>
+
+            <ng-template #contact>
+                <div class="row">
+                    <div class="col-4">
+                        <core-control [control]="isHost" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="householdNumber" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="householdCode" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="contact address col-12">
+                        <core-control [control]="address" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="contact provinceId col-12">
+                        <core-control [control]="provinceId" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="contact districtId col-12">
+                        <core-control [control]="districtId" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="contact wardId row">
+                    <div class="col-12">
+                        <core-control [control]="wardId" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="curAddress" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="curProvinceId" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="curDistrictId" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="curWardId" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="telephone" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="landlinePhone" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="emailCompany" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="emailPersonal" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template #bank>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="bankName" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="bankId" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="bankBranchId" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="bankNo" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="bankId2" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="bankBranchId2" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="bankNo2" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+            </ng-template>
+            
+            <ng-template #situation>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="mainIncome" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="otherSources" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="landGranted" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="taxGrantedHouse" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="totalArea" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="selfPurchaseLand" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="selfBuildHouse" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="totalAppArea" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="landForProduction" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <core-control [control]="additionalInformation" [form]="form"
+                        [checkError$]="checkError$"></core-control>
+                    </div>
+                </div>
+            </ng-template>
+            <div class="form-row">
+                <core-button-group-vns (buttonClick)="onButtonClick($event)" [shownItems]="buttonItems" [showCaption]="true"
+                    class="buttonGroupCustom"></core-button-group-vns>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<app-fullscreen-modal-loader *ngIf="loading"></app-fullscreen-modal-loader>

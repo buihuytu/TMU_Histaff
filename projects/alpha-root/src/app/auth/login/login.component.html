@@ -1,0 +1,60 @@
+
+<section class="form animated flipInX roboto-font" [class.d-none]="!!appInitializationService.initializing$.value">
+
+  <p class="valid">Valid. Please wait a moment.</p>
+  <p class="error">Error. Please enter correct Username &amp; password.</p>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="loginbox" autocomplete="off">
+    
+    <img class="logo" src="../../../assets/{{logo}}"/>
+
+    <!-- <div style="
+      width: 140px;
+      height: 103px;
+      margin: 0 auto;
+      background-image: url(../../../assets/images/veamLogo2.svg);
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+      background-position: 0px 0px;
+      margin-bottom: 42px;
+    ">
+    </div> -->
+
+    <div class="label-grp">
+      <span class="feather-user"></span>
+      <p>Tên đăng nhập</p>
+    </div>
+    <input placeholder="Tên đăng nhập" type="text" id="username" formControlName="username"
+    >
+    <div class="label-grp">
+      <span class="feather-lock"></span>
+      <p>Mật khẩu</p>
+    </div>
+    <input placeholder="Mật khẩu" type="password" id="password" formControlName="password"
+    >
+    <div class="sign-in">
+        <div class="remember">
+            <label class="container">
+                <input type="checkbox" formControlName="remember">
+                <span class="checkmark"></span>
+                <p>Ghi nhớ tài khoản</p>
+            </label>
+        </div>
+        <div class="forget" style="width: 50%;">
+            <a (click)="onClickForgotPassword()">Quên mật khẩu?</a>
+            <div *ngIf="showForgotPassword">
+              <app-forgot-password-dialog (clickButtonSkip)="onClickButtonSkip($event)" (loadingFullscreen)="onLoadingFullscreen($event)">
+              </app-forgot-password-dialog>
+            </div>
+        </div>
+    </div>
+    <label class="form-error h100" *ngIf="!!initializationError">{{ initializationError }}</label>
+    <button type="submit" id="submit">Đăng nhập</button>
+  </form>
+  <div class="copyright">
+    <p>
+      Copyright © Công ty cổ phần Tư vấn Quản trị Doanh nghiệp Tinh Vân
+    </p>
+  </div>
+</section>
+
+<app-fullscreen-modal-loader *ngIf="loading"></app-fullscreen-modal-loader>

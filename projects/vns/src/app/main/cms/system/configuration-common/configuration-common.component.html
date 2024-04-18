@@ -1,0 +1,167 @@
+<div class="configuration-common-container">
+    <!-- 
+        cái màn hình nào cũng có
+        thẻ "core-page-list"
+
+        phải thêm thư viện CorePageListComponent
+    -->
+    <core-page-list
+      [apiDefinition]="apiDefinition"
+      [columns]="columns"
+      [title]="title"
+      [editRoute]="editRoute"
+      [crud]="crud"
+      [outerParam$]="outerParam$"
+      [normalMode]="true"
+      [autoResizeWithWindow]="true"
+    >
+      <!--
+        bạn chỉ cần viết code
+        đến cái đoạn [apiDefinition]
+        và [columns]
+
+        thì dữ liệu đã được điền vào bảng
+      -->
+
+      <!-- cái [title] để hiển thị tiêu đề -->
+
+      <!-- cái [editRoute] là tuyến đường đến "edit" -->
+
+      <!--
+        cái [crud] có tác dụng
+        gọi API để xóa nhiều bản ghi
+      -->
+
+      <!--
+        cái [outerParam$] là tham số bên ngoài
+      
+        tác dụng:
+        Trong trường hợp cần lọc lưới thêm
+        thì mới cần truyền vào thẻ <core-page-list> thôi
+
+        Còn nếu truyền đi mà không xử lý
+        cũng không sao cả, hoặc sau này sẽ cần
+      -->
+
+      <!--
+        cái [normalMode] = true
+        là trang có Pop Up
+        phải true thì mới có thể điều hướng đến Pop Up
+
+        một số trang không mở Pop Up
+        thì phải sử dụng false
+
+        nếu bạn thấy khi code
+        mà bấm vào nút thêm mới
+        nhưng nó không mở bảng để nhập dữ liệu
+        thì bạn có thể sửa [normalMode]="false"
+      -->
+
+      <!--
+        cái [autoResizeWithWindow]
+        dịch ra là "tự động thay đổi kích thước với cửa sổ"
+      -->
+    </core-page-list>
+
+    
+    <!--
+        vì có 4 cái chexbox
+        nên phải sử dụng 3 cái
+        thẻ "core-checkbox"
+    -->
+    <!-- đây là checkbox chữ hoa -->
+    <ng-template #isUppercase let-isUppercase="context.isUppercase">
+      <!--
+        đầu tiên, bạn viết code cái thẻ ng-template
+        sau đó bạn dùng dấu # để đặt tên
+        đây là bạn đang tạo "ViewChild"
+
+        bạn phải đặt tên cho cái ViewChild
+        trùng với tên trường đang viết code
+
+        ví dụ trong code
+        là field: 'isUppercase'
+        thì bên ngoài phải đặt tên là #isUppercase
+
+        sau đó, bạn sẽ phải khai báo
+        bộ trang trí (decorator) ViewChild
+        và đặt tên cho nó là "isUppercase"
+
+        nó sẽ giúp cho cái ViewChild tên là "isUppercase"
+        trỏ đến cái #isUppercase ở bên ngoài
+
+        ví dụ khai báo @ViewChild():
+        @ViewChild('isUppercase') isUppercase!: TemplateRef<any>;
+
+        sau đó, bạn phải viết code
+        trong hàm ngAfterViewInit()
+        hàm ngAfterViewInit() là 1 pha trong
+        vòng đời của 1 component
+        
+        => tức là trong vòng đời của 1 conponent
+        khi nào nó đến gai đoạn ngAfterViewInit
+        thì nó mới gọi hàm ngAfterViewInit()
+
+        sau đó, bạn thêm thuộc tính
+        let-isUppercase="context.isUppercase"
+      -->
+
+      <!-- gọi thẻ core-checkbox -->
+      <core-checkbox
+        class="d-flex justify-content-center"
+        [disabled]="true"
+        [inputValue]="isUppercase"
+      >
+        <!--
+          chỗ này bạn sẽ bị báo lỗi
+          vì thẻ "core-checkbox"
+          chưa được import thư viện CoreCheckboxComponent
+          
+          bạn hãy thêm thư viện CoreCheckboxComponent
+          vào file "configuration-common.module.ts"
+
+          thuộc tính class dùng để đặt tên class
+
+          thuộc tính [disabled]
+          dùng để thiết lập vô hiệu hóa
+
+          thuộc tính [inputValue]="isUppercase"
+          dùng để truyền dữ liệu ra giao diện
+        -->
+      </core-checkbox>
+    </ng-template>
+
+
+    <!-- các checkbox còn lại thì làm tương tự -->
+    <!-- đây là checkbox chữ số -->
+    <ng-template #isNumber let-isNumber="context.isNumber">
+      <core-checkbox
+        class="d-flex justify-content-center"
+        [disabled]="true"
+        [inputValue]="isNumber"
+      >
+      </core-checkbox>
+    </ng-template>
+
+
+    <!-- đây là checkbox chữ thường -->
+    <ng-template #isLowercase let-isLowercase="context.isLowercase">
+      <core-checkbox
+        class="d-flex justify-content-center"
+        [disabled]="true"
+        [inputValue]="isLowercase"
+      >
+      </core-checkbox>
+    </ng-template>
+
+
+    <!-- đây là checkbox ký tự đặc biệt -->
+    <ng-template #isSpecialChar let-isSpecialChar="context.isSpecialChar">
+      <core-checkbox
+        class="d-flex justify-content-center"
+        [disabled]="true"
+        [inputValue]="isSpecialChar"
+      >
+      </core-checkbox>
+    </ng-template>
+</div>

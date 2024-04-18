@@ -1,0 +1,55 @@
+<div class="app-quick-links-container" [ngStyle]="{
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+}">
+
+    <div class="quick-links-slider" [ngStyle]="{
+        display: 'block',
+        padding: layoutService.basicSpacing/2 + 'px',
+        height: layoutService.quickLinkItemSize + layoutService.basicSpacing + 'px',
+        lineHeight: layoutService.quickLinkItemSize + layoutService.basicSpacing + 'px',
+        width: (layoutService.quickLinkItemSize + layoutService.basicSpacing) *columnCount + layoutService.basicSpacing + 'px',
+        backgroundColor: '#F1F1F1',
+        borderRadius: (layoutService.quickLinkItemSize + layoutService.basicSpacing + layoutService.basicSpacing/2)/2 + 'px'
+    }">
+
+        <base-slider [pagesContext]="pages" [pageRef]="pageRef" (onItemClick)="onMenuItemClick($event)"></base-slider>
+
+    </div>
+
+</div>
+
+<ng-template #pageRef let-rows="rows">
+    <div class="quick-links-page" [ngStyle]="{
+        borderRadius: layoutService.quickLinkItemSize/2 + 'px'
+      }">
+        <div class="d-flex d-flex-start quick-links-row" *ngFor="let row of rows">
+            <div class="quick-links-item-wrapper" *ngFor="let item of row" (click)="onMenuItemClick(item)">
+                <div class="quick-links-icon-wrapper d-flex d-flex-start" [ngStyle]="{ 
+                          width: layoutService.quickLinkItemSize + layoutService.basicSpacing + 'px',
+                          height: layoutService.quickLinkItemSize + 'px',
+                          paddingLeft: layoutService.basicSpacing / 2 + 'px',
+                          paddingRight: layoutService.basicSpacing / 2 + 'px',
+                          backgroundColor: 'transparent'
+                      }" [appTooltip]="item.captionCode | translate: lang"
+                      [showAnyway]="true">
+
+                      
+
+                    <div class="quick-links-img-wrapper d-flex d-flex-center"
+                        [ngStyle]="{ backgroundColor: 'transparent' }"
+                        >
+                        <img class="" [src]="item.svg" [ngStyle]="{
+                              cursor: 'pointer',
+                              width: layoutService.quickLinkItemSize + 'px',
+                              height: layoutService.quickLinkItemSize + 'px'
+                          }">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ng-template>

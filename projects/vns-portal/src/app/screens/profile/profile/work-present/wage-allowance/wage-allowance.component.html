@@ -1,0 +1,130 @@
+<div class="accordion" id="accordionPanelsStayOpenExample">
+  <div class="null" *ngIf="!checkData">Không có dữ liệu về quá trình lương và phụ cấp!</div>
+  <div class="accordion-item" *ngFor="let item of data;">
+    <h2 class="accordion-header" [attr.id]="'panelsStayOpen-heading' + item.id">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        [attr.data-bs-target]="'#panelsStayOpen-collapse' + item.id" aria-expanded="true"
+        [attr.aria-controls]="'panelsStayOpen-collapse' + item.id">
+        <div class="header-content ml15r">
+          <p class="header-title">{{effectDate | translate: lang}} :&nbsp; {{ item.effectDate | date : 'dd/MM/yyyy'}}
+            <button (click)="onHandleItemClick(item)" class="edit icon-wrapper fr">
+              <i class="d-flex feather-edit-2"></i>
+            </button>
+          </p>
+          <!-- <div class="date-title">
+            <p class="position">{{effectDate | translate: lang}} :&nbsp; {{ item.effectDate | date : 'dd/MM/yyyy'}}</p>
+            <div class="dot">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <circle cx="2.5" cy="2.5" r="2.5" fill="#D9D9D9" />
+              </svg>
+            </div>
+            <p class="position">{{expireDate | translate: lang}} :&nbsp; {{ item.expireDate | date : 'dd/MM/yyyy'}}</p>
+          </div> -->
+        </div>
+      </button>
+    </h2>
+    <div [attr.id]="'panelsStayOpen-collapse' + item.id" class="accordion-collapse collapse"
+      [attr.aria-labelledby]="'ppanelsStayOpen-heading' + item.id">
+      <div class="accordion-body">
+        <div class="row info-sal">
+          <div class="col-sm-6 pl0">
+            <!-- <div class="row col-md-12 info">
+              <p class="label col-6">{{ taxTableName | translate: lang }}:</p>
+              <p class="value col-6">{{ item.taxTableName }}</p>
+            </div> -->
+            <!-- <div class="row col-md-12 info">
+              <p class="label col-6">{{ regionName | translate: lang }}:</p>
+              <p class="value col-6">{{ item.regionName }}</p>
+            </div>
+            <div class="row col-md-12 info">
+              <p class="label col-6">{{ salaryScaleName | translate: lang }}:</p>
+              <p class="value col-6">{{ item.salaryScaleName }}</p>
+            </div>-->
+            <!-- <div class="row col-md-12 info">
+              <p class="label col-6">{{ salaryRankName | translate: lang }}:</p>
+              <p class="value col-6">{{ item.salaryRankName }}</p>
+            </div> -->
+            <div class="row col-md-12 info">
+              <p class="label col-6">{{ salaryLevelName | translate: lang }}:</p>
+              <p class="value col-6">{{ item.salaryLevelName }}</p>
+            </div>
+            <div class="row col-md-12 info">
+              <p class="label col-6">{{ coefficient | translate: lang }}:</p>
+              <p class="value col-6">{{ item.coefficient }}</p>
+            </div>
+            <!-- <div class="row col-md-12 info">
+              <p class="label col-6">{{ salaryScaleDcvName | translate: lang }}:</p>
+              <p class="value col-6">{{ item.salaryScaleDcvName }}</p>
+            </div> -->
+          </div>
+          <div class="col-sm-6 pl0">
+            <!-- <div class="row col-md-12 info">
+              <p class="label col-6">{{ salaryRankDcvName | translate: lang }}:</p>
+              <p class="value col-6">{{ item.salaryRankDcvName }}</p>
+            </div> -->
+            <div class="row col-md-12 info">
+              <p class="label col-6">{{ salaryLevelDcvName | translate: lang }}:</p>
+              <p class="value col-6">{{ item.salaryLevelDcvName }}</p>
+            </div>
+            <div class="row col-md-12 info">
+              <p class="label col-6">{{ coefficientDcv | translate: lang }}:</p>
+              <p class="value col-6">{{ item.coefficientDcv }}</p>
+            </div>
+            <!-- <div class="row col-md-12 info">
+              <p class="label col-6">{{ salPercent | translate: lang }}:</p>
+              <p class="value col-6">{{ item.salPercent }}</p>
+            </div> -->
+            <!-- <div class="row col-md-12 info">
+              <p class="label col-6">{{ effectUpsalDate | translate: lang }}:</p>
+              <p class="value col-6">{{ item.effectUpsalDate }}</p>
+            </div>
+            <div class="row col-md-12 info">
+              <p class="label col-6">{{ statusName | translate: lang }}:</p>
+              <p class="value col-6">{{ item.statusName }}</p>
+            </div> -->
+            <div class="row col-md-12 info">
+              <p class="label col-6">{{ salInsu | translate: lang }}:</p>
+              <p class="value col-6">{{ item.salInsu | tableCell: "NUMBER": lang }} VNĐ</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item-allowance">
+          <div class="row accordion-title">
+            <div class="header-title">Phụ cấp</div>
+          </div>
+          <div class="col-sm-3 bor-left pt2" *ngFor="let all of item.allowanceList;">
+            <div class="col-sm-12 pl0" [attr.id]="'panelsStayOpen-heading' + all.id">
+              <div class="row col-md-12  info">
+                <p class="label col-6">{{ allowanceName | translate: lang }}:</p>
+                <p class="value col-6">{{ all.allowanceName }}</p>
+              </div>
+              <div class="row col-md-12  info">
+                <p class="label col-6">{{ coefficientAllowance | translate: lang }}:</p>
+                <p class="value col-6">{{ all.coefficient }}</p>
+              </div>
+              <div class="row col-md-12 pl0 info">
+                <p class="label col-6">{{ effectDate | translate: lang }}:</p>
+                <p class="value col-6">{{ all.effectdate | date: 'dd/MM/yyyy' }}</p>
+              </div>
+              <div class="row col-md-12 pl0 info">
+                <p class="label col-6">{{ expireDate | translate: lang }}:</p>
+                <p class="value col-6">{{ all.expireDate | date: 'dd/MM/yyyy'}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="popup1" class="overlay" *ngIf="showPopup">
+    <div class="popup">
+      <core-page-edit *ngIf="!!sections.length" [width]="600" [sections]="sections" [crud]="crud"
+        [captionCode]="captionCode" [normalMode]="true" [entityTable]="entityTable"
+        (onFormCreated)="onFormCreated($event)" [autoSubmitLogicOff]="true" (submitLogic)="onClickSubmit($event)"
+        [autoCancelLogicOff]="true" (cancelLogic)="onClickCancel($event)"
+        (onInitialValueStringReady)="onFormReinit($event)" [customFormButtonItems]="buttonItems">
+      </core-page-edit>
+    </div>
+  </div>

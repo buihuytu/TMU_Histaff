@@ -1,0 +1,14 @@
+<core-tabs [headers]="headers" [contents]="[ contractinfo, contractappendix ]"
+(onHeaderClick)="onCoreTabsHedaerClick($event)">
+</core-tabs>
+
+<ng-template #contractinfo>
+    <app-contract-info></app-contract-info>
+</ng-template>
+
+<ng-template #contractappendix>
+    <app-contract-appendix></app-contract-appendix>
+</ng-template>
+<!-- <div #container>
+    <core-page-view [sections]="sections" [showLeftLine]="true"></core-page-view>
+</div> -->

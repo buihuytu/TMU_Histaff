@@ -1,0 +1,33 @@
+<div class="app-family-container">
+    <div class="header-text">{{title | translate: lang }}</div>
+    <div class="content">
+        <div class="card-info" *ngFor="let member of members">
+            <p class="type">{{member.relationshipName}}</p>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{fullname | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.fullname}}</p>
+                <p class="label col-md-2">{{birthDate | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.birthDate | date: 'dd/MM/yyyy'}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{idNo | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.idNo}}</p>
+                <p class="label col-md-2">{{pitCode | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.pitCode}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{isDeduct | translate: lang }}:</p>
+                <p class="text col-md-4">{{(member.isDeduct ? yes : no) | translate: lang }}</p> 
+                <p class="label col-md-2">{{deductFrom | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.deductFrom | date: 'dd/MM/yyyy'}}</p>
+            </div>
+            <div class="row no-padding no-margin">
+                <p class="label col-md-2">{{deductTo | translate: lang }}:</p>
+                <p class="text col-md-4">{{member.deductTo | date: 'dd/MM/yyyy'}}</p>
+                <p class="label col-md-2">{{isHousehold | translate: lang }}:</p>
+                <p class="text col-md-4">{{(member.isHousehold ? yes : no) | translate: lang }}</p> 
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,24 @@
+<div class="se-document-info-container">
+    <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+        [title]="title"  [left]="orgTree"
+        [autoResizeWithWindow]="true"
+        [outerParam$]="outerParam$"
+        [outerInOperators]="outerInOperators"
+        [showParamKit]="true"
+        [datePeriodComparisonFor]="datePeriodComparisonFor"
+        [datePeriodComparisonForLabelKey]="datePeriodComparisonForLabelKey"
+        [hideStatusInclusion]="false"
+        [statusInclusionFor]="statusInclusionFor"
+        [statusInclusionForLabelKey]="statusInclusionForLabelKey"
+        [statusOptionsApi]="statusOptionsApi"
+        [disableDoubleClick]="true"
+        (rowDoubleClick)="rowDoubleClick($event)"
+        [outerSort]="outerSort"
+        >
+    </core-page-list>
+</div>
+<ng-template #orgTree>
+    <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+    </core-org-tree>
+  </ng-template>
+

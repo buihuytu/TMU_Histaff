@@ -1,0 +1,85 @@
+<div class="border-container">
+  <div class="null" *ngIf="!checkData">Không có dữ liệu về quá trình công tác!</div>
+
+  <div class="app-outside-company-container">
+    <div class="content">
+      <div class="card-info" *ngFor="let work of data">
+        <div class="row btn-click d-flex align-items-center">
+          <p class="type">{{ work.typeName }}</p>
+          <button (click)="onHandleItemClick(work)" class="edit icon-wrapper">
+            <i class="d-flex feather-edit-2"></i>
+          </button>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="row no-padding no-margin col-12">
+              <p class="label col-md-4">{{ decisionNo | translate : lang }}:</p>
+              <p class="text col-md-5">{{ work.decisionNo }}</p>
+            </div>
+            <div class="row no-padding no-margin col-12">
+              <p class="label col-md-4">{{ orgName | translate : lang }}:</p>
+              <p class="text col-md-5">{{ work.orgName }}</p>
+            </div>
+            <div class="row no-padding no-margin col-md-12">
+              <p class="label col-md-4">{{ positionName | translate : lang }}:</p>
+              <p class="text col-md-5">{{ work.positionName }}</p>
+            </div>
+            <div class="row no-padding no-margin col-md-12">
+              <p class="label col-md-4">{{ effectDate | translate : lang }}:</p>
+              <p class="text col-md-5">{{ work.effectDate | date : 'dd/MM/yyyy' }}</p>
+            </div>
+            <div class="row no-padding no-margin col-md-12">
+              <p class="label col-md-4">{{ expireDate | translate : lang }}:</p>
+              <p class="text col-md-5">{{ work.expireDate | date : 'dd/MM/yyyy' }}</p>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="row no-padding no-margin col-12">
+              <p class="label col-md-6">{{ resignationDate | translate : lang }}:</p>
+              <p class="text col-md-4">{{ work.expireDate | date : 'dd/MM/yyyy'}}</p>
+            </div>
+            <div class="row no-padding no-margin col-12">
+              <p class="label col-md-6">{{ workTime | translate : lang }}:</p>
+              <p class="text col-md-4">{{ work.workTime }}</p>
+            </div>
+            <div class="row no-padding no-margin col-12">
+              <p class="label col-md-6">{{ objEmp | translate : lang }}:</p>
+              <p class="text col-md-4">{{ work.employeeOject }}</p>
+            </div>
+            <div class="row no-padding no-margin col-12">
+              <p class="label col-md-6">{{ addressWork | translate : lang }}:</p>
+              <p class="text col-md-4">{{ work.workAddress }}</p>
+            </div>
+            <!-- <div class="row no-padding no-margin col-12">
+              <p class="label col-md-4">{{ addressWork | translate : lang }}:</p>
+              <p class="text col-md-5">{{ work.workAddress }}</p>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal -->
+<div id="popup1" class="overlay" *ngIf="showPopup">
+  <div class="popup">
+    <core-page-edit
+      *ngIf="!!sections.length"
+      [width]="600"
+      [sections]="sections"
+      [captionCode]="captionCode"
+      [normalMode]="true"
+      [entityTable]="entityTable"
+      (onFormCreated)="onFormCreated($event)"
+      [autoSubmitLogicOff]="true"
+      (submitLogic)="onClickSubmit($event)"
+      [autoCancelLogicOff]="true"
+      (cancelLogic)="onClickCancel($event)"
+      (onInitialValueStringReady)="onFormReinit($event)"
+      [customFormButtonItems] = "buttonItems"
+    >
+    </core-page-edit>
+  </div>
+</div>

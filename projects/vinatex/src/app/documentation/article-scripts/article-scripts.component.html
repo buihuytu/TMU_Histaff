@@ -1,0 +1,16 @@
+<div #container class="article-scripts-container" [class.shown]="shown">
+
+    <h3>Scripts<span (click)="hideMe()"><i class="feather-x"></i></span></h3>
+
+    <ul>
+        <li *ngIf="!!!scripts.length">This article has no script</li>
+        <li *ngFor="let s of scripts">
+            <pre class="">
+                <code class="language-js">
+                {{ s.text }}
+                </code>
+            </pre>
+        </li>
+    </ul>
+
+</div>

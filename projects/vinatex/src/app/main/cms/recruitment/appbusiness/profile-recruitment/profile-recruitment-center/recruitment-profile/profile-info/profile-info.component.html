@@ -1,0 +1,33 @@
+<div #container class="app-profile-info-container">
+    <core-accordion
+      [sectors]="sectors"
+      [manualHeightList]="true"
+      [heightList]="[700, 640, 370, 680]"
+      [refs]="[
+        cv,
+        levelInfo,
+        wish,
+        infoOther,
+      ]"
+      (onItemClick)="onAccordionItemClick($event)"
+      (onItemClickEdit)="onAccordionItemClickEdit($event)"
+    ></core-accordion>
+  
+    <ng-template #cv>
+      <app-candidate-cv></app-candidate-cv>
+    </ng-template>
+  
+    <ng-template #levelInfo>
+      <app-level-info></app-level-info>
+    </ng-template>
+  
+    <ng-template #wish>
+      <app-wish></app-wish>
+    </ng-template>
+  
+    <ng-template #infoOther>
+      <app-info-other></app-info-other>
+    </ng-template>
+  
+    
+  </div>

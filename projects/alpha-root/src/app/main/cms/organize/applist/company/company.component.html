@@ -1,0 +1,22 @@
+<div class="company-container">
+  <core-page-list
+    [apiDefinition]="apiDefinition"
+    [columns]="columns"
+    [editRoute]="editRoute"
+    [crud]="crud"
+    [title]="title"
+    [outerParam$]="outerParam$"
+    [outerFilterOperators]="outerFilterOperators"
+    [autoResizeWithWindow]="true"
+
+    (selectedIdsChange) ="onSelectedIdsChange($event)"
+  >
+    <!--
+      ẩn thuộc tính (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+      vì có code theo mn để dev rồi
+    -->
+  </core-page-list>
+  <ng-template #sticker let-code="context.isActiveStr">
+    <core-status-sticker [code]="code"></core-status-sticker>
+</ng-template>
+</div>

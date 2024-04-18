@@ -1,0 +1,15 @@
+<div class="at-setup-wifi-container">
+    <core-page-list [apiDefinition]="apiDefinition" [crud]="crud"
+    [columns]="columns" [left]="orgTree"
+    [outerParam$]="outerParam$"
+    [outerInOperators]="outerInOperators"
+    [editRoute]="editRoute" [title]="title"
+    ></core-page-list>
+
+    <ng-template #orgTree>
+        <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+        </core-org-tree>
+      </ng-template>
+</div>
+
+

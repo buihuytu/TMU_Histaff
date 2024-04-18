@@ -1,0 +1,9 @@
+export enum EnumHomeMenuItemCode {
+    REGISTER_OFF = 'REGISTER_OFF',
+    APPROVE = 'APPROVE',
+    TIME_TABLE = 'TIME_TABLE',
+    PAYROLL_NOTE = 'PAYROLL_NOTE',
+    PROFILE = 'PROFILE',
+    CONTRACT_LIST = 'CONTRACT_LIST',
+
+}

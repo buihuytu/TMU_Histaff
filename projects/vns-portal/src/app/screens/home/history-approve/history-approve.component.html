@@ -1,0 +1,48 @@
+<div class="app-history-approve-container" [ngStyle]="{
+    width: (width - layoutService.basicSpacing) + 'px',
+    maxWidth: '100%',
+    overflow: 'hidden',
+    border: '1px solid #D1D1D1',
+    borderRadius: '5px',
+    
+}">
+    <div [ngStyle]="{
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            padding: layoutService.basicSpacing/2 + 'px',
+        }">{{ caption | translate: lang | uppercase }}</div>
+    <div [ngStyle]="{height: layoutService.comingSoonCardHeight + layoutService.basicSpacing + 'px', overflowY:'scroll'}">
+        <div class="d-flex justify-content-between row-data" [ngStyle]="{
+                marginLeft: layoutService.basicSpacing/ 2 + 'px',
+                marginRight: layoutService.basicSpacing/ 2 + 'px',
+                marginBottom: layoutService.basicSpacing/ 4 + 'px',
+                
+                }" *ngFor="let item of list">
+            <div class="col-xl-5 d-flex justify-content-between row" [ngStyle]="{marginLeft: 0 + 'px'}">
+                <div class="type-name col-md-6">{{item.typeName}}</div>
+                <div class="date-approve col-md-6" [ngStyle]="{
+                    padding: layoutService.basicSpacing/2 + 'px',
+                    }"><i class="feather-calendar"></i> {{item.date |
+                    tableCell: 'DATE': lang}} </div>
+            </div>
+            <div class="col-xl-6">
+                <div [ngStyle]="{
+                    float:'right',
+                    marginRight: layoutService.basicSpacing/2 +'px',
+                    padding: layoutService.basicSpacing/2 + 'px'
+                }">
+                    <span [class.statusApproving]="item.statusName === 'Chờ phê duyệt'" 
+                    [class.statusApproved]="item.statusName === 'Được phê duyệt'"
+                    [class.statusUnapproved]="item.statusName === 'Bị từ chối'">{{item.statusName}}</span>
+                    <img *ngIf="item.statusName == 'Được phê duyệt' " class="icon-item"
+                        src="assets/images/home/approve-icon-noti.svg" />
+                    <img *ngIf="item.statusName == 'Chờ phê duyệt' " class="icon-item"
+                        src="assets/images/home/approve.svg" />
+                    <img *ngIf="item.statusName == 'Bị từ chối' " class="icon-item"
+                        src="assets/images/home/not-approve.svg" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

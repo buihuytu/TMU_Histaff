@@ -1,0 +1,18 @@
+<div *ngFor="let item of items" class="custom-work-present">
+  <div class="custom-box" style="display: flex; justify-content: space-between" (click)="itemClick(item)">
+    <div style="display: flex; align-items: center; padding: 20px">
+      <div
+        style="padding: 10px; border-radius: 30px; justify-content: space-between"
+        [ngStyle]="{ backgroundColor: item.backgroundColor }">
+        <img class="" [src]="item.svg" />
+      </div>
+      &nbsp;&nbsp;
+      <div>
+        <span>{{ item.captionCode | translate : lang }}</span>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center; padding-right: 20px; cursor: pointer">
+      <img class="" src="assets/images/home/bigger-icon.svg" />
+    </div>
+  </div>
+</div>

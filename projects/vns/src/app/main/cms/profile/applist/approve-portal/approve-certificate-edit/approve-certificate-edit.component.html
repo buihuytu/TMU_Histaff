@@ -1,0 +1,85 @@
+<div class="app-approve-certificate-edit-container">
+    <!--
+        sử dụng thẻ core-page-list
+        thì bạn phải import mô đun "CorePageEditComponent"
+    -->
+    <core-page-list
+        [apiDefinition]="apiDefinition"
+        [columns]="columns"
+        [title]="title"
+        [autoResizeWithWindow]="true"
+        [crud]="crud"
+        [editRoute]="editRoute"
+        [outerSort]="outerSort"
+        (selectedIdsChange) ="onSelectedIdsChange($event)"
+
+        [outerParam$]="outerParam$"
+        [outerInOperators]="outerInOperators"
+        [left]="orgTree"
+        [frozen]="3"
+        [headerWrap]="true"
+        [headerFirstRowHeight]="headerFirstRowHeight"
+    >
+
+    <!--
+        thuộc tính "apiDefinition"
+        dùng để định nghĩa API
+
+        thuộc tính "columns"
+        dùng để định nghĩa kiểu dữ liệu
+        cho các cột
+
+        => bình thường khi bạn viết code
+        xong ở chỗ "apiDefinition" và "columns"
+        thì nó đổ dữ liệu ra giao diện thành công rồi đấy
+
+        thuộc tính "title"
+        dùng để in ra tiêu đề
+
+        để viết sự kiện cho button
+        thì bạn sử dụng (corePageHeaderButtonClick) = ""
+
+        để lấy id của bản ghi
+        khi click vào button
+        thì sử dụng (selectedIdsChange) = ""
+
+
+        thuộc tính [autoResizeWithWindow]="true"
+        dùng để thiết lập chiều cao
+        một cách tự động cho trang web
+
+
+        thêm thuộc tính [crud]="crud"
+        để xóa bản ghi
+
+        ẩn cái này đi (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+        vì crud đã được nâng cấp thêm toggleApproveIds
+    -->
+
+    </core-page-list>
+
+
+    <ng-template #orgTree>
+        <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)"> </core-org-tree>
+    </ng-template>
+</div>
+
+<ng-template #typeCertificateName let-typeCertificateName="context.typeCertificateName" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('typeCertificate')">{{typeCertificateName}}</div>
+</ng-template>
+
+<ng-template #name let-name="context.name" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('name')">{{name}}</div>
+</ng-template>
+
+<ng-template #trainFromDateStr let-trainFromDateStr="context.trainFromDateStr">
+    <div class="fill-color-column">{{trainFromDateStr}}</div>
+</ng-template>
+
+<ng-template #trainToDateStr let-trainToDateStr="context.trainToDateStr" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('trainToDate')">{{trainToDateStr}}</div>
+</ng-template>
+
+<ng-template #remark let-remark="context.remark" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('remark')">{{remark}}</div>
+</ng-template>

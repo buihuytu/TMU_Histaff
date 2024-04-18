@@ -1,0 +1,27 @@
+<div class="phaseadvance-container">
+    <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+        [title]="title" [left]="orgTree" [outerParam$]="outerParam$" [normalMode]="true"
+        [outerInOperators]="outerInOperators" [autoResizeWithWindow]="true" [hideStatusInclusion]="true" [frozen]="2">
+    </core-page-list>
+
+    <ng-template #orgTree>
+        <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+        </core-org-tree>
+    </ng-template>
+
+    <ng-template #sticker let-code="context.status">
+        <core-status-sticker [code]="code"></core-status-sticker>
+    </ng-template>
+</div>
+
+<!-- <div class="phaseadvance-container">
+    <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+        [title]="title" [left]="company" [outerParam$]="outerParam$" [normalMode]="true" 
+        [outerInOperators]="outerInOperators" [autoResizeWithWindow]="true"
+        [hideStatusInclusion]="true">
+    </core-page-list>
+
+    <ng-template #company>
+      <core-org-tree  [(ngModel)]="companyIds" (ngModelChange)="onCompanyIdsChange($event)"></core-org-tree>
+    </ng-template>
+  </div> -->

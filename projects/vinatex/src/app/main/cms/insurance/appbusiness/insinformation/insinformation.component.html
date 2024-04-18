@@ -1,0 +1,38 @@
+<div class="insinformation-container">
+  <core-page-list
+    [apiDefinition]="apiDefinition"
+    [columns]="columns"
+    [outerParam$]="outerParam$"
+    [outerInOperators]="outerInOperators"
+    [editRoute]="editRoute"
+    [crud]="crud"
+    [title]="title"
+    [left]="orgTree"
+    [normalMode]="true"
+    [autoResizeWithWindow]="true"
+    [outerSort]="outerSort"
+    (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+    (selectedDataChange)="onSelectedDataChange($event)"
+
+    [generateTemplateRequest]="generateTemplateRequest"
+    [importPreviewPath]="'ins-information-import'"
+    [frozen]="2"
+    [headerWrap]="true" [headerFirstRowHeight]="headerFirstRowHeight"
+  ></core-page-list>
+  <ng-template #orgTree>
+    <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)"> </core-org-tree>
+  </ng-template>
+
+  <ng-template #isBhxh let-isBhxh="context.isBhxh">
+    <core-checkbox [disabled]="true" [inputValue]="isBhxh"></core-checkbox>
+  </ng-template>
+  <ng-template #isBhyt let-isBhyt="context.isBhyt">
+    <core-checkbox [disabled]="true" [inputValue]="isBhyt"></core-checkbox>
+  </ng-template>
+  <ng-template #isBhtnldBnn let-isBhtnldBnn="context.isBhtnldBnn">
+    <core-checkbox [disabled]="true" [inputValue]="isBhtnldBnn"></core-checkbox>
+  </ng-template>
+  <ng-template #isBhtn let-isBhtn="context.isBhtn">
+    <core-checkbox [disabled]="true" [inputValue]="isBhtn"></core-checkbox>
+  </ng-template>
+</div>

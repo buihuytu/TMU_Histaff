@@ -1,0 +1,41 @@
+<div class="family-container">
+  <core-page-list
+    [apiDefinition]="apiDefinition"
+    [columns]="columns"
+    [editRoute]="editRoute"
+    [crud]="crud"
+    [title]="title"
+    [normalMode]="true"
+    [autoResizeWithWindow]="true"
+    [outerParam$]="outerParam$"
+    [left]="orgTree"
+    [outerSort]="outerSort"
+    [outerInOperators]="outerInOperators"
+    [showParamKit]="true"
+    [datePeriodComparisonFor]="datePeriodComparisonFor"
+    [datePeriodComparisonForLabelKey]="datePeriodComparisonForLabelKey"
+    [statusInclusionFor]="statusInclusionFor"
+    [statusInclusionForLabelKey]="statusInclusionForLabelKey"
+    [statusOptionsApi]="statusOptionsApi"
+    [frozen]="3"
+    [headerWrap]="true"
+    [headerFirstRowHeight]="headerFirstRowHeight"
+
+    [generateTemplateRequest]="generateTemplateRequest"
+    [importPreviewPath]="'hu-family-import'"
+  >
+  </core-page-list>
+  
+  <ng-template #orgTree>
+    <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+    </core-org-tree>
+  </ng-template>
+
+  <ng-template #isDeduct let-isDeduct="context.isDeduct">
+    <core-checkbox [disabled]="true" [inputValue]="isDeduct"></core-checkbox> 
+  </ng-template>
+
+  <ng-template #sticker let-code="context.statusName">
+    <core-status-sticker [code]="code"></core-status-sticker>
+  </ng-template>
+</div>

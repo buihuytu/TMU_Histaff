@@ -1,0 +1,18 @@
+<div class="app-sys-mail-template-edit-container">
+    <div class="d-flex justify-content-between flex-row-reverse">
+        <i class="feather-x icon-cancel" (click)="onCancel()"></i>
+        <div [ngStyle]="{ margin: '0px 24px' }">
+            <core-page-header [title]="captionCode" [hideButtonGroup]="true"></core-page-header>
+        </div>
+    </div>
+    <div class="no-margin no-padding row">
+        <div class="col-md-6">
+            <core-form [inputSections]="sections" [formName]="'form'" [showCaptionButton]="true" [mode$]="mode$" 
+            (onFormCreated)="onFormCreated($event)" (onCancal)="onCancel()" (onSubmit)="onSubmit()"></core-form>
+        </div>
+        <div class="col-md-6">
+            <ckeditor (change)="onChangeContent($event)" [editor]="editor" [data]="data"></ckeditor>
+        </div>
+    </div>
+
+</div>

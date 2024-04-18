@@ -1,0 +1,174 @@
+<div class="cms-report-view-container">
+
+    <!-- Top -->
+    <div class="container no-padding no-margin" style="max-width: unset !important;">
+        <!-- core-page-header -->
+        <core-page-header [shownItems]="shownItems" [title]="title"
+            (buttonClick)="onCorePageHeaderButtonClick($event)"></core-page-header>
+    </div>
+
+    <div class="container no-padding no-margin" style="max-width: unset !important;">
+        <div class="row no-padding no-margin">
+            <!-- Left -->
+
+            <div class="col-md-3">
+                <core-org-tree [accessorMode]="accessorMode" [(ngModel)]="listOrgIds"
+                    [disabled]="disableOrgTree"></core-org-tree>
+            </div>
+
+            <!-- Center -->
+
+            <div class="col-md-6">
+                <div class="row mb15">
+                    <div class="col-md-6" *ngIf="displayYear">
+                        <div class="form-group vertical">
+                            <label>{{ labelList.year | translate: lang}}</label>
+                            <core-dropdown [(ngModel)]="year" (ngModelChange)="onYearChange($event)"
+                                [options$]="yearOptions$" [getByIdObject$]="yearGetByIdObject$"
+                                [shownFrom]="shownFrom"></core-dropdown>
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="displaySalPeriod">
+                        <div class="form-group vertical">
+                            <label>{{ labelList.salPeriod | translate: lang}}</label>
+                            <core-dropdown [(ngModel)]="salPeriod" (ngModelChange)="onSalPeriodChange($event)"
+                                [options$]="salaryPeridOptions$" [getByIdObject$]="salaryPeriodGetByIdObject$"
+                                [shownFrom]="shownFrom"></core-dropdown>
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="displayObjSalary">
+                        <div class="form-group vertical">
+                            <label>{{ labelList.objSalary | translate: lang}}</label>
+                            <core-dropdown [(ngModel)]="objSalary" (ngModelChange)="onObjSalaryChange($event)"
+                                [options$]="objSalaryOptions$" [getByIdObject$]="objSalaryGetByIdObject$"
+                                [shownFrom]="shownFrom"></core-dropdown>
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="displayStartDate">
+                        <div class="form-group vertical">
+                            <label>{{ labelList.startDate | translate: lang}}</label>
+                            <core-date-picker [(ngModel)]="startDate"
+                                (ngModelChange)="onStartDateChange($event)"></core-date-picker>
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="displayEndDate">
+                        <div class="form-group vertical">
+                            <label>{{ labelList.endDate | translate: lang}}</label>
+                            <core-date-picker [(ngModel)]="endDate"
+                                (ngModelChange)="onEndDateChange($event)"></core-date-picker>
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="displayExpiredDate">
+                        <div class="form-group vertical">
+                            <label>{{ labelList.expiredDate | translate: lang}}</label>
+                            <core-date-picker [(ngModel)]="expiredDate"
+                                (ngModelChange)="onExpiredDateChange($event)"></core-date-picker>
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="displayMonth">
+                        <div class="form-group vertical">
+                            <label>{{ labelList.month | translate: lang}}</label>
+                            <core-month-selector [(ngModel)]="monthValue"
+                                (ngModelChange)="onMonthChange($event)"></core-month-selector>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row mb15">
+                    <div class="col-md-6" *ngIf="displayEmployeeFirstName">
+                        <div class="form-group vertical">
+                            <label>{{ labelList.employeeDeclare | translate: lang}}</label>
+                            <core-form-control-seeker [boundFrom]="'fullname'" [shownFrom]="'fullname'"
+                                [multiMode]="false" [paramMode]="true" [(ngModel)]="employeeDeclare"
+                                [seekerSourceType]="employeeSeekerType" [getByIdObject$]="employeeGetByIdObject$"
+                                (ngModelChange)="onEmployeeDeclareChange($event)"></core-form-control-seeker>
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="displayEmployeeSecondName">
+                        <div class="form-group vertical">
+                            <label>{{ labelList.employeeRepresentative | translate: lang}}</label>
+                            <core-form-control-seeker [boundFrom]="'fullname'" [shownFrom]="'fullname'"
+                                [multiMode]="false" [paramMode]="true" [(ngModel)]="employeeRepresentative"
+                                [seekerSourceType]="employeeSeekerType"
+                                [preDefinedOuterParam$]="employeePreDefinedOuterParam$"
+                                (ngModelChange)="onEmployeeRepresentativeChange($event)"></core-form-control-seeker>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Phần này dành riêng cho phần Báo cáo cán bộ dự kiến nghỉ hưu By datnv-->
+                <div class="no-padding no-margin" *ngIf="isShowRetire">
+                    <div class="row mb15">
+                        <div class="col-md-4">
+                            <!-- <label>{{labelList.employeeDeclare | translate: lang}}</label> -->
+                            <core-control [control]="oldMenStartInput" [form]="form"
+                                [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-md-4">
+                            <core-control [control]="oldMenYearEndInput" [form]="form"
+                                [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-md-4">
+                            <core-control [control]="oldMenMonthEndInput" [form]="form"
+                                [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <!-- <label>{{labelList.employeeDeclare | translate: lang}}</label> -->
+                            <core-control [control]="oldWomenStartInput" [form]="form"
+                                [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-md-4">
+                            <core-control [control]="oldWoMenYearEndInput" [form]="form"
+                                [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-md-4">
+                            <core-control [control]="oldWoMenMonthEndInput" [form]="form"
+                                [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Phần này dành riêng cho phần Báo cáo nhân viên cán bộ đến tuổi nghỉ hưu By datnv-->
+                <div class="no-padding no-margin" *ngIf="isShowRetireAge">
+                    <label>{{labelList.man | translate: lang}}</label>
+                    <div class="row mb15">
+                        <div class="col-md-4">
+                            <!-- <label>{{labelList.employeeDeclare | translate: lang}}</label> -->
+                            <core-control [control]="menYearAgeInput" [form]="form"
+                                [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-md-4">
+                            <core-control [control]="menMonthAgeInput" [form]="form"
+                                [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                    <label>{{labelList.women | translate: lang}}</label>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <!-- <label>{{labelList.employeeDeclare | translate: lang}}</label> -->
+                            <core-control [control]="womenYearAgeInput" [form]="form"
+                                [checkError$]="checkError$"></core-control>
+                        </div>
+                        <div class="col-md-4">
+                            <core-control [control]="womenMonthAgeInput" [form]="form"
+                                [checkError$]="checkError$"></core-control>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right -->
+
+            <div class="col-md-3">
+                <core-list [options]="listTypeReports" [(ngModel)]="typeReportName"
+                    (ngModelChange)="onListTypeReportsChange($event)">
+                </core-list>
+            </div>
+        </div>
+    </div>
+
+</div>

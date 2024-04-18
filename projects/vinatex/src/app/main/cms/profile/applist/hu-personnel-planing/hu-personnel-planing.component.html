@@ -1,0 +1,21 @@
+<div class="app-hu-personnel-planing-container">
+    <core-page-list [apiDefinition]="apiDefinition" [normalMode]="true" [columns]="columns" [editRoute]="editRoute"
+        [crud]="crud" [title]="title" [autoResizeWithWindow]="true" [left]="orgId"
+        (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+        (selectedIdsChange)="onSelectedIdsChange($event)" [outerInOperators]="outerInOperators"
+        [outerParam$]="outerParam$"
+        [normalMode]="true"
+        [generateTemplateRequest]="generateTemplateRequest"
+        [importPreviewPath]="'hu-personnel-planing-import'"
+        >
+    </core-page-list>
+
+    <ng-template #sticker let-code="context.active">
+        <core-status-sticker [code]="code"></core-status-sticker>
+    </ng-template>
+
+    <ng-template #orgId>
+        <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdChange($event)"></core-org-tree>
+    </ng-template>
+
+</div>

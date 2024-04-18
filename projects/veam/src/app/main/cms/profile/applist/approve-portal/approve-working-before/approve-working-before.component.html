@@ -1,0 +1,25 @@
+<div class="app-approve-working-before-container">
+    <core-page-list
+        [apiDefinition]="apiDefinition"
+        [columns]="columns"
+        [editRoute]="editRoute"
+        [crud]="crud"
+        [normalMode]="true"
+        [autoResizeWithWindow]="true"
+        [title]="title"
+        [outerSort]="outerSort"
+        [outerParam$]="outerParam$"
+        [outerInOperators]="outerInOperators"
+        [left]="orgTree"
+        [frozen]="4"
+    >
+    </core-page-list>
+
+
+    <ng-template #orgTree>
+        <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)"> </core-org-tree>
+    </ng-template>
+</div>
+<ng-template #reasonChange let-reasonChange="context.reasonChange">
+    <div class="fill-color-column">{{reasonChange}}</div>
+</ng-template>

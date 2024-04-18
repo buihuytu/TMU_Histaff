@@ -1,0 +1,23 @@
+<div class="screen-left-container">
+    <core-page-list
+        [apiDefinition]="apiDefinition"
+        [columns]="columns"
+        [title]="title"
+        
+        [hideButtonGroup]="true"
+        [disableDoubleClick]="true"
+
+        (selectedIdsChange)="onSelectedIdsChange($event)"
+        (onInstanceCreated)="onInstanceCreated($event)"
+
+        [left]="orgTree"
+        [outerInOperators]="outerInOperators"
+    >
+    </core-page-list>
+
+
+    <ng-template #orgTree>
+        <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+        </core-org-tree>
+    </ng-template>
+</div>

@@ -1,0 +1,12 @@
+<div class="ins-list-contract-container">
+    <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud" 
+    [title]="title" 
+    [autoResizeWithWindow]="true"
+    ></core-page-list>
+</div>
+<ng-template #isAuthSsl let-isAuthSsl="context.isAuthSsl">
+  <core-checkbox [disabled]="true" [inputValue]="isAuthSsl"></core-checkbox>
+</ng-template>
+<ng-template #isAuthSendingMail let-isAuthSendingMail="context.isAuthSendingMail">
+    <core-checkbox [disabled]="true" [inputValue]="isAuthSendingMail"></core-checkbox>
+  </ng-template>

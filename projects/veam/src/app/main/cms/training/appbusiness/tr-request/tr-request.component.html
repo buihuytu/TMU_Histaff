@@ -1,0 +1,64 @@
+ 
+<div class="tr-request-container">
+    <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+      [title]="title" [left]="orgTree"
+      [top]="topParam"
+      [outerParam$]="outerParam$"
+      [outerInOperators]="outerInOperators"
+      [autoResizeWithWindow]="true"
+      [frozen]="2"
+      [normalMode]="true"
+      ></core-page-list>
+  
+    <ng-template #orgTree>
+      <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+      </core-org-tree>
+    </ng-template>
+    
+    <ng-template #topParam>
+      <div class="row mb15" style="margin-left: 5px;">
+  
+        <div class="col-md-2">
+          <div class="form-group vertical">
+            <label>{{ labelList.year | translate: lang}}</label>
+            <core-dropdown [(ngModel)]="year" (ngModelChange)="onYearChange($event)" [options$]="yearPeridOptions$"
+              [getByIdObject$]="yearPeriodGetByIdObject$" [shownFrom]="shownFrom"></core-dropdown>
+          </div>
+        </div>
+  
+        <div class="col-md-4">
+          <div class="form-group vertical">
+            <label>{{ labelList.status | translate: lang}}</label>
+            <core-checklist [(ngModel)]="statuses" (ngModelChange)="onStatusChange($event)" [paramMode]="true"
+              [options$]="checklistOptions$!"
+              [getByIdObject$]="checklistStatusGetByIdObject$"
+              [shownFrom]="'name'"
+              ></core-checklist>
+          </div>
+        </div>
+
+        <div class="col-md-1">
+          <div class="form-group vertical">
+            <!-- <label style="margin-top:-5px"></label> -->
+            <core-button-group-vns [showCaption]="true" (buttonClick)="onButtonClick($event)" [shownItems]="buttonItems"
+              class="buttonGroupCustom"></core-button-group-vns>
+          </div>
+        </div>  
+
+
+      </div>
+    </ng-template>
+
+    <ng-template #sticker let-code="context.status">
+      <core-status-sticker [code]="code"></core-status-sticker>
+    </ng-template>
+    
+    <ng-template #trCommit let-trCommit="context.trCommit">
+      <core-checkbox class="text-center" [disabled]="true" [inputValue]="trCommit"></core-checkbox>
+    </ng-template>
+
+    <ng-template #certificate let-certificate="context.certificate">
+      <core-checkbox class="text-center" [disabled]="true" [inputValue]="certificate"></core-checkbox>
+    </ng-template>
+
+  </div>

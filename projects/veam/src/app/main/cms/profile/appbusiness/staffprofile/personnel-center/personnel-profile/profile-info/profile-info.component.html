@@ -1,0 +1,122 @@
+<!--
+CODE CŨ
+
+<div #container class="app-profile-info-container">
+  <core-accordion
+    [sectors]="sectors"
+    [manualHeightList]="true"
+    [heightList]="[280, 580, 540, 270, 640,470,195,330,210,260]"
+    [refs]="[
+      basic,
+      cv,
+      additionalInfo,
+      politicalBackground,
+      politicalOrganization,
+      education,
+      referrer,
+      contact,
+      bankInfo,
+      situation
+    ]"
+    (onItemClick)="onAccordionItemClick($event)"
+    (onItemClickEdit)="onAccordionItemClickEdit($event)"
+  ></core-accordion>
+
+  <ng-template #basic>
+    <app-basic></app-basic>
+  </ng-template>
+
+  <ng-template #cv>
+    <app-cv></app-cv>
+  </ng-template>
+
+  <ng-template #additionalInfo>
+    <app-additional-info></app-additional-info>
+  </ng-template>
+
+  <ng-template #politicalBackground>
+    <app-political-background></app-political-background>
+  </ng-template>
+
+  <ng-template #politicalOrganization>
+    <app-political-organization></app-political-organization>
+  </ng-template>
+
+  <ng-template #education>
+    <app-education></app-education>
+  </ng-template>
+
+  <ng-template #referrer>
+    <app-referrer></app-referrer>
+  </ng-template>
+
+  <ng-template #bankInfo>
+    <app-bank-info></app-bank-info>
+  </ng-template>
+
+  <ng-template #situation>
+    <app-situation></app-situation>
+  </ng-template>
+
+  <ng-template #contact>
+    <app-contact></app-contact>
+  </ng-template>
+</div>
+-->
+
+<div #container class="app-profile-info-container">
+  <core-accordion
+    [sectors]="sectors"
+    [manualHeightList]="true"
+    [heightList]="[ 300, 630, 500, 270, 700, tabHeight, 460, 210, 260 ]"
+    [refs]="[
+      basic,
+      cv,
+      additionalInfo,
+      politicalBackground,
+      politicalOrganization,
+      education,
+      contact,
+      bankInfo,
+      situation
+    ]"
+    (onItemClick)="onAccordionItemClick($event)"
+    (onItemClickEdit)="onAccordionItemClickEdit($event)"
+  ></core-accordion>
+
+  <ng-template #basic>
+    <app-basic></app-basic>
+  </ng-template>
+
+  <ng-template #cv>
+    <app-cv></app-cv>
+  </ng-template>
+
+  <ng-template #additionalInfo>
+    <app-additional-info></app-additional-info>
+  </ng-template>
+
+  <ng-template #politicalBackground>
+    <app-political-background></app-political-background>
+  </ng-template>
+
+  <ng-template #politicalOrganization>
+    <app-political-organization></app-political-organization>
+  </ng-template>
+
+  <ng-template #education>
+    <app-education (heightTabEducation)="getHeight($event)"></app-education>
+  </ng-template>
+
+  <ng-template #bankInfo>
+    <app-bank-info></app-bank-info>
+  </ng-template>
+
+  <ng-template #situation>
+    <app-situation></app-situation>
+  </ng-template>
+
+  <ng-template #contact>
+    <app-contact></app-contact>
+  </ng-template>
+</div>

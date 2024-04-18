@@ -1,0 +1,25 @@
+
+<div class="contracttype-profile-container">
+  <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+        [title]="title" 
+        [outerParam$]="outerParam$"
+        [autoResizeWithWindow]="true">
+    </core-page-list>
+</div>
+
+<ng-template #isBhxh let-isBhxh="context.isBhxh">
+  <core-checkbox [disabled]="true" [inputValue]="isBhxh"></core-checkbox> 
+</ng-template>
+<ng-template #isBhyt let-isBhyt="context.isBhyt">
+  <core-checkbox [disabled]="true" [inputValue]="isBhyt"></core-checkbox> 
+</ng-template>
+<ng-template #isBhtn let-isBhtn="context.isBhtn">
+  <core-checkbox [disabled]="true" [inputValue]="isBhtn"></core-checkbox> 
+</ng-template>
+<ng-template #isBhtnldBnn let-isBhtnldBnn="context.isBhtnldBnn">
+  <core-checkbox [disabled]="true" [inputValue]="isBhtnldBnn"></core-checkbox> 
+</ng-template>
+
+<ng-template #sticker let-code="context.status">
+  <core-status-sticker [code]="code"></core-status-sticker>
+</ng-template>

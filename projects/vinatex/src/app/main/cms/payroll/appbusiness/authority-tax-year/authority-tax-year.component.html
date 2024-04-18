@@ -1,0 +1,22 @@
+<div class="authority-tax-year-container">
+    <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+        [title]="title" [left]="orgTree"
+        [outerParam$]="outerParam$"
+        [outerInOperators]="outerInOperators"
+        [autoResizeWithWindow]="true"
+        [frozen]="2"
+        [outerSort]="outerSort"
+    ></core-page-list>
+    <ng-template #orgTree>
+        <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+        </core-org-tree>
+    
+      </ng-template>
+</div>
+
+<ng-template #isEmpRegister let-isEmpRegister="context.isEmpRegister">
+    <core-checkbox [disabled]="true" [inputValue]="isEmpRegister"></core-checkbox> 
+  </ng-template>
+  <ng-template #isComApprove let-isComApprove="context.isComApprove">
+    <core-checkbox [disabled]="true" [inputValue]="isComApprove"></core-checkbox> 
+  </ng-template>

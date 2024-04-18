@@ -1,0 +1,23 @@
+<div class="app-position-transfer-container">
+    <core-page-header [instanceNumber]="instanceNumber" [title]="title"
+        (buttonClick)="onCorePageHeaderButtonClick($event)"></core-page-header>
+    <div class="container-fluid no-padding no-margin">
+        <div class="row no-padding no-margin">
+            <div class="col" [ngStyle]="{ width: 'calc(50% - 35px)' }">
+                <app-position-extended [hideHeader]="true" [isLoadData]="true" (onInstanceCreated)="leftInstanceNumberSetter($event)"></app-position-extended>
+            </div>
+            <div class="col d-flex flex-column" [ngStyle]="{ width: '70px', textAlign: 'center', marginTop:'6%' }">
+                <core-button-group-vns [shownItems]="showmButtonTransfer" (buttonClick)="onCorePageHeaderButtonClick($event)"></core-button-group-vns>
+                <core-button-group-vns [shownItems]="showmCloning" (buttonClick)="onCorePageHeaderButtonClick($event)"></core-button-group-vns>
+                <core-button-group-vns [shownItems]="showmPositionTransferSave" (buttonClick)="onCorePageHeaderButtonClick($event)"></core-button-group-vns>
+                <core-button-group-vns [shownItems]="showmRevert" (buttonClick)="onCorePageHeaderButtonClick($event)"></core-button-group-vns>
+                <core-button-group-vns [shownItems]="showmRecruit" (buttonClick)="onCorePageHeaderButtonClick($event)"></core-button-group-vns>
+            </div>
+            <div class="col" [ngStyle]="{ width: 'calc(50% - 35px)' }">
+                <app-position-extended [hideHeader]="true" [isLoadData]="false" (onInstanceCreated)="rightInstanceNumberSetter($event)"></app-position-extended>
+            </div>
+        </div>
+        <app-evaluate-dialog [buttonItems]="buttonItems"></app-evaluate-dialog>
+    </div>
+</div>
+<core-api-progress *ngIf="longApiRunning" (onClose)="onProgressWindowClose($event)"></core-api-progress>

@@ -1,0 +1,172 @@
+<div #container class="app-home-explain-work-container" [ngStyle]="{
+    width: (width - layoutService.basicSpacing) + 'px',
+    maxWidth: '100%',
+    overflow: 'hidden',
+    border: '1px solid #D1D1D1',
+    borderRadius: '5px',}">
+  <div [ngStyle]="{
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      padding: layoutService.basicSpacing/2 + 'px',
+  }">{{ caption | translate: lang | uppercase }}</div>
+  <div class="row" [ngStyle]="{padding: layoutService.basicSpacing/2 + 'px'}">
+    <div class="col-md-7" #calendarContainer>
+      <input type="checkbox" id="month-dropdown-opened" [(ngModel)]="monthPickerActive" />
+      <input type="checkbox" id="year-dropdown-opened" [(ngModel)]="yearPickerActive" />
+      <!-- <div class="navigator-container">
+          <div class="navigator d-flex-start">
+            <div class="nav-button pointer">
+              <label class="month-dropdown-icon" for="month-dropdown-opened"></label>
+            </div>
+            <div class="month-dropdown">{{ currentMonthText }}, {{ currentYear }}</div>
+          </div>
+          <div class="arrows">
+            <div class="go-up" (click)="goBackward()"></div>
+            <div class="go-down" (click)="goForeward()"></div>
+          </div>
+        </div> -->
+
+      <div class="scroll-container">
+        <div class="weekday-header">
+          <ul style="display: flex; justify-content: space-between; width: 100%">
+            <li *ngFor="let day of headerWeekdays; let i = index">
+              <div>{{ day }}</div>
+            </li>
+          </ul>
+        </div>
+        <div class="calendar-body-container">
+          <div #calendarBody class="calendar-body fade-in">
+            <ul *ngFor="let week of data$.value">
+              <li (click)="clickExplanation(item, $event)" *ngFor="let item of week.items; let i = index"
+                [class.t7]="i === 5" [class.cn]="i === 6">
+                <div class="d-flex justify-content-between" [class.out-of-month]="!!!item.currentMonth">
+                  <div class="status-info w-100 d-flex-start">
+                    <div class="late-status" *ngIf="item.manualCode === 'L'">
+                      <div *ngIf="!!item.currentMonth" class="info"></div>
+                    </div>
+                    <div class="late-status" *ngIf="item.manualCode === 'X'">
+                      <div *ngIf="!!item.currentMonth" class="success"></div>
+                    </div>
+                    <div class="late-status" *ngIf="item.manualCode === 'T'">
+                      <div *ngIf="!!item.currentMonth" class="error"></div>
+                    </div>
+                    <div class="late-status" *ngIf="item.manualCode === 'P'">
+                      <div *ngIf="!!item.currentMonth" class="warning"></div>
+                    </div>
+                  </div>
+                  <div class="date">{{ item.date }}</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="month-picker">
+        <core-month-picker [monthObject$]="currentMonth$" (onChange)="onMonthObjectChange($event)" [lang]="lang"
+          (onYearClick)="onMonthPickerYearClick($event)"></core-month-picker>
+      </div>
+      <div id="year-picker">
+        <core-year-picker [default]="currentYear" (onChange)="onYearPickerChange($event)"></core-year-picker>
+      </div>
+
+    </div>
+
+    <div class="col-md-5 no-padding salary-list">
+      <div *ngFor="let item of arrAttendant" class="salary-item">
+        <div class="row">
+          <div class="col-12 d-flex d-flex-center">
+            <h5 class="workingDay">{{ item.workingday | tableCell : 'DATE' : lang }}</h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <p class="lebel-item">[{{ item.code }}] {{ item.name | translate : lang }}</p>
+          </div>
+        </div>
+        <core-line></core-line>
+        <div class="row mt-2">
+          <div class="col-6">
+            <p class="lebel-item">CheckIn/CheckOut</p>
+          </div>
+          <div class="col-6">
+            <p class="lebel-item">{{ item.valin1 | date : 'HH:mm:ss' }}/{{ item.valin4 | date : 'HH:mm:ss' }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <p class="lebel-item">{{ leaveEarly | translate : lang }}</p>
+          </div>
+          <div class="col-6">
+            <p class="lebel-item">{{ late }}/{{ comebackOut }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <p class="lebel-item">{{ overtime | translate : lang }}</p>
+          </div>
+          <div class="col-6">
+            <p class="lebel-item">{{totalOt == 0? '': totalOt}}</p>
+          </div>
+        </div>
+        <!-- <div class="row mb-3 d-flex d-flex-center" *ngIf="isExplanationShown">
+            <button class="btnShowExplanation" (click)="showExplanation()">{{ btnShow | translate : lang }}</button>
+          </div> -->
+        <!-- <div *ngIf="isSenBtn">
+            <core-line></core-line>
+            <div class="mt-3">
+              <label class="mb-2 lebel-item">{{ explaintionDay | translate : lang }}</label>
+              <core-date-picker [disabled]="disabled" [(ngModel)]="explainDate"></core-date-picker>
+            </div>
+            <div class="mt-3" *ngIf="(late != 0 || comebackOut != 0)  && item.valin1 !== null && item.valin4 !== null">
+              <label class="mb-2 lebel-item">Thời gian<span style="color: red">*</span>(Bắt buộc điền 1 trong 2 trường)</label>
+              <div class="col-12 d-flex justify-content-between">
+                <input [(ngModel)]="lateText" class="send-input explanation-space late-out form-control" type="number" placeholder="Đi muộn (phút)" [min]="0" />
+                <input [(ngModel)]="comebackOutText" class="send-input explanation-space late-out form-control" type="number" placeholder="Về sớm (phút)" min="0" />
+              </div>
+              <label class="mt-2 lebel-item" style="color: red" *ngIf="isRequired">Bắt buộc nhập 1 trong 2 trường</label>
+            </div>
+            <div class="mt-3">
+              <label class="mb-2 lebel-item">{{ typeOfWork | translate : lang }}</label>
+              <core-dropdown
+                [(ngModel)]="symbolType"
+                (ngModelChange)="onSymbolTypeChange($event)"
+                [options$]="symbolTypeOptions$"
+                [getByIdObject$]="symbolTypeGetByIdObject$"
+                [paramMode]="true"
+              ></core-dropdown>
+            </div>
+            <div class="mt-3">
+              <label class="lebel-item">{{ reason | translate : lang }}</label>
+              <input [(ngModel)]="reasonText" class="send-input explanation-space form-control" type="text" />
+            </div>
+            <div class="mt-3 d-flex d-flex-center">
+              <button (click)="sendExplainTime($event)" class="btnSend">{{ btnSend | translate : lang }}</button>
+            </div>
+          </div> -->
+      </div>
+      <div class="d-flex flex-wrap mt-1 align-items-start">
+        <div class="col-md-6">
+          <div class=" d-flex align-items-center">
+            <div class="h me-1"></div>
+            <p class="content">{{ work | translate : lang }}</p>
+          </div>
+          <div class="d-flex align-items-center">
+            <div class="c me-1"></div>
+            <p class="content">{{ onLeave | translate : lang }}</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class=" d-flex align-items-center">
+            <div class="a me-1"></div>
+            <p class="content">{{ missingAtendance | translate : lang }}</p>
+          </div>
+          <div class="d-flex align-items-center">
+            <div class="d me-1"></div>
+            <p class="content">{{ holiday | translate : lang }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

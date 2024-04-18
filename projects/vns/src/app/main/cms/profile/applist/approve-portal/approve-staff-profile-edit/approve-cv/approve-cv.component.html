@@ -1,0 +1,46 @@
+<div class="app-approve-cv-container">
+    <core-page-list
+        [apiDefinition]="apiDefinition"
+        [columns]="columns"
+        [editRoute]="editRoute"
+        [crud]="crud"
+        [normalMode]="true"
+        [autoResizeWithWindow]="true"
+        [outerSort]="outerSort"
+        [outerParam$]="outerParam$"
+        [outerInOperators]="outerInOperators"
+        [left]="orgTree"
+        [height]="height"
+        [frozen]="3"
+    >
+    </core-page-list>
+
+
+    <ng-template #orgTree>
+        <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)" [height]="treeHeight"> </core-org-tree>
+    </ng-template>
+</div>
+
+<ng-template #religionName let-religionName="context.religionName" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('religionId')">{{religionName}}</div>
+</ng-template>
+
+<ng-template #nativeName let-nativeName="context.nativeName" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('nativeId')">{{nativeName}}</div>
+</ng-template>
+
+<ng-template #maritalStatusName let-maritalStatusName="context.maritalStatusName" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('maritalStatusId')">{{maritalStatusName}}</div>
+</ng-template>
+
+<ng-template #idNo let-idNo="context.idNo" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('idNo')">{{idNo}}</div>
+</ng-template>
+
+<ng-template #idDate let-idDate="context.idDate" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('idDate')">{{idDate}}</div>
+</ng-template>
+
+<ng-template #identityAddressName let-identityAddressName="context.identityAddressName" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('IdentityAddress')">{{identityAddressName}}</div>
+</ng-template>

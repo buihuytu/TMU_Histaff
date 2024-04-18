@@ -1,0 +1,23 @@
+<div class="app-staff-profile-edit-center-container">
+
+  <core-composition  [main]="tabs">
+  </core-composition>
+
+</div>
+
+<ng-template #tabs>
+  <core-tabs [headers]="tabHeaders" [contents]="[tab1, tab2, tab3]"></core-tabs>
+</ng-template>
+
+<ng-template #tab1>
+  <h2>Tỉnh thành</h2>
+</ng-template>
+
+<ng-template #tab2>
+  <h2>Quận huyện</h2>
+</ng-template>
+
+<ng-template #tab3>
+  <h2>Xã phường</h2>
+</ng-template>
+

@@ -1,0 +1,21 @@
+<core-page-edit 
+    *ngIf="!!sections.length"
+    [width]="1000" 
+    [captionCode]="captionCode"
+    [sections]="sections" [crud]="crud"
+    [entityTable]="entityTable"
+    (onFormCreated)="onFormCreated($event)"
+    [normalMode]="false"
+    [bottomTemplateRef]="allowanceList"
+    (onInitialValueStringReady)="onFormReinit($event)">
+</core-page-edit>
+
+    <ng-template #allowanceList>
+        <core-table
+            [columns]="columnsAllowance"
+            [data]="huWorkingAllowList"
+        ></core-table>
+    </ng-template>
+
+
+<!-- chỗ này cũng phải sửa [normalMode] thành false -->

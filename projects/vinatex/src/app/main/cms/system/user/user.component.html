@@ -1,0 +1,33 @@
+<div class="tenant-user-container">
+  <core-page-list [normalMode]="false" [hasIdOfStringType]="true" [apiDefinition]="apiDefinition" [columns]="columns"
+    [editRoute]="editRoute" [crud]="crud" [title]="title" [autoResizeWithWindow]="true" (corePageHeaderButtonClick)="onCorePageHeaderButtonClick($event)"
+    [columnSearchDefaultOpen]="true" (selectedIdsChange)="onSelectedIdsChange($event)"
+    (selectedDataChange)="onSelectedDataChange($event)"
+    (onInstanceCreated)="onInstanceCreated($event)"
+    [headerWrap]="true"
+    [headerFirstRowHeight]="60"
+    ></core-page-list>
+</div>
+
+<ng-template #avatar let-avatar="context.avatar">
+  <img [src]="avatar | mapAvatarToServer" class="in-table-avatar" appImageErrorResolver>
+</ng-template>
+
+<ng-template #isWebapp let-isWebapp="context.isWebapp">
+  <div class="d-flex d-flex-center">
+    <core-checkbox [inputValue]="isWebapp" [disabled]="true"></core-checkbox>
+  </div>
+</ng-template>
+
+<ng-template #isPortal let-isPortal="context.isPortal">
+  <div class="d-flex d-flex-center">
+    <core-checkbox [inputValue]="isPortal" [disabled]="true"></core-checkbox>
+  </div>
+</ng-template>
+
+<ng-template #isLock let-isLock="context.isLock">
+  <div class="d-flex d-flex-center">
+    <core-checkbox [inputValue]="isLock" [disabled]="true"></core-checkbox>
+  </div>
+</ng-template>
+<app-fullscreen-modal-loader *ngIf="loading"></app-fullscreen-modal-loader>

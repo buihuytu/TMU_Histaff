@@ -1,0 +1,27 @@
+ 
+<div class="welfare-mng-profile-container">
+  <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+    [title]="title" [left]="orgTree"
+    [outerParam$]="outerParam$"
+    [outerInOperators]="outerInOperators"
+    [autoResizeWithWindow]="true"
+
+    [showParamKit]="true"
+    [datePeriodComparisonFor]="datePeriodComparisonFor"
+    [datePeriodComparisonForLabelKey]="datePeriodComparisonForLabelKey"
+    [hideStatusInclusion]="false"
+    [statusInclusionFor]="statusInclusionFor"
+    [statusInclusionForLabelKey]="statusInclusionForLabelKey"
+    [statusOptionsApi]="workStatusOptionsApi"
+    [outerSort]="outerSort"
+    [generateTemplateRequest]="generateTemplateRequest"
+    [importPreviewPath]="'welfaremng-import'"
+    [frozen]="2"
+    ></core-page-list>
+
+  <ng-template #orgTree>
+    <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+    </core-org-tree>
+
+  </ng-template>
+</div>

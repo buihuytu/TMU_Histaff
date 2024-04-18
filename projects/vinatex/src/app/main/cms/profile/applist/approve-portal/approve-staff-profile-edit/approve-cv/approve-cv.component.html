@@ -1,0 +1,46 @@
+<div class="app-approve-cv-container">
+    <core-page-list
+        [apiDefinition]="apiDefinition"
+        [columns]="columns"
+        [editRoute]="editRoute"
+        [crud]="crud"
+        [normalMode]="true"
+        [autoResizeWithWindow]="true"
+        [outerSort]="outerSort"
+        [outerParam$]="outerParam$"
+        [outerInOperators]="outerInOperators"
+        [left]="orgTree"
+        [height]="height"
+        [frozen]="3"
+    >
+    </core-page-list>
+
+
+    <ng-template #orgTree>
+        <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)" [height]="treeHeight"> </core-org-tree>
+    </ng-template>
+</div>
+
+<ng-template #religionName let-religionName="context.religionName">
+    <div class="fill-color-column">{{religionName}}</div>
+</ng-template>
+
+<ng-template #nativeName let-nativeName="context.nativeName">
+    <div class="fill-color-column">{{nativeName}}</div>
+</ng-template>
+
+<ng-template #maritalStatusName let-maritalStatusName="context.maritalStatusName">
+    <div class="fill-color-column">{{maritalStatusName}}</div>
+</ng-template>
+
+<ng-template #idNo let-idNo="context.idNo">
+    <div class="fill-color-column">{{idNo}}</div>
+</ng-template>
+
+<ng-template #idDate let-idDate="context.idDate">
+    <div class="fill-color-column">{{idDate}}</div>
+</ng-template>
+
+<ng-template #identityAddressName let-identityAddressName="context.identityAddressName">
+    <div class="fill-color-column">{{identityAddressName}}</div>
+</ng-template>

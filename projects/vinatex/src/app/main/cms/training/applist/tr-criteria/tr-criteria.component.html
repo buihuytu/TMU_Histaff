@@ -1,0 +1,12 @@
+<div class="tr-criteria-container">
+    <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+      [title]="title"
+      [outerParam$]="outerParam$"
+      [autoResizeWithWindow]="true"
+      [frozen]="2"
+      ></core-page-list>  
+
+    <ng-template #sticker let-code="context.status">
+        <core-status-sticker [code]="code"></core-status-sticker>
+    </ng-template>
+</div>

@@ -1,0 +1,23 @@
+:host::ng-deep .core-page-edit-container .section-img-wrapper{
+    display: none;
+    width: 0px;
+    height: 0px;
+}
+
+:host::ng-deep .core-page-edit-container .section-caption{
+    padding: 0px !important;
+    text-transform: uppercase !important;
+}
+
+:host::ng-deep .core-form-container .grid-buffer{
+    border: none !important;
+}
+
+:host::ng-deep .core-form-container .section-header-label{
+    height: 30px !important;
+    margin-bottom: 0px;
+}
+
+:host::ng-deep .core-grid-buffer-container .grid-buffer-submit{
+    background-color: #f37540 !important;
+}

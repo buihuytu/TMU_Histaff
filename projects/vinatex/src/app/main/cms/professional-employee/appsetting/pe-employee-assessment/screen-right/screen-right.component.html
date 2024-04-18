@@ -1,0 +1,15 @@
+<div class="screen-right-container">
+    <core-page-list
+        [apiDefinition]="apiDefinition"
+        [columns]="columns"
+        [title]="title"
+        [outerInOperators]="outerInOperators"
+
+        [hideButtonGroup]="true"
+        [disableDoubleClick]="true"
+
+        (selectedIdsChange)="onSelectedIdsChange($event)"
+        (onInstanceCreated)="onInstanceCreated($event)"
+    >
+    </core-page-list>
+</div>

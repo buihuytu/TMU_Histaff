@@ -1,0 +1,21 @@
+<core-page-edit *ngIf="!!sections.length" [width]="1000" [captionCode]="captionCode" [sections]="sections" [crud]="crud"
+    (onFormCreated)="onFormCreated($event)" [entityTable]="entityTable"
+    (onInitialValueStringReady)="onFormReinit($event)" [normalMode]="true"
+    [customFormButtonItems]="[]"></core-page-edit>
+
+<core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [hideCheck]="true" [hideButtonGroup]="true"
+    [autoResizeWithWindow]="true" 
+    [headerWrap]="true"
+    [outerParam$]="outerParam$"
+    [headerFirstRowHeight]="headerFirstRowHeight">
+
+    <ng-template #isObligatory let-isObligatory="context.isObligatory">
+        <core-checkbox [disabled]="true" [inputValue]="isObligatory"></core-checkbox>
+    </ng-template>
+    <ng-template #isPermissveUpload let-isPermissveUpload="context.isPermissveUpload">
+        <core-checkbox [disabled]="true" [inputValue]="isPermissveUpload"></core-checkbox>
+    </ng-template>
+    <ng-template #isSubmit let-isSubmit="context.isSubmit">
+        <core-checkbox [disabled]="true" [inputValue]="isSubmit"></core-checkbox>
+    </ng-template>
+</core-page-list>

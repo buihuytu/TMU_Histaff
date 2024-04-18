@@ -1,0 +1,102 @@
+<div class="app-hufamily-edit-container">
+    <core-page-list
+        [apiDefinition]="apiDefinition"
+        [columns]="columns"
+        [editRoute]="editRoute"
+        [crud]="crud"
+        (rowClick)="onRowClick($event)"
+        [title]="title"
+        [autoResizeWithWindow]="true"
+        [outerSort]="outerSort"
+        [outerParam$]="outerParam$"
+        [outerInOperators]="outerInOperators"
+        [left]="orgTree"
+        [frozen]="3"
+        [headerWrap]="true"
+        [headerFirstRowHeight]="headerFirstRowHeight"
+    >
+    </core-page-list>
+
+    <ng-template #orgTree>
+        <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)"> </core-org-tree>
+    </ng-template>
+</div>
+<ng-template #isDeduct let-isDeduct="context.isDeduct">
+    <core-checkbox [disabled]="true" [inputValue]="isDeduct"></core-checkbox>
+</ng-template>
+
+<ng-template #isHousehold let-isHousehold="context.isHousehold">
+    <core-checkbox [disabled]="true" [inputValue]="isHousehold"></core-checkbox>
+</ng-template>
+
+<ng-template #isDead let-isDead="context.isDead">
+    <core-checkbox [disabled]="true" [inputValue]="isDead"></core-checkbox>
+</ng-template>
+
+<ng-template #sameCompany let-sameCompany="context.sameCompany">
+    <core-checkbox [disabled]="true" [inputValue]="sameCompany"></core-checkbox>
+</ng-template>
+
+<ng-template #fullname let-fullname="context.fullname" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('fullname')">{{fullname}}</div>
+</ng-template>
+
+<ng-template #relationshipName let-relationshipName="context.relationshipName" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('relationshipId')">{{relationshipName}}</div>
+</ng-template>
+
+<ng-template #genderName let-genderName="context.genderName" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('gender')">{{genderName}}</div>
+</ng-template>
+
+<ng-template #birthDate let-birthDate="context.birthDate" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('birthDate')">{{birthDate | date: "dd/MM/yyyy"}}</div>
+</ng-template>
+
+<ng-template #pitCode let-pitCode="context.pitCode" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('pitCode')">{{pitCode}}</div>
+</ng-template>
+
+<ng-template #registerDeductDate let-registerDeductDate="context.registerDeductDate" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-colunm]="modelChanges.includes('registerDeductDate')">{{registerDeductDate | date: "dd/MM/yyyy"}}</div>
+</ng-template>
+
+<ng-template #deductFrom let-deductFrom="context.deductFrom" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('deductFrom')">{{deductFrom | date: "dd/MM/yyyy"}}</div>
+</ng-template>
+
+<ng-template #deductTo let-deductTo="context.deductTo" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('deductTo')">{{deductTo | date: "dd/MM/yyyy"}}</div>
+</ng-template>
+
+<ng-template #idNo let-idNo="context.idNo" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('idNo')">{{idNo}}</div>
+</ng-template>
+
+<ng-template #career let-career="context.career" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('carrer')">{{career}}</div>
+</ng-template>
+
+<ng-template #nationalityName let-nationalityName="context.nationalityName" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('nationality')">{{nationalityName}}</div>
+</ng-template>
+
+<ng-template #birthCerPlace let-birthCerPlace="context.birthCerPlace" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('birthCerPlace')">{{birthCerPlace}}</div>
+</ng-template>
+
+<ng-template #birthCerProvinceName let-birthCerProvinceName="context.birthCerProvinceName" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('birthCerProvince')">{{birthCerProvinceName}}</div>
+</ng-template>
+
+<ng-template #birthCerDistrictName let-birthCerDistrictName="context.birthCerDistrictName" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('birthCerDistrict')">{{birthCerDistrictName}}</div>
+</ng-template>
+
+<ng-template #birthCerWardName let-birthCerWardName="context.birthCerWardName" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('birthCerWard')">{{birthCerWardName}}</div>
+</ng-template>
+
+<ng-template #note let-note="context.note" let-modelChanges="context.modelChanges">
+    <div [class.fill-color-column]="modelChanges.includes('note')">{{note}}</div>
+</ng-template>

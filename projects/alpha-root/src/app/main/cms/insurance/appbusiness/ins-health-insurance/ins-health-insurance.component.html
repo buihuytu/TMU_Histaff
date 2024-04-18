@@ -1,0 +1,22 @@
+ 
+<div class="ins-health-insurance-container">
+    <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [editRoute]="editRoute" [crud]="crud"
+      [title]="title" [left]="orgTree"
+      [outerParam$]="outerParam$"
+      [outerInOperators]="outerInOperators"
+      [autoResizeWithWindow]="true"
+      [frozen]="2"
+      [outerSort]="outerSort"
+      [normalMode]="true"
+      ></core-page-list>
+  
+    <ng-template #orgTree>
+      <core-org-tree [(ngModel)]="orgIds" (ngModelChange)="onOrgIdsChange($event)">
+      </core-org-tree>
+  
+    </ng-template>
+    
+    <ng-template #sticker let-code="context.status">
+      <core-status-sticker [code]="code"></core-status-sticker>
+  </ng-template>
+  </div>

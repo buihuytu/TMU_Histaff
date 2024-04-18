@@ -1,0 +1,18 @@
+<div class="modal-container">
+    <div class="modal-content-root">
+
+        <div #container class="app-swipe-data-import-container">
+            <i class="feather-x" (click)="onCancel()"></i>
+            <caption>{{ captionCode | translate:lang | uppercase }}</caption>
+
+            <core-page-list [apiDefinition]="apiDefinition" [columns]="columns" [hideHeader]="true" [height]="500"
+                [hideCheck]="true" [disableDoubleClick]="true" [outerSort]="outerSort"></core-page-list>
+
+            <div class="d-flex d-flex-center">
+                <core-button-group-vns (buttonClick)="onCoreButtonGroupVNSClick($event)" [shownItems]="shownButtonItems" [showCaption]="true"></core-button-group-vns>
+            </div>
+        </div>
+
+    </div>
+</div>
+<app-fullscreen-modal-loader *ngIf="loading"></app-fullscreen-modal-loader>

@@ -987,7 +987,9 @@ export enum api {
   HU_ORGANIZATION_DELETE = '/api/HuOrganization/Delete',
   HU_ORGANIZATION_DELETE_IDS = '/api/HuOrganization/DeleteIds',
   HU_ORGANIZATION_TOGGLE_ACTIVE_IDS = '/api/HuOrganization/ToggleActiveIds',
+  HU_ORGANIZATION_TOGGLE_ACTIVE_IDS2 = '/api/HuOrganization/ToggleActiveIds2',
   HU_ORGANIZATION_GET_NEW_CODE = '/api/HuOrganization/GetNewCode',
+  HU_ORGANIZATION_UPDATE2 = '/api/HuOrganization/Update2',
 
   HU_ORG_LEVEL_QUERY_LIST = '/api/HuOrgLevel/QueryList',
   HU_ORG_LEVEL_CREATE = '/api/HuOrgLevel/Create',

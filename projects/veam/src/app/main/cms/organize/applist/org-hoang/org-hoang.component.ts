@@ -44,11 +44,10 @@ export class OrgHoangComponent extends BaseComponent implements AfterViewInit {
   columns: ICoreTableColumnItem[] = [
     {
       caption: EnumTranslateKey.UI_COMPONENT_TITLE_APPROVE_EMPLOYEE_EDIT_STATUS,
-      field: 'status',
+      field: 'statusString',
       type: 'string',
       align: 'left',
       width: 250,
-      pipe: EnumCoreTablePipeType.BOOLEAN_TO_ACTIVE_INACTIVE
     },
     {
       caption: EnumTranslateKey.UI_COMPONENT_TITLE_CODE_ORG,

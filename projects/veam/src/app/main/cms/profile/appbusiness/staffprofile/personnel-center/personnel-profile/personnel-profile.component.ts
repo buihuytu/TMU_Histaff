@@ -12,8 +12,6 @@ import { EnumTranslateKey } from 'alpha-global-constants';
 export class PersonnelProfileComponent implements OnInit {
   headers: EnumTranslateKey[] = [
     EnumTranslateKey.UI_PERSONNEL_PROFILE_TAB_FROFILE_INFO,
-    EnumTranslateKey.UI_PERSONNEL_PROFILE_TAB_CONCURRENT,
-    EnumTranslateKey.UI_PERSONNEL_PROFILE_TAB_PAPER,
   ]
 
   constructor(

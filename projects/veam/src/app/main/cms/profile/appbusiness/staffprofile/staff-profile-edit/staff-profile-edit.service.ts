@@ -28,22 +28,7 @@ listInstance$ =  new BehaviorSubject<number>(0);
         header: EnumTranslateKey.STAFF_PROFILE_ADDITIONAL_INFO,
         open: false,
         // required:true
-      },
-      {
-        id: EnumProfileInfoSector.CHARRACT,
-        header: EnumTranslateKey.STAFF_PROFILE_CHARRACT,
-        open: false,
-      },
-      {
-        id: EnumProfileInfoSector.POLITICAL_ORGANIZATION,
-        header: EnumTranslateKey.PERSONNEL_PROFILE_CENTER_PROFILE_INFO_POLITICAL_ORGANIZATION,
-        open: false,
-      },
-      {
-        id: EnumProfileInfoSector.EDUCATION,
-        header: EnumTranslateKey.PERSONNEL_PROFILE_CENTER_PROFILE_INFO_EDUCATION,
-        open: false,
-      },
+      },      
       // {
       //   id: EnumProfileInfoSector.REFERRER,
       //   header: EnumTranslateKey.PERSONNEL_PROFILE_CENTER_PROFILE_INFO_REFERRER,
@@ -54,16 +39,6 @@ listInstance$ =  new BehaviorSubject<number>(0);
         header: EnumTranslateKey.PERSONNEL_PROFILE_CENTER_PROFILE_INFO_CONTACT,
         open: false,
         required : true
-      },
-      {
-        id: EnumProfileInfoSector.BANK_INFO,
-        header: EnumTranslateKey.PERSONNEL_PROFILE_CENTER_PROFILE_INFO_BANK_INFO,
-        open: false,
-      },
-      {
-        id: EnumProfileInfoSector.SITUATION,
-        header: EnumTranslateKey.PERSONNEL_PROFILE_CENTER_PROFILE_INFO_SITUATION,
-        open: false,
       },
     ]
 

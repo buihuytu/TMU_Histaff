@@ -24,36 +24,12 @@ export class PersonnelLeftMenuComponent extends BaseEditComponent implements OnI
       routerLink: "personnel-profile"
     },
     {
-      code: EnumTranslateKey.UI_PERSONNEL_MENU_ITEM_WORKING_HISTOTY,
-      routerLink: "working-history"
-    },
-    {
       code: EnumTranslateKey.UI_PERSONNEL_MENU_ITEM_WORKING,
       routerLink: "wage-allowance"
     },
     {
       code: EnumTranslateKey.UI_PERSONNEL_MENU_ITEM_CONTRACT,
       routerLink: "contract"
-    },
-    {
-      code: EnumTranslateKey.UI_PERSONNEL_MENU_ITEM_CERTIFICATE,
-      routerLink: "certificate"
-    },
-    {
-      code: EnumTranslateKey.UI_PERSONNEL_MENU_ITEM_COMMEND,
-      routerLink: "commend"
-    },
-    {
-      code: EnumTranslateKey.UI_PERSONNEL_MENU_ITEM_DISCIPLINE,
-      routerLink: "discipline"
-    },
-    {
-      code: EnumTranslateKey.UI_PERSONNEL_MENU_ITEM_FAMILY,
-      routerLink: "family"
-    },
-    {
-      code: EnumTranslateKey.UI_PERSONNEL_MENU_ITEM_TERMINATE,
-      routerLink: "terminate"
     },
   ]
   otherName: string = EnumTranslateKey.UI_ENTITY_FIELD_CAPTION_SYS_USER_EMPLOYEE_OTHER_NAME;

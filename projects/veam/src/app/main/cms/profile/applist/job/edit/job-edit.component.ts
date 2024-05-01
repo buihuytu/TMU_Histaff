@@ -228,7 +228,7 @@ export class JobEditComponent extends BaseEditComponent {
       }      
     }, 1500)
 
-    /*
+    
     const reg = /[ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]+/;
     this.form.get('nameVnNoCode')?.valueChanges.pipe(distinctUntilChanged()).subscribe(x => {
         if (!!x) {
@@ -245,32 +245,32 @@ export class JobEditComponent extends BaseEditComponent {
           this.form.get('code')?.setValue("");
         }
     })!
-    */
+    
 
-    this.form.get('jobFamilyId')?.valueChanges.pipe(distinctUntilChanged()).subscribe(x => {
-      if (!!x) {
-        console.log(x);
-        this.subsctiptions.push(
-          this.jobService.getCodeByJobFamily(x)
-            .pipe(
-              map((f: any) => {
-                let options: string = "";
-                options = f.body.innerBody.code;
-                return options;
-              })
-            )
-            .subscribe(response => {
-              console.log(this.form.get('code'));
-              if(this.form.get('code')?.value == ""){
-                this.form.get('code')?.patchValue(response);
-              }
-            })
-        )!
-        //this.form.get('code')?.setValue(codeNew);
-      } else {
-        this.form.get('code')?.setValue("");
-      }
-    })!
+    // this.form.get('jobFamilyId')?.valueChanges.pipe(distinctUntilChanged()).subscribe(x => {
+    //   if (!!x) {
+    //     console.log(x);
+    //     this.subsctiptions.push(
+    //       this.jobService.getCodeByJobFamily(x)
+    //         .pipe(
+    //           map((f: any) => {
+    //             let options: string = "";
+    //             options = f.body.innerBody.code;
+    //             return options;
+    //           })
+    //         )
+    //         .subscribe(response => {
+    //           console.log(this.form.get('code'));
+    //           if(this.form.get('code')?.value == ""){
+    //             this.form.get('code')?.patchValue(response);
+    //           }
+    //         })
+    //     )!
+    //     //this.form.get('code')?.setValue(codeNew);
+    //   } else {
+    //     this.form.get('code')?.setValue("");
+    //   }
+    // })!
   }
 
   /* To allow form to be deactivated */

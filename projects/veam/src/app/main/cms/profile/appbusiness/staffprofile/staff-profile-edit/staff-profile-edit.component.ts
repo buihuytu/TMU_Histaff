@@ -2092,7 +2092,6 @@ export class StaffProfileEditComponent extends BaseEditComponent implements OnIn
   }
 
   onFormSubmit() {
-    debugger;
     // in ra cái đối tượng Form
     console.log("robot: in ra cái đối tượng Form:\n", this.form);
 
